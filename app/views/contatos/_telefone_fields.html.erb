@@ -1,0 +1,8 @@
+<div class="nested-fields">
+    <div class="field">
+        <div class="field">
+            <%= f.label :telefone %>
+            <%= f.text_field :telefone,maxlength:"11", autocomplete:"off", id:"telefone", placeholder:"(00) 00000-0000", style:"width: 111px;"%>  
+        <%= link_to_remove_association('', f,class:"fa fa-close")%>
+    </div>
+</div>     

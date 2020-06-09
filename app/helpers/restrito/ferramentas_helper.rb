@@ -1,0 +1,2 @@
+module Restrito::FerramentasHelper
+end

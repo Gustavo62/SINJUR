@@ -1,0 +1,82 @@
+<%= form_with(model: filiado, local: true) do |form| %>
+  <% if filiado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(filiado.errors.count, "error") %> prohibited this filiado from being saved:</h2>
+
+      <ul>
+      <% filiado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cnpj %>
+    <%= form.number_field :cnpj %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cei %>
+    <%= form.number_field :cei %>
+  </div>
+
+  <div class="field">
+    <%= form.label :codigo_tj %>
+    <%= form.number_field :codigo_tj %>
+  </div>
+
+  <div class="field">
+    <%= form.label :codigo_cnpj %>
+    <%= form.number_field :codigo_cnpj %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nome_contato %>
+    <%= form.text_field :nome_contato %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cep %>
+    <%= form.number_field :cep %>
+  </div>
+
+  <div class="field">
+    <%= form.label :logradouro %>
+    <%= form.text_field :logradouro %>
+  </div>
+
+  <div class="field">
+    <%= form.label :numero_casa %>
+    <%= form.number_field :numero_casa %>
+  </div>
+
+  <div class="field">
+    <%= form.label :complemento %>
+    <%= form.text_field :complemento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bairro %>
+    <%= form.text_field :bairro %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefone_fixo_casa %>
+    <%= form.number_field :telefone_fixo_casa %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cidade_integer %>
+    <%= form.text_field :cidade_integer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit  value:"Enviar" %>
+  </div>
+<% end %>

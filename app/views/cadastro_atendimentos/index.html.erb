@@ -1,0 +1,64 @@
+
+ <div id="index"> 
+    <div>
+      <div class="col-md-5 col-sm-5   form-group pull-right top_search" style="width:100%;text-align:center">
+        
+      <div class="col-md-6 col-sm-6  "style="width:100%">
+        <div class="x_panel" >
+          <div class="x_title">
+            <%= form_tag(cadastro_atendimentos_path, method: :get) do %> 
+              <h2 style="width: 100%;text-align: initial;">Atendimentos 
+                  <small style="float: right;text-align: end;">Numero:<%= text_field_tag 'n_atendimento', nil, type:'integer', placeholder:"N° Atendimento",class:"form-control",style:"width:15%" %>  
+                  | Cartório:
+                  <%= text_field_tag 'codigoo_tj', nil, type:'integer', placeholder:"Codigo Tj",class:"form-control",style:"width:13%"  %> 
+                  | Solicitante:
+                  <%= text_field_tag 'cpf', nil, type:'text', placeholder:"Cpf",class:"form-control",style:"width:15%"%> 
+                  | <%= text_field_tag 'intervalo_atend', nil, type:'date', placeholder:"Ex: 10/02/2020",class:"form-control",style:"width:18%" %>
+                  <%= submit_tag "Consultar", class:'btn btn-success'  %>
+                  </small>
+              </h2>
+            <% end %>
+                
+            
+              
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+
+            <table class="table table-striped" style="width: inherit;">
+              <thead>
+                <tr>
+                  <th>N° atendimento</th> 
+                  <th>Codigo tj filiado</th>
+                  <th>Nome Filiado</th>
+                  <th>Nome solicitante</th>
+                  <th>Cpf solicitante</th>
+                  <th>Telefone solicitante</th>
+                  <th>Data</th>  
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @cadastro_atendimentos_aux.each do |cadastro_atendimento| %> 
+                <tr align="center">
+                  <td><%= cadastro_atendimento.id%></td> 
+                  <td><%= @filiados_for_select.find(cadastro_atendimento.codigo_tj_filiado).codigo_tj%></td>
+                  <td><%= @filiados_for_select.find(cadastro_atendimento.codigo_tj_filiado).nome_contato%></td>
+                  <td><%= cadastro_atendimento.nome%></td>
+                  <td><%= cadastro_atendimento.cpf%></td> 
+                  <td><%= cadastro_atendimento.telefone%></td> 
+                  <td><%= cadastro_atendimento.data_atendimento.strftime("%d/%m/%Y")%></td> 
+                  <td><%= link_to '' , cadastro_atendimento, class:"fa fa-eye"  %></td>  
+                  <td><%= link_to '', edit_cadastro_atendimento_path(cadastro_atendimento), class:"fa fa-edit"  %></td>
+                  <td><%= link_to '', cadastro_atendimento, method: :delete, data: { confirm: 'Você Tem Certeza?' }, class:"fa fa-remove"  %></td> 
+                </tr>  
+              <% end %> 
+              </tbody>
+            </table> 
+          </div>
+        </div>
+      </div> 
+      <div class="clearfix"></div> 
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div style="text-align:center">
+<div class="container body" style="text-align:center;font-size:18px">
+  <div class="main_container" style="text-align:center"> 
+
+    <!-- top navigation --> 
+    <!-- page content --> 
+      <div class="" style="text-align:center"> 
+
+        <div class="clearfix"  style="text-align:center"></div>
+
+        <div class="row" style="display: block;text-align:center"">
+          <div class="col-md-6 col-sm-6  " style="width: 100%;margin-left: auto;margin-right: auto;text-align: center;">
+            <div class="x_panel" style="text-align:center;width: 100%;">
+              <div class="x_title">
+                <%= form_tag(contatos_path, method: :get) do %>
+                  <div class="col-md-5 col-sm-5   form-group pull-right top_search" style="width:100%;text-align:center">
+                    <div class="input-group"> 
+                      <h2 style="width: 100%;text-align: initial;">Contatos
+                        <small style="float: right;text-align: end;">
+                          <%= text_field_tag 'cidade', nil, type:'text', placeholder:"Ex: Fortaleza", class:"form-control", style:"width: 20%;margin-right: 63px;font-size: 20px;"%>
+                          <%= text_field_tag 'email', nil, type:'text', placeholder:"Ex: teste@teste.com",  class:"form-control", style:"width: 30%;font-size: 20px;margin-right: 64px;"%>
+                          <span class="input-group-btn"> 
+                            <%= submit_tag "Consultar",  class:"btn btn-success", style:"font-size: 20px;"%></h3> 
+                          </span>  
+                        </small>
+                      </h2>
+                    </div>
+                  </div>
+                <% end %>  
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content" style="text-align:center">
+
+                <table class="table"  style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>Nome</th> 
+                      <th>Email</th> 
+                      <th>Cidade</th>
+                      <th>Telefones</th>
+                      <th>1 Telefone</th>
+                      <th colspan="3"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @contatos_aux.each do |contato| %>
+                      <tr>
+                        <td><%= contato.nome %></td>   
+                        <td><%= contato.email %></td>   
+                        <td><%= contato.cidade %></td>
+                        <% begin %>
+                          <td><%= ((contato.telefones)).size %></td>
+                          <td><%= ((contato.telefones.sample).telefone) %></td> 
+                        <% rescue %>   
+                        <% end %> 
+                        <td><%= link_to '' , contato, class:"fa fa-eye"  %></td>
+                        <td><%= link_to '', edit_contato_path(contato), class:"fa fa-edit"  %></td>
+                        <td><%= link_to '', contato, method: :delete, data: { confirm: 'Are you sure?' }, class:"fa fa-remove"  %></td>
+                      </tr>
+                    <% end %> 
+                    
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+            <div>
+            <%= link_to 'Novo Contato', new_contato_path,  class:"btn btn-success", style:"color: #000;padding: 5px;margin-left: 91%;font-size:14px"%>
+            </div>          
+          </div> 
+          <div class="clearfix"></div>
+          
+        </div>
+      </div> 
+  </div>
+</div>  
+</div>

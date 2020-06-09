@@ -1,0 +1,20 @@
+<div>  
+<%= month_calendar events: @restrito_tela_agenda_atividades do |date, atividades| %>
+<%= date.strftime("%d") %>
+
+<% atividades.each do |atividade| %> 
+    <div id="atividades">
+        <%if atividade.titulo? == true%> 
+            <div id="<%=atividade.nivel%>"> 
+            <p><%= link_to atividade.titulo, atividade %></p>
+            </div>
+            
+        <% else %>
+            <div id="<%=atividade.nivel%>"> 
+            <p><%= link_to 'Sem titulo', atividade %></p>
+            </div>
+        <% end %> 
+    </div> 
+<% end %>
+<% end %>
+</div>    

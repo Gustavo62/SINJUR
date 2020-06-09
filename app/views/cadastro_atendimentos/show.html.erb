@@ -1,0 +1,16 @@
+ 
+<p>
+  <strong>ID</strong>
+  <%= @cadastro_atendimento.id %>
+</p>
+<p>
+  <strong>Texto</strong>
+  <%= @cadastro_atendimento.texto_livre %>
+</p>
+ <p>
+  <strong>Texto</strong>
+  <%=@cadastro_atendimento.documento.filename%> 
+  <%= link_to 'download', rails_blob_path(@cadastro_atendimento.documento, disposition: "attachment") %>
+</p>
+ <%= link_to 'Editar', edit_cadastro_atendimento_path(@cadastro_atendimento) %>
+ <%= link_to 'Voltar', cadastro_atendimentos_path %>

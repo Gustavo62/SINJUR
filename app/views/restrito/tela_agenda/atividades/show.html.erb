@@ -1,0 +1,27 @@
+<div class="x_panel">
+  <div class="x_title">
+    <h2 style="width:100%">Atividade
+      <small class="actions">
+      <%= link_to 'Editar', edit_restrito_tela_agenda_atividade_path(@restrito_tela_agenda_atividade),class:"fa fa-pencil-square-o"%>
+      <%= link_to 'Voltar', restrito_tela_agenda_atividades_path,class:"fa fa-reply" %>
+      </small>
+    </h2>
+      
+    <div class="clearfix"></div>
+  </div>
+  <div class="x_content">
+  <h2>Id: <small><%=@restrito_tela_agenda_atividade.id %></small></h2>  
+  <div class="clearfix"></div>  
+  <h2>Tipo: <small><%=@restrito_tela_agenda_atividade.tipo %></small></h2>  
+  <div class="clearfix"></div>  
+  <h2>Título: <small><%=@restrito_tela_agenda_atividade.titulo %></small></h2>  
+  <div class="clearfix"></div>  
+  <h2>Nível: <small><%=@restrito_tela_agenda_atividade.nivel %></small></h2>  
+  <div class="clearfix"></div>  
+  <h2>Data: <small><%=@restrito_tela_agenda_atividade.agendamento.strftime("%d/%m/%Y") %></small></h2>  
+  <div class="clearfix"></div> 
+  <h2>Resumo: <small><%=@restrito_tela_agenda_atividade.resumo%></small></h2>  
+  <div class="clearfix"></div> 
+  <div class="clearfix"></div> 
+  
+</div>

@@ -1,0 +1,3 @@
+class Tabeliao < ApplicationRecord 
+    
+end

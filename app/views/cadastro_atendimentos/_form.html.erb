@@ -1,0 +1,114 @@
+
+
+<div class="row">
+  <div class="col-md-6 " style="width:100%;font-size:18px"">
+    <%= form_with(model: cadastro_atendimento, local: true) do |f| %>
+      <div class="x_panel">
+        <div class="x_title">
+          <h2 style="width:100%"><%=@acao%> Atendimento
+          <small class="actions-form">
+            <%= link_to 'Voltar', cadastro_atendimentos_path,class:"fa fa-reply"  %>
+            <div style="float: right;margin-left: 10px;">
+              <%= f.submit "Enviar", class:"btn btn-success",style:"width: 115px;font-size: 18px;"%>
+            </div> 
+            </small>
+          </h2> 
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content"> 
+          <% if cadastro_atendimento.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(cadastro_atendimento.errors.count, "error") %> prohibited this cadastro_atendimento from being saved:</h2>
+
+              <ul>
+              <% cadastro_atendimento.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="field">
+            <div style="text-align:center">
+              <div style="margin: auto;width: 1000px;text-align: left;">   
+                
+                Solicitante
+                <br>
+                <br>
+                <div class="field">
+                  <%= f.label :Nome %>
+                  <%= f.text_field :nome, style:"width: 92%;",placeholder:"Nome completo do solicitante."%>
+                </div>
+                <div class="field">
+                  <%= f.label :Cpf %>:
+                  <%= f.text_field :cpf, placeholder:"999.999.999.99",style:"width: 18%;"%> 
+                  <%= f.label :telefone %>:
+                  <%= f.text_field :telefone,placeholder:"(99) 99999-9999",style:"width: 16%;"%> 
+                  <%= f.label :Data_do_Atendimento%>: 
+                  <%= f.text_field :data_atendimento , type:"date", style:"margin-left: 3px;"%>
+                  Filiado: <%= collection_select(:cadastro_atendimento, :codigo_tj_filiado,  @filiados_for_select, :id, :codigo_tj)%>
+                  <%= f.label :documento%>
+                  <%= f.file_field :documento%>
+                  <div id="documento">
+                    
+                    <%= f.fields_for :documento do |documento_fields| %> 
+                        <%= render partial: "documento_fields", locals: { f: documento_fields}%>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="field" style="text-align:left;width:1000px;font-size:20px;margin:auto"> 
+                <div class="field-unit__field">
+                  <div style="display:none"><%= f.text_field :texto_livre, id: 'texto_livre' %></div>
+                  <trix-editor input="<%= :texto_livre %>" placeholder="Digite o Seu texto aqui..."></trix-editor>
+                </div> 
+              </div>  
+              <br>
+            <div id="advogados">
+              <h2>Adicionar Advogado <i class="fa fa-briefcase"></i></h2>
+                <br>
+                <% if cadastro_atendimento.advogados%>
+                  <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :advogados,class:"btn btn-success",style:"color:black;")%></div>
+                  <%= f.fields_for :advogados do |advogados_fields| %> 
+                      <%= render partial: "advogado_fields", locals: { f: advogados_fields}%>
+                  <% end %>
+                <% else %>
+                  <%= f.fields_for :advogados do |advogados_fields| %> 
+                      <%= render partial: "advogado_fields", locals: { f: advogados_fields}%>
+                  <% end %>
+                <% end %>
+            </div> 
+            <div id="pessoas"> 
+              <h2>Adicionar Pessoas <i class="fa fa-user"></i></h2>
+              <br>
+                <% if cadastro_atendimento.pessoas%>
+                  <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :pessoas,class:"btn btn-success",style:"color:black;")%></div>
+                  <%= f.fields_for :pessoas do |pessoas_fields| %>
+                      <%= render partial: "pessoa_fields", locals: { f: pessoas_fields}%>
+                  <% end %>
+                <% else %>
+                  <%= f.fields_for :pessoas do |pessoas_fields| %>
+                      <%= render partial: "pessoa_fields", locals: { f: pessoas_fields}%>
+                  <% end %>
+                <% end %>
+            </div>
+            <div id="processos">  
+              <h2>Adicionar Processo <i class="fa fa-folder"></i></h2>  
+              <% if @possui_processo %> 
+                <%= f.fields_for :processos do |processo_fields| %>
+                    <%= render partial: "processo_fields", locals: { f: processo_fields}%>
+                <% end %>   
+              <% else %> 
+                <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :processos,class:"btn btn-success",style:"color:black;")%></div>
+                <%= f.fields_for :processos do |processo_fields| %>
+                    <%= render partial: "processo_fields", locals: { f: processo_fields}%>
+                <% end %> 
+              <% end %> 
+            </div>
+          </div> 
+        </div>  
+      </div>
+      
+    <% end %>   
+  </div>
+  </div>

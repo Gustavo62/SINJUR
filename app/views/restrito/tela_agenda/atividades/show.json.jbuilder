@@ -1,0 +1,1 @@
+json.partial! "restrito_tela_agenda_atividades/restrito_tela_agenda_atividade", restrito_tela_agenda_atividade: @restrito_tela_agenda_atividade

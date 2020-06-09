@@ -1,0 +1,27 @@
+'pt-BR':
+  activerecord:
+    views:
+    
+    models: 
+      admin:
+        one: Administrador
+        other: Administradores 
+    attributes:
+      admin:
+        id: Código
+        email: Email
+        sign_in: Login
+        back: Voltar
+        password: Senha
+        created_at: Criado em
+        updated_at: Atualizado em 
+        remember_me: Me lembrar
+        sign_up: Cadastrar-se
+        action: Entrar 
+      contato:
+        index:
+          Edit: editar
+          Destroy: destruir
+          Show: visualizar
+    
+      

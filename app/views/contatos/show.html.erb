@@ -1,0 +1,33 @@
+
+  <div class="x_panel" style="font-size:16px">
+    <div class="x_title">
+      <h2 style="width:100%">Atividade
+        <small class="actions">
+        <%= link_to 'Editar', edit_contato_path(@contato) ,class:"fa fa-pencil-square-o"%>
+        <%= link_to 'Voltar', contatos_path,class:"fa fa-reply" %>
+        </small>
+      </h2>
+        
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+    <div class="contato-form" >
+      <h2>Informações do Contato <i class="fa fa-user"></i></h2>
+      <br>
+      <h2>Nome: <small><%= @contato.nome %></small>, Profissão: <small><%=@contato.profissao %></small>, Detalhe: <small><%=@contato.detalhe %></small></h2>  
+      <div class="clearfix"></div>  
+      <h2>Logradouro: <small><%=@contato.logradouro %></small>, Bairro: <small><%=@contato.bairro%></small>, Cidade: <small><%=@contato.cidade%></small></h2> 
+      <h2>Cep: <small><%=@contato.cep %></small>, Numero: <small><%=@contato.numero%></small>, Observação: <small><%=@contato.observacao%></small></h2>   
+      <h2>site: <small><%=@contato.site %></small>, Dn: <small><%=@contato.dn%></small>, E-mail: <small><%=@contato.email%></small></h2>  
+      <br>
+      <h2>Telefones<i class="fa fa-phone"></i></h2>
+      <br>
+      <h2>Telefones:
+      <%@contato.telefones.each do |contats|%>
+        <small><%=contats.telefone%></small>.
+      <% end%>
+      </h2>
+    </div>
+    <br> 
+    
+  </div>

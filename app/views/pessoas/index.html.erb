@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pessoas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Profissao</th>
+      <th>Cep</th>
+      <th>Razao social</th>
+      <th>Nome fantasia</th>
+      <th>Cidade</th>
+      <th>Endereço</th>
+      <th>Cpf</th>
+      <th>Rg</th>
+      <th>Pis</th>
+      <th>Residencial</th>
+      <th>Comercial</th>
+      <th>Celular</th>
+      <th>Nacionalidade</th>
+      <th>Estado civil</th>
+      <th>Estado civil</th>
+      <th>Bairro</th>
+      <th>Email</th>
+      <th>Escolaridade</th>
+      <th>Insc estadual</th>
+      <th>Insc municipal</th>
+      <th>Responsável</th>
+      <th>Cnpj</th>
+      <th>Cadastro atendimento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pessoas.each do |pessoa| %>
+      <tr>
+        <td><%= pessoa.nome %></td>
+        <td><%= pessoa.profissao %></td>
+        <td><%= pessoa.cep %></td>
+        <td><%= pessoa.razao_social %></td>
+        <td><%= pessoa.nome_fantasia %></td>
+        <td><%= pessoa.cidade %></td>
+        <td><%= pessoa.endereço %></td>
+        <td><%= pessoa.cpf %></td>
+        <td><%= pessoa.rg %></td>
+        <td><%= pessoa.pis %></td>
+        <td><%= pessoa.residencial %></td>
+        <td><%= pessoa.comercial %></td>
+        <td><%= pessoa.celular %></td>
+        <td><%= pessoa.nacionalidade %></td>
+        <td><%= pessoa.estado_civil %></td>
+        <td><%= pessoa.estado_civil %></td>
+        <td><%= pessoa.bairro %></td>
+        <td><%= pessoa.email %></td>
+        <td><%= pessoa.escolaridade %></td>
+        <td><%= pessoa.insc_estadual %></td>
+        <td><%= pessoa.insc_municipal %></td>
+        <td><%= pessoa.responsável %></td>
+        <td><%= pessoa.cnpj %></td>
+        <td><%= pessoa.cadastro_atendimento %></td>
+        <td><%= link_to 'Show', pessoa %></td>
+        <td><%= link_to 'Edit', edit_pessoa_path(pessoa) %></td>
+        <td><%= link_to 'Destroy', pessoa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pessoa', new_pessoa_path %>

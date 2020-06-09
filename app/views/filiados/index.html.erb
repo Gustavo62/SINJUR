@@ -1,0 +1,36 @@
+ <h3>Filiados</h3> 
+<%= form_tag(filiados_path, method: :get) do %>
+  <h3>N° Serventia: 
+  <%= text_field_tag 'codigo_tj', nil, type:'integer', placeholder:"Ex: 12150" %> 
+  <%= submit_tag "Consultar" %></h3> 
+<% end %>  
+<table>
+  <thead>
+    <tr>
+      <th>Cnpj</th> 
+      <th>Codigo TJ</th>
+      <th>Codigo CNPJ</th>
+      <th>Nome contato</th> 
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @filiados.each do |filiado| %>
+      <tr>
+        <td><%= filiado.cnpj %></td> 
+        <td><%= filiado.codigo_tj %></td>
+        <td><%= filiado.codigo_cnpj %></td>
+        <td><%= filiado.nome_contato %></td> 
+        <td><%= filiado.email %></td>
+        <td><%= link_to 'Editar', edit_filiado_path(filiado) %></td>
+        <td><%= link_to 'Deletar', filiado, method: :destroy, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Cadastrar Filiado', new_filiado_path %> 

@@ -1,0 +1,44 @@
+<div class="nested-fields" style="
+    padding: 11px; 
+    background-color: aliceblue;
+    border: 1px solid; 
+    margin-top: 12px;
+    border-radius: 2px;
+">
+    <div class="field">
+    <div style="text-align:right;"><%= link_to_remove_association('', f,class:"fa fa-remove")%></div>
+        <div class="field">
+            <%= f.label :nome %>
+            <%= f.text_field :nome, style:"width:86%",placeholder:"Nome do advogado Associado ao Atendimento." %>
+        </div>
+        <br>
+        <div class="field">
+            <%= f.label :endereço %>
+            <%= f.text_field :endereço, style:"width:51%", placeholder:"Ex: Rua Fernado de Oliveira." %> 
+            <%= f.label :cidade %>
+            <%= f.text_field :cidade, style:"width:20%" ,placeholder:"Ex: Fortaleza."%>
+            <br> 
+            <%= f.label :bairro %>
+            <%= f.text_field :bairro, style:"width: 39%;margin-left: 2px;", placeholder:"Ex: Aldeota."%>
+            <%= f.label :cep %>
+            <%= f.text_field :cep, style:"width: 20%;", placeholder:"Ex: 000000-000"%>
+        </div> 
+        <br>
+        <div class="field">
+            <%= f.label :email %>
+            <%= f.text_field :email,style:"width: 86%;margin-left: 2px;", placeholder:"exemplo@exemplo.com" %> 
+            <%= f.label :advogado %>
+            <%= f.text_field :advogado,style:"width: 53%;margin-left: 4px;", placeholder:"Ex: Infomação do Advogado" %> 
+            <%= f.label :oab %>
+            <%= f.text_field :oab,style:"width: 20%;", placeholder:"Ex: Infomação OAB" %>
+        </div>
+        <br>
+        <div class="field">
+            <%= f.label :observação %>
+            <%= f.text_field :observação, style:"width: 38%;margin-left: 2px;",placeholder:"Detalhes sobre advogado"%>
+            <%= f.label :telefone %>
+            <%= f.text_field :telefone, placeholder:"Ex: (99) 99999-9999" %>
+        </div> 
+        <br>
+    </div>
+</div>

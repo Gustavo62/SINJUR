@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+    <title>SINJUR</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %> 
+    <%= stylesheet_link_tag 'application'%>  
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view"> 
+            <div class="navbar nav_title" style="border: 0;"> 
+            <h1 align="center"><%= link_to 'SINJUR', restrito_welcome_index_path, method: :get, class:"logo-nome", style:"color:white"%></h1>
+            <h3 align="left">Bem vindo. <%=current_admin.email%></h3>
+            </div> 
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>Geral</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-calendar"></i> Agenda <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><%= link_to 'Atividades',restrito_tela_agenda_atividades_path, method: :get %></li>
+                      <li><%= link_to 'Contatos',contatos_path, method: :get %></li> 
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-comments"></i> Atendimentos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><%= link_to 'Listar',cadastro_atendimentos_path, method: :get %></li>
+                      <li><%= link_to 'Novo',new_cadastro_atendimento_path, method: :get %></li> 
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-gavel"></i> Processos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><%= link_to 'Listar Processos',processos_path, method: :get %></h3></li> 
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-gears"></i> Ferramentas <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><%= link_to 'Filiados',filiados_path, method: :get %></li>
+                      <li><%= link_to 'Perfil',edit_admin_registration_path, method: :get %></li>
+                      <li> <%= link_to 'Sair', destroy_admin_session_path, method: :delete %></li>
+                    </ul>
+                  </li> 
+                </ul>
+              </div>
+               
+
+            </div> 
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          
+          <div class="nav_menu">
+            <h3 style="padding:10px; width:100%">Home >> <%=@local%> <small style="padding-left:58%"><%= notice %></small> </h3> 
+            <nav class="nav navbar-nav"> 
+              <ul class=" navbar-right">
+                <li class="nav-item dropdown open" aligh="left">  
+                  
+                  
+                  
+                   
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" style="font-size:14px"> 
+          <%= yield%>
+        </div>
+        <footer>
+          <div class="pull-right">
+            
+            SINOREDI-CE - Sindicado dos Notários e registradores do Ceara
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div> 
+    <%= javascript_include_tag 'application'%>       
+  </body>
+</html>
