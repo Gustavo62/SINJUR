@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_144543) do
+ActiveRecord::Schema.define(version: 2020_06_09_145650) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -154,8 +154,20 @@ ActiveRecord::Schema.define(version: 2020_06_09_144543) do
   end
 
   create_table "processos", force: :cascade do |t|
+    t.string "status_processo"
+    t.string "area_atuacao"
+    t.string "objeto_acao"
+    t.string "assunto"
+    t.string "detalhe"
+    t.string "pasta"
+    t.string "etiqueta"
+    t.string "favorito"
+    t.string "local_tramite_um"
+    t.string "local_tramite_dois"
+    t.integer "cadastro_atendimento_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cadastro_atendimento_id"], name: "index_processos_on_cadastro_atendimento_id"
   end
 
   create_table "restrito_tela_agenda_atividades", force: :cascade do |t|

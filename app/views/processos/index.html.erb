@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Processos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status processo</th>
+      <th>Area atuacao</th>
+      <th>Objeto acao</th>
+      <th>Assunto</th>
+      <th>Detalhe</th>
+      <th>Pasta</th>
+      <th>Etiqueta</th>
+      <th>Favorito</th>
+      <th>Local tramite um</th>
+      <th>Local tramite dois</th>
+      <th>Cadastro atendimento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @processos.each do |processo| %>
+      <tr>
+        <td><%= processo.status_processo %></td>
+        <td><%= processo.area_atuacao %></td>
+        <td><%= processo.objeto_acao %></td>
+        <td><%= processo.assunto %></td>
+        <td><%= processo.detalhe %></td>
+        <td><%= processo.pasta %></td>
+        <td><%= processo.etiqueta %></td>
+        <td><%= processo.favorito %></td>
+        <td><%= processo.local_tramite_um %></td>
+        <td><%= processo.local_tramite_dois %></td>
+        <td><%= processo.cadastro_atendimento %></td>
+        <td><%= link_to 'Show', processo %></td>
+        <td><%= link_to 'Edit', edit_processo_path(processo) %></td>
+        <td><%= link_to 'Destroy', processo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Processo', new_processo_path %>

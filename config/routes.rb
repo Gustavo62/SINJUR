@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'arquivos/index'
   resources :processos
+  get 'arquivos/index'
   resources :pessoas
   resources :advogados
   resources :telefones
