@@ -5,27 +5,37 @@ class FiliadosController < ApplicationController
   # GET /filiados
   # GET /filiados.json
   def index
-    if params[:codigo_tj]
-      if params[:codigo_tj] != ""
-        @filiados = Filiado.where(codigo_tj: params[:codigo_tj])  
+    if params[:serventia] or params[:cidade]
+      if params[:cidade] != ""
+        @filiados = Filiado.where(cidade: params[:cidade])
+      else
+        if params[:serventia] != ""
+          @filiados = Filiado.where(codigo_tj: params[:serventia])
+        else
+          @filiados = Filiado.all    
+        end
       end
     else
       @filiados = Filiado.all
     end
+    @local = "Filiados >> Listar Filiados"
   end
 
   # GET /filiados/1
   # GET /filiados/1.json
   def show
+    @local = "Filiados >> Visualizar Filiado"
   end
 
   # GET /filiados/new
   def new 
     @filiado = Filiado.new 
+    @local = "Filiados >> Novo"
   end
 
   # GET /filiados/1/edit
   def edit
+    @local = "Filiados >> Editar Filiado"
   end
 
   # POST /filiados
@@ -76,6 +86,6 @@ class FiliadosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def filiado_params
-      params.require(:filiado).permit(:cnpj, :cei, :codigo_tj, :codigo_cnpj, :nome_contato, :cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade_integer, :email)
+      params.require(:filiado).permit(:cnpj, :cei, :codigo_tj, :codigo_cnpj, :nome_contato, :cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade, :email)
     end
 end

@@ -6,7 +6,7 @@
       <div class="x_panel">
         <div class="x_title">
           <h2 style="width:100%"><%=@acao%> Atendimento
-          <small class="actions-form">
+          <small style="float:right" >
             <%= link_to 'Voltar', cadastro_atendimentos_path,class:"fa fa-reply"  %>
             <div style="float: right;margin-left: 10px;">
               <%= f.submit "Enviar", class:"btn btn-success",style:"width: 115px;font-size: 18px;"%>
@@ -35,7 +35,7 @@
                 <br>
                 <br>
                 <div class="field">
-                  <%= f.label :Nome %>
+                  <%= f.label :Nome %>:
                   <%= f.text_field :nome, style:"width: 92%;",placeholder:"Nome completo do solicitante."%>
                 </div>
                 <div class="field">
@@ -45,15 +45,7 @@
                   <%= f.text_field :telefone,placeholder:"(99) 99999-9999",style:"width: 16%;"%> 
                   <%= f.label :Data_do_Atendimento%>: 
                   <%= f.text_field :data_atendimento , type:"date", style:"margin-left: 3px;"%>
-                  Filiado: <%= collection_select(:cadastro_atendimento, :codigo_tj_filiado,  @filiados_for_select, :id, :codigo_tj)%>
-                  <%= f.label :documento%>
-                  <%= f.file_field :documento%>
-                  <div id="documento">
-                    
-                    <%= f.fields_for :documento do |documento_fields| %> 
-                        <%= render partial: "documento_fields", locals: { f: documento_fields}%>
-                    <% end %>
-                  </div>
+                  Filiado: <%= collection_select(:cadastro_atendimento, :codigo_tj_filiado,  @filiados_for_select, :id, :codigo_tj)%> 
                 </div>
               </div>
               <br>
@@ -64,11 +56,17 @@
                 </div> 
               </div>  
               <br>
-            <div id="advogados">
-              <h2>Adicionar Advogado <i class="fa fa-briefcase"></i></h2>
+              <div id="documentos"> 
+                <h2>Adicionar Docummentos <i class="fa fa-folder"></i></h2>
+                <br>
+                  <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :documentos,class:"btn btn-success",style:"color:black;padding: 4px;")%></div>
+              </div>
+              <br>
+              <div id="advogados">
+                <h2>Adicionar Advogado <i class="fa fa-briefcase"></i></h2>
                 <br>
                 <% if cadastro_atendimento.advogados%>
-                  <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :advogados,class:"btn btn-success",style:"color:black;")%></div>
+                  <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :advogados,class:"btn btn-success",style:"color:black;padding: 4px;")%></div>
                   <%= f.fields_for :advogados do |advogados_fields| %> 
                       <%= render partial: "advogado_fields", locals: { f: advogados_fields}%>
                   <% end %>
@@ -77,33 +75,34 @@
                       <%= render partial: "advogado_fields", locals: { f: advogados_fields}%>
                   <% end %>
                 <% end %>
-            </div> 
-            <div id="pessoas"> 
-              <h2>Adicionar Pessoas <i class="fa fa-user"></i></h2>
-              <br>
-                <% if cadastro_atendimento.pessoas%>
-                  <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :pessoas,class:"btn btn-success",style:"color:black;")%></div>
-                  <%= f.fields_for :pessoas do |pessoas_fields| %>
-                      <%= render partial: "pessoa_fields", locals: { f: pessoas_fields}%>
+              </div> 
+              <div id="pessoas"> 
+                <h2>Adicionar Pessoas <i class="fa fa-user"></i></h2>
+                <br>
+                  <% if cadastro_atendimento.pessoas%>
+                    <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :pessoas,class:"btn btn-success",style:"color:black;padding: 4px;")%></div>
+                    <%= f.fields_for :pessoas do |pessoas_fields| %>
+                        <%= render partial: "pessoa_fields", locals: { f: pessoas_fields}%>
+                    <% end %>
+                  <% else %>
+                    <%= f.fields_for :pessoas do |pessoas_fields| %>
+                        <%= render partial: "pessoa_fields", locals: { f: pessoas_fields}%>
+                    <% end %>
                   <% end %>
-                <% else %>
-                  <%= f.fields_for :pessoas do |pessoas_fields| %>
-                      <%= render partial: "pessoa_fields", locals: { f: pessoas_fields}%>
-                  <% end %>
-                <% end %>
-            </div>
-            <div id="processos">  
-              <h2>Adicionar Processo <i class="fa fa-folder"></i></h2>  
-              <% if @possui_processo %> 
-                <%= f.fields_for :processos do |processo_fields| %>
-                    <%= render partial: "processo_fields", locals: { f: processo_fields}%>
-                <% end %>   
-              <% else %> 
-                <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :processos,class:"btn btn-success",style:"color:black;")%></div>
-                <%= f.fields_for :processos do |processo_fields| %>
-                    <%= render partial: "processo_fields", locals: { f: processo_fields}%>
+              </div>
+              <div id="processos">  
+                <h2>Adicionar Processo <i class="fa fa-gavel"></i></h2>  
+                <% if @possui_processo %> 
+                  <%= f.fields_for :processos do |processo_fields| %>
+                      <%= render partial: "processo_fields", locals: { f: processo_fields}%>
+                  <% end %>   
+                <% else %> 
+                  <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :processos,class:"btn btn-success",style:"color:black;padding: 4px;")%></div>
+                  <%= f.fields_for :processos do |processo_fields| %>
+                      <%= render partial: "processo_fields", locals: { f: processo_fields}%>
+                  <% end %> 
                 <% end %> 
-              <% end %> 
+              </div>
             </div>
           </div> 
         </div>  

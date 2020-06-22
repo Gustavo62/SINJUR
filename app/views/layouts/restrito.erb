@@ -29,6 +29,11 @@
               <div class="menu_section">
                 <h3>Geral</h3>
                 <ul class="nav side-menu">
+                  <li><a><i class="fa fa-bar-chart"></i> Análises <span id="setas" class="fa fa-chevron-down"></a>
+                    <ul class="nav child_menu">
+                      <li><%= link_to 'Estatisticas',estatisticas_path, method: :get %></li>
+                    </ul>
+                  </li>
                   <li><a><i class="fa fa-calendar"></i> Agenda <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><%= link_to 'Atividades',restrito_tela_agenda_atividades_path, method: :get %></li>
@@ -50,9 +55,10 @@
                     <ul class="nav child_menu">
                       <li><%= link_to 'Filiados',filiados_path, method: :get %></li>
                       <li><%= link_to 'Perfil',edit_admin_registration_path, method: :get %></li>
-                      <li> <%= link_to 'Sair', destroy_admin_session_path, method: :delete %></li>
                     </ul>
                   </li> 
+
+                  <li><i class="fa fa-sign-out" style="color:#E7E7E7;margin-left: 15px;display: flex;"><%= button_to ' Sair', destroy_admin_session_path, method: :delete, style:"cursor: pointer;color: #E7E7E7;background-color: transparent;border: 0px;"%></i> </li>
                 </ul>
               </div>
                

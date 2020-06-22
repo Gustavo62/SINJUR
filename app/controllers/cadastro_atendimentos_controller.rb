@@ -62,13 +62,46 @@ class CadastroAtendimentosController < ApplicationController
   def options_for_select
     @filiados_for_select = Filiado.all 
   end
-  # GET /cadastro_atendimentos/1
+
+  def testa_doc
+    Documento.all.each do |doc|
+      if doc.cadastro_atendimento_id == @cadastro_atendimento.id
+        @testedoc  = true
+      end
+    end
+  end
+  def testa_proc
+    Processo.all.each do |proc|
+      if proc.cadastro_atendimento_id == @cadastro_atendimento.id
+        @testeproc  = true
+      end
+    end  
+  end
+  def testa_advg
+    Advogado.all.each do |advg|
+      if advg.cadastro_atendimento_id == @cadastro_atendimento.id
+        @testeadv  = true
+      end
+    end 
+  end
+  def testa_pess
+    Pessoa.all.each do |pess|
+      if pess.cadastro_atendimento_id == @cadastro_atendimento.id
+        @testepessoa  = true
+      end
+    end 
+  end 
+    # GET /cadastro_atendimentos/1
   # GET /cadastro_atendimentos/1.json
   def show
     @local = 'Cadastro atendimento >> Visualizar'
-    @acao = 'Visualizar'
-  end
-
+    @acao = 'Visualizar' 
+    options_for_select
+    testa_doc
+    testa_advg
+    testa_pess
+    testa_proc
+  end 
   # GET /cadastro_atendimentos/new
   def new
     @cadastro_atendimento = CadastroAtendimento.new  
@@ -146,11 +179,19 @@ class CadastroAtendimentosController < ApplicationController
         @possui_processo = false
       end
     end
-  end
+  end 
+  def exluir_documentos
+    Documento.all.each do |documento|
+      if documento.cadastro_atendimento_id == @cadastro_atendimento.id
+        return documento.destroy
+      end
+    end
+  end 
   def destroy   
     exluir_processo
     exluir_advogados
-    exluir_pessoas 
+    exluir_pessoas  
+    exluir_documentos 
     @cadastro_atendimento.destroy
     respond_to do |format|
       format.html {redirect_to cadastro_atendimentos_url, notice: 'Atendimento deletado com sucesso.' }
@@ -168,11 +209,11 @@ class CadastroAtendimentosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cadastro_atendimento_params
-      params.require(:cadastro_atendimento).permit( :data_atendimento, :status, :codigo_tj_filiado, :texto_livre, :nome, :cpf, :telefone, :documento,
+      params.require(:cadastro_atendimento).permit( :data_atendimento, :status, :codigo_tj_filiado, :texto_livre, :nome, :cpf, :telefone, :id,
       filiado_attributes: [:cnpj, :cei, :codigo_tj, :codigo_cnpj, :nome_contato, :cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade_integer, :email, :id],
       advogados_attributes: [:nome, :endereço, :cidade, :bairro, :cep, :telefone, :cidade, :email, :advogado, :oab, :telefone, :observação, :cadastro_atendimento_id, :_destroy, :id],
       pessoas_attributes: [:nome, :profissao, :cep, :razao_social, :nome_fantasia, :cidade, :endereço, :cpf, :rg, :pis, :residencial, :comercial, :celular, :nacionalidade, :estado_civil, :estado_civil, :bairro, :email, :escolaridade, :insc_estadual, :insc_municipal, :responsável, :cnpj, :cadastro_atendimento_id, :_destroy, :id],
       processos_attributes: [:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois,:id, :cadastro_atendimento_id,:_destroy], 
-      action_text_rich_texts_attributes: [:name, :body, :record_type, :record_id])
+      documentos_attributes: [:documento])
     end
 end

@@ -1,17 +1,68 @@
 class ProcessosController < ApplicationController
+  layout 'restrito'
   before_action :set_processo, only: [:show, :edit, :update, :destroy]
 
   # GET /processos
   # GET /processos.json
   def index
-    @processos = Processo.all
+    if params[:n_processo] or params[:status] or params[:favorito] or params[:intervalo_atend]
+      if params[:n_processo] != "" 
+        @processo_aux = Processo.where(id: params[:n_processo])
+      else
+        if params[:status] != "Todos"
+          if params[:favorito]
+            if params[:intervalo_atend] != ""
+              @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito],created_at: procura_proc_data)
+            else
+              @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito])
+            end
+          else
+            if params[:intervalo_atend] != ""
+              if params[:favorito]
+                @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito],created_at: procura_proc_data)
+              else
+                @processo_aux = Processo.where(status_processo: params[:status],created_at: procura_proc_data)
+              end
+            else
+              @processo_aux = Processo.where(status_processo: params[:status])
+            end
+          end
+        else
+          if params[:favorito]
+            if params[:intervalo_atend] != ""
+              @processo_aux = Processo.where(favorito: params[:favorito],created_at: procura_proc_data)
+            else
+              @processo_aux = Processo.where(favorito: params[:favorito])
+            end
+          else
+            if params[:intervalo_atend] != ""
+              if params[:favorito]
+                @processo_aux = Processo.where(favorito: params[:favorito],created_at: procura_proc_data)
+              else
+                @processo_aux = Processo.where(created_at: procura_proc_data)
+              end
+            else
+              @processo_aux = Processo.all
+            end
+          end
+        end
+      end
+    else
+      @processo_aux = Processo.all
+    end
+    @local = 'Processos >> Listar Processos'
   end
-
   # GET /processos/1
   # GET /processos/1.json
   def show
   end
-
+  def procura_proc_data 
+    Processo.all.each do |processos|
+      if processos.created_at.strftime("%F") == params[:intervalo_atend]
+        return processos.created_at.all_day
+      end
+    end
+  end
   # GET /processos/new
   def new
     @processo = Processo.new

@@ -1,68 +1,27 @@
- 
-<p>
-  <strong>Cnpj:</strong>
-  <%= @filiado.cnpj %>
-</p>
-
-<p>
-  <strong>Cei:</strong>
-  <%= @filiado.cei %>
-</p>
-
-<p>
-  <strong>Codigo tj:</strong>
-  <%= @filiado.codigo_tj %>
-</p>
-
-<p>
-  <strong>Codigo cnpj:</strong>
-  <%= @filiado.codigo_cnpj %>
-</p>
-
-<p>
-  <strong>Nome contato:</strong>
-  <%= @filiado.nome_contato %>
-</p>
-
-<p>
-  <strong>Cep:</strong>
-  <%= @filiado.cep %>
-</p>
-
-<p>
-  <strong>Logradouro:</strong>
-  <%= @filiado.logradouro %>
-</p>
-
-<p>
-  <strong>Numero casa:</strong>
-  <%= @filiado.numero_casa %>
-</p>
-
-<p>
-  <strong>Complemento:</strong>
-  <%= @filiado.complemento %>
-</p>
-
-<p>
-  <strong>Bairro:</strong>
-  <%= @filiado.bairro %>
-</p>
-
-<p>
-  <strong>Telefone fixo casa:</strong>
-  <%= @filiado.telefone_fixo_casa %>
-</p>
-
-<p>
-  <strong>Cidade integer:</strong>
-  <%= @filiado.cidade_integer %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @filiado.email %>
-</p>
-
-<%= link_to 'Editar', edit_filiado_path(@filiado) %> |
-<%= link_to 'Voltar', filiados_path %>
+<div class="x_panel" style="font-size:16px">
+  <div class="x_title">
+    <h2 style="width:100%">Atendimento
+      <small style="float:right">
+      <%= link_to 'Editar', edit_filiado_path(@filiado) ,class:"fa fa-pencil-square-o"%>
+      <%= link_to 'Voltar', filiados_path,class:"fa fa-reply" %>
+      </small>
+    </h2>
+      
+    <div class="clearfix"></div>
+  </div>
+  <div class="x_content">
+  <div class="" style="text-align:center;width: 100%;">
+    <h2 style="margin: auto;width: auto;max-width: 1000px;margin-left: auto;text-align: initial;float: none;margin-bottom: 1%;font-size: 28px;">Atendimento.</h2>
+    <div id="atendimentos" style="margin: auto;width: auto;max-width: 1000px;margin-left: auto;text-align: initial;float: none;margin-bottom: 1%;"> 
+      <h2 style="font-size: 24px;">Nome: <small><%=@filiado.nome_contato %></small></h2>.
+      <h2 style="font-size: 24px;">Logradouro: <small style="margin-right: 20px;"><%=@filiado.logradouro %></small>Numero: <small><%=@filiado.numero_casa %></small></h2>
+      <h2 style="font-size: 24px;">Complemento: <small><%=@filiado.complemento %></small></h2>
+      <h2 style="font-size: 24px;">Bairro: <small style="margin-right: 20px;"><%=@filiado.bairro %></small>Cidade: <small style="margin-right: 20px;"><%=@filiado.cidade %></small>Cep: <small style="margin-right: 20px;"><%=@filiado.cep %></small>Telefone Fixo: <small><%=@filiado.telefone_fixo_casa %></small></h2>
+      <h2 style="font-size: 24px;">CNPJ: <small style="margin-right: 20px;"><%=@filiado.cnpj %></small>CEI: <small style="margin-right: 20px;"><%=@filiado.cei %></small>Serventia: <small><%=@filiado.codigo_tj %></small></h2>
+      </h2>
+      <br> 
+    </div>
+  </div>
+  <br> 
+  
+</div>

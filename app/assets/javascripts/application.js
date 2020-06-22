@@ -18,4 +18,4 @@
 //= require custom
 //= require trix  
 //= require jquery-ui/datepicker
-//= require cocoon    
+//= require cocoon  

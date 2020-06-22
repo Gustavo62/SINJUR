@@ -1,82 +1,79 @@
-<%= form_with(model: filiado, local: true) do |form| %>
-  <% if filiado.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(filiado.errors.count, "error") %> prohibited this filiado from being saved:</h2>
+<div class="clearfix"></div>
+  <div class="row">
+    <div class="col-md-6 " style="width:100%;font-size:18px"">
+      <%= form_with(model: filiado, local: true,style:"margin-top: -15%;") do |f| %>
+        <div class="x_panel">
+          <div class="x_title">
+            <h2 style="width:100%"><%=@acao%> Filiado
+            <small class="actions-form">
+              <%= link_to 'Voltar', filiados_path,class:"fa fa-reply"  %>
+              <div style="float: right;margin-left: 10px;">
+                <%= f.submit "Enviar", class:"btn btn-success",style:"width: 115px;font-size: 18px;"%>
+              </div> 
+              </small>
+            </h2> 
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content" style="font-size: 22px;float: none;">  
+            <div class="filiados">
+              <h2>Informações do Filiado <i class="fa fa-user"></i></h2>
+              <div class="filiados-form" > 
+                <% if filiado.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(filiado.errors.count, "error") %> prohibited this contato from being saved:</h2>
 
-      <ul>
-      <% filiado.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                    <ul>
+                    <% filiado.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                
+                <div class="field">
+                  <%= f.label :nome%>: 
+                  <%= f.text_field :nome_contato, placeholder:"Informe o nome completo do Filiado", style:"font-size: 18px;width: 94%;" %>
+                </div>  
+                <br>
+                <div class="field">
+                  <%= f.label :logradouro %>:
+                  <%= f.text_field :logradouro, placeholder:"Ex: Rua Filadelfia Moreira", style:"font-size: 18px;width: 70%;" %> 
+                  <%= f.label :numero %>:
+                  <%= f.number_field :numero_casa, placeholder:"Ex: A1", style:"font-size: 18px;width: 13.2%;"  %>
+                </div>
+                <div class="field">
+                  <%= f.label :complemento %>: 
+                  <%= f.text_field :complemento, placeholder:"Pontos de referêcia", style:"font-size: 18px;width: 88.5%;"  %>
+                </div>
+                <div class="field">
+                  <%= f.label :bairro %>: 
+                  <%= f.text_field :bairro, placeholder:"Ex: Aldeota", style:"font-size: 18px;width: 20%;"  %>
+                  <%= f.label :cidade%>: 
+                  <%= f.text_field :cidade, placeholder:"Ex: Fortaleza", style:"font-size: 18px;width: 14%;" %>
+                  <%= f.label :cep%>:
+                  <%= f.number_field :cep, placeholder:"Ex: 00000-0000", style:"font-size: 18px;width: 14%;"  %> 
+                  <label>Telefone Fixo:</label>
+                  <%= f.number_field :telefone_fixo_casa, placeholder:"Ex: 0000-0000", style:"font-size: 18px;width: 14%;"  %> 
+                </div>   
+                <br>
+                <div class="field" aligh="center">
+                  <label>CNPJ:</label>
+                  <%= f.number_field :cnpj, placeholder:"Ex: 00.000.000/0000-00",style:"font-size: 18px;width: 14%;"  %>
+                  <label>CEI:</label>
+                  <%= f.number_field :cei, placeholder:"Ex: 000000",style:"font-size: 18px;width: 14%;"  %>
+                  <label>Serventia:</label>
+                  <%= f.number_field :codigo_tj, placeholder:"Ex: 000000",style:"font-size: 18px;width: 14%;"  %>
+                </div>
+                <br>
+                <div class="field">
+                  <%= f.label :email %>: 
+                  <%= f.text_field :email, placeholder:"Ex: exemplo@exemplo.com", style:"font-size: 18px;width: 94.5%;"  %>
+                </div>
+              </div> 
+            </div> 
+          </div> 
+        </div> 
+      <% end %> 
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :cnpj %>
-    <%= form.number_field :cnpj %>
   </div>
-
-  <div class="field">
-    <%= form.label :cei %>
-    <%= form.number_field :cei %>
-  </div>
-
-  <div class="field">
-    <%= form.label :codigo_tj %>
-    <%= form.number_field :codigo_tj %>
-  </div>
-
-  <div class="field">
-    <%= form.label :codigo_cnpj %>
-    <%= form.number_field :codigo_cnpj %>
-  </div>
-
-  <div class="field">
-    <%= form.label :nome_contato %>
-    <%= form.text_field :nome_contato %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cep %>
-    <%= form.number_field :cep %>
-  </div>
-
-  <div class="field">
-    <%= form.label :logradouro %>
-    <%= form.text_field :logradouro %>
-  </div>
-
-  <div class="field">
-    <%= form.label :numero_casa %>
-    <%= form.number_field :numero_casa %>
-  </div>
-
-  <div class="field">
-    <%= form.label :complemento %>
-    <%= form.text_field :complemento %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bairro %>
-    <%= form.text_field :bairro %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telefone_fixo_casa %>
-    <%= form.number_field :telefone_fixo_casa %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cidade_integer %>
-    <%= form.text_field :cidade_integer %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit  value:"Enviar" %>
-  </div>
-<% end %>
+</div>

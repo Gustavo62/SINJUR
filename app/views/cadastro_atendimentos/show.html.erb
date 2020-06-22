@@ -1,16 +1,109 @@
- 
-<p>
-  <strong>ID</strong>
-  <%= @cadastro_atendimento.id %>
-</p>
-<p>
-  <strong>Texto</strong>
-  <%= @cadastro_atendimento.texto_livre %>
-</p>
- <p>
-  <strong>Texto</strong>
-  <%=@cadastro_atendimento.documento.filename%> 
-  <%= link_to 'download', rails_blob_path(@cadastro_atendimento.documento, disposition: "attachment") %>
-</p>
- <%= link_to 'Editar', edit_cadastro_atendimento_path(@cadastro_atendimento) %>
- <%= link_to 'Voltar', cadastro_atendimentos_path %>
+
+<div class="x_panel" style="font-size:16px">
+  <div class="x_title">
+    <h2 style="width:100%">Atendimento
+      <small style="float:right">
+      <%= link_to 'Editar', edit_cadastro_atendimento_path(@cadastro_atendimento) ,class:"fa fa-pencil-square-o"%>
+      <%= link_to 'Voltar', cadastro_atendimentos_path,class:"fa fa-reply" %>
+      </small>
+    </h2>
+      
+    <div class="clearfix"></div>
+  </div>
+  <div class="x_content">
+  <div class="" style="text-align:center;width: 100%;">
+    <h2 style="margin: auto;width: auto;max-width: 1000px;margin-left: auto;text-align: initial;float: none;margin-bottom: 1%;font-size: 28px;">Atendimento.</h2>
+    <div id="atendimentos" style="margin: auto;width: auto;max-width: 1000px;margin-left: auto;text-align: initial;float: none;margin-bottom: 1%;"> 
+      <h2 style="font-size: 24px;">Nome: <small><%=@cadastro_atendimento.nome %></small></h2>
+      <h2 style="font-size: 24px;">Cpf: <small><%=@cadastro_atendimento.cpf%></small>, Telefone: <small><%=@cadastro_atendimento.telefone %></small>, Data do atendimento: <small><%=@cadastro_atendimento.data_atendimento.strftime("%d/%m/%Y") %></small>
+      <br>Filiado: 
+      <small>
+        <% @filiados_for_select.each do |filiados|%>
+          <% if filiados.id == @cadastro_atendimento.codigo_tj_filiado %>
+            <%= filiados.codigo_tj%>
+          <% end %>
+        <% end %>
+      </small>
+      </h2>
+      <br>
+      <h2 style="font-size: 24px;">Descrição: <br><br><small ><%=@cadastro_atendimento.texto_livre %></small></h2>
+    </div>
+    <h2 style="text-align: initial;font-size: 27px;width: 1000px;">Documentos.</h2>
+    <div id="documentos">
+      <% if @testedoc%>
+        <%@cadastro_atendimento.documentos.each do |docs| %> 
+          <h2 style="display: flex;min-width: 86%;border-bottom: 1px solid;">
+          <small style="width: 100%;margin-bottom: 13px;">
+            <%= docs.documento.filename%>
+          </small>
+          <%= link_to 'Download', rails_blob_path(docs.documento, disposition: 'attachment'), style:"text-decoration:underline"%>
+          <%= button_to 'Deletar', docs, method: :delete, data: { confirm: 'Are you sure?' } , style:"margin-left: 28px;"%>
+          </h2>
+        <% end %>
+      
+      <% else %>
+        <h4>Não existem Documentos em anexo neste atendimento.</h4> 
+      <% end %> 
+      
+    </div>
+    <h2 style="font-size: 30px;"> <small style="float: left;">Advogados.</small> <small style="text-align: right;width: 49.5%;">Pessoas.</small></h2>
+    <div id="advogados">
+      <% if @testeadv%>
+        <% @cadastro_atendimento.advogados.each do |adovagos| %>
+          <h2 style="font-size: 20px;">Nome: <small><%=adovagos.nome %></small></h2>
+          <h2 style="font-size: 20px;">Advogado: <small><%=adovagos.advogado %></small></h2>
+          <h2 style="font-size: 20px;">E-mail: <small><%=adovagos.email %></small></h2>
+          <h2 style="font-size: 20px;">Cidade: <small><%=adovagos.cidade %></small>,Cep: <small><%=adovagos.cep %></small>,Telefone: <small><%=adovagos.telefone %></small></h2>
+          <h2 style="font-size: 20px;">Endereço: <small><%=adovagos.endereço %></small>, Bairro<small><%=adovagos.bairro %></small></h2>
+          <h2 style="font-size: 20px;">Oab: <small><%=adovagos.oab %></small>,Observação: <small><%=adovagos.observação %></small></h2>
+        <% end %> 
+      <% else %> 
+        <h4>Não existem Advogados cadastrados neste atendimento.</h4>
+      <% end %>
+    </div>
+    <div id="pessoas">
+      <% if @testepessoa%> 
+        <% @cadastro_atendimento.pessoas.each do |pessoas| %>
+          <h2 style="font-size: 20px;">Nome: <small><%=pessoas.nome %></small></h2>
+          <h2 style="font-size: 20px;">Nacionalidade: <small><%=pessoas.nacionalidade %></small>, Estado Civil: <small><%=pessoas.estado_civil %></small>, Pis: <small><%=pessoas.pis %></small></h2>
+          <h2 style="font-size: 20px;">Cpf: <small><%=pessoas.cpf %></small>, Rg: <small><%=pessoas.rg %></small>, Cnpj: <small><%=pessoas.cnpj %></small></h2>
+          <h2 style="font-size: 20px;">Razão Social: <small><%=pessoas.razao_social %></small>, Nome Fantasia: <small><%=pessoas.nome_fantasia %></small></h2>
+          <h2 style="font-size: 20px;">Insc. Estadual: <small><%=pessoas.insc_estadual %></small>, Insc. Municipal: <small><%=pessoas.insc_municipal %></small></h2>
+          <h2 style="font-size: 20px;">Responsável: <small><%=pessoas.responsável %></small></h2>
+          <h2 style="font-size: 20px;">Endereço: <small><%=pessoas.endereço %></small>, Cep: <small><%=pessoas.cep %></small></h2>
+          <h2 style="font-size: 20px;">Cidade: <small><%=pessoas.cidade %></small>, Bairro: <small><%=pessoas.bairro %></small></h2>
+          <h2 style="font-size: 20px;">Residencial: <small><%=pessoas.residencial %></small>, Comercial: <small><%=pessoas.comercial %></small>, Celular: <small><%=pessoas.celular %></small></h2>
+          <h2 style="font-size: 20px;">E-mail: <small><%=pessoas.email %></small></h2>
+        <% end %> 
+      <% else %>
+         <h4>Não existem Pessoas cadastrados neste atendimento.</h4>
+      <% end %>
+    </div>
+    <h2 style="float:left;width: 100%;text-align: initial;font-size: 28px;">Processos.</h2>
+    <div id="processos">
+      <% if @testeproc%>
+        <% @cadastro_atendimento.processos.each do |processos| %>
+          <h2 style="font-size: 24px;">Area de Atuação: <small><%=processos.area_atuacao %></small>, Objeto Ação: <small><%=processos.objeto_acao %></small>, Assunto: <small><%=processos.assunto %></small></h2>
+          <h2 style="font-size: 24px;">Detalhes: <small><%=processos.detalhe %></small></h2>
+          <h2 style="font-size: 24px;">Local tramite 1: <small><%=processos.local_tramite_um %></small>, Local tramite 2: <small><%=processos.local_tramite_dois %></small></h2>
+          <h2 style="font-size: 24px;">Pasta: <small><%=processos.pasta %></small></h2>
+          <h2 style="font-size: 24px;">Etiqueta: <small><%=processos.etiqueta %></small></h2>
+          <h2 style="font-size: 24px;">Status do processo: <small><%=processos.status_processo %></small>
+  ,Favorito: <small>
+              <% if processos.favorito == "1"%>
+                <i class="fa fa-heart"></i>
+              <% else %>
+                <i class="fa fa-heart-o"></i>
+              <% end %>
+            </small>
+          </h2>
+          
+        <% end %> 
+      <% else %>
+      <h4>Não existem Processos em anexo neste atendimento.</h4>
+      <% end %>
+    </div>
+  </div>
+  <br> 
+  
+</div>

@@ -6,9 +6,10 @@
     border-radius: 2px;
 ">
     <div class="field"> 
-        <div class="field">
+        <div class="field" style="text-align: inherit;">
             <%= f.label :documento%>
             <%= f.file_field :documento%>
+            <%= link_to_remove_association('', f,class:"fa fa-remove")%>
         </div>
     </div>
 </div>

@@ -12,7 +12,7 @@ class CreateFiliados < ActiveRecord::Migration[5.2]
       t.string :logradouro 
       t.string :complemento
       t.string :bairro 
-      t.string :cidade_integer
+      t.string :cidade
       t.string :email 
       t.references :cadastro_atendimento
 

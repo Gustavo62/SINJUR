@@ -44,9 +44,15 @@
                         <td><%= restrito_tela_agenda_atividade.titulo %></td>
                         <td><%= restrito_tela_agenda_atividade.nivel %></td> 
                         <td><%= restrito_tela_agenda_atividade.agendamento.strftime("%d/%m/%Y") %></td>
-                        <td><%= link_to '', restrito_tela_agenda_atividade, class:"fa fa-eye" %></td>
-                        <td><%= link_to '', edit_restrito_tela_agenda_atividade_path(restrito_tela_agenda_atividade), class:"fa fa-edit" %></td>
-                        <td><%= link_to '', restrito_tela_agenda_atividade, method: :delete, data: { confirm: 'Are you sure?' }, class:"fa fa-remove"%></td>
+                        <div id="interacoes">
+                          <td class="opt"><i class="fa fa-ellipsis-v"></i>
+                          <div class="bts">
+                            <%= button_to 'Visualizar' , restrito_tela_agenda_atividade, method: :get, style:"width:100px;margin: auto;",class:'btn btn-success'%>
+                            <%= button_to 'Editar', edit_restrito_tela_agenda_atividade_path(restrito_tela_agenda_atividade), method: :get, style:"width:100px;margin: auto;",class:'btn btn-success'%>
+                            <%= button_to 'Deletar', restrito_tela_agenda_atividade, method: :delete, data: { confirm: 'Are you sure?' }, style:"width:100px;margin: auto;",class:'btn btn-success'%>
+                          </div>
+                          </td>
+                        </div>
                       </tr>
                       <% end %>
                   </tr> 

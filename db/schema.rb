@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_145650) do
+ActiveRecord::Schema.define(version: 2020_06_22_164544) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -104,6 +104,18 @@ ActiveRecord::Schema.define(version: 2020_06_09_145650) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "documentos", force: :cascade do |t|
+    t.integer "cadastro_atendimento_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cadastro_atendimento_id"], name: "index_documentos_on_cadastro_atendimento_id"
+  end
+
+  create_table "estatisticas", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "filiados", force: :cascade do |t|
     t.integer "cnpj"
     t.integer "cei"
@@ -116,7 +128,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_145650) do
     t.string "logradouro"
     t.string "complemento"
     t.string "bairro"
-    t.string "cidade_integer"
+    t.string "cidade"
     t.string "email"
     t.integer "cadastro_atendimento_id"
     t.datetime "created_at", null: false

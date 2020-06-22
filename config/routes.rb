@@ -1,36 +1,38 @@
 Rails.application.routes.draw do
-  resources :processos
-  get 'arquivos/index'
+  get 'estatisticas/index'
+  resources :estatisticas
+  devise_for :admins 
+  resources :documentos
+  resources :processos 
   resources :pessoas
   resources :advogados
   resources :telefones
   resources :contatos
+  resources :filiados, only: [:index, :edit,:delete,:destroy,:new,:show,:create,:update]
   namespace :restrito do
     namespace :tela_agenda do
       resources :atividades
     end
+  end 
+  resources :cadastro_atendimentos do 
+      delete :delete_docs_attachment 
   end
-  get 'arquivos/index'
-  post 'arquivos/upload_arquivo'
-  post 'arquivos/download_arquivo'
   root 'restrito/welcome#index'
   namespace :restrito do
     get 'ferramentas/index'
-  end
+  end 
   namespace :restrito do
     get 'tela_consulta/index'
   end
   namespace :restrito do
     get 'tela_cadastro/index'
-  end
-  resources :filiados
+  end  
   namespace :restrito do
     get 'tela_agenda/index'
-  end
-  resources :cadastro_atendimentos
+  end 
   resources :tabeliaos
   namespace :restrito do
-    get 'welcome/index'
+    get 'welcome/index' => 'static_pages#welcome/index'
   end
   namespace :site do
     get 'welcome/index'
@@ -46,7 +48,5 @@ Rails.application.routes.draw do
   end
   namespace :site do
     get 'site/welcome/index'
-  end
-  devise_for :admins  
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  end 
 end
