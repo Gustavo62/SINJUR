@@ -11,7 +11,9 @@ class CadastroAtendimento < ApplicationRecord
     accepts_nested_attributes_for :advogados,:pessoas, :documentos, :processos,reject_if: :all_blank, allow_destroy: true 
     accepts_nested_attributes_for :solicitante  
     accepts_nested_attributes_for :filiado
-    accepts_nested_attributes_for :action_text_rich_texts
+    accepts_nested_attributes_for :action_text_rich_texts 
+    validates :data_atendimento,:cpf,:nome,:telefone,:codigo_tj_filiado, presence: true
+    validates_numericality_of :cpf,:telefone
 
     
 end

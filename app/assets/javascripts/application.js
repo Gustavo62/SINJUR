@@ -9,7 +9,7 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//        
+//          
 //= require jquery-2.2.3/dist/jquery
 //= require bootstrap/dist/js/bootstrap
 //= require fastclick/lib/fastclick 
@@ -18,4 +18,4 @@
 //= require custom
 //= require trix  
 //= require jquery-ui/datepicker
-//= require cocoon  
+//= require cocoon   

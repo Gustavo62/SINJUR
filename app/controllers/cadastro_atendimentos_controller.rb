@@ -108,7 +108,7 @@ class CadastroAtendimentosController < ApplicationController
     @cadastro_atendimento.build_filiado  
     options_for_select
     @local = 'Cadastro atendimento >> Novo'
-    @acao = 'Novo'
+    @acao = 'Novo' 
   end
 
   # GET /cadastro_atendimentos/1/edit
@@ -122,6 +122,7 @@ class CadastroAtendimentosController < ApplicationController
   # POST /cadastro_atendimentos
   # POST /cadastro_atendimentos.json
   def create
+    options_for_select
     @cadastro_atendimento = CadastroAtendimento.new(cadastro_atendimento_params)  
     respond_to do |format|
       if @cadastro_atendimento.save  

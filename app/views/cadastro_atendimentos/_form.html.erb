@@ -17,12 +17,10 @@
         </div>
         <div class="x_content"> 
           <% if cadastro_atendimento.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(cadastro_atendimento.errors.count, "error") %> prohibited this cadastro_atendimento from being saved:</h2>
-
+            <div id="error_explanation">  
               <ul>
               <% cadastro_atendimento.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+                <li style="color:red"><%= message %>.</li>
               <% end %>
               </ul>
             </div>

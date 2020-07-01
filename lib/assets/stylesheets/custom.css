@@ -5064,3 +5064,40 @@ ul.notifications {
   width: auto;
   min-width: 100%;
 }
+.numeros_g{
+  line-height: 47px;
+  font-weight: 600;
+  font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+  font-size: 40px;
+}
+.field_with_errors input{
+  border: 1px solid red;
+  border-radius: 1px; 
+  padding: 1px 2px;
+  min-height: 22px;
+  background: #fff0f0;
+}
+.field_with_errors select{
+  border: 1px solid red;
+  border-radius: 1px; 
+  padding: 1px 2px;
+  min-height: 22px;
+  background: #fff0f0;
+}
+.field_with_errors {
+  display: contents;
+}
+#error_explanation ul{
+  background: #ffffff;
+    border FONT-WEIGHT: 100;
+    border: dashed;
+    border: 1px solid;
+    float: none;
+    /* min-width: auto; */
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 71%;
+    padding: 9px 32px;
+    box-shadow: 0px 0px 4px #2a3f53;
+  }
