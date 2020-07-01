@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
@@ -30,6 +30,8 @@ source 'https://rails-assets.org' do
 end
 gem 'ice_cube' 
 gem 'zip-zip'
+gem 'chartkick', '~> 2.2.0' 
+gem 'groupdate'
 gem 'bootstrap-sass'
 gem 'maskedinput-rails'
 gem 'jquery_mask_rails', '~> 0.1.0'
