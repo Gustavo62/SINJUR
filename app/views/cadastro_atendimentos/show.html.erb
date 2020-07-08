@@ -34,7 +34,7 @@
         <%@cadastro_atendimento.documentos.each do |docs| %> 
           <h2 style="display: flex;min-width: 86%;border-bottom: 1px solid;">
           <small style="width: 100%;margin-bottom: 13px;">
-            <%= docs.documento.filename%>
+            <%= docs.documento.filename%> 
           </small>
           <%= link_to 'Download', rails_blob_path(docs.documento, disposition: 'attachment'), style:"text-decoration:underline"%>
           <%= button_to 'Deletar', docs, method: :delete, data: { confirm: 'Are you sure?' } , style:"margin-left: 28px;"%>

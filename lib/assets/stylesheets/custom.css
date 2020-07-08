@@ -1156,6 +1156,7 @@ body .container.body .right_col {
 body {
   color: #73879C;
   background: #2A3F54;
+  height: 520px;
   font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -5010,6 +5011,17 @@ ul.notifications {
   margin-top: 1%;
   float: left;
 }  
+#atendimento{
+  background-color: #f0f8ff;
+  text-align: left;
+  border: 1px solid;
+  padding: 20px;
+  width: 75%;
+  margin-bottom: 1%;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}  
 #atendimentos{
   background-color: #f7f7f7;
   text-align: left;
@@ -5019,6 +5031,20 @@ ul.notifications {
   margin-top: 1%;
   float: left;
 } 
+#atividades{
+  background-color: #f0f8ff;
+  text-align: left;
+  border: 1px solid;
+  padding: 20px; 
+  margin-bottom: 1%; 
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+#atividade{ 
+  margin-left: 2px;
+  margin-right: 2px; 
+}    
 #documentos h2 small{ 
   padding: 4px;
 }
@@ -5071,18 +5097,24 @@ ul.notifications {
   font-size: 40px;
 }
 .field_with_errors input{
-  border: 1px solid red;
-  border-radius: 1px; 
+  border: 1px solid #ff4343;
+  border-radius: 2px;
   padding: 1px 2px;
   min-height: 22px;
-  background: #fff0f0;
+  background: #ffffff;
 }
 .field_with_errors select{
-  border: 1px solid red;
-  border-radius: 1px; 
+  border: 1px solid #ff4343;
+  border-radius: 2px;
   padding: 1px 2px;
   min-height: 22px;
-  background: #fff0f0;
+  background: #ffffff;
+}
+.field_with_errors textarea{
+  border: 1px solid #ff4343;
+  border-radius: 2px;
+  padding: 1px 2px; 
+  background: #ffffff;
 }
 .field_with_errors {
   display: contents;
@@ -5100,4 +5132,47 @@ ul.notifications {
     min-width: 71%;
     padding: 9px 32px;
     box-shadow: 0px 0px 4px #2a3f53;
-  }
+  }  
+.field .obrigatoriedade{
+  display: none;
+}
+.field_with_errors label{
+  color: #72879c;
+}
+.erros{
+  display:none
+}
+.visualizar:hover .erros{
+  display:block;
+} 
+.msg_erro{
+  border: 1px solid #72879c;
+  border-radius: 2px;
+  padding-left: 5px;
+  color: #ff4343;
+  background: aliceblue;
+}
+trix-toolbar .button_group { 
+  background-color: white;
+}
+.ver_atividade{ 
+  transition:0.4s; 
+  border: 1px solid #e6e9ed;
+  border-radius: 2px;
+  padding: 2px; 
+}
+.ver_atividade:hover{ 
+  border: 1px solid #72879c;
+  transition:0.4s; 
+  background:#1abb9c;
+  color:white
+}
+.Alto{
+  color:red;
+}
+.Médio{
+  color:#ffe500;
+}
+.Baixo{
+  color:#4696ff;
+}

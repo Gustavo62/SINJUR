@@ -16,7 +16,7 @@
           </div>  
         </div> 
         <div class="col-md-6 col-sm-6  ">
-          <div class="x_panel">
+          <div class="x_panel" style="height: 617px;">
             <div class="x_title">
               <h2>Atividades<small>resultado</small></h2>
                 
@@ -26,9 +26,8 @@
 
               <table class="table table-striped">
                 <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Tipo</th>
+                  <tr> 
+                    <th>Status</th>
                     <th>Titulo</th>
                     <th>Nivel</th>
                     <th>Data</th>
@@ -39,11 +38,10 @@
                   <tr>
                     <% @restrito_tela_agenda_atividades.each do |restrito_tela_agenda_atividade| %>
                       <tr> 
-                        <td><%= restrito_tela_agenda_atividade.id %></td>
-                        <td><%= restrito_tela_agenda_atividade.tipo %></td>
+                        <td><%= restrito_tela_agenda_atividade.status %></td>
                         <td><%= restrito_tela_agenda_atividade.titulo %></td>
                         <td><%= restrito_tela_agenda_atividade.nivel %></td> 
-                        <td><%= restrito_tela_agenda_atividade.agendamento.strftime("%d/%m/%Y") %></td>
+                        <td><%= restrito_tela_agenda_atividade.agendamento.strftime("%d/%m/%Y as %H:%M ") %></td>
                         <div id="interacoes">
                           <td class="opt"><i class="fa fa-ellipsis-v"></i>
                           <div class="bts">
@@ -62,7 +60,7 @@
           </div>
         </div> 
         <div class="clearfix"></div>
-      <div align="right" class="botao_novo"><%= link_to 'Nova Atividade', new_restrito_tela_agenda_atividade_path%></div>
+      <div align="right" class="botao_novo" style="margin-left: -7px;"><%= link_to 'Nova Atividade', new_restrito_tela_agenda_atividade_path%></div>
     </div>
   </div>
 </div>

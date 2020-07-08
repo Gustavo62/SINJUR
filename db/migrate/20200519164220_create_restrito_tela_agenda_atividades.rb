@@ -4,8 +4,9 @@ class CreateRestritoTelaAgendaAtividades < ActiveRecord::Migration[5.2]
       t.string :tipo
       t.string :titulo
       t.string :nivel
+      t.string :status
       t.text :resumo
-      t.date :agendamento
+      t.datetime :agendamento
 
       t.timestamps
     end

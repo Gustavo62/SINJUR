@@ -96,54 +96,63 @@
     </div>
     </div>
 </div>  
+<div class="col-md-4 col-sm-4 ">
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="height: auto;">
+    <div class="x_title">
+        <h2>Atendimentos<small>Por dia da semana.</small></h2> 
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <table class="" style="width:100%">
+        <tr>
+            <th>
+            <p></p>
+            </th>
+        </tr>
+        <tr>
+            <td>
 
-<div>
-    <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
-    <script type='text/javascript'>
-     var dataCities = google.visualization.arrayToDataTable([
-            ['City', ''],
-            ['Lahore', 1],
-            ['Karachi', 1],
-            ['Islamabad', 1],
-            ["Gilgit", 1]
-        ]);
+            <%= column_chart @atends.group_by_day_of_week(:data_atendimento, format: "%a").count, width: "335px", height: "340px",min:0.0,max:50 %>
+            </td>
+        </tr>
+        </table>
+    </div>
+    </div>
+</div> 
+ <br><div class="clearfix"></div>
+<div class="row"> 
+    <div class="x_panel" STYLE="MARGIN-LEFT:20PX;width: 97%;">
+        <div class="x_title">
+            <h2>Atividade da semana<small><%= Time.now.strftime("%d/%m/%Y")%></small></h2> 
+            <div class="clearfix"></div>
+        </div> 
+            <div class="dashboard-widget-content" style="margin-top: -51px;margin-left: -30px;">
 
-        var options = {
-            region: 'PK',
-            displayMode: 'text',
-            width: 834,
-            height: 521,
-            backgroundColor: '#fff',
-            datalessRegionColor: '#9bd5e1',
-            defaultColor: '#fff',
-            legend: 'none',
-            showTooltip: true,
-            showInfoWindow: true,
-            sizeAxis: {
-                minValue: 0,
-                maxValue: 5
-            },
-
-            colorAxis: {
-                colors: ['#739FA8', '#739FA8', '#739FA8', '#739FA8', '#739FA8']
-            }
-
-        };
-
-function myClickHandler() {
-            var city = '';
-            var selection = chart.getSelection();
-            if (selection.length > 0) {
-                city = dataCities.og[selection[0].row].c[0].v;
-                //alert(data.getValue(selection[0].row, 0));
-                document.getElementById('location').innerHTML = '';
-                document.getElementById('location').innerHTML = countryCity + ' , ' + city;
-            }
-        }
-        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-        google.visualization.events.addListener(chart, 'select', myClickHandler);
-        chart.draw(dataCities, options);
-    </script>
-    <div id="regions_div" style="width: 900px; height: 500px;"></div>
+                <ul class="list-unstyled timeline widget">
+                    <%= week_calendar events: @atividades do |date, atividades| %> 
+                        <% atividades.each do |atividade| %>  
+                            <% if atividade.status == "Aberto"%>  
+                                <li style="display:block;width: 97%;">  
+                                    <div class="block">
+                                        <div class="block_content">
+                                            <h2 class="title" ><a style="margin-left: 4px;"><%=atividade.titulo%></a></h2>
+                                            <div class="byline">
+                                            <span><%=atividade.agendamento.strftime("%d/%m/%Y as %H:%M ")%></span><span>, Tipo: <%=atividade.tipo%>, </span>
+                                            <br> 
+                                            <div class="<%=atividade.nivel%>">   
+                                                <span>Nivel <%=atividade.nivel%>. </span>
+                                            </div>
+                                            </div>
+                                            <p class="excerpt"><%=atividade.resumo.unpack(("a%i" % 45) * (atividade.resumo.size / 45.0).ceil).join("\n").force_encoding("UTF-8")%><br>
+                                            </p>
+                                            <a style="margin-left: 90%;"><%= link_to 'Visualizar Atividade', atividade, class:"ver_atividade"%></a>
+                                        </div>
+                                    </div>   
+                                </li>  
+                            <% end %> 
+                        <% end %>
+                    <% end %>
+                </ul>
+            </div> 
+    </div> 
 </div>

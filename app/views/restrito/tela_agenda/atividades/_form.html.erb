@@ -3,10 +3,10 @@
 <div class="clearfix"></div>
   <div class="row">
     <div class="col-md-6 ">
-      <div class="x_panel">
+      <div class="x_panel" style="height: 677px;">
         <%= form_with(model: restrito_tela_agenda_atividade, local: true, class:"form-horizontal form-label-left") do |form| %>
           <div class="x_title">
-            <h2 style="width:100%"><%=@acao%> Atividade
+            <h2 style="width:100%;text-align: initial;"><%=@acao%> Atividade
               <small class="actions-form">
                 <%= link_to 'Voltar', restrito_tela_agenda_atividades_path,class:"fa fa-reply" %>
                 <div style="float: right;margin-left: 10px;">
@@ -22,51 +22,50 @@
             
             <% if restrito_tela_agenda_atividade.errors.any? %>
               <div id="error_explanation">
-                <h2><%= pluralize(restrito_tela_agenda_atividade.errors.count, "error") %> prohibited this restrito_tela_agenda_atividade from being saved:</h2>
+                <h2 class="msg_erro" style="font-size: 17px;"><%= pluralize(restrito_tela_agenda_atividade.errors.count, "") %> <span style="color:red;text-decoration:underline">Erros</span> encontrados, resolva para poder enviar as informações.</h2>
 
-                <ul>
-                <% restrito_tela_agenda_atividade.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
                 </ul>
               </div>
             <% end %>
-            <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Título
-              </label>
-              <div class="col-md-6 col-sm-6 ">
-                <%= form.text_field :titulo, style:"width:400px", placeholder:"Informe o título da atividade"%>
-              </div>
-            </div> 
-            <br>
-            <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Tipo </label>
-              <div class="col-md-6 col-sm-6 " style="width:130px">
-                <%= form.select :tipo, ['Atividade', 'Lembrete', 'Agendamento'], class:"form-control"%>
-                </div> 
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nível </label>
-              <div class="col-md-6 col-sm-6 ">
-                <%= form.select :nivel, ['Alto', 'Médio', 'Baixo'], class:"form-control"  %>
-              </div>
-            </div>   
-            <br>
-            <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Resumo
-              </label>
-              <div class="col-md-6 col-sm-6 ">
-                <%= form.text_area :resumo, style:"width:400px", placeholder:"Resumo da atividade agendada..."%>
-              </div>
-            </div> 
-            <br>
-            <div class="item form-group">
-              <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Agendamento
-              </label>
+            <div id="atividades">
+              <div class="item form-group">
+                <%= form.label :titulo, style:"margin-left:18px" %>:
+                <div class="col-md-6 col-sm-6 ">
+                  <%= form.text_field :titulo, style:"width: 184px;", placeholder:"Informe o título da atividade"%>
+                </div>
+                <%= form.label :status, style:"margin-left:18px" %>:
+                <div class="col-md-6 col-sm-6 ">
+                  <%= form.select :status,['Aberto', 'Concluido'], class:"form-control"  %>
+                </div>
+              </div> 
               <br>
-              <div class="col-md-6 col-sm-6 ">
-                <%= form.text_field :agendamento,type:"date"%>
-              </div>
-            </div> 
-            <br>
+              <div class="item form-group">
+                <%= form.label :tipo, style:"margin-left:25px" %>:
+                <div class="col-md-6 col-sm-6 " style="width:130px">
+                  <%= form.select :tipo, ['Atividade', 'Lembrete', 'Agendamento'], class:"form-control"%>
+                  </div> 
+                Nível:
+                <div class="col-md-6 col-sm-6 ">
+                  <%= form.select :nivel, ['Alto', 'Médio', 'Baixo'], class:"form-control"  %>
+                </div>
+              </div>   
+              <br>
+              <div class="item form-group">
+                Resumo:
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                  <%= form.text_area :resumo, style:"width: 356px;min-height: 181px;padding: 7px;", placeholder:"Resumo da atividade agendada..."%>
+                </div>
+              </div> 
+              <br>
+              <div class="item form-group">
+                Agendar:
+                <div class="col-md-6 col-sm-6 ">
+                  <%= form.datetime_field :agendamento,style:"width: 355px;text-align: center;"%>
+                </div>
+              </div> 
+              <br>
+            </div>
           </div>
         <% end %> 
       </div>

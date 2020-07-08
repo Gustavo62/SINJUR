@@ -21,12 +21,13 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
   end 
   # GET /restrito/tela_agenda/atividades/1
   # GET /restrito/tela_agenda/atividades/1.json
-  def show
+  def show 
+    @restrito_tela_agenda_atividades = Restrito::TelaAgenda::Atividade.all
     @local = 'Agenda de Atividades >> Visualizar'
     def start_time
       self.agendamento 
-  end
-  end 
+    end  
+  end  
   # GET /restrito/tela_agenda/atividades/new
   def new
     @restrito_tela_agenda_atividade = Restrito::TelaAgenda::Atividade.new
@@ -36,7 +37,8 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
   end
 
   # GET /restrito/tela_agenda/atividades/1/edit
-  def edit
+  def edit 
+    @restrito_tela_agenda_atividades = Restrito::TelaAgenda::Atividade.all
     @local = 'Agenda de Atividades >> Editar'
     @acao = 'Editar'
   end
@@ -44,12 +46,13 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
   # POST /restrito/tela_agenda/atividades
   # POST /restrito/tela_agenda/atividades.json
   def create
+    @restrito_tela_agenda_atividades = Restrito::TelaAgenda::Atividade.all
     @restrito_tela_agenda_atividade = Restrito::TelaAgenda::Atividade.new(restrito_tela_agenda_atividade_params)
 
     respond_to do |format|
       if @restrito_tela_agenda_atividade.save
-        format.html { redirect_to @restrito_tela_agenda_atividade, notice: 'Atividade was successfully created.' }
-        format.json { render :show, status: :created, location: @restrito_tela_agenda_atividade }
+        format.html { redirect_to restrito_tela_agenda_atividades_url}
+        format.json { head :no_content }
       else
         format.html { render :new }
         format.json { render json: @restrito_tela_agenda_atividade.errors, status: :unprocessable_entity }
@@ -89,6 +92,6 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restrito_tela_agenda_atividade_params
-      params.require(:restrito_tela_agenda_atividade).permit(:tipo, :titulo, :nivel, :resumo, :agendamento)
+      params.require(:restrito_tela_agenda_atividade).permit(:tipo, :titulo, :nivel, :resumo, :status, :agendamento)
     end
 end

@@ -3,16 +3,11 @@
 <%= date.strftime("%d") %>
 
 <% atividades.each do |atividade| %> 
-    <div id="atividades">
-        <%if atividade.titulo? == true%> 
+    <div id="atividade">
+        <%if atividade.status == "Aberto"%> 
             <div id="<%=atividade.nivel%>"> 
             <p><%= link_to atividade.titulo, atividade %></p>
-            </div>
-            
-        <% else %>
-            <div id="<%=atividade.nivel%>"> 
-            <p><%= link_to 'Sem titulo', atividade %></p>
-            </div>
+            </div> 
         <% end %> 
     </div> 
 <% end %>

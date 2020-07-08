@@ -1,5 +1,6 @@
 class Restrito::TelaAgenda::Atividade < ApplicationRecord 
     def start_time 
         self.agendamento
-    end
+    end 
+    validates :agendamento,:resumo, presence: true 
 end

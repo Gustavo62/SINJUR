@@ -10,29 +10,29 @@
     <div class="field">
     <div style="text-align:right;"><%= link_to_remove_association('', f,class:"fa fa-remove")%></div>
         <div class="field">
-            <%= f.label :area_atuacao %>:
-            <%= f.text_field :area_atuacao,style:"width:30%" %> 
-            <%= f.label :objeto_acao %>:
-            <%= f.text_field :objeto_acao,style:"width:25%" %> 
-            <%= f.label :assunto %>:
-            <%= f.text_field :assunto,style:"width:20%" %> 
+            <%= f.label :area_atuacao %>*:
+            <%= f.text_field :area_atuacao,style:"width:30%",placeholder:"Área de atuação do processo." %> 
+            <%= f.label :objeto_acao%>*:
+            <%= f.text_field :objeto_acao,style:"width:25%",placeholder:"Área de ação do processo." %> 
+            <%= f.label :assunto %>*:
+            <%= f.text_field :assunto,style:"width:18.6%",placeholder:"Assunto do processo." %> 
             <%= f.label :detalhe %>:
-            <%= f.text_field :detalhe, style:"width:93%;margin-left: -2px;"%>
+            <%= f.text_field :detalhe, style:"width:93%;margin-left: -2px;",placeholder:"Detalhes do processo."%>
         </div>
         <br>
          <div class="field"> 
-            <%= f.label :local_tramite %> 1:
-            <%= f.text_field :local_tramite_um,style:"width:39%;"%> 
+            <%= f.label :local_tramite %> 1*:
+            <%= f.text_field :local_tramite_um,style:"width:39%;",placeholder:"local onde o processo será tramitado."%> 
             <%= f.label :local_tramite %> 2:
-            <%= f.text_field :local_tramite_dois,style:"width:40%;margin-left: -4px;" %>
+            <%= f.text_field :local_tramite_dois,style:"width:39.5%;margin-left: -4px;",placeholder:"local onde o processo será tramitado." %>
             
         </div>
         <br> 
         <div class="field">
-            <%= f.label :pasta %>:
-            <%= f.text_field :pasta,style:"width:94%;" %> 
-            <%= f.label :etiqueta %>:
-            <%= f.text_field :etiqueta,style:"width:92.5%" %>
+            <%= f.label :pasta %>*:
+            <%= f.text_field :pasta,style:"width:43.4%;",placeholder:"Nome da pasta."%> 
+            <%= f.label :etiqueta %>*:
+            <%= f.text_field :etiqueta,style:"width:43.5%",placeholder:"Nome da etiqueta." %>
         </div> 
         <br> 
         <div class="field"> 

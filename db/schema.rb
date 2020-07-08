@@ -119,12 +119,11 @@ ActiveRecord::Schema.define(version: 2020_06_22_164544) do
   create_table "filiados", force: :cascade do |t|
     t.integer "cnpj"
     t.integer "cei"
-    t.integer "codigo_tj"
-    t.integer "codigo_cnpj"
+    t.integer "serventia"
     t.integer "cep"
     t.integer "numero_casa"
     t.integer "telefone_fixo_casa"
-    t.string "nome_contato"
+    t.string "nome"
     t.string "logradouro"
     t.string "complemento"
     t.string "bairro"
@@ -186,8 +185,9 @@ ActiveRecord::Schema.define(version: 2020_06_22_164544) do
     t.string "tipo"
     t.string "titulo"
     t.string "nivel"
+    t.string "status"
     t.text "resumo"
-    t.date "agendamento"
+    t.datetime "agendamento"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

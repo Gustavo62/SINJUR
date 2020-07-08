@@ -17,29 +17,24 @@
           <div class="x_content" style="font-size: 22px;float: none;">  
             <div class="filiados">
               <h2>Informações do Filiado <i class="fa fa-user"></i></h2>
-              <div class="filiados-form" > 
-                <% if filiado.errors.any? %>
-                  <div id="error_explanation">
-                    <h2><%= pluralize(filiado.errors.count, "error") %> prohibited this contato from being saved:</h2>
+              <% if filiado.errors.any? %>
+                <div id="error_explanation">
+                  <h2 class="msg_erro"><%= pluralize(filiado.errors.count, "") %> <span style="color:red;text-decoration:underline">Erros</span> encontrados, resolva para poder enviar as informações:</h2>
 
-                    <ul>
-                    <% filiado.errors.full_messages.each do |message| %>
-                      <li><%= message %></li>
-                    <% end %>
-                    </ul>
-                  </div>
-                <% end %>
-                
+                  </ul>
+                </div>
+              <% end %>
+              <div class="filiados-form" >  
                 <div class="field">
                   <%= f.label :nome%>: 
-                  <%= f.text_field :nome_contato, placeholder:"Informe o nome completo do Filiado", style:"font-size: 18px;width: 94%;" %>
+                  <%= f.text_field :nome, placeholder:"Informe o nome completo do Filiado", style:"font-size: 18px;width: 94%;" %>
                 </div>  
                 <br>
                 <div class="field">
                   <%= f.label :logradouro %>:
                   <%= f.text_field :logradouro, placeholder:"Ex: Rua Filadelfia Moreira", style:"font-size: 18px;width: 70%;" %> 
                   <%= f.label :numero %>:
-                  <%= f.number_field :numero_casa, placeholder:"Ex: A1", style:"font-size: 18px;width: 13.2%;"  %>
+                  <%= f.text_field :numero_casa, placeholder:"Ex: A1", style:"font-size: 18px;width: 13.2%;"  %>
                 </div>
                 <div class="field">
                   <%= f.label :complemento %>: 
@@ -51,18 +46,18 @@
                   <%= f.label :cidade%>: 
                   <%= f.text_field :cidade, placeholder:"Ex: Fortaleza", style:"font-size: 18px;width: 14%;" %>
                   <%= f.label :cep%>:
-                  <%= f.number_field :cep, placeholder:"Ex: 00000-0000", style:"font-size: 18px;width: 14%;"  %> 
+                  <%= f.text_field :cep, placeholder:"Ex: 00000-0000", style:"font-size: 18px;width: 14%;",maxlength:"9"   %> 
                   <label>Telefone Fixo:</label>
-                  <%= f.number_field :telefone_fixo_casa, placeholder:"Ex: 0000-0000", style:"font-size: 18px;width: 14%;"  %> 
+                  <%= f.text_field :telefone_fixo_casa, placeholder:"Ex: 0000-0000", style:"font-size: 18px;width: 14%;",maxlength:"10"   %> 
                 </div>   
                 <br>
                 <div class="field" aligh="center">
-                  <label>CNPJ:</label>
-                  <%= f.number_field :cnpj, placeholder:"Ex: 00.000.000/0000-00",style:"font-size: 18px;width: 14%;"  %>
-                  <label>CEI:</label>
-                  <%= f.number_field :cei, placeholder:"Ex: 000000",style:"font-size: 18px;width: 14%;"  %>
-                  <label>Serventia:</label>
-                  <%= f.number_field :codigo_tj, placeholder:"Ex: 000000",style:"font-size: 18px;width: 14%;"  %>
+                  <%= f.label :cnpj %>: 
+                  <%= f.text_field :cnpj, placeholder:"Ex: 00.000.000/0000-00",style:"font-size: 18px;width: 14%;",maxlength:"14"  %>
+                  <%= f.label :cei %>:
+                  <%= f.text_field :cei, placeholder:"Ex: 000000",style:"font-size: 18px;width: 14%;",maxlength:"14"  %>
+                  <%= f.label :serventia %>:
+                  <%= f.text_field :serventia, placeholder:"Ex: 000000",style:"font-size: 18px;width: 14%;",maxlength:"6"  %>
                 </div>
                 <br>
                 <div class="field">

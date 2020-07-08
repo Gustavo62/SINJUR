@@ -7,6 +7,7 @@ class EstatisticasController < ApplicationController
     @procs = Processo.all
     @atends = CadastroAtendimento.all
     efetividade_procs
+    @atividades = Restrito::TelaAgenda::Atividade.all
   end
   def efetividade_procs
     @montante_a = 0

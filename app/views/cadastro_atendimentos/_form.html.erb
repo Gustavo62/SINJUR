@@ -15,45 +15,45 @@
           </h2> 
           <div class="clearfix"></div>
         </div>
-        <div class="x_content"> 
+        <div class="x_content">  
           <% if cadastro_atendimento.errors.any? %>
-            <div id="error_explanation">  
-              <ul>
-              <% cadastro_atendimento.errors.full_messages.each do |message| %>
-                <li style="color:red"><%= message %>.</li>
-              <% end %>
+            <div id="error_explanation">
+              <h2 class="msg_erro"><%= pluralize(cadastro_atendimento.errors.count, "") %> <span style="color:red;text-decoration:underline">Erros</span> encontrados, resolva para poder enviar as informações.</h2>
+
               </ul>
             </div>
           <% end %>
           <div class="field">
             <div style="text-align:center">
-              <div style="margin: auto;width: 1000px;text-align: left;">   
-                
-                Solicitante
-                <br>
-                <br>
-                <div class="field">
-                  <%= f.label :Nome %>:
-                  <%= f.text_field :nome, style:"width: 92%;",placeholder:"Nome completo do solicitante."%>
+              <div id="atendimento">
+                <div style="margin: auto;width: 1000px;text-align: left;">   
+                  
+                  Solicitante
+                  <br>
+                  <br>
+                  <div class="field">
+                    <%= f.label :nome %>*:
+                    <%= f.text_field :nome, style:"width: 72%;",placeholder:"Nome completo do solicitante."%>
+                    <%= f.label :codigo_tj_filiado%>*: 
+                    <%= collection_select(:cadastro_atendimento, :codigo_tj_filiado,  @filiados_for_select, :id, :serventia)%> 
+                  </div>
+                  <div class="field">
+                    <%= f.label :cpf %>*:
+                    <%= f.text_field :cpf, placeholder:"999.999.999.99",style:"width: 18%;",maxlength:"11"%> 
+                    <%= f.label :telefone %>*:
+                    <%= f.text_field :telefone,placeholder:"(99) 99999-9999",style:"width: 16%;",maxlength:"11"%> 
+                    <%= f.label :data_atendimento%>*: 
+                    <%= f.text_field :data_atendimento , type:"date", style:"margin-left: 3px;"%>
+                  </div>
                 </div>
-                <div class="field">
-                  <%= f.label :Cpf %>:
-                  <%= f.text_field :cpf, placeholder:"999.999.999.99",style:"width: 18%;"%> 
-                  <%= f.label :telefone %>:
-                  <%= f.text_field :telefone,placeholder:"(99) 99999-9999",style:"width: 16%;"%> 
-                  <%= f.label :Data_do_Atendimento%>: 
-                  <%= f.text_field :data_atendimento , type:"date", style:"margin-left: 3px;"%>
-                  Filiado: <%= collection_select(:cadastro_atendimento, :codigo_tj_filiado,  @filiados_for_select, :id, :codigo_tj)%> 
-                </div>
-              </div>
-              <br>
-              <div class="field" style="text-align:left;width:1000px;font-size:20px;margin:auto"> 
-                <div class="field-unit__field">
-                  <div style="display:none"><%= f.text_field :texto_livre, id: 'texto_livre' %></div>
-                  <trix-editor input="<%= :texto_livre %>" placeholder="Digite o Seu texto aqui..."></trix-editor>
-                </div> 
-              </div>  
-              <br>
+                <br>
+                <div class="field" style="text-align:left;width:1000px;font-size:20px;margin:auto"> 
+                  <div class="field-unit__field">
+                    <div style="display:none"><%= f.text_field :texto_livre, id: 'texto_livre' %></div>
+                    <trix-editor style="background-color:white;border: 1px solid #2a3f53;"input="<%= :texto_livre %>" placeholder="Digite o Seu texto aqui..."></trix-editor>
+                  </div> 
+                </div>  
+              </div> 
               <div id="documentos"> 
                 <h2>Adicionar Docummentos <i class="fa fa-folder"></i></h2>
                 <br>

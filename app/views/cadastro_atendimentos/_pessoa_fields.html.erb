@@ -8,71 +8,71 @@
     <div class="field">
     <div style="text-align:right;"><%= link_to_remove_association('', f,class:"fa fa-remove")%></div>
         <div class="field">
-            <%= f.label :nome %>
+            <%= f.label :nome %>*:
             <%= f.text_field :nome, style:"width:89%",placeholder:"Infome o nome da pessoa."%>
         </div>
         <br>
         <div class="field">
-            <%= f.label :nacionalidade %>
+            <%= f.label :nacionalidade %>:
             <%= f.text_field :nacionalidade, style:"width:23%", placeholder:"Brasileiro." %> 
-            <%= f.label :estado_civil %>
+            <%= f.label :estado_civil %>:
             <%= f.select :estado_civil, ['Solteiro', 'Casado', 'União Estável']  %>
-            <%= f.label :pis %>
-            <%= f.number_field :pis, style:"width:17%", placeholder:"0000000000"%>
+            <%= f.label :pis %>*:
+            <%= f.text_field :pis, style:"width:15.1%", placeholder:"0000000000",maxlength:"10"%>
             <br> 
-            <%= f.label :escolaridade %>
+            <%= f.label :escolaridade %>:
             <%= f.text_field :escolaridade, style:"width:39%;margin-left: 1px",placeholder:"Ensino médio."%>
-            <%= f.label :profissao %>
+            <%= f.label :profissao %>:
             <%= f.text_field :profissao, placeholder:"Escrevente." %>
             <br>
-            <%= f.label :cpf %>
-            <%= f.text_field :cpf, style:"width:16%", placeholder:"0000000000"  %> 
-            <%= f.label :rg %>
-            <%= f.number_field :rg, style:"width:17%", placeholder:"0000000000" %> 
+            <%= f.label :cpf %>*:
+            <%= f.text_field :cpf, style:"width:16%", placeholder:"0000000000",maxlength:"14"  %> 
+            <%= f.label :rg %>*:
+            <%= f.text_field :rg, style:"width:17%", placeholder:"0000000000",maxlength:"14" %> 
             <%= f.label :cnpj %>
-            <%= f.text_field :cnpj, style:"width:21%", placeholder:"0000000000" %> 
+            <%= f.text_field :cnpj, style:"width:21%", placeholder:"0000000000",maxlength:"14" %> 
         </div>
         <br>
         <div class="field">
-            <%= f.label :razao_social %>
-            <%= f.text_field :razao_social, style:"width:24%", placeholder:"nome devidamente registrado."%> 
-            <%= f.label :nome_fantasia %>
-            <%= f.text_field :nome_fantasia, style:"width:36%", placeholder:"Nome comercial."%>
+            <%= f.label :razao_social %>:
+            <%= f.text_field :razao_social, style:"width:31%", placeholder:"nome devidamente registrado."%> 
+            <%= f.label :nome_fantasia %>:
+            <%= f.text_field :nome_fantasia, style:"width:28.5%", placeholder:"Nome comercial."%>
         </div> 
         <br>
         <div class="field">
             
-            <%= f.label :insc_estadual %>
+            <%= f.label :insc_estadual %>:
             <%= f.text_field :insc_estadual,placeholder:"número de registro." %> 
-            <%= f.label :insc_municipal %>
-            <%= f.text_field :insc_municipal,style:"width:33%",placeholder:"número de registro." %> 
-            <%= f.label :responsável %>
+            <%= f.label :insc_municipal %>:
+            <%= f.text_field :insc_municipal,style:"width:32%",placeholder:"número de registro." %> 
+            <%= f.label :responsável %>:
             <%= f.text_field :responsável,style:"width:80%",placeholder:"Advogado responsável." %>
         </div> 
         <br>
         <div class="field">
-            <%= f.label :endereço %>
-            <%= f.text_field :endereço, style:"width:50%", placeholder:"Ex: Rua Fernado de Oliveira"%>
-            <%= f.label :cep %>
-            <%= f.text_field :cep, placeholder:"00000-000" %> 
+            <%= f.label :endereço %>:
+            <%= f.text_field :endereço, style:"width:61%", placeholder:"Ex: Rua Fernado de Oliveira"%>
+            <%= f.label :cep %>*:
+            <%= f.text_field :cep, placeholder:"00000-000",maxlength:"9" %> 
             <br>
-            <%= f.label :cidade %>
+            <%= f.label :cidade %>*:
             <%= f.text_field :cidade, placeholder:"Ex: Fortaleza" %> 
-            <%= f.label :bairro %>
+            <%= f.label :bairro %>:
             <%= f.text_field :bairro, placeholder:"Ex: Aldeota" %> 
         </div>
         <br> 
         <div class="field">
-            <%= f.label :residencial %>
-            <%= f.number_field :residencial,style:"width:19%",  placeholder:"(99)99999-9999"  %> 
-            <%= f.label :comercial %>
-            <%= f.number_field :comercial, style:"width:19%",  placeholder:"(99)99999-9999"%> 
-            <%= f.label :celular %>
-            <%= f.number_field :celular, style:"width:19%",  placeholder:"(99)99999-9999"%>
+            <%= f.label :residencial %>:
+            <%= f.text_field :residencial,style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"11"  %> 
+            <%= f.label :comercial %>:
+            <%= f.text_field :comercial, style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"11"%> 
+            <%= f.label :celular %>*:
+            <%= f.text_field :celular, style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"11"%>
         </div>
         <br>
         <div class="field">
-            <%= f.label :email %>
+            <%= f.label :email %>*:
             <%= f.text_field :email, style:"width:89%;margin-left: 5px", placeholder:"exemplo@exemplo.com"%>
         </div>
     </div>

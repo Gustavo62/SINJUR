@@ -75,7 +75,7 @@
   margin: 10px;
   margin-bottom: 20px;
 } 
-#atividades #Alto {
+#atividade #Alto {
   background-color: #ea3333;
   /* margin-left: 3px; */
   padding-right: 1px;
@@ -85,7 +85,7 @@
   border-radius: 8px;
   text-decoration: none;
 } 
-#atividades #Alto p {
+#atividade #Alto p {
   background-color: #f7f7f7;
   margin-right: auto;
   text-align: left;
@@ -94,16 +94,16 @@
   border-radius: 4px;
   text-decoration: none;
 } 
-#atividades #Alto a {
+#atividade #Alto a {
   text-decoration: none;
   font-size: 13px;
   text-shadow:0px 2px 5px #ffffff;
   color: black;
 } 
-#atividades #Alto a:hover  { 
+#atividade #Alto a:hover  { 
   text-decoration:underline;
 }
-#atividades #Médio {
+#atividade #Médio {
   background-color: #fffc46;
   /* margin-left: 3px; */
   padding-right: 1px;
@@ -113,7 +113,7 @@
   border-radius: 8px;
   text-decoration: none;
 } 
-#atividades #Médio p {
+#atividade #Médio p {
   background-color: #f7f7f7;
   margin-right: auto;
   text-align: left;
@@ -122,16 +122,16 @@
   border-radius: 4px;
   text-decoration: none;
 } 
-#atividades #Médio a {
+#atividade #Médio a {
   text-decoration: none;
   font-size: 13px;
   text-shadow: 0px 2px 5px #ffffff;
   color: black;
 } 
-#atividades #Médio a:hover {
+#atividade #Médio a:hover {
   text-decoration: underline;
 }
-#atividades #Baixo {
+#atividade #Baixo {
   background-color: #4696ff;
   /* margin-left: 3px; */
   padding-right: 1px;
@@ -141,7 +141,7 @@
   border-radius: 8px;
   text-decoration: none;
 } 
-#atividades #Baixo p {
+#atividade #Baixo p {
   background-color: #f7f7f7;
   margin-right: auto;
   text-align: left;
@@ -150,16 +150,16 @@
   border-radius: 4px;
   text-decoration: none;
 } 
-#atividades #Baixo a {
+#atividade #Baixo a {
   text-decoration: none;
   font-size: 13px;
   text-shadow: 0px 2px 5px #ffffff;
   color: black;
 } 
-#atividades #Baixo a:hover {
+#atividade #Baixo a:hover {
   text-decoration: underline;
 }
-#atividades p {
+#atividade p {
   margin: 3px;
   padding: 0px;
 } 
@@ -176,6 +176,7 @@
   width:560px;
   text-align: center;
   float: right;
+  margin-top: 4px;
 } 
 .calendario .CadastroAgenda .table{
   width:532px;

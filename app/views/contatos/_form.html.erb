@@ -20,54 +20,50 @@
               <div class="contato-form" style="width: 783px;"> 
                 <% if contato.errors.any? %>
                   <div id="error_explanation">
-                    <h2><%= pluralize(contato.errors.count, "error") %> prohibited this contato from being saved:</h2>
+                    <h2 class="msg_erro" style="font-size: 17px;"><%= pluralize(contato.errors.count, "") %> <span style="color:red;text-decoration:underline">Erros</span> encontrados, resolva para poder enviar as informações.</h2>
 
-                    <ul>
-                    <% contato.errors.full_messages.each do |message| %>
-                      <li><%= message %></li>
-                    <% end %>
                     </ul>
                   </div>
                 <% end %>
                 
                 <div class="field" >
-                  Nome*
-                  <%= f.text_field :nome, style:"width: 90%;",placeholder:"Informe seu nome completo"%>
+                  Nome*:
+                  <%= f.text_field :nome, style:"width: 91.1%;",placeholder:"Informe seu nome completo"%>
                 </div> 
                 <br>
                 <div class="field">
-                  Email* 
+                  Email*: 
                   <%= f.text_field :email, style:"width: 31%;",placeholder:"exemplo@exemplo.com"%>  
-                  Profissão*
+                  Profissão*:
                   <%= f.text_field :profissao, style:"width: 19%;", placeholder:"Ex: Advogado"%> 
-                  <%= f.label :detalhe %>
-                  <%= f.text_field :detalhe, style:"width: 18%;margin-left: 1px;", placeholder:"Nome da Empresa"%>
+                  <%= f.label :detalhe %>:
+                  <%= f.text_field :detalhe, style:"width: 17.6%;margin-left: 1px;", placeholder:"Nome da Empresa"%>
                 </div>
                 <br>
 
                 <div class="field"> 
-                  <%= f.label :cep %>
-                  <%= f.number_field :cep, style:"width: 12%;",class:"cpf-mask", placeholder:"00000-000"%> 
-                  Cidade*
+                  <%= f.label :cep %>*:
+                  <%= f.text_field :cep, style:"width: 12%;",class:"cpf-mask", placeholder:"00000-000",maxlength:"8", autocomplete:"off"%> 
+                  Cidade:
                   <%= f.text_field :cidade, style:"width: 19%;", placeholder:"Ex: Fortaleza"%>
-                  <%= f.label :bairro %>
+                  <%= f.label :bairro %>:
                   <%= f.text_field :bairro, placeholder:"Ex: Aldeota"%>
-                  <%= f.label :numero %>
-                  <%= f.number_field :numero, style:"width: 11%;",placeholder:"Ex: 1A"%> 
+                  <%= f.label :numero %>:
+                  <%= f.number_field :numero, style:"width: 9.9%;",placeholder:"Ex: 1A"%> 
                 </div>
                 <div class="field">
-                  <%= f.label :logradouro %>
+                  <%= f.label :logradouro %>:
                   <%= f.text_field :logradouro, style:"width: 47%;", placeholder:"Endereço do contato"%>  
-                  <%= f.label :observacao %>
-                  <%= f.text_field :observacao, style:"margin-left: 3px;", placeholder:"Ponto de referência"%>
+                  <%= f.label :observacao, style:"margin-left: 5px;"%>:
+                  <%= f.text_field :observacao, placeholder:"Ponto de referência"%>
                 </div>
                 <br>
 
                 <div class="field"> 
-                  <%= f.label :site%>
+                  <%= f.label :site%>:
                   <%= f.text_field :site, style:"width: 66%;",placeholder:"link para o site do contato"%>
-                  <%= f.label :dn %>
-                  <%= f.number_field :dn,placeholder:"Numero de Dn" %> 
+                  <%= f.label :dn %>:
+                  <%= f.number_field :dn,placeholder:"Numero de Dn"%> 
                 </div>  
               </div>
             </div> 
@@ -89,8 +85,7 @@
               </div> 
             </div>  
           </div> 
-        </div> 
-        
+        </div>  
       <% end %> 
     </div>
   </div>
