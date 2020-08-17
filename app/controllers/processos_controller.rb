@@ -7,50 +7,50 @@ class ProcessosController < ApplicationController
   def index
     if params[:n_processo] or params[:status] or params[:favorito] or params[:intervalo_atend]
       if params[:n_processo] != "" 
-        @processo_aux = Processo.where(id: params[:n_processo])
+        @processo_aux = Processo.where(id: params[:n_processo]).page(params[:page]).per(21)
       else
         if params[:status] != "Todos"
           if params[:favorito]
             if params[:intervalo_atend] != ""
-              @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito],created_at: procura_proc_data)
+              @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito],created_at: procura_proc_data).page(params[:page]).per(21)
             else
-              @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito])
+              @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito]).page(params[:page]).per(21)
             end
           else
             if params[:intervalo_atend] != ""
               if params[:favorito]
-                @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito],created_at: procura_proc_data)
+                @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito],created_at: procura_proc_data).page(params[:page]).per(21)
               else
-                @processo_aux = Processo.where(status_processo: params[:status],created_at: procura_proc_data)
+                @processo_aux = Processo.where(status_processo: params[:status],created_at: procura_proc_data).page(params[:page]).per(21)
               end
             else
-              @processo_aux = Processo.where(status_processo: params[:status])
+              @processo_aux = Processo.where(status_processo: params[:status]).page(params[:page]).per(21)
             end
           end
         else
           if params[:favorito]
             if params[:intervalo_atend] != ""
-              @processo_aux = Processo.where(favorito: params[:favorito],created_at: procura_proc_data)
+              @processo_aux = Processo.where(favorito: params[:favorito],created_at: procura_proc_data).page(params[:page]).per(21)
             else
-              @processo_aux = Processo.where(favorito: params[:favorito])
+              @processo_aux = Processo.where(favorito: params[:favorito]).page(params[:page]).per(21)
             end
           else
             if params[:intervalo_atend] != ""
               if params[:favorito]
-                @processo_aux = Processo.where(favorito: params[:favorito],created_at: procura_proc_data)
+                @processo_aux = Processo.where(favorito: params[:favorito],created_at: procura_proc_data).page(params[:page]).per(21)
               else
-                @processo_aux = Processo.where(created_at: procura_proc_data)
+                @processo_aux = Processo.where(created_at: procura_proc_data).page(params[:page]).per(21)
               end
             else
-              @processo_aux = Processo.all
+              @processo_aux = Processo.page(params[:page]).per(21)
             end
           end
         end
       end
     else
-      @processo_aux = Processo.all
+      @processo_aux = Processo.page(params[:page]).per(21)
     end
-    @local = 'Processos >> Listar Processos'
+    @local = 'Processos > Listar Processos'
   end
   # GET /processos/1
   # GET /processos/1.json
@@ -79,7 +79,7 @@ class ProcessosController < ApplicationController
 
     respond_to do |format|
       if @processo.save
-        format.html { redirect_to @processo, notice: 'Processo was successfully created.' }
+        format.html { redirect_to @processo}
         format.json { render :show, status: :created, location: @processo }
       else
         format.html { render :new }
@@ -93,7 +93,7 @@ class ProcessosController < ApplicationController
   def update
     respond_to do |format|
       if @processo.update(processo_params)
-        format.html { redirect_to @processo, notice: 'Processo was successfully updated.' }
+        format.html { redirect_to @processo}
         format.json { render :show, status: :ok, location: @processo }
       else
         format.html { render :edit }
@@ -107,7 +107,7 @@ class ProcessosController < ApplicationController
   def destroy
     @processo.destroy
     respond_to do |format|
-      format.html { redirect_to processos_url, notice: 'Processo was successfully destroyed.' }
+      format.html { redirect_to processos_url, notice: 'Processo excluido com sucesso.' }
       format.json { head :no_content }
     end
   end

@@ -2,21 +2,37 @@
   <div class="row">
     <div class="col-md-6 " style="width:100%;font-size:18px"">
       <%= form_with(model: filiado, local: true,style:"margin-top: -15%;") do |f| %>
-        <div class="x_panel">
+        <div class="x_panel" style="height:666px;
+    min-height: 96%;
+    color: #2a3f53;
+    text-align: center;
+    width: 100%;
+    background: #ffffff;
+    font-family: Gilroy;">
           <div class="x_title">
-            <h2 style="width:100%"><%=@acao%> Filiado
+            <h2 style="width: 100%;
+    font-family: Gilroy ExtraBold;
+    text-align: left;"><%=@acao%> Filiado
             <small class="actions-form">
-              <%= link_to 'Voltar', filiados_path,class:"fa fa-reply"  %>
+              <%= link_to 'Voltar', filiados_path,class:"modal__btn",style:"margin-right: 3px;
+    font-size: 18px;
+    font-family: Gilroy ExtraBold;"  %>
               <div style="float: right;margin-left: 10px;">
-                <%= f.submit "Enviar", class:"btn btn-success",style:"width: 115px;font-size: 18px;"%>
+                <%= f.submit "Enviar", class:"modal__btn modal__btn-primary",style:"margin-right: 3px;
+    font-size: 18px;
+    font-family: Gilroy ExtraBold;;"%>
               </div> 
               </small>
             </h2> 
             <div class="clearfix"></div>
           </div>
           <div class="x_content" style="font-size: 22px;float: none;">  
-            <div class="filiados">
-              <h2>Informações do Filiado <i class="fa fa-user"></i></h2>
+            
+            <div class="filiados-form" style="    text-align: left;
+    width: 858px;
+    margin-left: auto;
+    margin-right: auto;">  
+              <h2 style="font-size: 26px;">Informações do Filiado <i class="fa fa-user"></i></h2>
               <% if filiado.errors.any? %>
                 <div id="error_explanation">
                   <h2 class="msg_erro"><%= pluralize(filiado.errors.count, "") %> <span style="color:red;text-decoration:underline">Erros</span> encontrados, resolva para poder enviar as informações:</h2>
@@ -24,45 +40,52 @@
                   </ul>
                 </div>
               <% end %>
-              <div class="filiados-form" >  
-                <div class="field">
-                  <%= f.label :nome%>: 
-                  <%= f.text_field :nome, placeholder:"Informe o nome completo do Filiado", style:"font-size: 18px;width: 94%;" %>
+            <div class="filiados" style="width: 886px;font-size: 26px;">
+                <div class="field" style="margin-left: 100px;">
+                  <%= f.label :nome%>*: 
+                  <%= f.text_field :nome, placeholder:"Informe o nome do Cartório", style:"color: #4b5c6b;width: 80%;",required:true %>
                 </div>  
                 <br>
-                <div class="field">
+                <div class="field" style="margin-left: 100px;">
+                  <%= f.label :titular%>*: 
+                  <%= f.text_field :titular, placeholder:"Informe o nome completo do Titular", style:"color: #4b5c6b;width: 80%;",required:true %>
+                </div> 
+                <br>
+                <div class="field" style="margin-left: 44px;">
                   <%= f.label :logradouro %>:
-                  <%= f.text_field :logradouro, placeholder:"Ex: Rua Filadelfia Moreira", style:"font-size: 18px;width: 70%;" %> 
-                  <%= f.label :numero %>:
-                  <%= f.text_field :numero_casa, placeholder:"Ex: A1", style:"font-size: 18px;width: 13.2%;"  %>
+                  <%= f.text_field :logradouro, placeholder:"Ex: Rua Filadelfia Moreira", style:"color: #4b5c6b;width: 74%;" %> 
                 </div>
-                <div class="field">
+                <div class="field" style="margin-left: 11px;">
                   <%= f.label :complemento %>: 
-                  <%= f.text_field :complemento, placeholder:"Pontos de referêcia", style:"font-size: 18px;width: 88.5%;"  %>
+                  <%= f.text_field :complemento, placeholder:"Pontos de referêcia", style:"color: #4b5c6b;width: 42.9%;"  %>
+                  <%= f.label :numero %>:
+                  <%= f.text_field :numero_casa, placeholder:"Ex: A1", style:"color: #4b5c6b;width: 14.8%;"  %>
                 </div>
-                <div class="field">
+                <div class="field" style="margin-left:112px">
                   <%= f.label :bairro %>: 
-                  <%= f.text_field :bairro, placeholder:"Ex: Aldeota", style:"font-size: 18px;width: 20%;"  %>
+                  <%= f.text_field :bairro, placeholder:"Ex: Aldeota", style:"color: #4b5c6b;width: 36%;"  %>
                   <%= f.label :cidade%>: 
-                  <%= f.text_field :cidade, placeholder:"Ex: Fortaleza", style:"font-size: 18px;width: 14%;" %>
+                  <%= f.text_field :cidade, placeholder:"Ex: Fortaleza", style:"color: #4b5c6b;width: 30.2%;",required:true  %>
+                </div>
+                <div class="field" style="margin-left: 129px;">
                   <%= f.label :cep%>:
-                  <%= f.text_field :cep, placeholder:"Ex: 00000-0000", style:"font-size: 18px;width: 14%;",maxlength:"9"   %> 
+                  <%= f.text_field :cep, placeholder:"Ex: 00000-0000", style:"color: #4b5c6b;width: 33%;",maxlength:"9" ,required:true   %> 
                   <label>Telefone Fixo:</label>
-                  <%= f.text_field :telefone_fixo_casa, placeholder:"Ex: 0000-0000", style:"font-size: 18px;width: 14%;",maxlength:"10"   %> 
+                  <%= f.text_field :telefone_fixo_casa, placeholder:"Ex: 0000-0000", style:"color: #4b5c6b;width: 26%;",maxlength:"10"   %> 
                 </div>   
                 <br>
-                <div class="field" aligh="center">
+                <div class="field" aligh="center" style="margin-left:124px">
                   <%= f.label :cnpj %>: 
-                  <%= f.text_field :cnpj, placeholder:"Ex: 00.000.000/0000-00",style:"font-size: 18px;width: 14%;",maxlength:"14"  %>
+                  <%= f.text_field :cnpj, placeholder:"00.000.000/0000-00",style:"color: #4b5c6b;width: 30%;",maxlength:"14",required:true   %>
                   <%= f.label :cei %>:
-                  <%= f.text_field :cei, placeholder:"Ex: 000000",style:"font-size: 18px;width: 14%;",maxlength:"14"  %>
+                  <%= f.text_field :cei, placeholder:"000000",style:"color: #4b5c6b;width: 14%;",maxlength:"14" ,required:true  %>
                   <%= f.label :serventia %>:
-                  <%= f.text_field :serventia, placeholder:"Ex: 000000",style:"font-size: 18px;width: 14%;",maxlength:"6"  %>
+                  <%= f.text_field :serventia, placeholder:"000000",style:"color: #4b5c6b;width: 12%;",maxlength:"6",required:true   %>
                 </div>
                 <br>
-                <div class="field">
+                <div class="field" style="margin-left: 115px;">
                   <%= f.label :email %>: 
-                  <%= f.text_field :email, placeholder:"Ex: exemplo@exemplo.com", style:"font-size: 18px;width: 94.5%;"  %>
+                  <%= f.text_field :email, placeholder:"Ex: exemplo@exemplo.com", style:"color: #4b5c6b;width: 82%;" ,required:true  %>
                 </div>
               </div> 
             </div> 

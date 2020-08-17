@@ -1,37 +1,61 @@
-@charset "UTF-8"; 
+@charset "UTF-8";
+/* line 2, app/assets/stylesheets/simple_calendar.scss */
+/* line 4, app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar table {
   -webkit-border-horizontal-spacing: 0px;
   -webkit-border-vertical-spacing: 0px;
-  background-color: #f7f7f7;
+  background-color: azure;
   border-collapse: collapse;
   box-sizing: border-box;
   float: left;
-  height: 600px;
-  max-width: 59%;
-  width: 59%;
-} 
+  height: auto;
+  width: 100%;
+  border-top: 0px solid;
+    border-right: 2px solid #1abb9c;
+    border-left: 2px solid #1abb9c;
+    background-color: white;
+    border-bottom: 2px solid #1abb9c;
+}
+/* line 13, app/assets/stylesheets/simple_calendar.scss */
+/* line 17, app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar tr {
   border-collapse: collapse;
-} 
+}
+.simple-calendar .content-heading{ 
+  border-top: 20px solid #1abb9c;
+    border-radius: 36px;
+    border-bottom: 17px solid black;
+}
+/* line 16, app/assets/stylesheets/simple_calendar.scss */
+/* line 22, app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar tbody {
+  height: 152px;
+}
+
+/* line 19, app/assets/stylesheets/simple_calendar.scss */
+/* line 27, app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar th {
   padding: 6px;
-  border-bottom: 1px solid #000000;
-  border-collapse: collapse;
-  border-left: 1px solid #2a3f53;
-  border-right: 1px solid #2a3f53;
-  border-top: 0px none #333333;
-  box-sizing: border-box;
-  text-align: left;
-} 
+    border-bottom: 4px solid #1abb9c;
+    border-collapse: collapse;
+    border-left: 1px solid #2a3f53;
+    border-right: 1px solid #2a3f53;
+    border-top: 0px none #333333;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* line 29, app/assets/stylesheets/simple_calendar.scss */
+/* line 39, app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar td {
   padding: 6px;
   color: #2a3f53;
   vertical-align: top;
   width: 14%;
-  border: 1px solid #2a3f53;
+  border: 0px solid #2a3f53;
   border-top-color: #b55050;
   border-top-style: solid;
-  border-top-width: 1px;
+  border-top-width: 0px;
   border-right-color: #2a3f53;
   border-right-style: solid;
   border-right-width: 1px;
@@ -40,41 +64,82 @@
   border-bottom-width: 1px;
   border-left-color: #2a3f53;
   border-left-style: solid;
-  border-left-width: 1px;
-} 
+  border-left-width: 0px;
+  border-style:groove;
+  font-size:30px; 
+  font-family: Gilroy;
+}
+
+/* line 48, app/assets/stylesheets/simple_calendar.scss */
+/* line 60, app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar .day {
-  height: 80px;
-} 
-.simple-calendar .today { 
-  color: black; 
+  height: 120px;
+}
+
+/* line 51, app/assets/stylesheets/simple_calendar.scss */
+/* line 65, app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .today {
+  color: white;
+  background: #7a8fa180;
+}
+
+/* line 56, app/assets/stylesheets/simple_calendar.scss */
+/* line 72, app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .today text {
+  color: white;
   font-size: 17px;
-} 
-.simple-calendar .prev-month {
-  background: #1abb9c;
+}
+
+/* line 60, app/assets/stylesheets/simple_calendar.scss */
+/* line 78, app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .prev-month {background: #6283a4;
   color: white;
-} 
-.simple-calendar .next-month {
-  background: #1abb9c;
+}
+
+/* line 64, app/assets/stylesheets/simple_calendar.scss */
+/* line 84, app/assets/stylesheets/simple_calendar.scss */
+.simple-calendar .next-month {background: #6283a4;
   color: white;
-} 
+}
+
+/* line 68, app/assets/stylesheets/simple_calendar.scss */
+/* line 90, app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar .calendar-heading {
-  border-bottom: 1px solid black;
   text-align: center;
-  background-color: #1abb9c;
-  color: white;
-  width: 59%;
-  font-size: 50px;
-  border: 1px solid black;
-} 
+    background-color: #2a3f52;
+    color: #1abb9c;
+    font-size: 50px;
+    border-left: 4px solid #1abb9c;
+    border-right: 0px;
+}
+.simple-calendar thead{
+    border-top: 4px solid #1abb9c;
+    font-family: Gilroy ExtraBold;
+    border-top: 4px solid #1abb9c;
+    font-size: 20px;
+}
+/* line 77, app/assets/stylesheets/simple_calendar.scss */
+/* line 101, app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar .calendar-heading a {
   text-decoration: none;
   background-color: transparent;
-} 
+}
+
+/* line 81, app/assets/stylesheets/simple_calendar.scss */
+/* line 107, app/assets/stylesheets/simple_calendar.scss */
 .simple-calendar .calendar-heading p {
   display: inline;
   margin: 10px;
   margin-bottom: 20px;
-} 
+}
+.simple-calendar {
+  
+    float: left;
+    width: 100%; 
+    margin-bottom: 14px;
+}
+/* line 86, app/assets/stylesheets/simple_calendar.scss */
+/* line 114, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Alto {
   background-color: #ea3333;
   /* margin-left: 3px; */
@@ -84,25 +149,38 @@
   padding: 0px;
   border-radius: 8px;
   text-decoration: none;
-} 
+}
+
+/* line 96, app/assets/stylesheets/simple_calendar.scss */
+/* line 126, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Alto p {
-  background-color: #f7f7f7;
+  background-color: #ffd6d6;
   margin-right: auto;
   text-align: left;
-  border: 1px solid #ea3333; 
+  border: 2px solid #ea3333;
   padding-left: 5px;
   border-radius: 4px;
   text-decoration: none;
-} 
+  
+}
+
+/* line 105, app/assets/stylesheets/simple_calendar.scss */
+/* line 137, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Alto a {
   text-decoration: none;
-  font-size: 13px;
-  text-shadow:0px 2px 5px #ffffff;
+  font-size: 22px;
+  text-shadow: 0px 2px 5px #ffffff;
   color: black;
-} 
-#atividade #Alto a:hover  { 
-  text-decoration:underline;
 }
+
+/* line 111, app/assets/stylesheets/simple_calendar.scss */
+/* line 145, app/assets/stylesheets/simple_calendar.scss */
+#atividade #Alto a:hover {
+  text-decoration: underline;
+}
+
+/* line 114, app/assets/stylesheets/simple_calendar.scss */
+/* line 150, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Médio {
   background-color: #fffc46;
   /* margin-left: 3px; */
@@ -112,25 +190,37 @@
   padding: 0px;
   border-radius: 8px;
   text-decoration: none;
-} 
+}
+
+/* line 124, app/assets/stylesheets/simple_calendar.scss */
+/* line 162, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Médio p {
-  background-color: #f7f7f7;
+  background-color: #fffec6;
   margin-right: auto;
   text-align: left;
-  border: 1px solid #fffc46;
+  border: 2px solid #fffc46;
   padding-left: 5px;
   border-radius: 4px;
   text-decoration: none;
-} 
+}
+
+/* line 133, app/assets/stylesheets/simple_calendar.scss */
+/* line 173, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Médio a {
   text-decoration: none;
-  font-size: 13px;
+  font-size: 22px;
   text-shadow: 0px 2px 5px #ffffff;
   color: black;
-} 
+}
+
+/* line 139, app/assets/stylesheets/simple_calendar.scss */
+/* line 181, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Médio a:hover {
   text-decoration: underline;
 }
+
+/* line 142, app/assets/stylesheets/simple_calendar.scss */
+/* line 186, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Baixo {
   background-color: #4696ff;
   /* margin-left: 3px; */
@@ -140,82 +230,144 @@
   padding: 0px;
   border-radius: 8px;
   text-decoration: none;
-} 
+}
+
+/* line 152, app/assets/stylesheets/simple_calendar.scss */
+/* line 198, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Baixo p {
-  background-color: #f7f7f7;
+  background-color: #b3d4ff;
   margin-right: auto;
   text-align: left;
-  border: 1px solid #4696ff;
+  border: 2px solid #4696ff;
   padding-left: 5px;
   border-radius: 4px;
   text-decoration: none;
-} 
+}
+
+/* line 161, app/assets/stylesheets/simple_calendar.scss */
+/* line 209, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Baixo a {
   text-decoration: none;
-  font-size: 13px;
+  font-size: 22px;
   text-shadow: 0px 2px 5px #ffffff;
   color: black;
-} 
+}
+
+/* line 167, app/assets/stylesheets/simple_calendar.scss */
+/* line 217, app/assets/stylesheets/simple_calendar.scss */
 #atividade #Baixo a:hover {
   text-decoration: underline;
 }
+
+/* line 170, app/assets/stylesheets/simple_calendar.scss */
+/* line 222, app/assets/stylesheets/simple_calendar.scss */
 #atividade p {
   margin: 3px;
   padding: 0px;
-} 
+  font-size: 19px;
+  font-family: Gilroy;
+}
+#atividade { 
+  padding: 1px;
+}
+/* line 174, app/assets/stylesheets/simple_calendar.scss */
+/* line 228, app/assets/stylesheets/simple_calendar.scss */
 .calendario .CadastroAgenda {
-  margin-top: -80px;
-  margin-left: px; 
-  height: 600px;
-  text-align: center;
+  /* margin-top: -80px; */
+  /* height: 600px; */
+  /* text-align: center; */
   float: right;
+  /* width: 21%; */
 }
-.calendario .x_panel{
-  width: 100%; 
-  height: 635px;
-  width:560px;
-  text-align: center;
-  float: right;
-  margin-top: 4px;
-} 
-.calendario .CadastroAgenda .table{
-  width:532px;
-} 
+
+/* line 181, app/assets/stylesheets/simple_calendar.scss */
+/* line 237, app/assets/stylesheets/simple_calendar.scss */
+.CadastroAgenda .x_panel {
+  font-family: Gilroy;
+  background-color: #f0f0f0;
+  text-align: left;
+  padding: 20px;
+  margin-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  height: 490px;
+  color: #1abb9c;
+  background: #f0f0f0;
+  border: 2px solid #dfdfdf;
+  border-radius: 6px;
+  height: 576px;
+  width: 100%;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.CadastroAgenda .x_panel p {
+  display: inline-flex;
+  padding: 6px; 
+  color: #5e7283;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  border: 1px solid black;
+  color: #7d8f9b;
+  border: 1px solid #1abb9c;
+  border-radius: 2px;
+  background: #ffffff;
+}
+.CadastroAgenda h2{
+  font-size: 24px;
+}
+.calendario .CadastroAgenda .table {
+  width: 631px;
+}
+
+/* line 190, app/assets/stylesheets/simple_calendar.scss */
+/* line 251, app/assets/stylesheets/simple_calendar.scss */
 .calendario {
-  margin-top: 30px;
-  height: 700px;
+  margin-top: 30px; 
+
 }
+
+/* line 194, app/assets/stylesheets/simple_calendar.scss */
+/* line 257, app/assets/stylesheets/simple_calendar.scss */
 .botao_novo {
   background: #26B99A;
   border: 1px solid #169F85;
-  height: 25px; 
-  border-radius: 3px; 
-  width: 110px;
-  position:relative;
-  left:456px;
-  bottom:46px
+  height: 25px;
+  border-radius: 3px;
+  width: 114px;
+  position: relative;
+  left: 456px;
+  bottom: 46px;
 }
-.botao_novo:hover{
-  background: #1e8a73; 
+ 
+.botao_novo:hover {
+  background: #1e8a73;
 }
-.botao_novo a{ 
-  color: black;  
-  padding:7px; 
+ 
+.botao_novo a {
+  color: black;
+  padding: 7px;
 }
-.btn_salvar{
-  margin-top:330px;
-  margin-left:470px;
+ 
+.btn_salvar {
+  margin-top: 330px;
+  margin-left: 470px;
 }
+ 
 .label-align {
   text-align: right;
   width: 100px;
-} 
-h2 a{ 
+}
+ 
+h2 a {
   margin-left: 26px;
 }
+ 
 h2 .actions {
-  padding-left:80%;
+  padding-left: 80%;
 }
+ 
 h2 .actions-form {
   float: right;
 }

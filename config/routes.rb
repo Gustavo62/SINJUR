@@ -1,5 +1,5 @@
-Rails.application.routes.draw do
-  get 'estatisticas/index'
+Rails.application.routes.draw do  
+  root 'restrito/tela_agenda/atividades#index'
   resources :estatisticas
   devise_for :admins 
   resources :documentos
@@ -11,13 +11,12 @@ Rails.application.routes.draw do
   resources :filiados, only: [:index, :edit,:delete,:destroy,:new,:show,:create,:update]
   namespace :restrito do
     namespace :tela_agenda do
-      resources :atividades
+      resources :atividades 
     end
   end 
   resources :cadastro_atendimentos do 
-      delete :delete_docs_attachment 
+      delete :delete_docs_attachment  
   end
-  root 'restrito/welcome#index'
   namespace :restrito do
     get 'ferramentas/index'
   end 
@@ -32,7 +31,7 @@ Rails.application.routes.draw do
   end 
   resources :tabeliaos
   namespace :restrito do
-    get 'welcome/index' => 'static_pages#welcome/index'
+    get 'welcome/index' 
   end
   namespace :site do
     get 'welcome/index'

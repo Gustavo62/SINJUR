@@ -4,4 +4,4 @@
 //= require moment
 //= require datetime_picker
 //= require_tree .
-//= require trix 
+//= require trix   

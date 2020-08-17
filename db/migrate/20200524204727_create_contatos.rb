@@ -8,7 +8,7 @@ class CreateContatos < ActiveRecord::Migration[5.2]
       t.string :bairro
       t.string :cidade
       t.string :observacao
-      t.string :dn
+      t.date :dn
       t.string :email
       t.string :site
       t.string :cep

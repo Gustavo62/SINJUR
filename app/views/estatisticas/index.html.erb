@@ -1,8 +1,9 @@
 <%= javascript_include_tag 'Chart.bundle', 'chartkick'%>  
-<div class="col-md-4 col-sm-4 ">
-    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="height: auto;">
-    <div class="x_title">
-        <h2>Atendimentos<small>Por dia da semana.</small></h2> 
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %> 
+<div class="col-md-4 col-sm-4 " style="width: 30.8%;">
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: -11px;height: auto;min-height:522px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+    <div class="x_title" style="color: #4a6e90;">
+        <h2>Atendimentos<small>Por periodo do mês.</small></h2> 
         <div class="clearfix"></div>
     </div>
     <div class="x_content">
@@ -13,9 +14,8 @@
             </th>
         </tr>
         <tr>
-            <td>
-
-            <%= column_chart @atends.group_by_day_of_week(:data_atendimento, format: "%a").count, width: "335px", height: "340px",min:0.0,max:50 %>
+            <td> 
+                 <%= line_chart @atends.group_by_month(:data_atendimento).count,width: "395px", height: "390px",min:0,label: "Atendimentos",discrete: true,points: false%> 
             </td>
         </tr>
         </table>
@@ -23,14 +23,14 @@
     </div>
 </div> 
 <div class="col-md-4 col-sm-4 ">
-    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="height: auto;max-height: 452px;">
-    <div class="x_title">
-        <h2>Analise dos Processos<small></small></h2> 
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="min-width: 580px;margin-left: -16px;height: auto;min-height: 494px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+    <div class="x_title" style="color: #4a6e90;">
+        <h2>Processos<small></small></h2> 
         <div class="clearfix"></div>
     </div>
     <div class="x_content" style="padding: 27px;">
-        <table class="" style="width:100%">
-        <caption><h2>Analise pelo status.</h2></caption>
+        <table class="" style="width:100%;">
+        <caption><h2 style="color: #4a6e90;font-size: 22px;">Status do processo.</h2></caption>
         <tr>
             <th style="width:37%;">
             <p></p>
@@ -47,13 +47,13 @@
         <tr>
             <td>
 
-            <%= pie_chart @procs.group(:status_processo).count,legend:false, width: "100px", height: "100px", colors: ["#f42", "#2C7","#fa2"]%> 
+            <%= pie_chart @procs.group(:status_processo).count,donut:true,legend:false, width: "150px", height: "150px", colors: ["#4a6e91", "#2C7","#fa2"]%> 
             </td>
             <td>
             <table class="tile_info">
                 <tr >
                 <td>
-                    <p><i class="fa fa-square blue" style="color:#fe4310"></i>Aberto </p>
+                    <p><i class="fa fa-square blue" style="color:#4a6e91"></i>Aberto </p>
                 </td>
                 <td>
                     <% begin %>
@@ -91,38 +91,136 @@
             </td>
         </tr>
         </table>
-        <div ><small class="numeros_g"><%= @qtd_procs%></small> <br><span style="font-size: 18px;">Processos cadastrados no sistema.</span></div>
-        <div ><small class="numeros_g"><%= @favoritos%></small> <br><span style="font-size: 18px;">Processos com <i class="fa fa-heart"></i>.</span></div>
+        <div ><small class="numeros_g"><%= @qtd_procs%></small> <br><span style="font-size: 18px;color: #4a6e90" >Processos cadastrados no sistema.</span></div>
+        <div ><small class="numeros_g"><%= @favoritos%></small> <br><span style="font-size: 18px;color: #4a6e90">Processos com <i class="fa fa-heart"></i>.</span></div>
     </div>
     </div>
 </div>  
-<div class="col-md-4 col-sm-4 ">
-    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="height: auto;">
-    <div class="x_title">
-        <h2>Atendimentos<small>Por dia da semana.</small></h2> 
+<div class="col-md-4 col-sm-4 " >
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: -4.4px;height: auto;min-height: 494px;width: 146%;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+    <div class="x_title" style="color: #4a6e90;">
+        <h2>Atividades<small></small></h2> 
         <div class="clearfix"></div>
     </div>
-    <div class="x_content">
-        <table class="" style="width:100%">
+    <div class="x_content" style="padding: 27px;margin-top: -20px;">
+        <table class="" style="width:100%;">
+        <caption><h2 style="color: #4a6e90;font-size: 22px;">Status das atividade.</h2></caption>
         <tr>
-            <th>
+            <th style="width:37%;">
             <p></p>
+            </th>
+            <th>
+            <div class="col-lg-7 col-md-7 col-sm-7 ">
+                <p class=""></p>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 ">
+                <p class=""></p>
+            </div>
             </th>
         </tr>
         <tr>
             <td>
 
-            <%= column_chart @atends.group_by_day_of_week(:data_atendimento, format: "%a").count, width: "335px", height: "340px",min:0.0,max:50 %>
+            <%= pie_chart @atividades.group(:status).count,legend:false, donut:true,width: "100px", height: "100px", colors: ["#4a6e91", "#2C7"]%> 
+            </td> 
+            <td>
+            <table class="tile_info">
+                <tr >
+                    <td>
+                        <p><i class="fa fa-square blue" style="color:#4a6e91"></i>Aberto </p>
+                    </td>
+                    <td>
+                        <% begin %>
+                            <%= @porcentagem_atividades_aberto.round(0)  %>%
+                        <% rescue %>
+                        N/D
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><i class="fa fa-square red" style="color:#22cc77"></i>Concluido </p>
+                    </td> 
+                    <td>
+                        <% begin %>
+                            <%= @porcentagem_atividades_concluido.round(0)  %>%
+                        <% rescue %>
+                            N/D
+                        <% end %>
+                    </td>
+                </tr> 
+            </table>
             </td>
+        </tr> 
+        </table> 
+        <table class="" style="width:100%;">
+        <caption><h2 style="color: #4a6e90;font-size: 22px;padding-top: 27px;">Atividades abertas.</h2></caption>
+        <tr>
+            <th style="width:37%;">
+            <p></p>
+            </th>
+            <th>
+            <div class="col-lg-7 col-md-7 col-sm-7 ">
+                <p class=""></p>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 ">
+                <p class=""></p>
+            </div>
+            </th>
         </tr>
-        </table>
+        <tr>  
+            <td> 
+                <%= pie_chart @atividades.group(:nivel).count,legend:false, donut:true,width: "100px", height: "100px", colors: ["#fe3867", "#53a1ff", "#ffe71c"]%> 
+            </td> 
+            <td>
+            <table class="tile_info">
+                <tr >
+                    <td>
+                        <p><i class="fa fa-square blue" style="color:#fe3866"></i>Alto </p>
+                    </td>
+                    <td>
+                        <% begin %>
+                            <%= @nivel_alto %>
+                        <% rescue %>
+                        N/D
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><i class="fa fa-square red" style="color:#ffe71c"></i>Médio </p>
+                    </td> 
+                    <td>
+                        <% begin %>
+                            <%= @nivel_medio %>
+                        <% rescue %>
+                            N/D
+                        <% end %>
+                    </td>
+                </tr> 
+                <tr>
+                    <td>
+                        <p><i class="fa fa-square red" style="color:#53a1ff"></i>Baixo </p>
+                    </td> 
+                    <td>
+                        <% begin %>
+                            <%= @nivel_baixo  %>
+                        <% rescue %>
+                            N/D
+                        <% end %>
+                    </td>
+                </tr> 
+            </table>
+            </td>
+        </tr> 
+        </table>  
     </div>
     </div>
 </div> 
  <br><div class="clearfix"></div>
 <div class="row"> 
-    <div class="x_panel" STYLE="MARGIN-LEFT:20PX;width: 97%;">
-        <div class="x_title">
+    <div class="x_panel" STYLE="MARGIN-LEFT:9PX;width: 98.9%;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+        <div class="x_title" style="color: #4a6e90;">
             <h2>Atividade da semana<small><%= Time.now.strftime("%d/%m/%Y")%></small></h2> 
             <div class="clearfix"></div>
         </div> 
@@ -132,7 +230,7 @@
                     <%= week_calendar events: @atividades do |date, atividades| %> 
                         <% atividades.each do |atividade| %>  
                             <% if atividade.status == "Aberto"%>  
-                                <li style="display:block;width: 97%;">  
+                                <li style="display: block;width: 1539px;margin-left: -250px;">  
                                     <div class="block">
                                         <div class="block_content">
                                             <h2 class="title" ><a style="margin-left: 4px;"><%=atividade.titulo%></a></h2>
@@ -145,7 +243,7 @@
                                             </div>
                                             <p class="excerpt"><%=atividade.resumo.unpack(("a%i" % 45) * (atividade.resumo.size / 45.0).ceil).join("\n").force_encoding("UTF-8")%><br>
                                             </p>
-                                            <a style="margin-left: 90%;"><%= link_to 'Visualizar Atividade', atividade, class:"ver_atividade"%></a>
+                                            <a><%= link_to 'Visualizar Atividade', atividade, class:"btn_consulta", style:"width: 166px;text-align: center;font-size: 14px;float: right;margin-top: -17px;"%></a>
                                         </div>
                                     </div>   
                                 </li>  
@@ -155,4 +253,8 @@
                 </ul>
             </div> 
     </div> 
-</div>
+</div>  
+
+<script>
+
+</script>

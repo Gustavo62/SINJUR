@@ -3,4 +3,3 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
     $('#atividade_data').datepicker()
- 

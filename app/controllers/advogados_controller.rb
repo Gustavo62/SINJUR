@@ -42,7 +42,7 @@ class AdvogadosController < ApplicationController
   def update
     respond_to do |format|
       if @advogado.update(advogado_params)
-        format.html { redirect_to @advogado, notice: 'Advogado was successfully updated.' }
+        format.html { redirect_to @advogado, notice: 'Advogado foi atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @advogado }
       else
         format.html { render :edit }

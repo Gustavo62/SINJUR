@@ -1,15 +1,13 @@
 <div class="nested-fields" style="
     padding: 11px; 
-    background-color: aliceblue;
-    border: 1px solid; 
-    margin-top: 12px;
+    background-color: aliceblue; 
     border-radius: 2px;
+    margin-top: -22px;
 ">
-    <div class="field"> 
-        <div class="field" style="text-align: inherit;">
-            <%= f.label :documento%>
-            <%= f.file_field :documento%>
-            <%= link_to_remove_association('', f,class:"fa fa-remove")%>
+    <div class="field" >  
+        <div class="field" style="text-align: center;">
+            <%= f.file_field :documento, style:"width: 97%;",class:"custom-file-input"%>
+            <%= link_to_remove_association('', f,class:"fa fa-trash-o",style:"color: red;font-size: 25px;vertical-align: middle;")%>
         </div>
     </div>
 </div>

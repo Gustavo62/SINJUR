@@ -1,10 +1,12 @@
 
 <div class="x_panel" style="font-size:16px">
   <div class="x_title">
-    <h2 style="width:100%">Atendimento
-      <small style="float:right">
-      <%= link_to 'Editar', edit_cadastro_atendimento_path(@cadastro_atendimento) ,class:"fa fa-pencil-square-o"%>
-      <%= link_to 'Voltar', cadastro_atendimentos_path,class:"fa fa-reply" %>
+    <h2 style="width:100%">Atendimento 
+      <small style="float:right" >
+        <%= link_to 'Voltar', cadastro_atendimentos_path,class:"fa fa-reply", style:"margin-top: 8px;"  %>
+        <div style="float: right;margin-left: 10px;">
+          <%= button_to 'Editar', edit_cadastro_atendimento_path(@cadastro_atendimento), method: :get, class:'btn_consulta',style:"width: 115px;font-size: 18px;"%>
+        </div> 
       </small>
     </h2>
       
@@ -20,7 +22,7 @@
       <small>
         <% @filiados_for_select.each do |filiados|%>
           <% if filiados.id == @cadastro_atendimento.codigo_tj_filiado %>
-            <%= filiados.codigo_tj%>
+            <%= filiados.serventia%>
           <% end %>
         <% end %>
       </small>
@@ -37,7 +39,7 @@
             <%= docs.documento.filename%> 
           </small>
           <%= link_to 'Download', rails_blob_path(docs.documento, disposition: 'attachment'), style:"text-decoration:underline"%>
-          <%= button_to 'Deletar', docs, method: :delete, data: { confirm: 'Are you sure?' } , style:"margin-left: 28px;"%>
+          <%= button_to 'Deletar', docs, method: :delete, :onclick => "return confirm('Tem certeza que deseja apagar este documento?')" , style:"margin-left: 28px;"%>
           </h2>
         <% end %>
       
@@ -48,7 +50,7 @@
     </div>
     <h2 style="font-size: 30px;"> <small style="float: left;">Advogados.</small> <small style="text-align: right;width: 49.5%;">Pessoas.</small></h2>
     <div id="advogados">
-      <% if @testeadv%>
+      <% if @testeadv%> 
         <% @cadastro_atendimento.advogados.each do |adovagos| %>
           <h2 style="font-size: 20px;">Nome: <small><%=adovagos.nome %></small></h2>
           <h2 style="font-size: 20px;">Advogado: <small><%=adovagos.advogado %></small></h2>
@@ -56,6 +58,7 @@
           <h2 style="font-size: 20px;">Cidade: <small><%=adovagos.cidade %></small>,Cep: <small><%=adovagos.cep %></small>,Telefone: <small><%=adovagos.telefone %></small></h2>
           <h2 style="font-size: 20px;">Endereço: <small><%=adovagos.endereço %></small>, Bairro<small><%=adovagos.bairro %></small></h2>
           <h2 style="font-size: 20px;">Oab: <small><%=adovagos.oab %></small>,Observação: <small><%=adovagos.observação %></small></h2>
+          <br><hr><br>
         <% end %> 
       <% else %> 
         <h4>Não existem Advogados cadastrados neste atendimento.</h4>
@@ -73,7 +76,8 @@
           <h2 style="font-size: 20px;">Endereço: <small><%=pessoas.endereço %></small>, Cep: <small><%=pessoas.cep %></small></h2>
           <h2 style="font-size: 20px;">Cidade: <small><%=pessoas.cidade %></small>, Bairro: <small><%=pessoas.bairro %></small></h2>
           <h2 style="font-size: 20px;">Residencial: <small><%=pessoas.residencial %></small>, Comercial: <small><%=pessoas.comercial %></small>, Celular: <small><%=pessoas.celular %></small></h2>
-          <h2 style="font-size: 20px;">E-mail: <small><%=pessoas.email %></small></h2>
+          <h2 style="font-size: 20px;">E-mail: <small><%=pessoas.email %></small></h2> 
+          <br><hr><br>
         <% end %> 
       <% else %>
          <h4>Não existem Pessoas cadastrados neste atendimento.</h4>
@@ -97,7 +101,7 @@
               <% end %>
             </small>
           </h2>
-          
+          <br><hr><br>
         <% end %> 
       <% else %>
       <h4>Não existem Processos em anexo neste atendimento.</h4>
@@ -107,3 +111,4 @@
   <br> 
   
 </div>
+<div class="clearfix"></div>

@@ -1,27 +1,39 @@
 <div style="text-align:center">
-<div class="container body" style="text-align:center;font-size:18px">
-  <div class="main_container" style="text-align:center"> 
+  <div class="container body" style="text-align:center;font-size:18px">
+    <div class="main_container" style="text-align:center"> 
 
-    <!-- top navigation --> 
-    <!-- page content --> 
+      <!-- top navigation --> 
+      <!-- page content --> 
       <div class="" style="text-align:center"> 
 
         <div class="clearfix"  style="text-align:center"></div>
 
         <div class="row" style="display: block;text-align:center"">
           <div class="col-md-6 col-sm-6  " style="width: 100%;margin-left: auto;margin-right: auto;text-align: center;">
-            <div class="x_panel" style="text-align:center;width: 100%;">
+            <div class="x_panel" style="color: #2a3f53;
+    text-align: center;
+    width: 100%;
+    background: #ffffff;
+    font-family: Gilroy;">
               <div class="x_title">
                 <%= form_tag(contatos_path, method: :get) do %>
-                  <div class="col-md-5 col-sm-5   form-group pull-right top_search" style="width:100%;text-align:center">
-                    <div class="input-group"> 
-                      <h2 style="width: 100%;text-align: initial;">Contatos
+                  <div class="col-md-5 col-sm-5   form-group pull-right top_search" style="WIDTH: 97%;text-align:center">
+                    <div class="input-group" > 
+                      <h2 style="width: 100%;text-align: initial;font-family: Gilroy ExtraBold;">Contatos
                         <small style="float: right;text-align: end;">
-                          <%= text_field_tag 'cidade', nil, type:'text', placeholder:"Ex: Fortaleza", class:"form-control", style:"width: 20%;margin-right: 63px;font-size: 20px;"%>
-                          <%= text_field_tag 'email', nil, type:'text', placeholder:"Ex: teste@teste.com",  class:"form-control", style:"width: 30%;font-size: 20px;margin-right: 64px;"%>
-                          <span class="input-group-btn"> 
-                            <%= submit_tag "Consultar",  class:"btn btn-success", style:"font-size: 20px;"%></h3> 
-                          </span>  
+                          Cidade: <%= text_field_tag 'cidade', nil, type:'text', placeholder:"Ex: Fortaleza", class:"form-control", style:"width: 29%;
+    font-size: 20px;
+    border-radius: 2px;
+    background: transparent;
+    border: 2px solid #26b99a;
+    color: white;"%>
+                          E-mail: <%= text_field_tag 'email', nil, type:'text', placeholder:"Ex: teste@teste.com",  class:"form-control", style:"width: 33%;
+    font-size: 20px;
+    border-radius: 2px;
+    background: transparent;
+    border: 2px solid #26b99a;
+    color: white;"%>
+                          <%= submit_tag "Consultar",  id:'btn_consulta_escuro', style:"font-size: 20px;"%></h3> 
                         </small>
                       </h2>
                     </div>
@@ -29,7 +41,7 @@
                 <% end %>  
                 <div class="clearfix"></div>
               </div>
-              <div class="x_content" style="text-align:center">
+              <div class="x_content" style="min-height:760px;text-align:center">
 
                 <table class="table"  style="width:100%">
                   <thead>
@@ -52,31 +64,45 @@
                           <td><%= ((contato.telefones.sample).telefone) %></td> 
                         <% rescue %>   
                         <% end %> 
-                        <div id="interacoes">
-                          <td class="opt"><i class="fa fa-ellipsis-v"></i>
-                          <div class="bts">
-                            <%= button_to 'Visualizar' , contato, method: :get, style:"width:100px;margin: auto;",class:'btn btn-success'%>
-                            <%= button_to 'Editar', edit_contato_path(contato), method: :get, style:"width:100px;margin: auto;",class:'btn btn-success'%>
-                            <%= button_to 'Deletar', contato, method: :delete, data: { confirm: 'Are you sure?' }, style:"width:100px;margin: auto;",class:'btn btn-success'%>
-                          </div>
-                          </td>
-                        </div>
+                        <td style="width:7%;padding:2px"><%= button_to 'Visualizar' , contato, method: :get,class:'btn_view',style:"width: 100%;"%></td>
+                        <td style="width:7%;padding:2px"><%= button_to 'Editar', edit_contato_path(contato), method: :get,class:'btn_edit',style:"width: 100%;"%></td>
+                        <td style="width:7%;padding:2px"><%= button_to 'Excluir', contato, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'btn_eraser',style:"width: 100%;"%></td>
+                        
                       </tr>
+                      <script>
+                        function ConfirmDelete(button) {
+                          alertify.confirm("<p style='font-size:15px'>Deseja excluir o contato de <%= contato.nome%>?</p><br><p style='color:red'>esta ação não pode ser desfeita.<p>", function() {
+                            button.form.submit() 
+                          }, function() {
+                            alertify.error("Você cancelou a ação");
+                          }).set('defaultFocus', 'Cancelar');
+
+                          return false;
+                        }
+                      </script>
                     <% end %> 
                     
                   </tbody>
-                </table>
-
+                  <div class="clearfix"></div>
+                </table> 
+                  <div style="float: none;display: flow-root;">
+                    <%= paginate @contatos,style:"text-align:center"%>
+                  </div>
               </div>
             </div>
             <div>
-            <%= link_to 'Novo Contato', new_contato_path,  class:"btn btn-success", style:"color: #000;padding: 5px;margin-left: 91%;font-size:14px"%>
+              
             </div>          
           </div> 
-          <div class="clearfix"></div>
-          
+          <div class="atv">
+            <div class="add">
+              <%= link_to '',new_contato_path,method: :get,class:"fa fa-plus",style:"background: aliceblue;border: 7px solid #6285a4;background: #00fbcf;font-size: 43px;border-radius: 30px;padding: 2px 7px;text-align: left;padding-right: 83px;position: fixed;top: 88%;left: 97%;float: right;z-index: 9;color: #6284a4;border-style: double;"%>
+            </div>
+              <span class="add_atv">Adicionar Contato </span> 
+          </div>
+          <div class="clearfix"></div> 
         </div>
       </div> 
-  </div>
-</div>  
+    </div>
+  </div>  
 </div>

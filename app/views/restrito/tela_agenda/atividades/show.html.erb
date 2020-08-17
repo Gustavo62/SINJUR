@@ -1,34 +1,46 @@
 
-<div id="index">
-  <div class="calendario"><%= render 'teste'%>
-    <div class="CadastroAgenda">
-      <div class="x_panel" style="height: 678px;">
-        <div class="x_title">
-          <h2 style="width:100%;text-align: left;">Atividade
-            <small class="actions" style="padding-left: 50%;">
-            <%= link_to 'Editar', edit_restrito_tela_agenda_atividade_path(@restrito_tela_agenda_atividade),class:"fa fa-pencil-square-o"%>
-            <%= link_to 'Voltar', restrito_tela_agenda_atividades_path,class:"fa fa-reply" %>
-            </small>
-          </h2>
-            
-          <div class="clearfix"></div>
-        </div>
-        <div class="x_content" style="text-align: initial;">
-        <h2>Id: <small><%=@restrito_tela_agenda_atividade.id %></small></h2>  
-        <div class="clearfix"></div>  
-        <h2>Tipo: <small><%=@restrito_tela_agenda_atividade.tipo %></small></h2>  
-        <div class="clearfix"></div>  
-        <h2>Título: <small><%=@restrito_tela_agenda_atividade.titulo %></small></h2>  
-        <div class="clearfix"></div>  
-        <h2>Nível: <small><%=@restrito_tela_agenda_atividade.nivel %></small></h2>  
-        <div class="clearfix"></div>  
-        <h2>Data: <small><%=@restrito_tela_agenda_atividade.agendamento.strftime("%d/%m/%Y") %></small></h2>  
-        <div class="clearfix"></div> 
-        <h2>Resumo: <small style="width: 200px;"><%=(@restrito_tela_agenda_atividade.resumo.unpack(("a%i" % 50) * (@restrito_tela_agenda_atividade.resumo.size / 50.0).ceil).join("\n")).force_encoding("UTF-8") %></small></h2>  
-        <div class="clearfix"></div> 
-        <div class="clearfix"></div> 
-      
-      </div>  
-    </div>
-  </div>
+<div class="calendario">
+  <%= render 'teste', style:'float: left;'%>
+  <br>   
 </div>
+<div class="modal__overlay" tabindex="-1" data-micromodal-close style="font-family:Gilroy">
+  <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+    <header class="modal__header">
+        <h2 class="modal__title" id="modal-1-title">
+        Adicionar Atividade 
+        </h2>    
+    </header>
+    <main class="modal__content" id="modal-1-content">
+      <div class="CadastroAgenda">
+        <div class="x_panel" style="height: auto;">  
+          <div class="clearfix"></div>  
+          <h2 style="margin-left: 38px;">Tipo:   <p style="width: 80%;margin-left: 20px;"><%=@restrito_tela_agenda_atividade.tipo %>.</p></h2>  
+          <div class="clearfix"></div>  
+          <h2 style="margin-left: 25px;">Título: <p style="width: 78%;margin-left: 21px;"><%=(@restrito_tela_agenda_atividade.titulo.unpack(("a%i" % 35) * (@restrito_tela_agenda_atividade.titulo.size / 35.0).ceil).join("\n")).force_encoding("UTF-8") %></p></h2>  
+          <div class="clearfix"></div>  
+          <h2 style="margin-left: 33px;">Nível:  <p style="width: 80%;margin-left: 20px;"><%=@restrito_tela_agenda_atividade.nivel %>.</p></h2>  
+          <div class="clearfix"></div>  
+          <h2 style="margin-left: 30px;">Data:   <p style="width: 80%;margin-left: 19px;"><%=@restrito_tela_agenda_atividade.agendamento.strftime("%d/%m/%Y as %H:%m")%>.</p></h2>  
+          <div class="clearfix"></div> 
+          <h2>Resumo: <p style="height: 166px;width: 75%;margin-left: 20px;"><%=(@restrito_tela_agenda_atividade.resumo.unpack(("a%i" % 50) * (@restrito_tela_agenda_atividade.resumo.size / 50.0).ceil).join("\n")).force_encoding("UTF-8") %></small></h2>  
+        </div> 
+        <footer class="modal__footer" style="margin-left:0px;">   
+          <%= link_to "Voltar", restrito_tela_agenda_atividades_path,class:"modal__btn",style:"font-family: Gilroy ExtraBold;float: left;"%>  
+          <%= link_to 'Editar', edit_restrito_tela_agenda_atividade_path(@restrito_tela_agenda_atividade), class:"modal__btn modal__btn-primary",style:"font-family: Gilroy ExtraBold;float: right;"%>
+          <%= button_to 'Excluir', @restrito_tela_agenda_atividade, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'modal__btn',style:"float: right;margin-right: 17px;color: white;background: red;font-family: Gilroy ExtraBold;"%>
+        </footer> 
+      </div>    
+    </main>  
+  </div>
+</div>  
+<script>
+  function ConfirmDelete(button) {
+    alertify.confirm("<p style='font-size:15px'>Deseja excluir a atividade <%= @restrito_tela_agenda_atividade.titulo%>, agendada para o dia <%=@restrito_tela_agenda_atividade.agendamento.strftime("%d/%m/%Y as %H:%m")%> ?</p></h2></p><br><p style='color:red'>esta ação não pode ser desfeita.<p>", function() {
+      button.form.submit() 
+    }, function() {
+      alertify.error("Você cancelou a ação");
+    }).set('defaultFocus', 'Cancelar');
+
+    return false;
+  }
+</script>

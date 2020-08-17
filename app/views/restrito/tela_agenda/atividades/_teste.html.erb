@@ -5,9 +5,14 @@
 <% atividades.each do |atividade| %> 
     <div id="atividade">
         <%if atividade.status == "Aberto"%> 
-            <div id="<%=atividade.nivel%>"> 
-            <p><%= link_to atividade.titulo, atividade %></p>
-            </div> 
+            <%if atividade.titulo != ""%> 
+                <div id="<%=atividade.nivel%>"> 
+                <p style="padding: 6px;margin:2px"><%= link_to (atividade.titulo.unpack(("a%i" % 25) * (atividade.titulo.size / 25.0).ceil).join("\n")).force_encoding("UTF-8"), atividade %></p>
+                </div> 
+            <% else %>
+                <div id="<%=atividade.nivel%>"> 
+                <p><%= link_to "Sem Titulo", atividade %></p>
+            <% end %>
         <% end %> 
     </div> 
 <% end %>

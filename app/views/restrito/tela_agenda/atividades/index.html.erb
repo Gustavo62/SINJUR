@@ -1,66 +1,12 @@
- <div id="index">
-  <div class="calendario"><%= render 'teste'%>
-    <div class="CadastroAgenda">
-      <div class="col-md-5 col-sm-5   form-group pull-right top_search">
-        <div class="input-group">
-          <div style="padding:2px">
-            <%= form_tag(restrito_tela_agenda_atividades_path, method: :get) do %>
-              <h3>Tipo:
-              <%= select_tag "tipo", raw("<option>Todos</option><option>Atividade</option><option>Lembrete</option><option>Agendamento</option>"),class:"form-control",style:"width:100px"%> 
-              Nivel: 
-              <%= select_tag "nivel", raw("<option>Todos</option><option>Alto</option><option>Médio</option><option>Baixo</option>"), class:"form-control",style:"width:100px"%> 
-              Data:
-              <%= text_field_tag 'agendamento', Time.now.strftime("%d/%m/%Y"),type:"date",class:"form-control",style:"width:154px"%>
-              <%= submit_tag 'Pesquisar', class:'btn btn-success' %>  
-            <% end %>
-          </div>  
-        </div> 
-        <div class="col-md-6 col-sm-6  ">
-          <div class="x_panel" style="height: 617px;">
-            <div class="x_title">
-              <h2>Atividades<small>resultado</small></h2>
-                
-              <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-
-              <table class="table table-striped">
-                <thead>
-                  <tr> 
-                    <th>Status</th>
-                    <th>Titulo</th>
-                    <th>Nivel</th>
-                    <th>Data</th>
-                    <th colspan="3"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <% @restrito_tela_agenda_atividades.each do |restrito_tela_agenda_atividade| %>
-                      <tr> 
-                        <td><%= restrito_tela_agenda_atividade.status %></td>
-                        <td><%= restrito_tela_agenda_atividade.titulo %></td>
-                        <td><%= restrito_tela_agenda_atividade.nivel %></td> 
-                        <td><%= restrito_tela_agenda_atividade.agendamento.strftime("%d/%m/%Y as %H:%M ") %></td>
-                        <div id="interacoes">
-                          <td class="opt"><i class="fa fa-ellipsis-v"></i>
-                          <div class="bts">
-                            <%= button_to 'Visualizar' , restrito_tela_agenda_atividade, method: :get, style:"width:100px;margin: auto;",class:'btn btn-success'%>
-                            <%= button_to 'Editar', edit_restrito_tela_agenda_atividade_path(restrito_tela_agenda_atividade), method: :get, style:"width:100px;margin: auto;",class:'btn btn-success'%>
-                            <%= button_to 'Deletar', restrito_tela_agenda_atividade, method: :delete, data: { confirm: 'Are you sure?' }, style:"width:100px;margin: auto;",class:'btn btn-success'%>
-                          </div>
-                          </td>
-                        </div>
-                      </tr>
-                      <% end %>
-                  </tr> 
-                </tbody>
-              </table> 
-            </div>
-          </div>
-        </div> 
-        <div class="clearfix"></div>
-      <div align="right" class="botao_novo" style="margin-left: -7px;"><%= link_to 'Nova Atividade', new_restrito_tela_agenda_atividade_path%></div>
+<div id="index"> 
+  <div class="calendario">
+    <%= render 'teste', style:'float: left;'%>
+    <br> 
+  </div> 
+  <div class="atv">
+    <div class="add">
+      <%= link_to '',new_restrito_tela_agenda_atividade_path,method: :get,datacustomopen:"modal-1",class:"fa fa-plus",style:"background: aliceblue;border: 7px solid #6285a4;background: #00fbcf;font-size: 43px;border-radius: 30px;padding: 2px 7px;text-align: left;padding-right: 83px;position: fixed;top: 88%;left: 97%;float: right;z-index: 9;color: #6284a4;border-style: double;"%>
     </div>
+      <span class="add_atv">Adicionar atividade </span> 
   </div>
 </div>

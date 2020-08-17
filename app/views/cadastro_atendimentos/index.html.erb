@@ -4,17 +4,51 @@
       <div class="col-md-5 col-sm-5   form-group pull-right top_search" style="width:100%;text-align:center">
         
       <div class="col-md-6 col-sm-6  "style="width:100%">
-        <div class="x_panel" >
-          <div class="x_title">
+        <div class="x_panel" style="color: #2a3f53;
+    text-align: center;
+    width: 100%;
+    background: #ffffff;
+    font-family: Gilroy;">
+          <div class="x_title" >
             <%= form_tag(cadastro_atendimentos_path, method: :get) do %> 
-              <h2 style="width: 100%;text-align: initial;">Atendimentos 
-                  <small style="float: right;text-align: end;">Numero:<%= text_field_tag 'n_atendimento', nil, type:'integer', placeholder:"N° Atendimento",class:"form-control",style:"width:15%" %>  
-                  | Cartório:
-                  <%= text_field_tag 'codigoo_tj', nil, type:'integer', placeholder:"Codigo Tj",class:"form-control",style:"width:13%"  %> 
-                  | Solicitante:
-                  <%= text_field_tag 'cpf', nil, type:'text', placeholder:"Cpf",class:"form-control",style:"width:15%"%> 
-                  | <%= text_field_tag 'intervalo_atend', nil, type:'date', placeholder:"Ex: 10/02/2020",class:"form-control",style:"width:18%" %>
-                  <%= submit_tag "Consultar", class:'btn btn-success'  %>
+              <h2 style="width: 100%;
+    text-align: initial;
+    font-family: Gilroy ExtraBold;">Atendimentos 
+                  <small style="float: right;
+    text-align: end; 
+    width: 85%;
+    margin-top: 7px;">Numero: <%= text_field_tag 'n_atendimento', nil, type:'integer', placeholder:"N° Atendimento",class:"form-control",style:"
+    font-size: 18px;
+    border-radius: 2px;
+    background: transparent;
+    border: 2px solid #26b99a;
+    color: #475765;width: 11%;
+    padding-left: 4px;
+" %>  
+                  Cartório:
+                  <%= text_field_tag 'codigoo_tj', nil, type:'integer', placeholder:"Serventia",class:"form-control",style:"width:8%;
+    font-size: 18px;
+    border-radius: 2px;
+    background: transparent;
+    border: 2px solid #26b99a;
+    padding-left: 4px;
+    color: #475765;"  %> 
+                  Solicitante:
+                  <%= text_field_tag 'cpf', nil, maxlength:"12",type:'text', placeholder:"Cpf",class:"form-control",style:"font-size: 16px;width:12%;
+    font-size: 18px;
+    border-radius: 2px;
+    background: transparent;
+    padding-left: 4px;
+    border: 2px solid #26b99a;
+    color: #475765;"%> 
+                  <%= text_field_tag 'intervalo_atend', nil, type:'date', placeholder:"Ex: 10/02/2020",class:"form-control",style:"font-size: 14px;width:17%;
+    font-size: 17px;
+    border-radius: 2px;
+    padding-left: 43px;
+    background: transparent;
+    border: 2px solid #26b99a;
+    color: #475765;" %>
+                  <%= submit_tag "Consultar", id:'btn_consulta_escuro',style:"width: 10%;font-size: 17px;margin-left: 5px;"  %>
                   </small>
               </h2>
             <% end %>
@@ -28,8 +62,8 @@
             <table class="table table-striped" style="width: inherit;">
               <thead>
                 <tr>
-                  <th>N° atendimento</th> 
-                  <th>Codigo tj filiado</th>
+                  <th>#</th> 
+                  <th>Serventia</th>
                   <th>Nome Filiado</th>
                   <th>Nome solicitante</th>
                   <th>Cpf solicitante</th>
@@ -37,30 +71,38 @@
                   <th>Data</th>  
                   <th colspan="3"></th>
                 </tr>
-              </thead>
-              <tbody>
-              <% @cadastro_atendimentos_aux.each do |cadastro_atendimento| %> 
-                <tr align="center">
-                  <td><%= cadastro_atendimento.id%></td> 
-                  <td><%= @filiados_for_select.find(cadastro_atendimento.codigo_tj_filiado).codigo_tj%></td>
-                  <td><%= @filiados_for_select.find(cadastro_atendimento.codigo_tj_filiado).nome_contato%></td>
-                  <td><%= cadastro_atendimento.nome%></td>
-                  <td><%= cadastro_atendimento.cpf%></td> 
-                  <td><%= cadastro_atendimento.telefone%></td> 
-                  <td><%= cadastro_atendimento.data_atendimento.strftime("%d/%m/%Y")%></td> 
-                  <div id="interacoes">
-                    <td class="opt"><i class="fa fa-ellipsis-v"></i>
-                    <div class="bts">
-                      <%= button_to 'Visualizar' , cadastro_atendimento, method: :get, style:"width:100px;margin: auto;",class:'btn btn-success'%>
-                      <%= button_to 'Editar', edit_cadastro_atendimento_path(cadastro_atendimento),method: :get, style:"width:100px;margin: auto;",class:'btn btn-success'%>
-                      <%= button_to 'Deletar', cadastro_atendimento, method: :delete, data: { confirm: 'Are you sure?' }, style:"width:100px;margin: auto;",class:'btn btn-success'%>
-                    </div>
-                    </td>
-                  </div>
-                </tr>  
-              <% end %> 
-              </tbody>
+              </thead> 
+              <tbody> 
+                <% @cadastro_atendimentos_aux.each do |cadastro_atendimento| %> 
+                  <tr align="center">
+                    <td><%= cadastro_atendimento.id%></td> 
+                    <td><%= @filiados_for_select.find(cadastro_atendimento.codigo_tj_filiado).serventia%></td>
+                    <td><%= @filiados_for_select.find(cadastro_atendimento.codigo_tj_filiado).nome%></td>
+                    <td><%= cadastro_atendimento.nome%></td>
+                    <td><%= cadastro_atendimento.cpf%></td> 
+                    <td><%= cadastro_atendimento.telefone%></td> 
+                    <td><%= cadastro_atendimento.data_atendimento.strftime("%d/%m/%Y")%></td> 
+                    <td style="width:7%;padding:2px"><%= button_to 'Visualizar' , cadastro_atendimento, method: :get,class:'btn_view',style:"width: 100%;"%></td>
+                    <td style="width:7%;padding:2px"><%= button_to 'Editar', edit_cadastro_atendimento_path(cadastro_atendimento), method: :get,class:'btn_edit',style:"width: 100%;"%></td>
+                    <td style="width:7%;padding:2px"><%= button_to 'Excluir', cadastro_atendimento, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'btn_eraser',style:"width: 100%;"%></td>
+                  </tr>   
+                  <script>
+                    function ConfirmDelete(button) {
+                      alertify.confirm("<p style='font-size:15px'>Deseja excluir o Atendimento de <%= cadastro_atendimento.nome%>?</p><br><p style='color:red'>esta ação não pode ser desfeita.<p>", function() {
+                        button.form.submit() 
+                      }, function() {
+                        alertify.error("Você cancelou a ação");
+                      }).set('defaultFocus', 'Cancelar');
+
+                      return false;
+                    }
+                  </script> 
+                <% end %> 
+              </tbody> 
             </table> 
+            <div style="float: none;display: flow-root;">
+              <%= paginate @cadastro_atendimentos_aux,style:"text-align:center"%>
+            </div>
           </div>
         </div>
       </div> 

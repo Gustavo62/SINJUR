@@ -7,16 +7,16 @@ class FiliadosController < ApplicationController
   def index
     if params[:serventia] or params[:cidade]
       if params[:cidade] != ""
-        @filiados = Filiado.where(cidade: params[:cidade])
+        @filiados = Filiado.where(cidade: params[:cidade]).page(params[:page]).per(21)
       else
         if params[:serventia] != ""
-          @filiados = Filiado.where(codigo_tj: params[:serventia])
+          @filiados = Filiado.where(codigo_tj: params[:serventia]).page(params[:page]).per(21)
         else
-          @filiados = Filiado.all    
+          @filiados = Filiado.page(params[:page]).per(21)    
         end
       end
     else
-      @filiados = Filiado.all
+      @filiados = Filiado.page(params[:page]).per(21)
     end
     @local = "Filiados >> Listar Filiados"
   end
@@ -45,7 +45,7 @@ class FiliadosController < ApplicationController
 
     respond_to do |format|
       if @filiado.save
-        format.html { redirect_to @filiado, notice: 'Filiado was successfully created.' }
+        format.html { redirect_to @filiado, notice: 'Filiado foi foi criado com sucesso.' }
         format.json { render :show, status: :created, location: @filiado }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class FiliadosController < ApplicationController
   def update
     respond_to do |format|
       if @filiado.update(filiado_params)
-        format.html { redirect_to @filiado, notice: 'Filiado was successfully updated.' }
+        format.html { redirect_to @filiado, notice: 'Filiado foi atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @filiado }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class FiliadosController < ApplicationController
   def destroy
     @filiado.destroy
     respond_to do |format|
-      format.html { redirect_to filiados_url, notice: 'Filiado was successfully destroyed.' }
+      format.html { redirect_to filiados_url, notice: 'Filiado foi deletado com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -86,6 +86,6 @@ class FiliadosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def filiado_params
-      params.require(:filiado).permit(:cnpj, :cei, :serventia, :codigo_cnpj, :nome, :cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade, :email)
+      params.require(:filiado).permit(:cnpj, :cei, :serventia, :codigo_cnpj, :nome, :end_completo,:cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade, :email, :titular)
     end
 end

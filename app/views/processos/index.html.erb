@@ -4,17 +4,39 @@
       <div class="col-md-5 col-sm-5   form-group pull-right top_search" style="width:100%;text-align:center">
         
       <div class="col-md-6 col-sm-6  "style="width:100%">
-        <div class="x_panel" >
+        <div class="x_panel" style="color: #2a3f53;
+    text-align: center;
+    width: 100%;
+    background: #ffffff;
+    font-family: Gilroy;">
           <div class="x_title">
             <%= form_tag(processos_path, method: :get) do %> 
-              <h2 style="width: 100%;text-align: initial;">Processos 
-                  <small style="float: right;text-align: end;">Numero:<%= text_field_tag 'n_processo', nil, type:'integer', placeholder:"N° Atendimento",class:"form-control",style:"width:15%" %>  
-                  | Status:
-                  <%= select_tag "status", raw("<option>Todos</option><option>Aberto</option><option>Em processamento</option><option>Concluido</option>"),class:"form-control",style:"width: auto;"%> 
-                  | Favorito:
-                  <%= check_box_tag 'favorito'%> 
-                  | <%= text_field_tag 'intervalo_atend', nil, type:'date', placeholder:"Ex: 10/02/2020",class:"form-control",style:"width: auto;" %>
-                  <%= submit_tag "Consultar", class:'btn btn-success'  %>
+              <h2 style="width: 100%;
+    text-align: initial;
+    font-family: Gilroy ExtraBold;">Processos 
+                  <small style="margin-top: 9px;font-size: 19px;float: right;text-align: end;">Numero: <%= text_field_tag 'n_processo', nil, type:'integer', placeholder:"N° Atendimento",class:"form-control",style:"
+    font-size: 20px;
+    border-radius: 2px;
+    background: transparent;
+    border: 2px solid #26b99a;
+    color: #2a3f53;width:18%" %>  
+                  Status: 
+                  <%= select_tag "status", raw("<option>Todos</option><option>Aberto</option><option>Em processamento</option><option>Concluido</option>"),class:"form-control",style:"width: auto;
+    font-size: 20px;
+    border-radius: 2px;
+    background: transparent;
+    border: 2px solid #26b99a;
+    color: #2a3f53;"%> 
+                  
+                  Data: <%= text_field_tag 'intervalo_atend', nil, type:'date', placeholder:"Ex: 10/02/2020",class:"form-control",style:"width: auto;
+    font-size: 20px;
+    border-radius: 2px;
+    background: transparent;
+    border: 2px solid #26b99a;
+    color: #2a3f53;" %>
+                  <small style="font-size: 21px;margin-right: 39px;">Favorito:</small> 
+                  <%= check_box_tag 'favorito', class:"checkmark"%> 
+                  <%= submit_tag "Consultar", id:'btn_consulta_escuro',style:"margin-left: -4px;width: 13%;"  %>
                   </small>
               </h2>
             <% end %>
@@ -37,7 +59,7 @@
                   <th>Data Modificação</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody style="font-size: 18px;">
               <% @processo_aux.each do |processos|%>
                 
                   <tr align="center">
@@ -54,18 +76,26 @@
                     <td><%= processos.etiqueta%></td>
                     <td><%= processos.created_at.strftime("%d/%m/%Y")%></td>
                     <td><%= processos.updated_at.strftime("%d/%m/%Y")%></td>
-                    <div id="interacoes">
-                      <td class="opt"><i class="fa fa-ellipsis-v"></i>
-                      <div class="bts">
-                      <%= button_to 'Visualizar' , cadastro_atendimento_path(processos.cadastro_atendimento_id), method: :get, style:"width:100px;margin: auto;",class:'btn btn-success'%>
-                      </div>
-                      </td>
-                    </div>
-                  </tr> 
-                
+                    <td style="width:7%;padding:2px"><%= button_to 'Excluir' , processos, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'btn_eraser',style:"width: 100%;"%></td> 
+                    <td style="width:7%;padding:2px"><%= button_to 'Visualizar' , cadastro_atendimento_path(processos.cadastro_atendimento_id), method: :get,class:'btn_view',style:"width: 100%;"%></td>
+                  </tr>  
+                  <script>
+                    function ConfirmDelete(button) {
+                      alertify.confirm("<p style='font-size:15px'>Deseja excluir o Processo de nome <%= processos.assunto%>?</p><br><p style='font-size:15px'>Pasta: <%= processos.pasta%></p><br><p style='font-size:15px'>Etiqueta: <%= processos.etiqueta%></p><br><p style='color:red'>esta ação não pode ser desfeita.<p>", function() {
+                        button.form.submit() 
+                      }, function() {
+                        alertify.error("Você cancelou a ação");
+                      }).set('defaultFocus', 'CANCELAR');
+
+                      return false;
+                    }
+                  </script>
               <% end %> 
               </tbody>
             </table> 
+            <div style="float: none;display: flow-root;">
+              <%= paginate @processo_aux,style:"text-align:center"%>
+            </div>
           </div>
         </div>
       </div> 

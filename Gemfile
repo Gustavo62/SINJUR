@@ -22,7 +22,7 @@ gem 'coffee-rails', '~> 4.2'
 #gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-gem 'tty-spinner'
+gem 'tty-spinner'  
 gem "simple_calendar", "~> 2.0" 
 source 'https://rails-assets.org' do
   gem 'rails-assets-fullcalendar'
@@ -32,12 +32,20 @@ gem 'ice_cube'
 gem 'zip-zip'
 gem 'chartkick', '~> 2.2.0' 
 gem 'groupdate'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass' 
 gem 'maskedinput-rails'
+gem 'coffee-script-source' 
 gem 'jquery_mask_rails', '~> 0.1.0'
 gem 'momentjs-rails'
 gem 'trix'
-gem 'rails-erd'
+gem 'popper_js', '~> 1.14.5'
+gem 'alertifyjs-rails'
+gem 'kaminari', '~> 1.0'
+gem 'rails-erd' 
+gem 'twitter-bootstrap-rails-confirm'
+gem 'bootbox-rails', '~>0.4' 
+gem 'rails-assets-sweetalert2', '~> 5.1.1', source: 'https://rails-assets.org'
+gem 'sweet-alert2-rails'
 gem 'administrate'
 gem 'cocoon'  
 gem 'jquery-rails'
@@ -72,7 +80,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen', '~> 2.0.0'  
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
 end
 
 

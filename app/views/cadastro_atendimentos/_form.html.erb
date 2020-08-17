@@ -1,21 +1,21 @@
 
 
-<div class="row">
+<div class="row"> 
   <div class="col-md-6 " style="width:100%;font-size:18px"">
     <%= form_with(model: cadastro_atendimento, local: true) do |f| %>
-      <div class="x_panel">
+      <div class="x_panel" style="height: auto;min-height: 96%;color: #2a3f53;text-align: center;width: 100%;background: #ffffff;font-family: Gilroy;">
         <div class="x_title">
-          <h2 style="width:100%"><%=@acao%> Atendimento
+          <h2 style="width: 100%;font-family: Gilroy ExtraBold;text-align: left;"><%=@acao%> Atendimento
           <small style="float:right" >
-            <%= link_to 'Voltar', cadastro_atendimentos_path,class:"fa fa-reply"  %>
-            <div style="float: right;margin-left: 10px;">
-              <%= f.submit "Enviar", class:"btn btn-success",style:"width: 115px;font-size: 18px;"%>
+            <%= link_to 'Voltar', cadastro_atendimentos_path,class:"modal__btn", style:"font-size: 18px;padding: 8px;"  %>
+            <div style="float: right;margin-left: 10px;margin-right: 10px;">
+              <%= f.submit "Enviar", class:'modal__btn modal__btn-primary',style:"font-family: Gilroy ExtraBold;font-size: 18px;width: 100%;"%>
             </div> 
             </small>
           </h2> 
           <div class="clearfix"></div>
         </div>
-        <div class="x_content">  
+        <div class="x_content" style="font-size: 26px;">  
           <% if cadastro_atendimento.errors.any? %>
             <div id="error_explanation">
               <h2 class="msg_erro"><%= pluralize(cadastro_atendimento.errors.count, "") %> <span style="color:red;text-decoration:underline">Erros</span> encontrados, resolva para poder enviar as informações.</h2>
@@ -23,89 +23,98 @@
               </ul>
             </div>
           <% end %>
-          <div class="field">
-            <div style="text-align:center">
-              <div id="atendimento">
-                <div style="margin: auto;width: 1000px;text-align: left;">   
-                  
-                  Solicitante
-                  <br>
-                  <br>
-                  <div class="field">
-                    <%= f.label :nome %>*:
-                    <%= f.text_field :nome, style:"width: 72%;",placeholder:"Nome completo do solicitante."%>
-                    <%= f.label :codigo_tj_filiado%>*: 
-                    <%= collection_select(:cadastro_atendimento, :codigo_tj_filiado,  @filiados_for_select, :id, :serventia)%> 
-                  </div>
-                  <div class="field">
-                    <%= f.label :cpf %>*:
-                    <%= f.text_field :cpf, placeholder:"999.999.999.99",style:"width: 18%;",maxlength:"11"%> 
-                    <%= f.label :telefone %>*:
-                    <%= f.text_field :telefone,placeholder:"(99) 99999-9999",style:"width: 16%;",maxlength:"11"%> 
-                    <%= f.label :data_atendimento%>*: 
-                    <%= f.text_field :data_atendimento , type:"date", style:"margin-left: 3px;"%>
-                  </div>
+          <div class="contato" style="width: 1257px;">
+            <h2 style="font-size: 26px;">Informações do Cliente <i class="fa fa-user"></i></h2>
+            <div class="contato-form" style="margin-bottom: 19px;float: right;">
+              <div style="margin: auto;width: 1212px;text-align: left;">    
+                <div class="field" style="margin-left: 25px;">
+                  <%= f.label :nome %>*:
+                  <%= f.text_field :nome, style:"width: 87%;",placeholder:"Nome completo do solicitante.",required:true%> <br> 
+                  <label style="margin-left: -17px;">Cartório:</label>
+                  <%= collection_select(:cadastro_atendimento, :codigo_tj_filiado,  @filiados_for_select, :id, :end_completo) %>
                 </div>
-                <br>
-                <div class="field" style="text-align:left;width:1000px;font-size:20px;margin:auto"> 
-                  <div class="field-unit__field">
-                    <div style="display:none"><%= f.text_field :texto_livre, id: 'texto_livre' %></div>
-                    <trix-editor style="background-color:white;border: 1px solid #2a3f53;"input="<%= :texto_livre %>" placeholder="Digite o Seu texto aqui..."></trix-editor>
-                  </div> 
-                </div>  
-              </div> 
-              <div id="documentos"> 
-                <h2>Adicionar Docummentos <i class="fa fa-folder"></i></h2>
-                <br>
-                  <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :documentos,class:"btn btn-success",style:"color:black;padding: 4px;")%></div>
+                <div class="field" style="margin-left: 51px;">
+                  <%= f.label :cpf %>*:
+                  <%= f.text_field :cpf, placeholder:"999.999.999.99",style:"width: 17%;",maxlength:"11",required:true%> 
+                  <%= f.label :telefone %>*:
+                  <%= f.text_field :telefone,placeholder:"(99) 99999-9999",style:"width: 19.7%;",maxlength:"11",required:true%> 
+                  <%= f.label :data_atendimento%>*: 
+                  <%= f.text_field :data_atendimento , type:"date", style:"width: 19.7%;",required:true%>
+                </div>
               </div>
               <br>
-              <div id="advogados">
-                <h2>Adicionar Advogado <i class="fa fa-briefcase"></i></h2>
-                <br>
-                <% if cadastro_atendimento.advogados%>
-                  <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :advogados,class:"btn btn-success",style:"color:black;padding: 4px;")%></div>
-                  <%= f.fields_for :advogados do |advogados_fields| %> 
-                      <%= render partial: "advogado_fields", locals: { f: advogados_fields}%>
-                  <% end %>
-                <% else %>
-                  <%= f.fields_for :advogados do |advogados_fields| %> 
-                      <%= render partial: "advogado_fields", locals: { f: advogados_fields}%>
-                  <% end %>
-                <% end %>
-              </div> 
-              <div id="pessoas"> 
-                <h2>Adicionar Pessoas <i class="fa fa-user"></i></h2>
-                <br>
-                  <% if cadastro_atendimento.pessoas%>
-                    <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :pessoas,class:"btn btn-success",style:"color:black;padding: 4px;")%></div>
-                    <%= f.fields_for :pessoas do |pessoas_fields| %>
-                        <%= render partial: "pessoa_fields", locals: { f: pessoas_fields}%>
-                    <% end %>
-                  <% else %>
-                    <%= f.fields_for :pessoas do |pessoas_fields| %>
-                        <%= render partial: "pessoa_fields", locals: { f: pessoas_fields}%>
-                    <% end %>
-                  <% end %>
-              </div>
-              <div id="processos">  
-                <h2>Adicionar Processo <i class="fa fa-gavel"></i></h2>  
-                <% if @possui_processo %> 
-                  <%= f.fields_for :processos do |processo_fields| %>
-                      <%= render partial: "processo_fields", locals: { f: processo_fields}%>
-                  <% end %>   
-                <% else %> 
-                  <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :processos,class:"btn btn-success",style:"color:black;padding: 4px;")%></div>
-                  <%= f.fields_for :processos do |processo_fields| %>
-                      <%= render partial: "processo_fields", locals: { f: processo_fields}%>
-                  <% end %> 
-                <% end %> 
-              </div>
+              <div class="field" style="text-align: left;width: 1189px;font-size: 24px;margin: auto;">
+                Resumo*:  
+                
+                 
+                <div class="field-unit__field" style="width: 1034px;margin-left: 105px;margin-top: -71px;">
+                  <div style="display:none"><%= f.text_field :texto_livre, id: 'texto_livre' %></div> 
+                  <trix-editor style="background-color:white;border: 1px solid #1abb9c;" required input="<%= :texto_livre%>" placeholder="Digite um resumo para o atendimento." ></trix-editor>
+                </div> 
+              </div>  
             </div>
-          </div> 
+          </div>
+          <div class="contato" style="width: 1257px;">
+            <h2 style="font-size: 26px;">Adcionar do Arquivos <i class="fa fa-folder"></i></h2>
+            <div class="contato-form" style="padding-top: 41px;margin-bottom: 19px;float: right;">
+              <div style="margin: auto;width: 1212px;text-align: left;">    
+                <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :documentos,class:'modal__btn modal__btn-primary',style:"font-family: Gilroy ExtraBold;font-size: 18px;")%></div>
+                
+              </div>  
+            </div>
+          </div>  
+          <br>
+          <div class="contato" style="width: 1257px;">
+            <h2 style="font-size: 26px;">Adicionar Advogado <i class="fa fa-briefcase"></i></h2>
+            <div class="contato-form" style="width: 1256px;">
+              <% if cadastro_atendimento.advogados%>
+                <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :advogados,class:'modal__btn modal__btn-primary',style:"font-family: Gilroy ExtraBold;font-size: 18px;")%></div>
+                <%= f.fields_for :advogados do |advogados_fields| %> 
+                    <%= render partial: "advogado_fields", locals: { f: advogados_fields}%>
+                <% end %>
+              <% else %>
+                <%= f.fields_for :advogados do |advogados_fields| %> 
+                    <%= render partial: "advogado_fields", locals: { f: advogados_fields}%>
+                <% end %>
+              <% end %>
+            </div>
+          </div>  
+          <br>
+          <div class="contato" style="width: 1257px;">
+            <div class="clearfix"></div>
+            <h2 style="font-size: 26px;">Adicionar Pessoas <i class="fa fa-group"></i></h2>
+            <div class="contato-form" style="width: 1256px;"> 
+              <% if cadastro_atendimento.pessoas%>
+                <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :pessoas,class:'modal__btn modal__btn-primary',style:"font-family: Gilroy ExtraBold;font-size: 18px;")%></div>
+                <%= f.fields_for :pessoas do |pessoas_fields| %>
+                    <%= render partial: "pessoa_fields", locals: { f: pessoas_fields}%>
+                <% end %>
+              <% else %>
+                <%= f.fields_for :pessoas do |pessoas_fields| %>
+                    <%= render partial: "pessoa_fields", locals: { f: pessoas_fields}%>
+                <% end %>
+              <% end %>
+            </div>
+          </div>   
+          <br>
+          <div class="contato" style="width: 1257px;">
+            <div class="clearfix"></div>
+            <h2 style="font-size: 26px;">Adicionar Processo <i class="fa fa-gavel"></i></h2>  
+            <div class="contato-form" style="width: 1256px;">  
+              <% if @possui_processo %> 
+                <%= f.fields_for :processos do |processo_fields| %>
+                    <%= render partial: "processo_fields", locals: { f: processo_fields}%>
+                <% end %>   
+              <% else %> 
+                <div style="text-align: end;margin-top: 11px;"><%= link_to_add_association('Adicionar',f, :processos,class:'modal__btn modal__btn-primary',style:"font-family: Gilroy ExtraBold;font-size: 18px;")%></div>
+                <%= f.fields_for :processos do |processo_fields| %>
+                    <%= render partial: "processo_fields", locals: { f: processo_fields}%>
+                <% end %> 
+              <% end %>
+            </div>
+          </div>  
         </div>  
       </div>
-      
     <% end %>   
   </div>
-  </div>
+</div>

@@ -1,33 +1,76 @@
 
-  <div class="x_panel" style="font-size:16px">
+  
+  <div class="x_panel" style="height: auto;
+    min-height: 850px;
+    color: #2a3f53;
+    text-align: center;
+    width: 100%;
+    background: #ffffff;
+    font-family: Gilroy;">
     <div class="x_title">
-      <h2 style="width:100%">Atividade
-        <small class="actions">
-        <%= link_to 'Editar', edit_contato_path(@contato) ,class:"fa fa-pencil-square-o"%>
-        <%= link_to 'Voltar', contatos_path,class:"fa fa-reply" %>
+      <h2 style="width: 100%;font-family: Gilroy ExtraBold;text-align: left;">Atividade 
+        <small class="actions-form" style="float: right;display: flex;">
+          <%= link_to 'Voltar', contatos_path,class:"modal__btn", style:"margin-top: 5px;font-size: 18px;"%>
+          <div style="float: right;margin-left: 10px;">
+            <%= link_to "Editar", edit_contato_path(@contato),class:"modal__btn modal__btn-primary",style:"margin-right: 3px;font-size: 17px;font-family: Gilroy ExtraBold;"%>
+          </div> 
+          <%= button_to 'Excluir', @contato, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'modal__btn',style:"margin-right: 17px;color: white;background: red;font-family: Gilroy ExtraBold;font-size: 17px;margin-left: 7px;"%>
         </small>
-      </h2>
-        
+      </h2> 
       <div class="clearfix"></div>
     </div>
-    <div class="x_content">
-    <div class="contato-form" >
-      <h2>Informações do Contato <i class="fa fa-user"></i></h2>
-      <br>
-      <h2>Nome: <small><%= @contato.nome %></small>, Profissão: <small><%=@contato.profissao %></small>, Detalhe: <small><%=@contato.detalhe %></small></h2>  
-      <div class="clearfix"></div>  
-      <h2>Logradouro: <small><%=@contato.logradouro %></small>, Bairro: <small><%=@contato.bairro%></small>, Cidade: <small><%=@contato.cidade%></small></h2> 
-      <h2>Cep: <small><%=@contato.cep %></small>, Numero: <small><%=@contato.numero%></small>, Observação: <small><%=@contato.observacao%></small></h2>   
-      <h2>site: <small><%=@contato.site %></small>, Dn: <small><%=@contato.dn%></small>, E-mail: <small><%=@contato.email%></small></h2>  
-      <br>
-      <h2>Telefones<i class="fa fa-phone"></i></h2>
-      <br>
-      <h2>Telefones:
-      <%@contato.telefones.each do |contats|%>
-        <small><%=contats.telefone%></small>.
-      <% end%>
-      </h2>
-    </div>
-    <br> 
+    <div class="x_content" >
+      <div class=contato>
+
+        <h2 style="font-size: 26px;">Informações do Contato <i class="fa fa-user"></i></h2>
+          <div class="contato-form" style="width: 886px;font-size: 26px;" >  
+            <h2><small style="margin-top: -26px;margin-left: 79px;">Nome: <p style="width: 80.6%;"><%= @contato.nome %>.</p></small> </h2>
+            
+            <h2><small style="margin-left: 73px">E-mail: <p style="width: 80.7%;"><%=@contato.email%></p></small></h2>
+
+            <h2> <small style="margin-left: 44px"> Profissão: <p style="width:35%;"><%=@contato.profissao %>.</p> Detalhe: <p style="width:32%;"><%=@contato.detalhe %>.</p></small></h2>  
+            <h2>  
+                <small style="margin-left: 58px;">Cidade: <p style="width:31%"><%=@contato.cidade%>.</p> Bairro: <p style="width:39.5%"><%=@contato.bairro%>.</p></small><br>
+                <small style="margin-left: 97px;">Cep: <p><%=@contato.cep %></p> Numero: <p style="width:20%"><%=@contato.numero%></p></small><br>
+                <small style="margin-left: 10px;">Logradouro: <p style="width: 80.7%;"><%=@contato.logradouro %>.</p></small><br>
+                <small >Observação: <p style="width: 80.7%;"><%=@contato.observacao%>.</p></small> 
+            </h2>  
+            <h2><small style="margin-left: 105px;">site: <p STYLE="WIDTH:44.5%"><%=@contato.site %>.</p> Data de N.: <p><%=(@contato.dn).strftime("%d/%m/%Y")%></p></small></h2>
+          </div> 
+
+      <div class="clearfix"></div>
+        <div class="telefone-form"> 
+          <h2 style="font-size: 26px;">Telefones <i class="fa fa-phone"></i></h2> 
+          <div class="telefone">
+            <div id="telefones" style="text-align: left;">
+              <h2>
+              <%@n_contato = 1%>
+              <%@contato.telefones.each do |contats|%>
+                <small>Telefone <%=@n_contato%>:  <p><%=contats.telefone%>.</p></small>
+                <%@a += 1%>
+                <%@n_contato += 1%>
+                <% if @a== 3 %> 
+                  <div class="clearfix"></div>
+                  <% @a = 0 %>
+                <% end %>
+              <% end%>
+              <%@n_contato = 0%>
+              <h2> 
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div> 
     
-  </div>
+  </div>  
+  <script>
+    function ConfirmDelete(button) {
+      alertify.confirm("<p style='font-size:15px'>Deseja excluir o contato de <%= @contato.nome%>?</p><br><p style='color:red'>esta ação não pode ser desfeita.<p>", function() {
+        button.form.submit() 
+      }, function() {
+        alertify.error("Você cancelou a ação");
+      }).set('defaultFocus', 'Cancelar');
+
+      return false;
+    }
+  </script>

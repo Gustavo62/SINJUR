@@ -1,92 +1,102 @@
-<div class="clearfix"></div>
-  <div class="row">
-    <div class="col-md-6 " style="width:100%;font-size:18px"">
+
+<div class="row">
+  <div class="col-md-6 " style="width:100%;font-size:18px"> 
+    <div class="x_panel" style="height: auto;min-height: 96%;color: #2a3f53;text-align: center;width: 100%;background: #ffffff;font-family: Gilroy;">
       <%= form_with(model: contato, local: true,style:"margin-top: -15%;") do |f| %>
-        <div class="x_panel">
-          <div class="x_title">
-            <h2 style="width:100%"><%=@acao%> Contato
-            <small class="actions-form">
-              <%= link_to 'Voltar', contatos_path,class:"fa fa-reply"  %>
+        <div class="x_title">
+          <h2 style="width: 100%;font-family: Gilroy ExtraBold;text-align: left;"><%=@acao%> Contato
+            <small class="actions-form" style="float: right;">
+              <%= link_to 'Voltar', contatos_path,class:"modal__btn", style:"font-size: 18px;padding: 8px;"%>
               <div style="float: right;margin-left: 10px;">
-                <%= f.submit "Enviar", class:"btn btn-success",style:"width: 115px;font-size: 18px;"%>
+                <%= f.submit "Enviar", class:"modal__btn modal__btn-primary",style:"margin-right: 3px;font-size: 18px;font-family: Gilroy ExtraBold;"%>
               </div> 
-              </small>
-            </h2> 
-            <div class="clearfix"></div>
-          </div>
-          <div class="x_content">  
-            <div class=contato>
-              <h2>Informações do Contato <i class="fa fa-user"></i></h2>
-              <div class="contato-form" style="width: 783px;"> 
-                <% if contato.errors.any? %>
-                  <div id="error_explanation">
-                    <h2 class="msg_erro" style="font-size: 17px;"><%= pluralize(contato.errors.count, "") %> <span style="color:red;text-decoration:underline">Erros</span> encontrados, resolva para poder enviar as informações.</h2>
+            </small>
+          </h2> 
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content" style="font-size: 26px;">  
+          <div class=contato>
+            <h2 style="font-size: 26px;">Informações do Contato <i class="fa fa-user"></i></h2>
+            <div class="contato-form" style="width: 886px;"> 
+              <% if contato.errors.any? %>
+                <div id="error_explanation">
+                  <h2 class="msg_erro" style="font-size: 17px;"><%= pluralize(contato.errors.count, "") %> <span style="color:red;text-decoration:underline">Erros</span> encontrados, resolva para poder enviar as informações.</h2>
 
-                    </ul>
-                  </div>
-                <% end %>
-                
-                <div class="field" >
-                  Nome*:
-                  <%= f.text_field :nome, style:"width: 91.1%;",placeholder:"Informe seu nome completo"%>
-                </div> 
-                <br>
-                <div class="field">
-                  Email*: 
-                  <%= f.text_field :email, style:"width: 31%;",placeholder:"exemplo@exemplo.com"%>  
-                  Profissão*:
-                  <%= f.text_field :profissao, style:"width: 19%;", placeholder:"Ex: Advogado"%> 
-                  <%= f.label :detalhe %>:
-                  <%= f.text_field :detalhe, style:"width: 17.6%;margin-left: 1px;", placeholder:"Nome da Empresa"%>
+                  </ul>
                 </div>
-                <br>
-
-                <div class="field"> 
-                  <%= f.label :cep %>*:
-                  <%= f.text_field :cep, style:"width: 12%;",class:"cpf-mask", placeholder:"00000-000",maxlength:"8", autocomplete:"off"%> 
-                  Cidade:
-                  <%= f.text_field :cidade, style:"width: 19%;", placeholder:"Ex: Fortaleza"%>
-                  <%= f.label :bairro %>:
-                  <%= f.text_field :bairro, placeholder:"Ex: Aldeota"%>
-                  <%= f.label :numero %>:
-                  <%= f.number_field :numero, style:"width: 9.9%;",placeholder:"Ex: 1A"%> 
-                </div>
-                <div class="field">
-                  <%= f.label :logradouro %>:
-                  <%= f.text_field :logradouro, style:"width: 47%;", placeholder:"Endereço do contato"%>  
-                  <%= f.label :observacao, style:"margin-left: 5px;"%>:
-                  <%= f.text_field :observacao, placeholder:"Ponto de referência"%>
-                </div>
-                <br>
-
-                <div class="field"> 
-                  <%= f.label :site%>:
-                  <%= f.text_field :site, style:"width: 66%;",placeholder:"link para o site do contato"%>
-                  <%= f.label :dn %>:
-                  <%= f.number_field :dn,placeholder:"Numero de Dn"%> 
-                </div>  
+              <% end %>
+              
+              <div class="field" style="margin-left: 68px;">
+                Nome*:
+                <%= f.text_field :nome, style:"width: 83.9%;    color: #4b5c6b;",placeholder:"Informe seu nome completo", required: true%>
+              </div> 
+              <br>
+              <div class="field" style="margin-left: 76px;">
+                Email*: 
+                <%= f.text_field :email, style:"width: 84.6%;    color: #4b5c6b;",placeholder:"exemplo@exemplo.com",required: true%>  
               </div>
-            </div> 
-            <div class="telefone-form">
-              <h2>Telefones<i class="fa fa-phone"></i></h2> 
+              <br>
+              <div class="field" style="margin-left: 35px;">
+                Profissão*:
+                <%= f.text_field :profissao, style:"width: 27%;    color: #4b5c6b;", placeholder:"Ex: Advogado",required: true%> 
+                <%= f.label :detalhe %>:
+                <%= f.text_field :detalhe, style:"width: 39.2%;    color: #4b5c6b;", placeholder:"Nome da Empresa"%>
+              </div>
+              <br>
+
+              <div class="field" style="margin-left: 62px;">   
+                Cidade:
+                <%= f.text_field :cidade, style:"width: 28%;    color: #4b5c6b;", placeholder:"Ex: Fortaleza",required: true%>
+                <%= f.label :bairro, style:"margin-left: 20px;"%>:
+                <%= f.text_field :bairro, placeholder:"Ex: Aldeota",style:"width: 41%;    color: #4b5c6b;"%> 
+              </div>
+              <div class="field" style="margin-left: 92px;"> 
+                <%= f.label :cep %>*:
+                <%= f.text_field :cep, style:"width: 20%;    color: #4b5c6b;",class:"cpf-mask", placeholder:"00000-000",maxlength:"8", autocomplete:"off",required: true%> 
+                <%= f.label :numero,style:"margin-left:20px" %>:
+                <%= f.number_field :numero, style:"width: 14.9%;    color: #4b5c6b;",placeholder:"Ex: 1A"%> 
+              </div>
+              <div class="field">
+                <%= f.label :logradouro, style:"margin-left:15px"%>:
+                <%= f.text_field :logradouro, style:"width: 77%;    color: #4b5c6b;", placeholder:"Endereço do contato"%>  
+                <br>
+                <%= f.label :observacao, style:"margin-left: 5px;"%>:
+                <%= f.text_field :observacao, style:"width: 77%;    color: #4b5c6b;",placeholder:"Ponto de referência"%>
+              </div>
+              <br> 
+              <div class="field" style="margin-left: 107px;"> 
+                <%= f.label :site%>:
+                <%= f.text_field :site, style:"width: 47.4%;    color: #4b5c6b;",placeholder:"link para o site do contato"%>
+                Data N.:
+                <%= f.number_field :dn,type:"date", style:"width: 26%;    color: #4b5c6b;",required: true%> 
+              </div>  
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="telefone-form">
+            <h2 style="font-size: 26px;">Telefones <i class="fa fa-phone"></i></h2> 
+            
+            <% if contato.telefones.size > 0 %>
               <div class="telefone">
-                <div id="telefones">  
-                  <% if contato.telefones%>
-                    <%= f.fields_for :telefones do |telefones_fields| %>
-                        <%= render partial: "telefone_fields", locals: { f: telefones_fields}%>
-                    <% end %>
-                  <% else %>
-                    <%= f.fields_for :telefones do |telefones_fields| %>
-                        <%= render partial: "telefone_fields", locals: { f: telefones_fields}%>
-                    <% end %>
-                  <% end %>  
-                  <%= link_to_add_association(' Adicionar Telefone',f, :telefones, class:"fa fa-plus")%>
-                </div>
+                <div id="telefones">
+                  <%= f.fields_for :telefones do |telefones_fields| %>
+                    <%= render partial: "telefone_fields", locals: { f: telefones_fields}%> 
+                
+                  <% end %> 
+
+                <%= link_to_add_association('Adicionar Telefone',f, :telefones,style:"font-family: Gilroy ExtraBold;color: #ffffff;font-size: 20px;margin-top: 35px;margin-left: 75%;",class:"modal__btn modal__btn-primary")%>
+                </div> 
+              </div>
+            <% else %>
+              <div class="telefone">
+                <div id="telefones"> 
+                  <%= link_to_add_association('Adicionar Telefone',f, :telefones,style:"font-family: Gilroy ExtraBold;color: #ffffff;font-size: 20px;margin-top: 35px;margin-left: 75%;",class:"modal__btn modal__btn-primary")%>
+                </div> 
               </div> 
-            </div>  
-          </div> 
-        </div>  
-      <% end %> 
-    </div>
+            <% end %>     
+          </div>     
+        </div>   
+      <% end %>  
+    </div>   
   </div>
-</div>
+</div> 

@@ -1,28 +1,28 @@
 class ContatosController < ApplicationController
   layout 'restrito'
   before_action :set_contato, only: [:show, :edit, :update, :destroy]
-
+  @nome_controler = "Contato"
   # GET /contatos
   # GET /contatos.json
   def index
     if params[:cidade] or params[:email]
       if params[:cidade] != "" && params[:email] != ""
-        @contatos_aux = Contato.where(cidade: params[:cidade],email: params[:email])
+        @contatos_aux = Contato.where(cidade: params[:cidade],email: params[:email]).page(params[:page]).per(20)
       else
         if params[:cidade] != ""
-          @contatos_aux = Contato.where(cidade: params[:cidade])
+          @contatos_aux = Contato.where(cidade: params[:cidade]).page(params[:page]).per(20)
         else
           if params[:email] != ""
-            @contatos_aux = Contato.where(email: params[:email])
+            @contatos_aux = Contato.where(email: params[:email]).page(params[:page]).per(20)
           else
-            @contatos_aux = Contato.all
+            @contatos_aux = Contato.page(params[:page]).per(10)
           end
         end
       end
     else
-      @contatos_aux = Contato.all
+      @contatos_aux = Contato.page(params[:page]).per(20)
     end
-    @contatos = Contato.all
+    @contatos = Contato.page(params[:page]).per(20)
     @local = "Contatos" 
   end
 
@@ -51,7 +51,7 @@ class ContatosController < ApplicationController
     @contato = Contato.new(contato_params) 
     respond_to do |format|
       if @contato.save
-        format.html { redirect_to @contato, notice: 'Contato was successfully created.' }
+        format.html { redirect_to @contato, notice: 'Contato foi cadastrado com sucesso.' }
         format.json { render :show, status: :created, location: @contato }
       else
         format.html { render :new }
@@ -65,7 +65,7 @@ class ContatosController < ApplicationController
   def update
     respond_to do |format|
       if @contato.update(contato_params)
-        format.html { redirect_to @contato, notice: 'Contato was successfully updated.' }
+        format.html { redirect_to @contato, notice: 'Contato foi atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @contato }
       else
         format.html { render :edit }
@@ -87,7 +87,7 @@ class ContatosController < ApplicationController
     exluir_telefone
     @contato.destroy  
     respond_to do |format|
-      format.html { redirect_to contatos_url, notice: 'Contato was successfully destroyed.' }
+      format.html { redirect_to contatos_url, notice: 'Contato foi deletado com sucesso.' }
       format.json { head :no_content }
     end
   end 

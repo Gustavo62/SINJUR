@@ -18,24 +18,24 @@ class CadastroAtendimentosController < ApplicationController
     '''
     if params[:n_atendimento] or params[:codigoo_tj] or params[:intervalo_atend] or params[:cpf] or params[:intervalo_atend_cpf]
       if params[:n_atendimento] != ""
-        @cadastro_atendimentos_aux = CadastroAtendimento.where(id: params[:n_atendimento])
+        @cadastro_atendimentos_aux = CadastroAtendimento.where(id: params[:n_atendimento]).page(params[:page]).per(22)
       else 
         if params[:codigoo_tj] != "" && params[:intervalo_atend] != ""
-          @cadastro_atendimentos_aux = CadastroAtendimento.where(codigo_tj_filiado: procura_cart_tj ,data_atendimento: params[:intervalo_atend])
+          @cadastro_atendimentos_aux = CadastroAtendimento.where(codigo_tj_filiado: procura_cart_tj ,data_atendimento: params[:intervalo_atend]).page(params[:page]).per(22)
         else
           if params[:intervalo_atend] != ""
-            @cadastro_atendimentos_aux = CadastroAtendimento.where(data_atendimento: params[:intervalo_atend])
+            @cadastro_atendimentos_aux = CadastroAtendimento.where(data_atendimento: params[:intervalo_atend]).page(params[:page]).per(22)
           else
             if params[:codigoo_tj] != ""
-              @cadastro_atendimentos_aux = CadastroAtendimento.where(codigo_tj_filiado: procura_cart_tj)
+              @cadastro_atendimentos_aux = CadastroAtendimento.where(codigo_tj_filiado: procura_cart_tj).page(params[:page]).per(22)
             else
               if params[:cpf] != "" && params[:intervalo_atend] != ""
-                @cadastro_atendimentos_aux = CadastroAtendimento.where(data_atendimento: params[:intervalo_atend], cpf: params[:cpf] ) 
+                @cadastro_atendimentos_aux = CadastroAtendimento.where(data_atendimento: params[:intervalo_atend], cpf: params[:cpf]).page(params[:page]).per(22)
               else
                 if params[:cpf] != ""
-                  @cadastro_atendimentos_aux = CadastroAtendimento.where(cpf: params[:cpf] )
+                  @cadastro_atendimentos_aux = CadastroAtendimento.where(cpf: params[:cpf]).page(params[:page]).per(22)
                 else
-                  @cadastro_atendimentos_aux = CadastroAtendimento.all 
+                  @cadastro_atendimentos_aux = CadastroAtendimento.page(params[:page]).per(22)
                 end
               end
             end
@@ -43,9 +43,9 @@ class CadastroAtendimentosController < ApplicationController
         end
       end
     else
-      @cadastro_atendimentos_aux = CadastroAtendimento.all 
+      @cadastro_atendimentos_aux = CadastroAtendimento.page(params[:page]).per(22)
     end
-    @cadastro_atendimentos = CadastroAtendimento.all 
+    @cadastro_atendimentos = CadastroAtendimento.all
     options_for_select  
     @local = 'Cadastro atendimento >> Listar Atendimento'
   end
@@ -54,7 +54,7 @@ class CadastroAtendimentosController < ApplicationController
   end 
   def procura_cart_tj 
     Filiado.all.each do |filiados|
-      if String(filiados.codigo_tj) == params[:codigoo_tj]
+      if String(filiados.serventia) == params[:codigoo_tj]
         return filiados.id
       end
     end
@@ -66,7 +66,7 @@ class CadastroAtendimentosController < ApplicationController
   def testa_doc
     Documento.all.each do |doc|
       if doc.cadastro_atendimento_id == @cadastro_atendimento.id
-        @testedoc  = true
+        @testedoc  = true 
       end
     end
   end
@@ -109,6 +109,7 @@ class CadastroAtendimentosController < ApplicationController
     options_for_select
     @local = 'Cadastro atendimento >> Novo'
     @acao = 'Novo' 
+    @a = 0
   end
 
   # GET /cadastro_atendimentos/1/edit
@@ -138,9 +139,10 @@ class CadastroAtendimentosController < ApplicationController
   # PATCH/PUT /cadastro_atendimentos/1
   # PATCH/PUT /cadastro_atendimentos/1.json
   def update
+    options_for_select
     respond_to do |format| 
       if @cadastro_atendimento.update(cadastro_atendimento_params)
-        format.html { redirect_to @cadastro_atendimento, notice: 'Atendimento editado com sucesso.' }
+        format.html { redirect_to @cadastro_atendimento, notice: 'Atendimento atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @cadastro_atendimento }
       else
         format.html { render :edit }
@@ -195,7 +197,7 @@ class CadastroAtendimentosController < ApplicationController
     exluir_documentos 
     @cadastro_atendimento.destroy
     respond_to do |format|
-      format.html {redirect_to cadastro_atendimentos_url, notice: 'Atendimento deletado com sucesso.' }
+      format.html {redirect_to cadastro_atendimentos_url, notice: 'Atendimento foi deletado com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -211,7 +213,7 @@ class CadastroAtendimentosController < ApplicationController
     # Only allow a list of trusted parameters through.
     def cadastro_atendimento_params
       params.require(:cadastro_atendimento).permit( :data_atendimento, :status, :codigo_tj_filiado, :texto_livre, :nome, :cpf, :telefone, :id,
-      filiado_attributes: [:cnpj, :cei, :codigo_tj, :codigo_cnpj, :nome_contato, :cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade_integer, :email, :id],
+      filiado_attributes: [:cnpj, :end_completo,:titular,:cei, :serventia, :codigo_cnpj, :nome, :cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade_integer, :email, :id],
       advogados_attributes: [:nome, :endereço, :cidade, :bairro, :cep, :telefone, :cidade, :email, :advogado, :oab, :telefone, :observação, :cadastro_atendimento_id, :_destroy, :id],
       pessoas_attributes: [:nome, :profissao, :cep, :razao_social, :nome_fantasia, :cidade, :endereço, :cpf, :rg, :pis, :residencial, :comercial, :celular, :nacionalidade, :estado_civil, :estado_civil, :bairro, :email, :escolaridade, :insc_estadual, :insc_municipal, :responsável, :cnpj, :cadastro_atendimento_id, :_destroy, :id],
       processos_attributes: [:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois,:id, :cadastro_atendimento_id,:_destroy], 

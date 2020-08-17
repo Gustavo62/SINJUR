@@ -1,73 +1,67 @@
 
-
 <div class="clearfix"></div>
-  <div class="row">
-    <div class="col-md-6 ">
-      <div class="x_panel" style="height: 677px;">
-        <%= form_with(model: restrito_tela_agenda_atividade, local: true, class:"form-horizontal form-label-left") do |form| %>
-          <div class="x_title">
-            <h2 style="width:100%;text-align: initial;"><%=@acao%> Atividade
-              <small class="actions-form">
-                <%= link_to 'Voltar', restrito_tela_agenda_atividades_path,class:"fa fa-reply" %>
-                <div style="float: right;margin-left: 10px;">
-                  <%= form.submit "Enviar", class:"btn btn-success",style:"width: 115px;font-size: 18px;"%>
-                </div> 
-              </small>
-            </h2>
-              
-            <div class="clearfix"></div>
-          </div>
-          <div class="x_content" class="contato-form">
-            <br />
+<div class="row">
+  <div class="col-md-6 ">
+    <div class="x_panel" style="color: aliceblue;background: #f0f0f0;border: 2px solid #dfdfdf;border-radius: 6px;height:576px;width: 100%;float: none;margin-left: auto;margin-right: auto;">
+      <%= form_with(model: restrito_tela_agenda_atividade, local: true, class:"form-horizontal form-label-left") do |form| %>
+        
+        <div class="x_content" class="contato-form"> 
             
-            <% if restrito_tela_agenda_atividade.errors.any? %>
-              <div id="error_explanation">
-                <h2 class="msg_erro" style="font-size: 17px;"><%= pluralize(restrito_tela_agenda_atividade.errors.count, "") %> <span style="color:red;text-decoration:underline">Erros</span> encontrados, resolva para poder enviar as informações.</h2>
-
-                </ul>
+          <div id="atividades">
+            <div class="item form-group" style="margin-left: -2px;">
+              <%= form.label :titulo, style:"margin-left:28px"%>:
+              <div class="col-md-6 col-sm-6 ">
+                <%= form.text_field :titulo, style:"width: 362px;font-size: 20px;margin-left: 8px;", placeholder:"Informe o título da atividade",required: true%>
               </div>
-            <% end %>
-            <div id="atividades">
-              <div class="item form-group">
-                <%= form.label :titulo, style:"margin-left:18px" %>:
-                <div class="col-md-6 col-sm-6 ">
-                  <%= form.text_field :titulo, style:"width: 184px;", placeholder:"Informe o título da atividade"%>
-                </div>
-                <%= form.label :status, style:"margin-left:18px" %>:
-                <div class="col-md-6 col-sm-6 ">
-                  <%= form.select :status,['Aberto', 'Concluido'], class:"form-control"  %>
-                </div>
-              </div> 
-              <br>
-              <div class="item form-group">
-                <%= form.label :tipo, style:"margin-left:25px" %>:
-                <div class="col-md-6 col-sm-6 " style="width:130px">
-                  <%= form.select :tipo, ['Atividade', 'Lembrete', 'Agendamento'], class:"form-control"%>
-                  </div> 
-                Nível:
-                <div class="col-md-6 col-sm-6 ">
-                  <%= form.select :nivel, ['Alto', 'Médio', 'Baixo'], class:"form-control"  %>
-                </div>
-              </div>   
-              <br>
-              <div class="item form-group">
-                Resumo:
-                </label>
-                <div class="col-md-6 col-sm-6 ">
-                  <%= form.text_area :resumo, style:"width: 356px;min-height: 181px;padding: 7px;", placeholder:"Resumo da atividade agendada..."%>
-                </div>
-              </div> 
-              <br>
-              <div class="item form-group">
-                Agendar:
-                <div class="col-md-6 col-sm-6 ">
-                  <%= form.datetime_field :agendamento,style:"width: 355px;text-align: center;"%>
-                </div>
-              </div> 
-              <br>
             </div>
+            <br>
+            
+            <div class="item form-group" style="margin-left: -3px;">
+              <div class="form_atividades"> 
+                <label>Agendar:</label>
+                <%= form.datetime_field :agendamento,style:"font-size: 15px;margin-left: 13px;width: 353px;text-align: center;",required: true%>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="item form-group" style="margin-left: 21px;"> 
+              <label style="margin-left: 14px;">Tipo:</label>
+              <div class="form_atividades" style="width:130px">
+                <%= form.select :tipo, ['Atividade', 'Lembrete', 'Agendamento']%>
+              </div>  
+              <label style="margin-left: 48px;">Status:</label>
+              <div class="form_atividades">
+                <%= form.select :status,['Aberto', 'Concluido'], class:"form_atividades"  %>
+              </div>
+            </div>   
+
+            <br>
+
+            <div class="item form-group">
+              <label style="margin-left: 32px;">Nível:</label>
+              <div class="form_atividades">
+                <%= form.select :nivel, ['Alto', 'Médio', 'Baixo'], class:"form-control"  %>  
+              </div>
+            </div> 
+            <br>
+            
+            <div class="item form-group">
+              Resumo:
+              </label>
+              <div class="col-md-6 col-sm-6 ">
+                <%= form.text_area :resumo, style:"margin-left:13px;width: 355px;min-height: 181px;padding: 7px;", placeholder:"Detalhes da atividade",required: true%>
+              </div>
+            </div> 
+            <br>  
+            <br>
           </div>
-        <% end %> 
-      </div>
-    </div>
+        </div>
+      </div> 
+      <footer class="modal__footer" style="margin-left: 0px;">  
+        <%= link_to "Voltar", restrito_tela_agenda_atividades_path,class:"modal__btn",style:"font-family: Gilroy ExtraBold;float: left;"%>  
+        <%= form.submit 'Enviar' ,class:"modal__btn modal__btn-primary",style:"font-family: Gilroy ExtraBold;float: right;"%> 
+      </footer>
+    <% end %> 
   </div>
+</div> 

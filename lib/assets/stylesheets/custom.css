@@ -918,8 +918,19 @@
   padding: 0px;}
 
 .profile_pic {
-  width: 35%;
-  float: left; }
+    float: left;
+    font-size: 24px;
+    padding: 0px 8px 0px 8px;
+    margin-right: 8px;
+    margin-top: 0px;
+    /* margin-right: 11px; */
+    color: #00ffce;
+    border-style: dotted;
+    border: 3px solid #00ffce;
+    border-radius: 50%;
+    box-shadow: 0px 0px 7px #00ffce;
+    background: #ffffff;
+    }
 
 .img-circle.profile_img {
   width: 70%;
@@ -931,10 +942,11 @@
   border: 1px solid rgba(52, 73, 94, 0.44);
   padding: 4px; }
 
-.profile_info {
-  padding: 25px 10px 10px;
+.profile_info { 
   width: 65%;
-  float: left; }
+    margin-top: -7px;
+    margin-bottom: 8px;
+    float: left;}
 
 .profile_info span {
   font-size: 13px;
@@ -1512,7 +1524,7 @@ a:hover, a:focus {
 }
 footer {
   background: #fff;
-  padding: 10px 20px;
+  padding: 4px 20px;
   display: block; }
 
 .nav-sm footer {
@@ -5065,13 +5077,13 @@ ul.notifications {
 }
 .bts{
   background: white;
-  border:1px solid;
-  border-radius:2px;
+  border: 1px solid;
+  border-radius: 2px;
   box-shadow: 0px 3px 10px #2a3f53;
-  padding:7px;
-  position:fixed;
-  right:55px;
-  margin-top:20px;
+  padding: 7px;
+  position: fixed;
+  right: 66px;
+  margin-top: -9px;
 }
 .filiados{ 
   float: none;
@@ -5156,16 +5168,22 @@ trix-toolbar .button_group {
   background-color: white;
 }
 .ver_atividade{ 
-  transition:0.4s; 
-  border: 1px solid #e6e9ed;
+  border: 1px solid #72879c;
   border-radius: 2px;
-  padding: 2px; 
+  transition:0.4s; 
+  background:#1fffd436;
+  color:#172d43 ;
+  padding: 4px; 
 }
 .ver_atividade:hover{ 
-  border: 1px solid #72879c;
-  transition:0.4s; 
-  background:#1abb9c;
-  color:white
+  
+  transition:0.4s;  
+  color:#172d43;
+  background:#00fbcf;
+  border: 1px solid #172d43;
+  border-radius: 2px;
+  box-shadow:0px 0px 10px #00fbcf;
+  
 }
 .Alto{
   color:red;
@@ -5175,4 +5193,23 @@ trix-toolbar .button_group {
 }
 .Baixo{
   color:#4696ff;
+}
+.hora{
+  text-align:center;
+}
+.slick-next .slick-arrow{
+  display:none
+}
+.flash-notice {
+  float: right; 
+    color: #2a3f53;
+    background: #00fbcf;
+    border-top: 1px solid #72879c; 
+    border-right: 1px solid #2a3f53;
+    padding: 12px;
+    font-size: 17px;
+    width: 237px;
+    margin-top: 0px;
+    margin-bottom: 0px; 
+    transition: 1s; 
 }
