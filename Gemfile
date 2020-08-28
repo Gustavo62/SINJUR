@@ -74,7 +74,15 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
+group :production do
+  gem 'mysql2'#, '~/0.3.18'
+end
+
+
 group :development do
+  gem 'capistrano-rails', '~> 1.4', require:false
+  gem 'capistrano-bundler', '~> 1.5'
+  gem 'capistrano', '~> 3.11', require:false
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
