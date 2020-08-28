@@ -7,16 +7,16 @@ class FiliadosController < ApplicationController
   def index
     if params[:serventia] or params[:cidade]
       if params[:cidade] != ""
-        @filiados = Filiado.where(cidade: params[:cidade]).page(params[:page]).per(21)
+        @filiados = Filiado.where(cidade: params[:cidade]).page(params[:page]).per(17)
       else
         if params[:serventia] != ""
-          @filiados = Filiado.where(codigo_tj: params[:serventia]).page(params[:page]).per(21)
+          @filiados = Filiado.where(serventia: params[:serventia]).page(params[:page]).per(17)
         else
-          @filiados = Filiado.page(params[:page]).per(21)    
+          @filiados = Filiado.page(params[:page]).per(17)    
         end
       end
     else
-      @filiados = Filiado.page(params[:page]).per(21)
+      @filiados = Filiado.page(params[:page]).per(17)
     end
     @local = "Filiados >> Listar Filiados"
   end

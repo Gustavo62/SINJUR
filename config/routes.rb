@@ -1,6 +1,8 @@
 Rails.application.routes.draw do  
+  resources :assunto_atendimentos
   root 'restrito/tela_agenda/atividades#index'
   resources :estatisticas
+  resources :ferramentas_atendimento
   devise_for :admins 
   resources :documentos
   resources :processos 

@@ -26,6 +26,7 @@
   z-index: 1981;
 }
 .alertify .ajs-dialog {
+  margin-top: 16px;
   position: relative;
   margin: 5% auto;
   min-height: 110px;

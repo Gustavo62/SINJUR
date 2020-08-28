@@ -28,13 +28,14 @@
     border-radius: 2px;
     background: transparent;
     border: 2px solid #26b99a;
-    color: white;"%>
+    text-transform: uppercase;
+    color: #2a3f53;"%>
                           Serventia: <%= text_field_tag 'serventia', nil, type:'integer', placeholder:"Ex: 000000",  class:"form-control", style:"width: 30%; 
     font-size: 20px;
     border-radius: 2px;
     background: transparent;
     border: 2px solid #26b99a;
-    color: white;"%>
+    color: #2a3f53;"%>
                           <span class="input-group-btn"> 
                             <%= submit_tag "Consultar",  id:"btn_consulta_escuro", style:"font-size: 20px;"%>
                           </span>  
@@ -63,9 +64,9 @@
                         <td><%= filiado.serventia %></td> 
                         <td><%= filiado.email %></td>
                         <td style="width: 18%;"><%= filiado.cidade %></td>
-                        <td style="width:7%;padding:2px"><%= button_to 'Visualizar' , filiado, method: :get,class:'btn_view',style:"width: 100%;"%></td>
-                        <td style="width:7%;padding:2px"><%= button_to 'Editar', edit_filiado_path(filiado), method: :get,class:'btn_edit',style:"width: 100%;"%></td>
-                        <td style="width:7%;padding:2px"><%= button_to 'Excluir', filiado, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'btn_eraser',style:"width: 100%;"%></td>
+                        <td style="width:7%;padding:2px"><%= button_to 'Visualizar' , filiado, method: :get,class:'modal__btn modal__btn-primary',style:"background-color: #2b3c8f;font-family: Gilroy ExtraBold;width:100%width: 100%;"%></td>
+                        <td style="width:7%;padding:2px"><%= button_to 'Editar', edit_filiado_path(filiado), method: :get,class:'modal__btn modal__btn-primary',style:"font-family: Gilroy ExtraBold;width:100%"%></td>
+                        <td style="width:7%;padding:2px"><%= button_to 'Excluir', filiado, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'modal__btn',style:"color: white;background: red;font-family: Gilroy ExtraBold;width: 100%;"%></td>
                         
                       </tr>
                       <script>

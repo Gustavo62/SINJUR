@@ -1,45 +1,41 @@
 
-<div class="nested-fields"style="
-    padding: 11px; 
-    background-color: aliceblue;
-    border: 1px solid; 
-    margin-top: 12px;
-    border-radius: 2px;
-    text-align: left;
-">
+<div class="nested-fields">
     <div class="field">
-    <div style="text-align:right;"><%= link_to_remove_association('', f,class:"fa fa-remove")%></div>
         <div class="field">
-            <%= f.label :area_atuacao %>*:
-            <%= f.text_field :area_atuacao,style:"width:30%",placeholder:"Área de atuação do processo." %> 
-            <%= f.label :objeto_acao%>*:
-            <%= f.text_field :objeto_acao,style:"width:25%",placeholder:"Área de ação do processo." %> 
+            <label>A. Atuação*:</label>
+            <%= f.text_field :area_atuacao,style:"width:35%",placeholder:"Área de atuação do processo.",required:true  %> 
+            <label>O. Ação*:</label>
+            <%= f.text_field :objeto_acao,style:"width:36%",placeholder:"Área de ação do processo.",required:true  %>
+        </div>
+        <div class="field" style="margin-left: 40px;"> 
             <%= f.label :assunto %>*:
-            <%= f.text_field :assunto,style:"width:18.6%",placeholder:"Assunto do processo." %> 
+            <%= f.text_field :assunto,style:"width:84%",placeholder:"Assunto do processo.",required:true  %> 
+        </div>
+        <div class="field" style="margin-left:47px">
             <%= f.label :detalhe %>:
-            <%= f.text_field :detalhe, style:"width:93%;margin-left: -2px;",placeholder:"Detalhes do processo."%>
+            <%= f.text_field :detalhe, style:"width: 84.5%;",placeholder:"Detalhes do processo."%> 
         </div>
         <br>
          <div class="field"> 
-            <%= f.label :local_tramite %> 1*:
-            <%= f.text_field :local_tramite_um,style:"width:39%;",placeholder:"local onde o processo será tramitado."%> 
-            <%= f.label :local_tramite %> 2:
-            <%= f.text_field :local_tramite_dois,style:"width:39.5%;margin-left: -4px;",placeholder:"local onde o processo será tramitado." %>
+            <label>L. Tramite ¹*:</label>
+            <%= f.text_field :local_tramite_um,style:"width:35%;",placeholder:"local onde o processo será tramitado.",required:true %> 
+            <label>L. Tramite ² :</label>
+            <%= f.text_field :local_tramite_dois,style:"width:33.8%;",placeholder:"local onde o processo será tramitado." %>
             
         </div>
         <br> 
-        <div class="field">
+        <div class="field" style="margin-left: 60px;">
             <%= f.label :pasta %>*:
-            <%= f.text_field :pasta,style:"width:43.4%;",placeholder:"Nome da pasta."%> 
+            <%= f.text_field :pasta,style:"width:37%;",placeholder:"Nome da pasta."%> 
             <%= f.label :etiqueta %>*:
-            <%= f.text_field :etiqueta,style:"width:43.5%",placeholder:"Nome da etiqueta." %>
-        </div> 
-        <br> 
-        <div class="field"> 
+            <%= f.text_field :etiqueta,style:"width:37.5%",placeholder:"Nome da etiqueta.",required:true  %>
+        </div>  
+        <div class="field" style="margin-left: 41px;"> 
+            <label>Favorito:</label>
+            <%= f.check_box :favorito,style:" height: 24px;width: 24px;background-color: #eee;border-radius: 50%;"%>
             <%= f.label :status_processo %>:
-            <%= f.select :status_processo, ['Aberto', 'Em processamento', 'Concluido'] %> 
-            Favorito: <%= f.check_box :favorito %>
+            <%= f.select :status_processo, ['Aberto', 'Em processamento', 'Concluido']%> 
         </div>
-            
+        <div style="text-align:right;border-bottom: 2px solid #1abb9c;"><%= link_to_remove_association('', f,class:"fa fa-trash-o",style:"color: red;font-size: 25px;margin-right: 18px;")%></div>
     </div>
 </div>

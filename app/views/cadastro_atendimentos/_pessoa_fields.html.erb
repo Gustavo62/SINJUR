@@ -1,8 +1,8 @@
-<div class="nested-fields">
+<div class="nested-fields" style="margin-top: 22px;">
     <div class="field">
         <div class="field" style="margin-left: 40px;">
             <%= f.label :nome %>*:
-            <%= f.text_field :nome, style:"width:89%",placeholder:"Infome o nome da pessoa."%>
+            <%= f.text_field :nome, style:"width:86%",placeholder:"Infome o nome da pessoa."%>
         </div> 
         <div class="field" style="margin-left: 78px;">
             <%= f.label :pis %>*:
@@ -15,8 +15,8 @@
         <br>
         <div class="field" style="margin-left: 14px;">
             <div class="test"> 
-                <%= f.label :profissao %>:
-                <%= f.text_field :profissao, placeholder:"Escrevente.",style:"width: 27.5%;" %>
+                <label>Profissão:</label>
+                <%= f.text_field :profissao, placeholder:"Escrevente.",style:"width: 24.5%;" %>
                 <%= f.label :escolaridade %>:
                 <%= f.select :escolaridade, ['Fundamental - Incompleto', 'Fundamental - Completo', 'Médio - Incompleto','Médio - Completo','Superior - Incompleto','Superior - Completo','Pós-graduação (Lato senso) - Incompleto','Pós-graduação (Lato senso) - Completo','Pós-graduação (Stricto sensu, nível mestrado) - Incompleto','Pós-graduação (Stricto sensu, nível mestrado) - Completo','Pós-graduação (Stricto sensu, nível doutor) - Incompleto','Pós-graduação (Stricto sensu, nível doutor) - Completo'],class:"test"%>
             </div>
@@ -34,19 +34,19 @@
             <label>R. Social:</label>
             <%= f.text_field :razao_social, style:"width:31%", placeholder:"nome devidamente registrado."%> 
             <%= f.label :nome_fantasia %>:
-            <%= f.text_field :nome_fantasia, style:"width:40.5%", placeholder:"Nome comercial."%>
+            <%= f.text_field :nome_fantasia, style:"width:37%", placeholder:"Nome comercial."%>
         </div> 
         <br>
         <div class="field"> 
             <label>I. Estadual:</label>
-            <%= f.text_field :insc_estadual,placeholder:"número de registro.",style:"width:36.8%" %> 
+            <%= f.text_field :insc_estadual,placeholder:"número de registro.",style:"width:34.8%" %> 
             <label>I. Municipal:</label>
-            <%= f.text_field :insc_municipal,style:"width:37%",placeholder:"número de registro." %>
+            <%= f.text_field :insc_municipal,style:"width:35.3%",placeholder:"número de registro." %>
         </div> 
         <br>
         <div class="field" style="margin-left: 6px;">
             <%= f.label :endereço %>:
-            <%= f.text_field :endereço, style:"width:69%", placeholder:"Ex: Rua Fernado de Oliveira"%>
+            <%= f.text_field :endereço, style:"width:65.4%", placeholder:"Ex: Rua Fernado de Oliveira"%>
             <%= f.label :cep %>*:
             <%= f.text_field :cep, placeholder:"00000-000",maxlength:"9",required:true %> 
         </div>
@@ -54,7 +54,7 @@
             <%= f.label :cidade %>*:
             <%= f.text_field :cidade, placeholder:"Ex: Fortaleza",required:true %> 
             <%= f.label :bairro %>:
-            <%= f.text_field :bairro, placeholder:"Ex: Aldeota",style:"width: 58%;" %> 
+            <%= f.text_field :bairro, placeholder:"Ex: Aldeota",style:"width: 54.3%;" %> 
         </div> 
         <div class="field" style="margin-left:23px">
             <%= f.label :celular %>*:
@@ -67,9 +67,9 @@
         <br>
         <div class="field" style="margin-left: 42px;">
             <%= f.label :email %>*:
-            <%= f.text_field :email, style:"width:41%;", placeholder:"Ex: exemplo@exemplo.com",required:true%>
+            <%= f.text_field :email, style:"width:38%;", placeholder:"Ex: exemplo@exemplo.com",required:true%>
             <%= f.label :responsável %>:
-            <%= f.text_field :responsável,style:"width:35%",placeholder:"Advogado responsável.",required:true %>
+            <%= f.text_field :responsável,style:"width:34%",placeholder:"Advogado responsável.",required:true %>
         </div>
         <div style="text-align:right;border-bottom: 2px solid #1abb9c;"><%= link_to_remove_association('', f,class:"fa fa-trash-o",style:"color: red;font-size: 25px;margin-right: 18px;")%></div>
         

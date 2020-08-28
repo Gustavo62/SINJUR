@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Assunto:</strong>
+  <%= @assunto_atendimento.assunto %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @assunto_atendimento.descricao %>
+</p>
+
+<%= link_to 'Edit', edit_assunto_atendimento_path(@assunto_atendimento) %> |
+<%= link_to 'Back', assunto_atendimentos_path %>

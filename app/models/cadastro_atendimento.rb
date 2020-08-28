@@ -1,6 +1,7 @@
 class CadastroAtendimento < ApplicationRecord
     has_one :solicitante
     has_one :filiado 
+    has_one :assunto_atendimento
     has_one :action_text_rich_texts
     has_many :advogados
     has_many :pessoas 

@@ -63,7 +63,7 @@
                   <li><a><i class="fa fa-home"></i> Home <span id="setas" class="fa fa-chevron-down"></a>
                     <ul class="nav child_menu">
                       <li><%= link_to 'Painel de controle.',estatisticas_path, method: :get %></li>
-                      <li><%= link_to 'Informativos.',estatisticas_path, method: :get %></li> 
+                      <li><%= link_to 'Informativos.',restrito_welcome_index_path, method: :get %></li> 
                     </ul>
                   </li>
                   
@@ -76,7 +76,8 @@
                   <li><a><i class="fa fa-comments"></i> Atendimentos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><%= link_to 'Listar.',cadastro_atendimentos_path, method: :get %></li>
-                      <li><%= link_to 'Novo.',new_cadastro_atendimento_path, method: :get %></li> 
+                      <li><%= link_to 'Novo.',new_cadastro_atendimento_path, method: :get %></li>
+                      <li><%= link_to 'Ferramentas.',ferramentas_atendimento_index_path, method: :get %></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-gavel"></i> Processos <span class="fa fa-chevron-down"></span></a>
@@ -97,13 +98,6 @@
                     <ul class="nav child_menu"> 
                       <li><%= link_to 'Alterar senha.',edit_admin_registration_path, method: :get %></li>
                     </ul>
-                  </li>
-                  <br> 
-                  <h3>Novidades</h3>
-                  <li><a><i class="fa fa-code"></i> Beta <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu"> 
-                      <li><%= link_to 'Versão 1.0.0 ',restrito_welcome_index_path, method: :get %></li>
-                    </ul>
                   </li> 
                 </ul>
               </div> 
@@ -117,10 +111,10 @@
     background: #2a8f80;"><%= flash[:notice] %></p>
                 <% end %>
               </div>
-              <a data-toggle="tooltip" data-placement="top" title="Settings" style="display: inline;text-align: center;width: 288px;border-bottom: 2px solid #00fbcf;">
+              <a data-toggle="tooltip" data-placement="top" title="Settings" style="display: inline;text-align: center;width: 288px;border-top: 2px solid #1abb9c;">
                 <small style="float: right;width: 230px;">
-                <i class="fa fa-power-off" style="color: #00fbcf;margin-right: 2px;margin-top: 3px;float: left;font-size: 14px;"></i>
-                  <%= button_to 'Encerrar sessão.', destroy_admin_session_path, method: :delete, style:" cursor: pointer; color: #00fbcf;background-color: transparent; border: 0px;font-family:Gilroy ExtraBold;; font-size: 17px; margin-right: 78PX; padding: 0px;"%>
+                <i class="fa fa-power-off" style="color: #ffffff;margin-right: 2px;margin-top: 3px;float: left;font-size: 14px;"></i>
+                  <%= button_to 'Encerrar sessão.', destroy_admin_session_path, method: :delete, style:" cursor: pointer; color: #ffffff;background-color: transparent; border: 0px;font-family:Gilroy ExtraBold;; font-size: 17px; margin-right: 78PX; padding: 0px;"%>
               </small>
               </a> 
             </div>
@@ -154,7 +148,7 @@
         </div> 
         <footer style="margin-right: -7px;">   
           <div class="pull-right" style=float:none> 
-            <div class="hora" style="color: #73879c;font-size: large;">
+            <div class="hora" style="color: #5171a6;text-shadow: 0px 0px 1px #adb9c5;font-size: large;font-family: Gilroy;">
                 <SCRIPT LANGUAGE="JAVASCRIPT">
                 <!--
 

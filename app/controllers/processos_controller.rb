@@ -112,6 +112,9 @@ class ProcessosController < ApplicationController
     end
   end
 
+  ATTRIBUTE_TYPES = {
+        detalhe: TrixField
+    }
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_processo

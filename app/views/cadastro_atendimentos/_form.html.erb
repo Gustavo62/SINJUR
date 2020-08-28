@@ -24,6 +24,21 @@
             </div>
           <% end %>
           <div class="contato" style="width: 1257px;">
+            <h2 style="font-size: 26px;">Informações do Atendimento <i class="fa fa-archive"></i></h2>
+            <div class="contato-form" style="margin-bottom: 19px;float: right;">
+              <div style="margin: auto;width: 1212px;text-align: left;">    
+                <div class="field" style="margin-left: 39px;"> 
+                  <label style="margin-left: -17px;">Assunto:</label>
+                  <%= collection_select(:cadastro_atendimento, :assunto_atend,  @assunto_for_select, :id, :assunto) %>
+                </div>
+                <div class="field" style="margin-left: 25px;"> 
+                  <label style="margin-left: -17px;">Processo:</label>
+                  <%= f.select :tipo_processo, ['Judicial', 'Administrativo','Consulta','Parecer','Outros'] %> 
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="contato" style="width: 1257px;">
             <h2 style="font-size: 26px;">Informações do Cliente <i class="fa fa-user"></i></h2>
             <div class="contato-form" style="margin-bottom: 19px;float: right;">
               <div style="margin: auto;width: 1212px;text-align: left;">    
@@ -43,13 +58,13 @@
                 </div>
               </div>
               <br>
-              <div class="field" style="text-align: left;width: 1189px;font-size: 24px;margin: auto;">
-                Resumo*:  
+              <div class="field" style="text-align: left;width: 1189px;font-size: 24px;margin-top: -31px;margin-left: 13px;">
+                <label style="float: left;margin-top: 50px;">Resumo*:</label>  
                 
                  
-                <div class="field-unit__field" style="width: 1034px;margin-left: 105px;margin-top: -71px;">
-                  <div style="display:none"><%= f.text_field :texto_livre, id: 'texto_livre' %></div> 
-                  <trix-editor style="background-color:white;border: 1px solid #1abb9c;" required input="<%= :texto_livre%>" placeholder="Digite um resumo para o atendimento." ></trix-editor>
+                <div class="field-unit__field" style="width: 1034px;margin-left: 105px;">
+                  <div style="display:none"><% f.text_field :texto_livre, id: 'texto_livre' %></div> 
+                  <trix-editor style="background-color:white;border: 1px solid #1abb9c;" required input="<%= :texto_livre%>"  ></trix-editor>
                 </div> 
               </div>  
             </div>

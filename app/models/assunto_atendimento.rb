@@ -1,0 +1,2 @@
+class AssuntoAtendimento < ApplicationRecord 
+end
