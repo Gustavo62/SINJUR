@@ -64,9 +64,9 @@
                           <td><%= ((contato.telefones.sample).telefone) %></td> 
                         <% rescue %>   
                         <% end %> 
-                        <td style="width:7%;padding:2px"><%= button_to 'Visualizar' , contato, method: :get,class:'btn_view',style:"width: 100%;"%></td>
-                        <td style="width:7%;padding:2px"><%= button_to 'Editar', edit_contato_path(contato), method: :get,class:'btn_edit',style:"width: 100%;"%></td>
-                        <td style="width:7%;padding:2px"><%= button_to 'Excluir', contato, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'btn_eraser',style:"width: 100%;"%></td>
+                        <td style="width:7%;padding:2px"><%= button_to 'Visualizar' , contato, method: :get,class:'modal__btn modal__btn-primary',style:"background-color: #2b3c8f;font-family: Gilroy ExtraBold;width:100%width: 100%;"%></td>
+                        <td style="width:7%;padding:2px"><%= button_to 'Editar', edit_contato_path(contato), method: :get,class:'modal__btn modal__btn-primary',style:"font-family: Gilroy ExtraBold;width:100%"%></td>
+                        <td style="width:7%;padding:2px"><%= button_to 'Excluir', contato, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'modal__btn',style:"color: white;background: red;font-family: Gilroy ExtraBold;width: 100%;"%></td>
                         
                       </tr>
                       <script>

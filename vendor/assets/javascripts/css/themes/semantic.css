@@ -7,7 +7,8 @@
   background-color: rgba(0, 0, 0, 0.85);
   opacity: 1;
 }
-.alertify .ajs-dialog {
+.alertify .ajs-dialog { 
+  margin-top: 16px;
   max-width: 50%;
   min-height: 137px;
   background-color: #F4F4F4;

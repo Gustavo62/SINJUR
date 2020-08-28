@@ -1,36 +1,15 @@
 <%= javascript_include_tag 'Chart.bundle', 'chartkick'%>  
 <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %> 
-<div class="col-md-4 col-sm-4 " style="width: 30.8%;">
-    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: -11px;height: auto;min-height:522px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
-    <div class="x_title" style="color: #4a6e90;">
-        <h2>Atendimentos<small>Por periodo do mês.</small></h2> 
-        <div class="clearfix"></div>
-    </div>
-    <div class="x_content">
-        <table class="" style="width:100%">
-        <tr>
-            <th>
-            <p></p>
-            </th>
-        </tr>
-        <tr>
-            <td> 
-                 <%= line_chart @atends.group_by_month(:data_atendimento).count,width: "395px", height: "390px",min:0,label: "Atendimentos",discrete: true,points: false%> 
-            </td>
-        </tr>
-        </table>
-    </div>
-    </div>
-</div> 
-<div class="col-md-4 col-sm-4 ">
-    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="min-width: 580px;margin-left: -16px;height: auto;min-height: 494px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
-    <div class="x_title" style="color: #4a6e90;">
-        <h2>Processos<small></small></h2> 
+ 
+<div class="col-md-4 col-sm-4 " style="font-family: Gilroy;">
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: -11px;min-width: 545px;height: auto;min-height: 494px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+    <div class="x_title" style="color: #1abb9c;font-family: Gilroy ExtraBold;">
+        <h2><i class="fa fa-university" style="margin-right:10px"></i>Processos<small></small></h2> 
         <div class="clearfix"></div>
     </div>
     <div class="x_content" style="padding: 27px;">
         <table class="" style="width:100%;">
-        <caption><h2 style="color: #4a6e90;font-size: 22px;">Status do processo.</h2></caption>
+        <caption><h2 style="color: #4a70a2;font-size: 29px;margin-top: 0px;text-shadow: 0px 0px 4px #adb9c5;">Status do processo.</h2></caption>
         <tr>
             <th style="width:37%;">
             <p></p>
@@ -53,9 +32,9 @@
             <table class="tile_info">
                 <tr >
                 <td>
-                    <p><i class="fa fa-square blue" style="color:#4a6e91"></i>Aberto </p>
+                    <p style="font-family:Gilroy ExtraBold"><i class="fa fa-square blue" ></i>Aberto </p>
                 </td>
-                <td>
+                <td style="font-family:Gilroy ExtraBold">
                     <% begin %>
                         <%= @porcentagem_status_aberto.round(0)  %>%
                     <% rescue %>
@@ -65,9 +44,9 @@
                 </tr>
                 <tr>
                 <td>
-                    <p><i class="fa fa-square red" style="color:#22cc77"></i>Concluido </p>
+                    <p style="color: #22cc77;font-family:Gilroy ExtraBold;"><i class="fa fa-square red" style="color: #22cc77;"></i>Concluido </p>
                 </td> 
-                <td>
+                <td style="font-family:Gilroy ExtraBold;color: #22cc77;">
                     <% begin %>
                         <%= @porcentagem_status_concluido.round(0)  %>%
                     <% rescue %>
@@ -77,9 +56,9 @@
                 </tr>
                 <tr>
                 <td>
-                    <p><i class="fa fa-square green" style="color:#ff9900"></i>Em andamento </p>
+                    <p style="color:#ff9900;font-family:Gilroy ExtraBold;"><i class="fa fa-square green" style="color:#ff9900"></i>Em andamento </p>
                 </td> 
-                <td>
+                <td style="color: #ff9900;font-family:Gilroy ExtraBold;">
                     <% begin %>
                         <%= @porcentagem_status_em_andamento.round(0)  %>%
                     <% rescue %>
@@ -91,20 +70,20 @@
             </td>
         </tr>
         </table>
-        <div ><small class="numeros_g"><%= @qtd_procs%></small> <br><span style="font-size: 18px;color: #4a6e90" >Processos cadastrados no sistema.</span></div>
-        <div ><small class="numeros_g"><%= @favoritos%></small> <br><span style="font-size: 18px;color: #4a6e90">Processos com <i class="fa fa-heart"></i>.</span></div>
+        <div style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;"><small class="numeros_g"><%= @qtd_procs%></small> <br><span style="font-size: 18px;color: #4a6e90" >Processos cadastrados no sistema.</span></div>
+        <div style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;"><small class="numeros_g"><%= @favoritos%></small> <br><span style="font-size: 18px;color: #4a6e90">Processos com <i class="fa fa-heart"></i>.</span></div>
     </div>
     </div>
 </div>  
-<div class="col-md-4 col-sm-4 " >
-    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: -4.4px;height: auto;min-height: 494px;width: 146%;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
-    <div class="x_title" style="color: #4a6e90;">
-        <h2>Atividades<small></small></h2> 
+<div class="col-md-4 col-sm-4 " style="font-family: Gilroy;">
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: -2px;height: auto;min-height: 494px;width: 560px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+    <div class="x_title" style="color: #1abb9c;font-family: Gilroy ExtraBold;">
+        <h2><i class="fa fa-tasks" style="margin-right:10px"></i>Atividades<small></small></h2> 
         <div class="clearfix"></div>
     </div>
     <div class="x_content" style="padding: 27px;margin-top: -20px;">
         <table class="" style="width:100%;">
-        <caption><h2 style="color: #4a6e90;font-size: 22px;">Status das atividade.</h2></caption>
+        <caption><h2 style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;font-size: 22px;">Status das atividade.</h2></caption>
         <tr>
             <th style="width:37%;">
             <p></p>
@@ -127,9 +106,9 @@
             <table class="tile_info">
                 <tr >
                     <td>
-                        <p><i class="fa fa-square blue" style="color:#4a6e91"></i>Aberto </p>
+                        <p style="font-family:Gilroy ExtraBold"><i class="fa fa-square blue" style="color:#4a6e91"></i>Aberto </p>
                     </td>
-                    <td>
+                    <td style="font-family:Gilroy ExtraBold">
                         <% begin %>
                             <%= @porcentagem_atividades_aberto.round(0)  %>%
                         <% rescue %>
@@ -139,9 +118,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <p><i class="fa fa-square red" style="color:#22cc77"></i>Concluido </p>
+                        <p style="font-family:Gilroy ExtraBold;color: #22cc77;"><i class="fa fa-square red" style="color:#22cc77"></i>Concluido </p>
                     </td> 
-                    <td>
+                    <td style="font-family:Gilroy ExtraBold;color: #22cc77;">
                         <% begin %>
                             <%= @porcentagem_atividades_concluido.round(0)  %>%
                         <% rescue %>
@@ -154,7 +133,7 @@
         </tr> 
         </table> 
         <table class="" style="width:100%;">
-        <caption><h2 style="color: #4a6e90;font-size: 22px;padding-top: 27px;">Atividades abertas.</h2></caption>
+        <caption><h2 style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;font-size: 22px;padding-top: 27px;">Atividades abertas.</h2></caption>
         <tr>
             <th style="width:37%;">
             <p></p>
@@ -176,9 +155,9 @@
             <table class="tile_info">
                 <tr >
                     <td>
-                        <p><i class="fa fa-square blue" style="color:#fe3866"></i>Alto </p>
+                        <p style="font-family: Gilroy ExtraBold;color: #fe3866;"><i class="fa fa-square blue" style="color:#fe3866"></i>Alto </p>
                     </td>
-                    <td>
+                    <td style="font-family: Gilroy ExtraBold;color: #fe3866;">
                         <% begin %>
                             <%= @nivel_alto %>
                         <% rescue %>
@@ -188,9 +167,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <p><i class="fa fa-square red" style="color:#ffe71c"></i>Médio </p>
+                        <p style="font-family: Gilroy ExtraBold;color: #ffe71c;"><i class="fa fa-square red" style="color:#ffe71c"></i>Médio </p>
                     </td> 
-                    <td>
+                    <td style="font-family: Gilroy ExtraBold;color: #ffe71c;">
                         <% begin %>
                             <%= @nivel_medio %>
                         <% rescue %>
@@ -200,9 +179,9 @@
                 </tr> 
                 <tr>
                     <td>
-                        <p><i class="fa fa-square red" style="color:#53a1ff"></i>Baixo </p>
+                        <p style="font-family: Gilroy ExtraBold;color: #53a1ff;"><i class="fa fa-square red" style="color:#53a1ff"></i>Baixo </p>
                     </td> 
-                    <td>
+                    <td style="font-family: Gilroy ExtraBold;color: #53a1ff;">
                         <% begin %>
                             <%= @nivel_baixo  %>
                         <% rescue %>
@@ -216,34 +195,46 @@
         </table>  
     </div>
     </div>
-</div> 
+</div>
+<div class="col-md-4 col-sm-4 " style="font-family: Gilroy;padding-right:0px;">
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="width: 436px;margin-left: -2px;height: auto;min-height: 521px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+        <div class="x_title" style="color: #1abb9c;font-family: Gilroy ExtraBold;">
+            <h2><i class="fa fa-newspaper-o" style="margin-right:10px"></i>Atendimentos<small style="font-size:21px">cadastrados.</small></h2> 
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content" style="padding: 27px;margin-top: -20px;margin-left: -30px;padding-bottom: 0px;"> 
+            <%= column_chart @atends.group_by_day_of_week(:created_at, format: "%a").count,width: "400px",height:"420px",colors: ["#1abb9c", "#118f77"],stacked: true, discrete: true,label: "Atendimentos",min:1,max:@qtd_de_atend%>    
+        </div>
+    </div>    
+</div>  
  <br><div class="clearfix"></div>
 <div class="row"> 
-    <div class="x_panel" STYLE="MARGIN-LEFT:9PX;width: 98.9%;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
-        <div class="x_title" style="color: #4a6e90;">
-            <h2>Atividade da semana<small><%= Time.now.strftime("%d/%m/%Y")%></small></h2> 
+    <div class="x_panel" STYLE="font-family: Gilroy;MARGIN-LEFT:9PX;width: 98.9%;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+        <div class="x_title" style="font-family: Gilroy ExtraBold;color: #1abb9c;">
+            <h2><i class="fa fa-tasks" style="margin-right:10px"></i>Atividade da semana<small><%= Time.now.strftime("%d/%m/%Y")%></small></h2> 
             <div class="clearfix"></div>
         </div> 
-            <div class="dashboard-widget-content" style="margin-top: -51px;margin-left: -30px;">
+            <div class="dashboard-widget-content" style="margin-top: -51px;font-size: 20px;margin-left: -30px;">
 
                 <ul class="list-unstyled timeline widget">
                     <%= week_calendar events: @atividades do |date, atividades| %> 
                         <% atividades.each do |atividade| %>  
                             <% if atividade.status == "Aberto"%>  
-                                <li style="display: block;width: 1539px;margin-left: -250px;">  
-                                    <div class="block">
+                                <li style="display: block;width: 1539px;margin-left: -14px;border-bottom: 0px solid;">  
+                                    <div class="block" style="border-left: 2px solid #4a6e90;border-bottom: 2px solid #4a6e8f;padding-right: 1px;">
                                         <div class="block_content">
-                                            <h2 class="title" ><a style="margin-left: 4px;"><%=atividade.titulo%></a></h2>
+                                            <h2 class="title" ><a style="font-size: 28px;color: #4a70a2;margin-left: 0px;text-shadow: 0px 0px 4px #adb9c5;"><%=atividade.titulo%></a></h2>
                                             <div class="byline">
-                                            <span><%=atividade.agendamento.strftime("%d/%m/%Y as %H:%M ")%></span><span>, Tipo: <%=atividade.tipo%>, </span>
+                                            <span><%=atividade.agendamento.strftime("%d/%m/%Y as %H:%M ")%></span><span>, Tipo: <%=atividade.tipo%>. </span>
                                             <br> 
                                             <div class="<%=atividade.nivel%>">   
-                                                <span>Nivel <%=atividade.nivel%>. </span>
+                                                <span style="text-shadow: 1px 0px 0px;">Nivel - <%=atividade.nivel%>. </span>
                                             </div>
                                             </div>
-                                            <p class="excerpt"><%=atividade.resumo.unpack(("a%i" % 45) * (atividade.resumo.size / 45.0).ceil).join("\n").force_encoding("UTF-8")%><br>
+                                            <label style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;"> Mais Informações.</label>
+                                            <div style="padding-top:9px"><label style="font-family:Gilroy ExtraBold;color: #1abb9c;">Resumo:</label> <div class="contato-form" style="box-shadow: 1px 1px 9px #e4e4e4;margin-left: 5.6%;float:none;margin-top: -31px;"><p style="display:inline"><%=atividade.resumo.unpack(("a%i" % 45) * (atividade.resumo.size / 45.0).ceil).join("\n").force_encoding("UTF-8")%></p></div> </div><br>
                                             </p>
-                                            <a><%= link_to 'Visualizar Atividade', atividade, class:"btn_consulta", style:"width: 166px;text-align: center;font-size: 14px;float: right;margin-top: -17px;"%></a>
+                                            <a><%= link_to 'Visualizar', atividade, class:"modal__btn modal__btn-primary", style:"font-family:Gilroy ExtraBold;font-size: 16px;float: right;margin-top: -34px;"%></a>
                                         </div>
                                     </div>   
                                 </li>  

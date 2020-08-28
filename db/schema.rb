@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_164544) do
+ActiveRecord::Schema.define(version: 2020_08_27_124321) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -76,11 +76,20 @@ ActiveRecord::Schema.define(version: 2020_06_22_164544) do
     t.index ["cadastro_atendimento_id"], name: "index_advogados_on_cadastro_atendimento_id"
   end
 
+  create_table "assunto_atendimentos", force: :cascade do |t|
+    t.string "assunto"
+    t.text "descricao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cadastro_atendimentos", force: :cascade do |t|
     t.integer "codigo_tj_filiado"
     t.text "texto_livre"
     t.text "editor1"
     t.string "nome"
+    t.string "tipo_processo"
+    t.string "assunto_atend"
     t.integer "cpf"
     t.integer "telefone"
     t.string "status"

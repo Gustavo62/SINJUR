@@ -25,21 +25,7 @@
 //= require alertify     
 $(document).ready(function() {
     MicroModal.init();
-  });
-Trix.config.textAttributes.verde = { 
-	style: { color: "#1abb9c" },
-  parser: function(element) {
-  	return element.style.color === "#1abb9c"
-  },
-  inheritable: true
- }  
-addEventListener("trix-initialize", function(event) {   
-    var buttonHTML = '<button type="button" data-trix-attribute="verde"><i class="fa fa-font" style="color:#1abb9c;font-size:20px"></i</button>' 
-  
-      event.target.toolbarElement.
-        querySelector(".button_group.text_tools").
-          insertAdjacentHTML("beforeend", buttonHTML)
-  })
+  }); 
 function modal(link) {
     MicroModal.init({  
         openTrigger: 'datacustomopen', // [3] 

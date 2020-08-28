@@ -1,7 +1,7 @@
 class EstatisticasController < ApplicationController
     layout 'restrito'
   def index
-    @qtd_de_atend = CadastroAtendimento.all.size
+    @qtd_de_atend = '%.0f' % CadastroAtendimento.all.size
     @local = 'Painel de controle'
     @qtd_procs = Processo.all.size
     @procs = Processo.all

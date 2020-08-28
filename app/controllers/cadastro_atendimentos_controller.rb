@@ -60,7 +60,8 @@ class CadastroAtendimentosController < ApplicationController
     end
   end 
   def options_for_select
-    @filiados_for_select = Filiado.all 
+    @filiados_for_select = Filiado.all
+    @assunto_for_select = AssuntoAtendimento.all 
   end
 
   def testa_doc
@@ -100,7 +101,46 @@ class CadastroAtendimentosController < ApplicationController
     testa_doc
     testa_advg
     testa_pess
-    testa_proc
+    testa_proc 
+    @count = 1
+    if @testeadv    
+      @posicao = 0
+      @qtd_adv = @cadastro_atendimento.advogados.size
+      if @cadastro_atendimento.advogados.size == 1
+        @adv_plural = 'do advogado.'
+        @cadastro_atendimento.advogados.each do |adovagos|
+          @nome_adv = adovagos.nome
+        end 
+      else 
+        @adv_plural = 'dos advogados.'
+        @nome_adv = [] 
+        @cadastro_atendimento.advogados.each do |adovagos|
+          @nome_adv[@posicao] = adovagos.nome
+          @posicao += 1
+        end 
+      end 
+    else 
+      @nome_adv = 'Sem advogado cadastrado neste atendimento' 
+    end
+    if @testepessoa    
+      @posicao_array = 0
+      @qtd_pess = @cadastro_atendimento.pessoas.size
+      if @cadastro_atendimento.pessoas.size == 1
+        @pess_plural = 'da pessoa envolvida.'
+        @cadastro_atendimento.pessoas.each do |pess|
+          @nome_pess = pess.nome
+        end 
+      else 
+        @pess_plural = 'das pessoas envolvidas.'
+        @nome_pess = [] 
+        @cadastro_atendimento.pessoas.each do |pess|
+          @nome_pess[@posicao_array] = pess.nome
+          @posicao_array += 1
+        end 
+      end 
+    else 
+      @nome_pess = 'Sem pessoas cadastrados neste atendimento' 
+    end
   end 
   # GET /cadastro_atendimentos/new
   def new
@@ -212,11 +252,12 @@ class CadastroAtendimentosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cadastro_atendimento_params
-      params.require(:cadastro_atendimento).permit( :data_atendimento, :status, :codigo_tj_filiado, :texto_livre, :nome, :cpf, :telefone, :id,
+      params.require(:cadastro_atendimento).permit( :tipo_processo,:data_atendimento, :status, :codigo_tj_filiado, :texto_livre, :nome, :cpf, :telefone, :id,
       filiado_attributes: [:cnpj, :end_completo,:titular,:cei, :serventia, :codigo_cnpj, :nome, :cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade_integer, :email, :id],
       advogados_attributes: [:nome, :endereço, :cidade, :bairro, :cep, :telefone, :cidade, :email, :advogado, :oab, :telefone, :observação, :cadastro_atendimento_id, :_destroy, :id],
       pessoas_attributes: [:nome, :profissao, :cep, :razao_social, :nome_fantasia, :cidade, :endereço, :cpf, :rg, :pis, :residencial, :comercial, :celular, :nacionalidade, :estado_civil, :estado_civil, :bairro, :email, :escolaridade, :insc_estadual, :insc_municipal, :responsável, :cnpj, :cadastro_atendimento_id, :_destroy, :id],
       processos_attributes: [:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois,:id, :cadastro_atendimento_id,:_destroy], 
-      documentos_attributes: [:documento])
+      documentos_attributes: [:documento],
+      assunto_atendimentos_attributes: [:assunto, :descricao])
     end
 end
