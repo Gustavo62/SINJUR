@@ -2,14 +2,12 @@
 lock "~> 3.14.1"
 
 set :application, "SINJUR"
-set :repo_url, "https://github.com/Gustavo62/SINJUR"
-
+set :repo_url, "https://github.com/Gustavo62/SINJUR"  
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :branch, 'master'
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/var/www/SINJUR"
-
+set :deploy_to, "/var/www/SINJUR" 
 set :format, :airbrussh
 set :lob_level, :debug
 append :linked_files, "config/database.yml", "config/master.key"
@@ -37,3 +35,4 @@ set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+set :pty, true 
