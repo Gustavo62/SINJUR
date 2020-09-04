@@ -79,11 +79,13 @@ end
 
 group :production do
   gem 'mysql2'#, '~/0.3.18'
+  gem 'unicorn'
 end
 
 
 group :development do
   gem 'capistrano-rails', '~> 1.4', require:false
+  gem 'capistrano3-unicorn'
   gem 'capistrano-bundler', '~> 1.5'
   gem 'capistrano-rvm' 
   gem 'capistrano', '~> 3.11', require:false
