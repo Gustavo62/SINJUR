@@ -10,7 +10,7 @@ set :branch, 'master'
 set :deploy_to, "/var/www/SINJUR" 
 set :format, :airbrussh
 set :lob_level, :debug
-append :linked_files, "config/database.yml", "config/master.key", "config/master.key"
+append :linked_files, "config/database.yml", "config/master.key"
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
 # set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
@@ -36,6 +36,7 @@ set :keep_releases, 5
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 set :pty, true 
+
 after 'deploy:finished', 'deploy:restart'
 
 namespace :deploy do
