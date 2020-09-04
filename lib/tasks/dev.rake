@@ -6,9 +6,7 @@ namespace :dev do
       show_spinner(" Criando Bd..."){%x(rails db:create)}
       show_spinner("Migrando Bd..."){%x(rails db:migrate)}
     end
-  end  
-  if Rails.env.production?
-    show_spinner("Cadastrando advogado padrão..."){%x(rails dev:add_default_admin)}       
+    show_spinner("Cadastrando advogado padrão..."){%x(rails dev:add_default_admin)}  
   end
   desc "Adiciona o Advogado padrão."
   task add_default_admin: :environment do
