@@ -83,7 +83,7 @@ group :production do
 end
 
 
-gem 'kgio' '~>2.11.3'
+gem 'kgio' 
 group :development do
   gem 'capistrano-rails', '~> 1.4', require:false
   gem 'capistrano3-unicorn'

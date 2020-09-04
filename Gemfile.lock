@@ -350,6 +350,7 @@ DEPENDENCIES
   jquery-ui-rails (= 5.0.0)
   jquery_mask_rails (~> 0.1.0)
   kaminari (~> 1.0)
+  kgio
   listen (>= 3.0.5, < 3.2)
   maskedinput-rails
   momentjs-rails
