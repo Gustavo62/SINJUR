@@ -6,4 +6,4 @@ stdout_path "#{root}/log/unicorn.log"
 worker_processes 4
 timeout 30
 preload_app true
-listen '/tmp/escamboapp.sock', backlog: 64
+listen '/tmp/SINJUR.sock', backlog: 64
