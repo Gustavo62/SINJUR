@@ -5,9 +5,9 @@ namespace :dev do
       show_spinner("Apagando Bd..."){%x(rails db:drop)}
       show_spinner(" Criando Bd..."){%x(rails db:create)}
       show_spinner("Migrando Bd..."){%x(rails db:migrate)}
-      show_spinner("Cadastrando advogado padrão..."){%x(rails dev:add_default_admin)}  
-    else
-      puts "Você não está em ambiente de desenvolvimento!"
+    end
+    if Rails.env.production?
+      show_spinner("Cadastrando advogado padrão..."){%x(rails dev:add_default_admin)}   
     end
   end
   desc "Adiciona o Advogado padrão."

@@ -354,7 +354,7 @@ DEPENDENCIES
   rails-assets-sweetalert2 (~> 5.1.1)!
   rails-erd
   rails-i18n (~> 5.1)
-  redis (~> 4.0)
+  redis (= 4.2.1)
   sass-rails (~> 5.0)
   simple_calendar (~> 2.0)
   spring
