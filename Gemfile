@@ -86,6 +86,7 @@ end
 group :development do
   gem 'capistrano-rails', '~> 1.4', require:false
   gem 'capistrano3-unicorn'
+  gem 'kgio' '~>2.11.3'
   gem 'capistrano-bundler', '~> 1.5'
   gem 'capistrano-rvm' 
   gem 'capistrano', '~> 3.11', require:false
