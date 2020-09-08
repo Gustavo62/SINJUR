@@ -1,8 +1,8 @@
-<%= javascript_include_tag 'Chart.bundle', 'chartkick'%>  
-<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %> 
- 
-<div class="col-md-4 col-sm-4 " style="font-family: Gilroy;">
-    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: -11px;min-width: 545px;height: auto;min-height: 494px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+<div style="text-align: center;">
+    <%= javascript_include_tag 'Chart.bundle', 'chartkick'%>  
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %> 
+     
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="width: 32.5%;height: auto;min-height: 494px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
     <div class="x_title" style="color: #1abb9c;font-family: Gilroy ExtraBold;">
         <h2><i class="fa fa-university" style="margin-right:10px"></i>Processos<small></small></h2> 
         <div class="clearfix"></div>
@@ -73,143 +73,139 @@
         <div style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;"><small class="numeros_g"><%= @qtd_procs%></small> <br><span style="font-size: 18px;color: #4a6e90" >Processos cadastrados no sistema.</span></div>
         <div style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;"><small class="numeros_g"><%= @favoritos%></small> <br><span style="font-size: 18px;color: #4a6e90">Processos com <i class="fa fa-heart"></i>.</span></div>
     </div>
-    </div>
-</div>  
-<div class="col-md-4 col-sm-4 " style="font-family: Gilroy;">
-    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: -2px;height: auto;min-height: 494px;width: 560px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
-    <div class="x_title" style="color: #1abb9c;font-family: Gilroy ExtraBold;">
-        <h2><i class="fa fa-tasks" style="margin-right:10px"></i>Atividades<small></small></h2> 
-        <div class="clearfix"></div>
-    </div>
-    <div class="x_content" style="padding: 27px;margin-top: -20px;">
-        <table class="" style="width:100%;">
-        <caption><h2 style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;font-size: 22px;">Status das atividade.</h2></caption>
-        <tr>
-            <th style="width:37%;">
-            <p></p>
-            </th>
-            <th>
-            <div class="col-lg-7 col-md-7 col-sm-7 ">
-                <p class=""></p>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 ">
-                <p class=""></p>
-            </div>
-            </th>
-        </tr>
-        <tr>
-            <td>
+    </div>  
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: 19px;width: 36.5%;height: 522px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+        <div class="x_title" style="color: #1abb9c;font-family: Gilroy ExtraBold;">
+            <h2><i class="fa fa-tasks" style="margin-right:10px"></i>Atividades<small></small></h2> 
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content" style="padding: 27px;margin-top: -20px;">
+            <table class="" style="width:100%;">
+            <caption><h2 style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;font-size: 22px;">Status das atividade.</h2></caption>
+            <tr>
+                <th style="width:37%;">
+                <p></p>
+                </th>
+                <th>
+                <div class="col-lg-7 col-md-7 col-sm-7 ">
+                    <p class=""></p>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 ">
+                    <p class=""></p>
+                </div>
+                </th>
+            </tr>
+            <tr>
+                <td>
 
-            <%= pie_chart @atividades.group(:status).count,legend:false, donut:true,width: "100px", height: "100px", colors: ["#4a6e91", "#2C7"]%> 
-            </td> 
-            <td>
-            <table class="tile_info">
-                <tr >
-                    <td>
-                        <p style="font-family:Gilroy ExtraBold"><i class="fa fa-square blue" style="color:#4a6e91"></i>Aberto </p>
-                    </td>
-                    <td style="font-family:Gilroy ExtraBold">
-                        <% begin %>
-                            <%= @porcentagem_atividades_aberto.round(0)  %>%
-                        <% rescue %>
-                        N/D
-                        <% end %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p style="font-family:Gilroy ExtraBold;color: #22cc77;"><i class="fa fa-square red" style="color:#22cc77"></i>Concluido </p>
-                    </td> 
-                    <td style="font-family:Gilroy ExtraBold;color: #22cc77;">
-                        <% begin %>
-                            <%= @porcentagem_atividades_concluido.round(0)  %>%
-                        <% rescue %>
+                <%= pie_chart @atividades.group(:status).count,legend:false, donut:true,width: "100px", height: "100px", colors: ["#4a6e91", "#2C7"]%> 
+                </td> 
+                <td>
+                <table class="tile_info">
+                    <tr >
+                        <td>
+                            <p style="font-family:Gilroy ExtraBold"><i class="fa fa-square blue" style="color:#4a6e91"></i>Aberto </p>
+                        </td>
+                        <td style="font-family:Gilroy ExtraBold">
+                            <% begin %>
+                                <%= @porcentagem_atividades_aberto.round(0)  %>%
+                            <% rescue %>
                             N/D
-                        <% end %>
-                    </td>
-                </tr> 
-            </table>
-            </td>
-        </tr> 
-        </table> 
-        <table class="" style="width:100%;">
-        <caption><h2 style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;font-size: 22px;padding-top: 27px;">Atividades abertas.</h2></caption>
-        <tr>
-            <th style="width:37%;">
-            <p></p>
-            </th>
-            <th>
-            <div class="col-lg-7 col-md-7 col-sm-7 ">
-                <p class=""></p>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 ">
-                <p class=""></p>
-            </div>
-            </th>
-        </tr>
-        <tr>  
-            <td> 
-                <%= pie_chart @atividades.group(:nivel).count,legend:false, donut:true,width: "100px", height: "100px", colors: ["#fe3867", "#53a1ff", "#ffe71c"]%> 
-            </td> 
-            <td>
-            <table class="tile_info">
-                <tr >
-                    <td>
-                        <p style="font-family: Gilroy ExtraBold;color: #fe3866;"><i class="fa fa-square blue" style="color:#fe3866"></i>Alto </p>
-                    </td>
-                    <td style="font-family: Gilroy ExtraBold;color: #fe3866;">
-                        <% begin %>
-                            <%= @nivel_alto %>
-                        <% rescue %>
-                        N/D
-                        <% end %>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p style="font-family: Gilroy ExtraBold;color: #ffe71c;"><i class="fa fa-square red" style="color:#ffe71c"></i>Médio </p>
-                    </td> 
-                    <td style="font-family: Gilroy ExtraBold;color: #ffe71c;">
-                        <% begin %>
-                            <%= @nivel_medio %>
-                        <% rescue %>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:Gilroy ExtraBold;color: #22cc77;"><i class="fa fa-square red" style="color:#22cc77"></i>Concluido </p>
+                        </td> 
+                        <td style="font-family:Gilroy ExtraBold;color: #22cc77;">
+                            <% begin %>
+                                <%= @porcentagem_atividades_concluido.round(0)  %>%
+                            <% rescue %>
+                                N/D
+                            <% end %>
+                        </td>
+                    </tr> 
+                </table>
+                </td>
+            </tr> 
+            </table> 
+            <table class="" style="width:100%;">
+            <caption><h2 style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;font-size: 22px;padding-top: 27px;">Atividades abertas.</h2></caption>
+            <tr>
+                <th style="width:37%;">
+                <p></p>
+                </th>
+                <th>
+                <div class="col-lg-7 col-md-7 col-sm-7 ">
+                    <p class=""></p>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 ">
+                    <p class=""></p>
+                </div>
+                </th>
+            </tr>
+            <tr>  
+                <td> 
+                    <%= pie_chart @atividades.group(:nivel).count,legend:false, donut:true,width: "100px", height: "100px", colors: ["#fe3867", "#53a1ff", "#ffe71c"]%> 
+                </td> 
+                <td>
+                <table class="tile_info">
+                    <tr >
+                        <td>
+                            <p style="font-family: Gilroy ExtraBold;color: #fe3866;"><i class="fa fa-square blue" style="color:#fe3866"></i>Alto </p>
+                        </td>
+                        <td style="font-family: Gilroy ExtraBold;color: #fe3866;">
+                            <% begin %>
+                                <%= @nivel_alto %>
+                            <% rescue %>
                             N/D
-                        <% end %>
-                    </td>
-                </tr> 
-                <tr>
-                    <td>
-                        <p style="font-family: Gilroy ExtraBold;color: #53a1ff;"><i class="fa fa-square red" style="color:#53a1ff"></i>Baixo </p>
-                    </td> 
-                    <td style="font-family: Gilroy ExtraBold;color: #53a1ff;">
-                        <% begin %>
-                            <%= @nivel_baixo  %>
-                        <% rescue %>
-                            N/D
-                        <% end %>
-                    </td>
-                </tr> 
-            </table>
-            </td>
-        </tr> 
-        </table>  
-    </div>
-    </div>
-</div>
-<div class="col-md-4 col-sm-4 " style="font-family: Gilroy;padding-right:0px;">
-    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="width: 436px;margin-left: -2px;height: auto;min-height: 521px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family: Gilroy ExtraBold;color: #ffe71c;"><i class="fa fa-square red" style="color:#ffe71c"></i>Médio </p>
+                        </td> 
+                        <td style="font-family: Gilroy ExtraBold;color: #ffe71c;">
+                            <% begin %>
+                                <%= @nivel_medio %>
+                            <% rescue %>
+                                N/D
+                            <% end %>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td>
+                            <p style="font-family: Gilroy ExtraBold;color: #53a1ff;"><i class="fa fa-square red" style="color:#53a1ff"></i>Baixo </p>
+                        </td> 
+                        <td style="font-family: Gilroy ExtraBold;color: #53a1ff;">
+                            <% begin %>
+                                <%= @nivel_baixo  %>
+                            <% rescue %>
+                                N/D
+                            <% end %>
+                        </td>
+                    </tr> 
+                </table>
+                </td>
+            </tr> 
+            </table>  
+        </div>
+    </div> 
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: 19px;width: 28%;min-height: 521px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
         <div class="x_title" style="color: #1abb9c;font-family: Gilroy ExtraBold;">
             <h2><i class="fa fa-newspaper-o" style="margin-right:10px"></i>Atendimentos<small style="font-size:21px">cadastrados.</small></h2> 
             <div class="clearfix"></div>
         </div>
         <div class="x_content" style="padding: 27px;margin-top: -20px;margin-left: -30px;padding-bottom: 0px;"> 
-            <%= column_chart @atends.group_by_day_of_week(:created_at, format: "%a").count,width: "400px",height:"420px",colors: ["#1abb9c", "#118f77"],stacked: true, discrete: true,label: "Atendimentos",min:1,max:@qtd_de_atend%>    
+            <%= column_chart @atends.group_by_day_of_week(:created_at, format: "%a").count,width: "460px",height:"420px",colors: ["#1abb9c", "#118f77"],stacked: true, discrete: true,label: "Atendimentos",min:1,max:@qtd_de_atend%>    
         </div>
-    </div>    
-</div>  
- <br><div class="clearfix"></div>
+    </div>  
+</div>
+<div class="clearfix"></div>
 <div class="row"> 
-    <div class="x_panel" STYLE="font-family: Gilroy;MARGIN-LEFT:9PX;width: 98.9%;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
+    <div class="x_panel" STYLE="font-family: Gilroy;MARGIN-LEFT:14PX;width: 98.5%;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
         <div class="x_title" style="font-family: Gilroy ExtraBold;color: #1abb9c;">
             <h2><i class="fa fa-tasks" style="margin-right:10px"></i>Atividade da semana<small><%= Time.now.strftime("%d/%m/%Y")%></small></h2> 
             <div class="clearfix"></div>
