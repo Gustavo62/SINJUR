@@ -4024,7 +4024,7 @@ ul.project_files li a i {
 /** login **/
 .login {
   background-image: url('/imagens/Login_sinjur.png');
-  background-size: 100% 950px;
+  background-size: 100% 130%;
 }
 .login .fa-paw {
   font-size: 26px; 
