@@ -5346,8 +5346,9 @@ trix-toolbar .button_group {
   padding: 10px 10px;
   line-height: 38px;
   text-decoration: none;
-  background-color: #3d262600;
+  background-color: #e2afaf00;
   border-left-width: 0;
+  font-family: Gilroy ExtraBold;
 }
 .pagination span.current{border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-top-left-radius: 5px;border-bottom-left-radius: 5px;padding-left: 14px;background:#1abb9c;color: #ffffff;}
 .pagination { 
@@ -5357,15 +5358,14 @@ trix-toolbar .button_group {
   padding: 0;
   float: none;
   border: none;
+  vertical-align: sub;
   }
   .prev {
   padding : 0;
-  float: none;
-  border: 1px solid;
+  float: none; 
   border-radius: 2px;
   background: transparent;
   color: #26b99a;
-  font-size: 17px;
   }
   .page{
   padding : 0;
