@@ -49,6 +49,8 @@ class ContatosController < ApplicationController
   # POST /contatos.json
   def create
     @contato = Contato.new(contato_params) 
+    @contato.usuario = current_admin.email
+    @contato.update_objt = current_admin.email
     respond_to do |format|
       if @contato.save
         format.html { redirect_to @contato, notice: 'Contato foi cadastrado com sucesso.' }
@@ -63,6 +65,7 @@ class ContatosController < ApplicationController
   # PATCH/PUT /contatos/1
   # PATCH/PUT /contatos/1.json
   def update
+    @contato.update_objt = current_admin.email
     respond_to do |format|
       if @contato.update(contato_params)
         format.html { redirect_to @contato, notice: 'Contato foi atualizado com sucesso.' }
@@ -83,15 +86,13 @@ class ContatosController < ApplicationController
       end
     end
   end
-  def destroy 
-    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin?
-      exluir_telefone
-      @contato.destroy  
-      respond_to do |format|
-        format.html { redirect_to contatos_url, notice: 'Contato foi deletado com sucesso.' }
-        format.json { head :no_content }
-      end
-    end
+  def destroy  
+    exluir_telefone
+    @contato.destroy  
+    respond_to do |format|
+      format.html { redirect_to contatos_url, notice: 'Contato foi deletado com sucesso.' }
+      format.json { head :no_content }
+    end 
   end 
   private
     # Use callbacks to share common setup or constraints between actions.

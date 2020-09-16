@@ -29,7 +29,8 @@ class AssuntoAtendimentosController < ApplicationController
   # POST /assunto_atendimentos.json
   def create
     @assunto_atendimento = AssuntoAtendimento.new(assunto_atendimento_params)
-
+    @assunto_atendimento.usuario = current_admin.email
+    @assunto_atendimento.update_objt = current_admin.email
     respond_to do |format|
       if @assunto_atendimento.save
         format.html { redirect_to assunto_atendimentos_url, notice: 'Assunto criado com sucesso.' }
@@ -44,6 +45,7 @@ class AssuntoAtendimentosController < ApplicationController
   # PATCH/PUT /assunto_atendimentos/1
   # PATCH/PUT /assunto_atendimentos/1.json
   def update
+    @assunto_atendimento.update_objt = current_admin.email
     respond_to do |format|
       if @assunto_atendimento.update(assunto_atendimento_params)
         format.html { redirect_to assunto_atendimentos_url, notice: 'Assunto atualizado com sucesso.' }
@@ -57,14 +59,12 @@ class AssuntoAtendimentosController < ApplicationController
 
   # DELETE /assunto_atendimentos/1
   # DELETE /assunto_atendimentos/1.json
-  def destroy
-    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin?
-      @assunto_atendimento.destroy
-      respond_to do |format|
-        format.html { redirect_to assunto_atendimentos_url, notice: 'Assunto excluido com sucesso.' }
-        format.json { head :no_content }
-      end
-    end
+  def destroy 
+    @assunto_atendimento.destroy
+    respond_to do |format|
+      format.html { redirect_to assunto_atendimentos_url, notice: 'Assunto excluido com sucesso.' }
+      format.json { head :no_content }
+    end 
   end
 
   private

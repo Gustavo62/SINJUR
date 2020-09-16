@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
   create_table "assunto_atendimentos", force: :cascade do |t|
     t.string "assunto"
     t.text "descricao"
+    t.string "usuario"
+    t.string "update_objt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,6 +96,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
     t.integer "telefone"
     t.string "status"
     t.date "data_atendimento"
+    t.string "usuario"
+    t.string "update_objt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -111,6 +115,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
     t.string "site"
     t.string "cep"
     t.string "numero"
+    t.string "usuario"
+    t.string "update_objt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -143,6 +149,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
     t.string "cidade"
     t.string "email"
     t.integer "cadastro_atendimento_id"
+    t.string "usuario"
+    t.string "update_objt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cadastro_atendimento_id"], name: "index_filiados_on_cadastro_atendimento_id"
@@ -189,6 +197,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
     t.string "local_tramite_um"
     t.string "local_tramite_dois"
     t.integer "cadastro_atendimento_id"
+    t.string "usuario"
+    t.string "update_objt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cadastro_atendimento_id"], name: "index_processos_on_cadastro_atendimento_id"
@@ -201,6 +211,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
     t.string "status"
     t.text "resumo"
     t.datetime "agendamento"
+    t.string "usuario"
+    t.string "update_objt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

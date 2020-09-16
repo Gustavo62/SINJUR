@@ -76,6 +76,8 @@ class ProcessosController < ApplicationController
   # POST /processos.json
   def create
     @processo = Processo.new(processo_params)
+    @processo.usuario = current_admin.email
+    @processo.update_objt = current_admin.email
 
     respond_to do |format|
       if @processo.save
@@ -90,7 +92,8 @@ class ProcessosController < ApplicationController
 
   # PATCH/PUT /processos/1
   # PATCH/PUT /processos/1.json
-  def update
+  def update 
+    @processo.update_objt = current_admin.email
     respond_to do |format|
       if @processo.update(processo_params)
         format.html { redirect_to @processo}

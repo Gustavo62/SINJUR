@@ -41,8 +41,9 @@ class FiliadosController < ApplicationController
   # POST /filiados
   # POST /filiados.json
   def create
-    @filiado = Filiado.new(filiado_params)
-
+    @filiado = Filiado.new(filiado_params) 
+    @filiado.usuario = current_admin.email
+    @filiado.update_objt = current_admin.email
     respond_to do |format|
       if @filiado.save
         format.html { redirect_to @filiado, notice: 'Filiado foi foi criado com sucesso.' }
@@ -57,6 +58,7 @@ class FiliadosController < ApplicationController
   # PATCH/PUT /filiados/1
   # PATCH/PUT /filiados/1.json
   def update
+    @filiado.update_objt = current_admin.email
     respond_to do |format|
       if @filiado.update(filiado_params)
         format.html { redirect_to @filiado, notice: 'Filiado foi atualizado com sucesso.' }
@@ -70,14 +72,12 @@ class FiliadosController < ApplicationController
 
   # DELETE /filiados/1
   # DELETE /filiados/1.json
-  def destroy
-    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin?
-      @filiado.destroy
-      respond_to do |format|
-        format.html { redirect_to filiados_url, notice: 'Filiado foi deletado com sucesso.' }
-        format.json { head :no_content }
-      end
-    end
+  def destroy 
+    @filiado.destroy
+    respond_to do |format|
+      format.html { redirect_to filiados_url, notice: 'Filiado foi deletado com sucesso.' }
+      format.json { head :no_content }
+    end 
   end
 
   private

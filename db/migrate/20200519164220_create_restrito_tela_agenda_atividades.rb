@@ -7,8 +7,8 @@ class CreateRestritoTelaAgendaAtividades < ActiveRecord::Migration[5.2]
       t.string :status
       t.text :resumo
       t.datetime :agendamento
-      t.string :usuario, default: current_admin.email
-      t.string :update_objt, default: current_user
+      t.string :usuario
+      t.string :update_objt
       
       t.timestamps
     end

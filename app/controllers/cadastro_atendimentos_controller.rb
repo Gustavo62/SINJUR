@@ -165,6 +165,8 @@ class CadastroAtendimentosController < ApplicationController
   def create
     options_for_select
     @cadastro_atendimento = CadastroAtendimento.new(cadastro_atendimento_params)  
+    @cadastro_atendimento.usuario = current_admin.email
+    @cadastro_atendimento.update_objt = current_admin.email
     respond_to do |format|
       if @cadastro_atendimento.save  
         format.html { redirect_to @cadastro_atendimento, notice: 'Atendimento criado com sucesso.' }
@@ -179,6 +181,7 @@ class CadastroAtendimentosController < ApplicationController
   # PATCH/PUT /cadastro_atendimentos/1
   # PATCH/PUT /cadastro_atendimentos/1.json
   def update
+    @cadastro_atendimento.update_objt = current_admin.email
     options_for_select
     respond_to do |format| 
       if @cadastro_atendimento.update(cadastro_atendimento_params)
@@ -230,18 +233,16 @@ class CadastroAtendimentosController < ApplicationController
       end
     end
   end 
-  def destroy  
-    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin? 
-      exluir_processo
-      exluir_advogados
-      exluir_pessoas  
-      exluir_documentos 
-      @cadastro_atendimento.destroy
-      respond_to do |format|
-        format.html {redirect_to cadastro_atendimentos_url, notice: 'Atendimento foi deletado com sucesso.' }
-        format.json { head :no_content }
-      end
-    end
+  def destroy   
+    exluir_processo
+    exluir_advogados
+    exluir_pessoas  
+    exluir_documentos 
+    @cadastro_atendimento.destroy
+    respond_to do |format|
+      format.html {redirect_to cadastro_atendimentos_url, notice: 'Atendimento foi deletado com sucesso.' }
+      format.json { head :no_content }
+    end 
   end
   ATTRIBUTE_TYPES = {
         texto_livre: TrixField

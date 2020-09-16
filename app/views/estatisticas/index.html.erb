@@ -70,8 +70,8 @@
             </td>
         </tr>
         </table>
-        <div style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;"><small class="numeros_g"><%= @qtd_procs%></small> <br><span style="font-size: 18px;color: #4a6e90" >Processos cadastrados no sistema.</span></div>
-        <div style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;"><small class="numeros_g"><%= @favoritos%></small> <br><span style="font-size: 18px;color: #4a6e90">Processos com <i class="fa fa-heart"></i>.</span></div>
+        <div style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;text-align: initial;"><small class="numeros_g">[ <%= @qtd_procs%> ]</small> <br><span style="font-size: 18px;color: #4a6e90" >Processos cadastrados no sistema.</span></div>
+        <div style="color: #4a70a2;text-shadow: 0px 0px 4px #adb9c5;text-align: initial;"> <small class="numeros_g">[ <%= @favoritos%> ]</small>  <br><span style="font-size: 18px;color: #4a6e90">Processos com <i class="fa fa-heart"></i>.</span></div>
     </div>
     </div>  
     <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: 19px;width: 36.5%;height: 522px;background: #ffffff;box-shadow: 0px 0px 3px #415467;">
@@ -199,7 +199,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content" style="padding: 27px;margin-top: -20px;margin-left: -30px;padding-bottom: 0px;"> 
-            <%= column_chart @atends.group_by_day_of_week(:created_at, format: "%a").count,width: "460px",height:"420px",colors: ["#1abb9c", "#118f77"],stacked: true, discrete: true,label: "Atendimentos",min:1,max:@qtd_de_atend%>    
+            <%= column_chart @atends.group_by_day_of_week(:created_at, format: "%a").count,width: "430px",height:"420px",colors: ["#1abb9c", "#118f77"],stacked: true, discrete: true,label: "Atendimentos",min:1,max:@qtd_de_atend%>    
         </div>
     </div>  
 </div>
@@ -216,8 +216,8 @@
                     <%= week_calendar events: @atividades do |date, atividades| %> 
                         <% atividades.each do |atividade| %>  
                             <% if atividade.status == "Aberto"%>  
-                                <li style="display: block;width: 1539px;margin-left: -14px;border-bottom: 0px solid;">  
-                                    <div class="block" style="border-left: 2px solid #4a6e90;border-bottom: 2px solid #4a6e8f;padding-right: 1px;">
+                                <li style="display: block;margin-left: -14px;border-bottom: 0px solid;">  
+                                    <div class="block" style="width: 100%;border-left: 2px solid #4a6e90;border-bottom: 2px solid #4a6e8f;padding-right: 1px;">
                                         <div class="block_content">
                                             <h2 class="title" ><a style="font-size: 28px;color: #4a70a2;margin-left: 0px;text-shadow: 0px 0px 4px #adb9c5;"><%=atividade.titulo%></a></h2>
                                             <div class="byline">

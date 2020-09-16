@@ -11,7 +11,17 @@ namespace :dev do
   desc "Adiciona o Advogado padrão."
   task add_default_admin: :environment do
     Admin.create!(
-      email: 'advogado@teste.com',
+      email: 'mirlenyalves35@gmail.com',
+      password: 123456,
+      password_confirmation: 123456
+    )
+    Admin.create!(
+      email: 'julianapfalcao@gmail.com',
+      password: 123456,
+      password_confirmation: 123456
+    )
+    Admin.create!(
+      email: 'contato@sinoredice.org.br',
       password: 123456,
       password_confirmation: 123456
     )

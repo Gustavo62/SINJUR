@@ -66,9 +66,11 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
   # POST /restrito/tela_agenda/atividades
   # POST /restrito/tela_agenda/atividades.json
   def create
+
     @restrito_tela_agenda_atividades = Restrito::TelaAgenda::Atividade.all
     @restrito_tela_agenda_atividade = Restrito::TelaAgenda::Atividade.new(restrito_tela_agenda_atividade_params)
-
+    @restrito_tela_agenda_atividade.usuario = current_admin.email
+    @restrito_tela_agenda_atividade.update_objt = current_admin.email
     respond_to do |format|
       if @restrito_tela_agenda_atividade.save
         format.html { redirect_to restrito_tela_agenda_atividades_url, notice: 'Atividade foi cadastrada com sucesso.' }
@@ -82,6 +84,7 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
   # PATCH/PUT /restrito/tela_agenda/atividades/1
   # PATCH/PUT /restrito/tela_agenda/atividades/1.json
   def update
+    @restrito_tela_agenda_atividade.update_objt = current_admin.email
     respond_to do |format|
       if @restrito_tela_agenda_atividade.update(restrito_tela_agenda_atividade_params)
         format.html { redirect_to @restrito_tela_agenda_atividade, notice: 'Atividade foi atualizada com sucesso.' }
@@ -95,14 +98,12 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
 
   # DELETE /restrito/tela_agenda/atividades/1
   # DELETE /restrito/tela_agenda/atividades/1.json
-  def destroy
-    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin?
-      @restrito_tela_agenda_atividade.destroy
-      respond_to do |format|
-        format.html { redirect_to restrito_tela_agenda_atividades_url, notice: 'Atividade foi deletada com sucesso.' }
-        format.json { head :no_content }
-      end
-    end
+  def destroy 
+    @restrito_tela_agenda_atividade.destroy
+    respond_to do |format|
+      format.html { redirect_to restrito_tela_agenda_atividades_url, notice: 'Atividade foi deletada com sucesso.' }
+      format.json { head :no_content }
+    end 
   end
 
   private
