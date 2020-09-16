@@ -96,10 +96,12 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
   # DELETE /restrito/tela_agenda/atividades/1
   # DELETE /restrito/tela_agenda/atividades/1.json
   def destroy
-    @restrito_tela_agenda_atividade.destroy
-    respond_to do |format|
-      format.html { redirect_to restrito_tela_agenda_atividades_url, notice: 'Atividade foi deletada com sucesso.' }
-      format.json { head :no_content }
+    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin?
+      @restrito_tela_agenda_atividade.destroy
+      respond_to do |format|
+        format.html { redirect_to restrito_tela_agenda_atividades_url, notice: 'Atividade foi deletada com sucesso.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -111,6 +113,6 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restrito_tela_agenda_atividade_params
-      params.require(:restrito_tela_agenda_atividade).permit(:tipo, :titulo, :nivel, :resumo, :status, :agendamento , :usuario)
+      params.require(:restrito_tela_agenda_atividade).permit(:tipo, :titulo, :nivel, :resumo, :status, :agendamento , :usuario,:update_objt)
     end
 end

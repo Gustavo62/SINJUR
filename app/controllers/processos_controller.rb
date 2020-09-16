@@ -105,10 +105,12 @@ class ProcessosController < ApplicationController
   # DELETE /processos/1
   # DELETE /processos/1.json
   def destroy
-    @processo.destroy
-    respond_to do |format|
-      format.html { redirect_to processos_url, notice: 'Processo excluido com sucesso.' }
-      format.json { head :no_content }
+    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin?
+      @processo.destroy
+      respond_to do |format|
+        format.html { redirect_to processos_url, notice: 'Processo excluido com sucesso.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -123,6 +125,6 @@ class ProcessosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def processo_params
-      params.require(:processo).permit(:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois, :cadastro_atendimento_id , :usuario)
+      params.require(:processo).permit(:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois, :cadastro_atendimento_id , :usuario,:update_objt)
     end
 end

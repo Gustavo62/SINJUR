@@ -13,6 +13,8 @@ class CreateProcessos < ActiveRecord::Migration[5.2]
       t.string :local_tramite_dois
       t.references :cadastro_atendimento, foreign_key: true
       t.string :usuario, default: current_admin.email
+      t.string :update_objt, default: current_user
+
       t.timestamps
     end
   end

@@ -11,7 +11,9 @@ class CreateCadastroAtendimentos < ActiveRecord::Migration[5.2]
       t.integer :telefone
       t.string :status
       t.date :data_atendimento 
-      t.string :usuario, default: current_admin.email
+      t.string :usuario, default: user.email
+      t.string :update_objt, default: current_user
+
       t.timestamps
     end
   end

@@ -4,6 +4,8 @@ class CreateAssuntoAtendimentos < ActiveRecord::Migration[5.2]
       t.string :assunto
       t.text :descricao
       t.string :usuario, default: current_admin.email
+      t.string :update_objt, default: current_user
+      
       t.timestamps
     end
   end

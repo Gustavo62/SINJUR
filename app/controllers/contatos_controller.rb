@@ -84,11 +84,13 @@ class ContatosController < ApplicationController
     end
   end
   def destroy 
-    exluir_telefone
-    @contato.destroy  
-    respond_to do |format|
-      format.html { redirect_to contatos_url, notice: 'Contato foi deletado com sucesso.' }
-      format.json { head :no_content }
+    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin?
+      exluir_telefone
+      @contato.destroy  
+      respond_to do |format|
+        format.html { redirect_to contatos_url, notice: 'Contato foi deletado com sucesso.' }
+        format.json { head :no_content }
+      end
     end
   end 
   private
@@ -100,6 +102,6 @@ class ContatosController < ApplicationController
     # Only allow a list of trusted parameters through.
     def contato_params
       params.require(:contato).permit(:nome, :profissao, :detalhe, :logradouro, :bairro, :cidade, :observacao, :dn, :email, :site, :cep, :numero, :cidade,
-      telefones_attributes: [:telefone, :contato_id, :id,:_destroy , :usuario])
+      telefones_attributes: [:telefone, :contato_id, :id,:_destroy , :usuario,:update_objt])
     end
 end

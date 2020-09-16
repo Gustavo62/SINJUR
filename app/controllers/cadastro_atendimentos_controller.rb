@@ -230,15 +230,17 @@ class CadastroAtendimentosController < ApplicationController
       end
     end
   end 
-  def destroy   
-    exluir_processo
-    exluir_advogados
-    exluir_pessoas  
-    exluir_documentos 
-    @cadastro_atendimento.destroy
-    respond_to do |format|
-      format.html {redirect_to cadastro_atendimentos_url, notice: 'Atendimento foi deletado com sucesso.' }
-      format.json { head :no_content }
+  def destroy  
+    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin? 
+      exluir_processo
+      exluir_advogados
+      exluir_pessoas  
+      exluir_documentos 
+      @cadastro_atendimento.destroy
+      respond_to do |format|
+        format.html {redirect_to cadastro_atendimentos_url, notice: 'Atendimento foi deletado com sucesso.' }
+        format.json { head :no_content }
+      end
     end
   end
   ATTRIBUTE_TYPES = {
@@ -252,12 +254,12 @@ class CadastroAtendimentosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cadastro_atendimento_params
-      params.require(:cadastro_atendimento).permit( :tipo_processo,:data_atendimento, :status, :codigo_tj_filiado, :texto_livre, :nome, :cpf, :telefone, :id , :usuario,
+      params.require(:cadastro_atendimento).permit( :tipo_processo,:data_atendimento, :status, :codigo_tj_filiado, :texto_livre, :nome, :cpf, :telefone, :id , :usuario,:update_objt,
       filiado_attributes: [:cnpj, :end_completo,:titular,:cei, :serventia, :codigo_cnpj, :nome, :cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade_integer, :email, :id],
       advogados_attributes: [:nome, :endereço, :cidade, :bairro, :cep, :telefone, :cidade, :email, :advogado, :oab, :telefone, :observação, :cadastro_atendimento_id, :_destroy, :id],
       pessoas_attributes: [:nome, :profissao, :cep, :razao_social, :nome_fantasia, :cidade, :endereço, :cpf, :rg, :pis, :residencial, :comercial, :celular, :nacionalidade, :estado_civil, :estado_civil, :bairro, :email, :escolaridade, :insc_estadual, :insc_municipal, :responsável, :cnpj, :cadastro_atendimento_id, :_destroy, :id],
-      processos_attributes: [:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois,:id, :cadastro_atendimento_id,:_destroy , :usuario], 
+      processos_attributes: [:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois,:id, :cadastro_atendimento_id,:_destroy , :usuario,:update_objt], 
       documentos_attributes: [:documento],
-      assunto_atendimentos_attributes: [:assunto, :descricao , :usuario])
+      assunto_atendimentos_attributes: [:assunto, :descricao , :usuario,:update_objt])
     end
 end

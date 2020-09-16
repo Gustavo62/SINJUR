@@ -58,10 +58,12 @@ class AssuntoAtendimentosController < ApplicationController
   # DELETE /assunto_atendimentos/1
   # DELETE /assunto_atendimentos/1.json
   def destroy
-    @assunto_atendimento.destroy
-    respond_to do |format|
-      format.html { redirect_to assunto_atendimentos_url, notice: 'Assunto excluido com sucesso.' }
-      format.json { head :no_content }
+    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin?
+      @assunto_atendimento.destroy
+      respond_to do |format|
+        format.html { redirect_to assunto_atendimentos_url, notice: 'Assunto excluido com sucesso.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -73,6 +75,6 @@ class AssuntoAtendimentosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def assunto_atendimento_params
-      params.require(:assunto_atendimento).permit(:assunto, :descricao , :usuario)
+      params.require(:assunto_atendimento).permit(:assunto, :descricao , :usuario,:update_objt)
     end
 end

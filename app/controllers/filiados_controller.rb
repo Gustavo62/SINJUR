@@ -71,10 +71,12 @@ class FiliadosController < ApplicationController
   # DELETE /filiados/1
   # DELETE /filiados/1.json
   def destroy
-    @filiado.destroy
-    respond_to do |format|
-      format.html { redirect_to filiados_url, notice: 'Filiado foi deletado com sucesso.' }
-      format.json { head :no_content }
+    if current_user.email == @restrito_tela_agenda_atividade.usuario || user.admin?
+      @filiado.destroy
+      respond_to do |format|
+        format.html { redirect_to filiados_url, notice: 'Filiado foi deletado com sucesso.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -86,6 +88,6 @@ class FiliadosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def filiado_params
-      params.require(:filiado).permit(:cnpj, :cei, :serventia, :codigo_cnpj, :nome, :end_completo,:cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade, :email, :titular , :usuario)
+      params.require(:filiado).permit(:cnpj, :cei, :serventia, :codigo_cnpj, :nome, :end_completo,:cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade, :email, :titular , :usuario,:update_objt)
     end
 end
