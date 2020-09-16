@@ -16,6 +16,7 @@ class CreateFiliados < ActiveRecord::Migration[5.2]
       t.string :cidade
       t.string :email 
       t.references :cadastro_atendimento 
+      t.string :usuario, default: current_admin.email
       t.timestamps
     end
   end

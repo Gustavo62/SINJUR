@@ -252,12 +252,12 @@ class CadastroAtendimentosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cadastro_atendimento_params
-      params.require(:cadastro_atendimento).permit( :tipo_processo,:data_atendimento, :status, :codigo_tj_filiado, :texto_livre, :nome, :cpf, :telefone, :id,
+      params.require(:cadastro_atendimento).permit( :tipo_processo,:data_atendimento, :status, :codigo_tj_filiado, :texto_livre, :nome, :cpf, :telefone, :id , :usuario,
       filiado_attributes: [:cnpj, :end_completo,:titular,:cei, :serventia, :codigo_cnpj, :nome, :cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade_integer, :email, :id],
       advogados_attributes: [:nome, :endereço, :cidade, :bairro, :cep, :telefone, :cidade, :email, :advogado, :oab, :telefone, :observação, :cadastro_atendimento_id, :_destroy, :id],
       pessoas_attributes: [:nome, :profissao, :cep, :razao_social, :nome_fantasia, :cidade, :endereço, :cpf, :rg, :pis, :residencial, :comercial, :celular, :nacionalidade, :estado_civil, :estado_civil, :bairro, :email, :escolaridade, :insc_estadual, :insc_municipal, :responsável, :cnpj, :cadastro_atendimento_id, :_destroy, :id],
-      processos_attributes: [:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois,:id, :cadastro_atendimento_id,:_destroy], 
+      processos_attributes: [:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois,:id, :cadastro_atendimento_id,:_destroy , :usuario], 
       documentos_attributes: [:documento],
-      assunto_atendimentos_attributes: [:assunto, :descricao])
+      assunto_atendimentos_attributes: [:assunto, :descricao , :usuario])
     end
 end

@@ -100,6 +100,6 @@ class ContatosController < ApplicationController
     # Only allow a list of trusted parameters through.
     def contato_params
       params.require(:contato).permit(:nome, :profissao, :detalhe, :logradouro, :bairro, :cidade, :observacao, :dn, :email, :site, :cep, :numero, :cidade,
-      telefones_attributes: [:telefone, :contato_id, :id,:_destroy])
+      telefones_attributes: [:telefone, :contato_id, :id,:_destroy , :usuario])
     end
 end

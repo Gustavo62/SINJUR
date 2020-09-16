@@ -86,6 +86,6 @@ class FiliadosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def filiado_params
-      params.require(:filiado).permit(:cnpj, :cei, :serventia, :codigo_cnpj, :nome, :end_completo,:cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade, :email, :titular)
+      params.require(:filiado).permit(:cnpj, :cei, :serventia, :codigo_cnpj, :nome, :end_completo,:cep, :logradouro, :numero_casa, :complemento, :bairro, :telefone_fixo_casa, :cidade, :email, :titular , :usuario)
     end
 end

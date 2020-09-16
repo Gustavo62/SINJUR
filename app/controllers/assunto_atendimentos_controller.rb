@@ -73,6 +73,6 @@ class AssuntoAtendimentosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def assunto_atendimento_params
-      params.require(:assunto_atendimento).permit(:assunto, :descricao)
+      params.require(:assunto_atendimento).permit(:assunto, :descricao , :usuario)
     end
 end

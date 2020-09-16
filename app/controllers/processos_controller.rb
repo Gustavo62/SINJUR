@@ -123,6 +123,6 @@ class ProcessosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def processo_params
-      params.require(:processo).permit(:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois, :cadastro_atendimento_id)
+      params.require(:processo).permit(:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois, :cadastro_atendimento_id , :usuario)
     end
 end

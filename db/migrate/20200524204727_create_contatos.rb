@@ -14,7 +14,7 @@ class CreateContatos < ActiveRecord::Migration[5.2]
       t.string :cep
       t.string :numero
       t.string :cidade
-
+      t.string :usuario, default: current_admin.email
       t.timestamps
     end
   end

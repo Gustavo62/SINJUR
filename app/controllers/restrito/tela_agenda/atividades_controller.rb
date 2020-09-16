@@ -111,6 +111,6 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restrito_tela_agenda_atividade_params
-      params.require(:restrito_tela_agenda_atividade).permit(:tipo, :titulo, :nivel, :resumo, :status, :agendamento)
+      params.require(:restrito_tela_agenda_atividade).permit(:tipo, :titulo, :nivel, :resumo, :status, :agendamento , :usuario)
     end
 end
