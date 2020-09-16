@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
 
   create_table "documentos", force: :cascade do |t|
     t.integer "cadastro_atendimento_id"
+    t.string "descricao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cadastro_atendimento_id"], name: "index_documentos_on_cadastro_atendimento_id"

@@ -12,14 +12,14 @@ class ProcessosController < ApplicationController
         if params[:status] != "Todos"
           if params[:favorito]
             if params[:intervalo_atend] != ""
-              @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito],created_at: procura_proc_data).page(params[:page]).per(21)
-            else
-              @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito]).page(params[:page]).per(21)
+              @processo_aux = Processo.where(status_processo: params[:status],favorito: "1",created_at: procura_proc_data).page(params[:page]).per(21)
+            else'1'
+              @processo_aux = Processo.where(status_processo: params[:status],favorito: "1").page(params[:page]).per(21)
             end
           else
             if params[:intervalo_atend] != ""
               if params[:favorito]
-                @processo_aux = Processo.where(status_processo: params[:status],favorito: params[:favorito],created_at: procura_proc_data).page(params[:page]).per(21)
+                @processo_aux = Processo.where(status_processo: params[:status],favorito: "1",created_at: procura_proc_data).page(params[:page]).per(21)
               else
                 @processo_aux = Processo.where(status_processo: params[:status],created_at: procura_proc_data).page(params[:page]).per(21)
               end
@@ -30,14 +30,14 @@ class ProcessosController < ApplicationController
         else
           if params[:favorito]
             if params[:intervalo_atend] != ""
-              @processo_aux = Processo.where(favorito: params[:favorito],created_at: procura_proc_data).page(params[:page]).per(21)
+              @processo_aux = Processo.where(favorito: "1",created_at: procura_proc_data).page(params[:page]).per(21)
             else
-              @processo_aux = Processo.where(favorito: params[:favorito]).page(params[:page]).per(21)
+              @processo_aux = Processo.where(favorito:  "1").page(params[:page]).per(21)
             end
           else
             if params[:intervalo_atend] != ""
               if params[:favorito]
-                @processo_aux = Processo.where(favorito: params[:favorito],created_at: procura_proc_data).page(params[:page]).per(21)
+                @processo_aux = Processo.where(favorito:  "1",created_at: procura_proc_data).page(params[:page]).per(21)
               else
                 @processo_aux = Processo.where(created_at: procura_proc_data).page(params[:page]).per(21)
               end

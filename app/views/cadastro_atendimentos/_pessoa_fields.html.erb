@@ -2,7 +2,7 @@
     <div class="field">
         <div class="field" style="margin-left: 40px;">
             <%= f.label :nome %>*:
-            <%= f.text_field :nome, style:"width:86%",placeholder:"Infome o nome da pessoa."%>
+            <%= f.text_field :nome, style:"width:86%",placeholder:"Infome o nome da pessoa.",required:true%>
         </div> 
         <div class="field" style="margin-left: 78px;">
             <%= f.label :pis %>*:
@@ -58,7 +58,7 @@
         </div> 
         <div class="field" style="margin-left:23px">
             <%= f.label :celular %>*:
-            <%= f.text_field :celular, style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"11"%>
+            <%= f.text_field :celular, style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"11",required:true%>
             <%= f.label :residencial %>:
             <%= f.text_field :residencial,style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"11"  %> 
             <%= f.label :comercial %>:
