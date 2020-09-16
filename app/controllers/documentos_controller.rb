@@ -67,6 +67,6 @@ class DocumentosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def documento_params
-      params.require(:documento).permit(:docs)
+      params.require(:documento,:descricao).permit(:docs)
     end
 end
