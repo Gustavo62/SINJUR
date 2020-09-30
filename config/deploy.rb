@@ -1,8 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1" 
-
-require "whenever/capistrano"
-set :whenever_command, "bundle exec whenever"
+  
 set :application, "SINJUR"
 set :repo_url, "https://github.com/Gustavo62/SINJUR"  
 # Default branch is :master
