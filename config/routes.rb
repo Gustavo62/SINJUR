@@ -1,23 +1,24 @@
 Rails.application.routes.draw do  
+  resources :historicos, only: [:index] 
   resources :assunto_atendimentos
   root 'restrito/tela_agenda/atividades#index'
-  resources :estatisticas
-  resources :ferramentas_atendimento
-  devise_for :admins 
-  resources :documentos
-  resources :processos 
-  resources :pessoas
-  resources :advogados
-  resources :telefones
-  resources :contatos
+  resources :estatisticas, only: [:index] 
+  resources :ferramentas_atendimento, only: [:index] 
+  devise_for :admins
+  resources :documentos, only: [:delete,:destroy,:update]
+  resources :processos, only: [:delete,:destroy,:update,:index]
+  resources :pessoas, only: [:delete,:destroy,:update]
+  resources :advogados, only: [:delete,:destroy,:update]
+  resources :telefones, only: [:delete,:destroy,:update]
+  resources :contatos 
   resources :filiados, only: [:index, :edit,:delete,:destroy,:new,:show,:create,:update]
   namespace :restrito do
     namespace :tela_agenda do
       resources :atividades 
     end
-  end 
+  end
   resources :cadastro_atendimentos do 
-      delete :delete_docs_attachment  
+    delete :delete_docs_attachment  
   end
   namespace :restrito do
     get 'ferramentas/index'
@@ -30,8 +31,7 @@ Rails.application.routes.draw do
   end  
   namespace :restrito do
     get 'tela_agenda/index'
-  end 
-  resources :tabeliaos
+  end  
   namespace :restrito do
     get 'welcome/index' 
   end

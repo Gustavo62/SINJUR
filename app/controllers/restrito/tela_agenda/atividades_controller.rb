@@ -43,7 +43,7 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
   # GET /restrito/tela_agenda/atividades/1.json
   def show 
     @restrito_tela_agenda_atividades = Restrito::TelaAgenda::Atividade.page(params[:page]).per(19)
-    @local = 'Agenda de Atividades >> Visualizar'
+    @local = 'Agenda de Atividades > Visualizar'
     def start_time
       self.agendamento 
     end  
@@ -52,14 +52,14 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
   def new 
     @restrito_tela_agenda_atividade = Restrito::TelaAgenda::Atividade.new 
     @restrito_tela_agenda_atividades = Restrito::TelaAgenda::Atividade.all
-    @local = 'Agenda de Atividades >> Novo'
+    @local = 'Agenda de Atividades > Novo'
     @acao = 'Nova' 
   end
 
   # GET /restrito/tela_agenda/atividades/1/edit
   def edit 
     @restrito_tela_agenda_atividades = Restrito::TelaAgenda::Atividade.all
-    @local = 'Agenda de Atividades >> Editar'
+    @local = 'Agenda de Atividades > Editar'
     @acao = 'Editar'
   end
 
@@ -73,6 +73,8 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
     @restrito_tela_agenda_atividade.update_objt = current_admin.email
     respond_to do |format|
       if @restrito_tela_agenda_atividade.save
+        @historico = Historico.new("quem_username"=>current_admin.username,"usuarioudt"=>"Sem atualização", "acaoupdt"=>"Sem atualização", "objeto_id"=>@restrito_tela_agenda_atividade.id,"hrup(3i)"=>Time.now.strftime('%d'), "hrup(2i)"=>Time.now.strftime('%m'), "hrup(1i)"=>Time.now.strftime('%Y'), "hrup(4i)"=>Time.now.strftime('%H'), "hrup(5i)"=>Time.now.strftime('%M'), "hracao(3i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%d'), "hracao(2i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%m'), "hracao(1i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%Y'), "hracao(4i)"=>((@restrito_tela_agenda_atividade.created_at.strftime('%H').to_i - 3)).to_s, "hracao(5i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%M'),"usuario"=>@restrito_tela_agenda_atividade.usuario, "acao_desc"=>"Adicionou uma atividade, titulo: #{@restrito_tela_agenda_atividade.titulo}","acao"=>"Adicionou", "objeto"=>"Atividade", "quem"=>@restrito_tela_agenda_atividade.usuario) 
+        @historico.save
         format.html { redirect_to restrito_tela_agenda_atividades_url, notice: 'Atividade foi cadastrada com sucesso.' }
         format.json { head :no_content }
       else
@@ -85,6 +87,8 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
   # PATCH/PUT /restrito/tela_agenda/atividades/1.json
   def update
     @restrito_tela_agenda_atividade.update_objt = current_admin.email
+    @historico = Historico.new("quem_username"=>current_admin.username,"usuarioudt"=>@restrito_tela_agenda_atividade.update_objt, "acaoupdt"=>"Atualizou uma atividade, titulo: #{@restrito_tela_agenda_atividade.titulo}", "objeto_id"=>@restrito_tela_agenda_atividade.id,"hrup(3i)"=>Time.now.strftime('%d'), "hrup(2i)"=>Time.now.strftime('%m'), "hrup(1i)"=>Time.now.strftime('%Y'), "hrup(4i)"=>Time.now.strftime('%H'), "hrup(5i)"=>Time.now.strftime('%M'), "hracao(3i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%d'), "hracao(2i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%m'), "hracao(1i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%Y'), "hracao(4i)"=>((@restrito_tela_agenda_atividade.created_at.strftime('%H').to_i - 3)).to_s, "hracao(5i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%M'),"usuario"=>@restrito_tela_agenda_atividade.usuario, "acao_desc"=>"Adicionou uma atividade, titulo: #{@restrito_tela_agenda_atividade.titulo}","acao"=>"Atualizou", "objeto"=>"Atividade", "quem"=>@restrito_tela_agenda_atividade.update_objt) 
+    @historico.save
     respond_to do |format|
       if @restrito_tela_agenda_atividade.update(restrito_tela_agenda_atividade_params)
         format.html { redirect_to @restrito_tela_agenda_atividade, notice: 'Atividade foi atualizada com sucesso.' }
@@ -98,7 +102,10 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
 
   # DELETE /restrito/tela_agenda/atividades/1
   # DELETE /restrito/tela_agenda/atividades/1.json
-  def destroy 
+  def destroy  
+    @restrito_tela_agenda_atividade.update_objt = current_admin.email
+    @historico = Historico.new("quem_username"=>current_admin.username,"usuarioudt"=>@restrito_tela_agenda_atividade.update_objt, "acaoupdt"=>"Excluiu uma atividade, titulo: #{@restrito_tela_agenda_atividade.titulo}", "objeto_id"=>@restrito_tela_agenda_atividade.id,"hrup(3i)"=>Time.now.strftime('%d'), "hrup(2i)"=>Time.now.strftime('%m'), "hrup(1i)"=>Time.now.strftime('%Y'), "hrup(4i)"=>Time.now.strftime('%H'), "hrup(5i)"=>Time.now.strftime('%M'), "hracao(3i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%d'), "hracao(2i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%m'), "hracao(1i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%Y'), "hracao(4i)"=>((@restrito_tela_agenda_atividade.created_at.strftime('%H').to_i - 3)).to_s, "hracao(5i)"=>@restrito_tela_agenda_atividade.created_at.strftime('%M'),"usuario"=>@restrito_tela_agenda_atividade.usuario, "acao_desc"=>"Adicionou uma atividade, titulo: #{@restrito_tela_agenda_atividade.titulo}","acao"=>"Excluiu", "objeto"=>"Atividade", "quem"=>@restrito_tela_agenda_atividade.update_objt) 
+    @historico.save
     @restrito_tela_agenda_atividade.destroy
     respond_to do |format|
       format.html { redirect_to restrito_tela_agenda_atividades_url, notice: 'Atividade foi deletada com sucesso.' }
@@ -114,6 +121,6 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def restrito_tela_agenda_atividade_params
-      params.require(:restrito_tela_agenda_atividade).permit(:tipo, :titulo, :nivel, :resumo, :status, :agendamento , :usuario,:update_objt)
+      params.require(:restrito_tela_agenda_atividade).permit(:tipo, :titulo, :nivel, :resumo, :status, :agendamento , :usuario,:update_objt,:quem_username)
     end
 end

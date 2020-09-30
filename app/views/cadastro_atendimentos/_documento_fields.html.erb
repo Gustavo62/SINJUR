@@ -6,7 +6,7 @@
     <div class="field" >  
         <div class="field" style="text-align: center;">
             <div style="text-align:right;border-bottom: 2px solid #1abb9c;">
-            <%= f.file_field :documento, style:"width: 100%;",class:"custom-file-input"%>
+            <%= f.file_field :documento, style:"width: 100%;",class:"custom-file-input", required: true%>
             <label style="color: #32566f;">Dercrição</label>*:
             <%= f.text_field :descricao ,style:"width: 86%;", placeholder:"Ex: Infome a descrição do arquivo", required: true%> 
             <%= link_to_remove_association('', f,class:"fa fa-trash-o",style:"color: red;font-size: 25px;vertical-align: middle;")%><br></div>

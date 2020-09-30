@@ -50,9 +50,9 @@
                 </div>
                 <div class="field" style="margin-left: 51px;">
                   <%= f.label :cpf %>*:
-                  <%= f.text_field :cpf, placeholder:"999.999.999.99",style:"width: 17%;",maxlength:"11",required:true%> 
+                  <%= f.text_field :cpf, placeholder:"999.999.999.99",onkeydown:"javascript: fMasc( this, mCPF );",style:"width: 17%;",maxlength:"14",required:true%> 
                   <%= f.label :telefone %>*:
-                  <%= f.text_field :telefone,placeholder:"(99) 99999-9999",style:"width: 19.7%;",maxlength:"11",required:true%> 
+                  <%= f.text_field :telefone,placeholder:"(99) 99999-9999",style:"width: 19.7%;",required: true,onkeypress:"mask(this, mphone);",maxlength:"15",required:true%> 
                   <%= f.label :data_atendimento%>*: 
                   <%= f.text_field :data_atendimento , type:"date", style:"width: 19.7%;",required:true%>
                 </div>
@@ -63,8 +63,8 @@
                 
                  
                 <div class="field-unit__field" style="width: 1034px;margin-left: 105px;">
-                  <div style="display:none"><% f.text_field :texto_livre, id: 'texto_livre' %></div> 
-                  <trix-editor style="background-color:white;border: 1px solid #1abb9c;" required input="<%= :texto_livre%>"  ></trix-editor>
+                  <div style="display:none"><% f.text_field :texto_livre, id: 'texto_livre' %></div>  
+                  <%= f.rich_text_area :texto_livre, style:"width: 1034px;background-color:white;border: 1px solid #1abb9c;"%>
                 </div> 
               </div>  
             </div>

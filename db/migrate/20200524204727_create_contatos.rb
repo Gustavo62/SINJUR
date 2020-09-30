@@ -16,6 +16,8 @@ class CreateContatos < ActiveRecord::Migration[5.2]
       t.string :cidade
       t.string :usuario
       t.string :update_objt
+      t.string :usuario
+      t.string :update_objt
 
       t.timestamps
     end

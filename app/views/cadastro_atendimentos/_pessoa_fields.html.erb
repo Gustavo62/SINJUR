@@ -23,11 +23,11 @@
         </div> 
         <div class="field" style="margin-left: 63px;">
             <%= f.label :cpf %>*:
-            <%= f.text_field :cpf, style:"width:21%", placeholder:"0000000000",maxlength:"14",required:true  %> 
+            <%= f.text_field :cpf, style:"width:21%", placeholder:"0000000000",maxlength:"14",required:true, onkeydown:"javascript: fMasc( this, mCPF );"  %> 
             <%= f.label :rg %>*:
-            <%= f.text_field :rg, style:"width:21%", placeholder:"0000000000",maxlength:"14",required:true %> 
+            <%= f.text_field :rg, style:"width:21%", placeholder:"0000000000",maxlength:"14",required:true, onkeydown:"javascript: fMasc( this, mRG );" %> 
             <%= f.label :cnpj %>
-            <%= f.text_field :cnpj, style:"width:21%", placeholder:"0000000000",maxlength:"14",required:true %> 
+            <%= f.text_field :cnpj, style:"width:21%", placeholder:"0000000000",maxlength:"14", onkeydown:"javascript: fMasc( this, mCNPJ );" %> 
         </div>
         <br>
         <div class="field" style="margin-left:16px">
@@ -48,7 +48,7 @@
             <%= f.label :endereço %>:
             <%= f.text_field :endereço, style:"width:65.4%", placeholder:"Ex: Rua Fernado de Oliveira"%>
             <%= f.label :cep %>*:
-            <%= f.text_field :cep, placeholder:"00000-000",maxlength:"9",required:true %> 
+            <%= f.text_field :cep, placeholder:"00000-000",maxlength:"9",required:true, onkeydown:"javascript: fMasc( this, mCEP );" %> 
         </div>
         <div class="field" style="margin-left: 19px;">
             <%= f.label :cidade %>*:
@@ -58,11 +58,11 @@
         </div> 
         <div class="field" style="margin-left:23px">
             <%= f.label :celular %>*:
-            <%= f.text_field :celular, style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"11",required:true%>
+            <%= f.text_field :celular, style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"15",required:true, onkeypress:"mask(this, mphone);"%>
             <%= f.label :residencial %>:
-            <%= f.text_field :residencial,style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"11"  %> 
+            <%= f.text_field :residencial,style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"9", onkeydown:"javascript: fMasc( this, mNum );"%> 
             <%= f.label :comercial %>:
-            <%= f.text_field :comercial, style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"11"%> 
+            <%= f.text_field :comercial, style:"width:18%",  placeholder:"(99)99999-9999",maxlength:"15", onkeypress:"mask(this, mphone);"%> 
         </div>
         <br>
         <div class="field" style="margin-left: 42px;">

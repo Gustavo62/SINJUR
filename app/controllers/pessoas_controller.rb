@@ -1,6 +1,5 @@
 class PessoasController < ApplicationController
   before_action :set_pessoa, only: [:show, :edit, :update, :destroy]
-
   # GET /pessoas
   # GET /pessoas.json
   def index
@@ -25,7 +24,6 @@ class PessoasController < ApplicationController
   # POST /pessoas.json
   def create
     @pessoa = Pessoa.new(pessoa_params)
-
     respond_to do |format|
       if @pessoa.save
         format.html { redirect_to @pessoa, notice: 'Pessoa was successfully created.' }
@@ -39,7 +37,8 @@ class PessoasController < ApplicationController
 
   # PATCH/PUT /pessoas/1
   # PATCH/PUT /pessoas/1.json
-  def update
+  def update 
+    @pessoa.update_objt = current_admin.email
     respond_to do |format|
       if @pessoa.update(pessoa_params)
         format.html { redirect_to @pessoa, notice: 'Pessoa was successfully updated.' }
@@ -69,6 +68,6 @@ class PessoasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pessoa_params
-      params.require(:pessoa).permit(:nome, :profissao, :cep, :razao_social, :nome_fantasia, :cidade, :endereço, :cpf, :rg, :pis, :residencial, :comercial, :celular, :nacionalidade, :estado_civil, :estado_civil, :bairro, :email, :escolaridade, :insc_estadual, :insc_municipal, :responsável, :cnpj, :cadastro_atendimento_id)
+      params.require(:pessoa).permit(:nome, :profissao, :cep, :razao_social, :nome_fantasia, :cidade, :endereço, :cpf, :rg, :pis, :residencial, :comercial, :celular, :nacionalidade, :estado_civil, :estado_civil, :bairro, :email, :escolaridade, :insc_estadual, :insc_municipal, :responsável, :cnpj, :cadastro_atendimento_id,:update_objt, :usuario,:quem_username)
     end
 end

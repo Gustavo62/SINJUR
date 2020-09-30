@@ -18,6 +18,8 @@ class CreateFiliados < ActiveRecord::Migration[5.2]
       t.references :cadastro_atendimento 
       t.string :usuario
       t.string :update_objt
+      t.string :usuario
+      t.string :update_objt
 
       t.timestamps
     end

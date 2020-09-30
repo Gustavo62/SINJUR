@@ -14,7 +14,8 @@ Rails.application.config.assets.precompile += %w(   custom.min.js
                                                     Chart.bundle 
                                                     notify.js 
                                                     estatisticas.js
-                                                    cadastro_atendimentos.js)
+                                                    cadastro_atendimentos.js
+                                                    historicos.js)
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

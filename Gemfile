@@ -82,7 +82,7 @@ group :production do
   gem 'unicorn'
 end
 
-
+gem 'paper_trail', '~> 10.3', '>= 10.3.1'
 gem 'kgio' 
 group :development do
   gem 'capistrano-rails', '~> 1.4', require:false

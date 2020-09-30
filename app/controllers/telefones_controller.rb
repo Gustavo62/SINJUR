@@ -25,9 +25,10 @@ class TelefonesController < ApplicationController
   # POST /telefones.json
   def create
     @telefone = Telefone.new(telefone_params)
-
     respond_to do |format|
-      if @telefone.save
+      if @telefone.save 
+        @telefone.usuario = current_admin.email
+        @telefone.update_objt = current_admin.email
         format.html { redirect_to @telefone, notice: 'Telefone was successfully created.' }
         format.json { render :show, status: :created, location: @telefone }
       else
@@ -40,6 +41,7 @@ class TelefonesController < ApplicationController
   # PATCH/PUT /telefones/1
   # PATCH/PUT /telefones/1.json
   def update
+    @telefone.update_objt = current_admin.email
     respond_to do |format|
       if @telefone.update(telefone_params)
         format.html { redirect_to @telefone, notice: 'Telefone was successfully updated.' }
@@ -69,6 +71,6 @@ class TelefonesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def telefone_params
-      params.require(:telefone).permit(:telefone, :contato_id)
+      params.require(:telefone).permit(:telefone, :contato_id,:update_objt, :usuario,:quem_username)
     end
 end

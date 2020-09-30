@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_124321) do
+ActiveRecord::Schema.define(version: 2020_09_17_124116) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
+    t.string "username", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -71,6 +72,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
     t.string "oab"
     t.string "observação"
     t.integer "cadastro_atendimento_id"
+    t.string "usuario"
+    t.string "update_objt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cadastro_atendimento_id"], name: "index_advogados_on_cadastro_atendimento_id"
@@ -124,6 +127,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
   create_table "documentos", force: :cascade do |t|
     t.integer "cadastro_atendimento_id"
     t.string "descricao"
+    t.string "usuario"
+    t.string "update_objt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cadastro_atendimento_id"], name: "index_documentos_on_cadastro_atendimento_id"
@@ -157,6 +162,22 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
     t.index ["cadastro_atendimento_id"], name: "index_filiados_on_cadastro_atendimento_id"
   end
 
+  create_table "historicos", force: :cascade do |t|
+    t.string "usuarioudt"
+    t.string "acaoupdt"
+    t.datetime "hracao"
+    t.datetime "hrup"
+    t.string "usuario"
+    t.string "acao_desc"
+    t.string "acao"
+    t.string "objeto"
+    t.string "quem"
+    t.string "objeto_id"
+    t.string "quem_username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pessoas", force: :cascade do |t|
     t.string "nome"
     t.string "profissao"
@@ -181,6 +202,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
     t.string "responsável"
     t.string "cnpj"
     t.integer "cadastro_atendimento_id"
+    t.string "usuario"
+    t.string "update_objt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cadastro_atendimento_id"], name: "index_pessoas_on_cadastro_atendimento_id"
@@ -231,6 +254,8 @@ ActiveRecord::Schema.define(version: 2020_08_27_124321) do
   create_table "telefones", force: :cascade do |t|
     t.string "telefone"
     t.integer "contato_id"
+    t.string "usuario"
+    t.string "update_objt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contato_id"], name: "index_telefones_on_contato_id"

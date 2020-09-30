@@ -71,14 +71,14 @@
                 </div>
                 <div class="field" style="margin-left: 129px;">
                   <%= f.label :cep%>:
-                  <%= f.text_field :cep, placeholder:"Ex: 00000-0000", style:"color: #4b5c6b;width: 33%;",maxlength:"9" ,required:true   %> 
+                  <%= f.text_field :cep, placeholder:"Ex: 00000-0000", onkeydown:"javascript: fMasc( this, mCEP );",style:"color: #4b5c6b;width: 33%;",maxlength:"9" ,required:true   %> 
                   <label>Telefone Fixo:</label>
-                  <%= f.text_field :telefone_fixo_casa, placeholder:"Ex: 0000-0000", style:"color: #4b5c6b;width: 26%;",maxlength:"10"   %> 
+                  <%= f.text_field :telefone_fixo_casa, placeholder:"Ex: 0000-0000", onkeydown:"javascript: fMasc( this, mNum );",style:"color: #4b5c6b;width: 26%;",maxlength:"9"   %> 
                 </div>   
                 <br>
                 <div class="field" aligh="center" style="margin-left:124px">
                   <%= f.label :cnpj %>: 
-                  <%= f.text_field :cnpj, placeholder:"00.000.000/0000-00",style:"color: #4b5c6b;width: 28.2%;",maxlength:"14",required:true   %>
+                  <%= f.text_field :cnpj, placeholder:"00.000.000/0000-00", onkeydown:"javascript: fMasc( this, mCNPJ );",style:"color: #4b5c6b;width: 28.2%;",maxlength:"14",required:true   %>
                   <%= f.label :cei %>:
                   <%= f.text_field :cei, placeholder:"000000",style:"color: #4b5c6b;width: 17%;",maxlength:"14" ,required:true  %>
                   <%= f.label :serventia %>:

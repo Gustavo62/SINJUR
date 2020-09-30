@@ -898,6 +898,7 @@
   display: none; }
 
 .menu_section {
+  margin-top: -30px;
   margin-bottom: 35px; }
 
 .menu_section h3 {
@@ -5108,13 +5109,13 @@ ul.notifications {
   display: none;
 }
 @keyframes example {
-  0%   {left:100%; top: 87.8%;} 
-  100%  {left: 79.5%; top: 87.8%;} 
+  0%   {left:100%; top: 87%;} 
+  100%  {left: 80%; top: 87%;} 
 } 
 .atv:hover .add_atv{
   display: block;
-  left: 79.5%;
-  top: 87.8%;
+  left:80%;
+  top: 87%;
   animation-name: example;
   animation-duration: 1s;
   text-shadow:0px 0px 1px #2a3f5357;
@@ -5356,6 +5357,10 @@ trix-toolbar .button_group {
 .pagination span.current{border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-top-left-radius: 5px;border-bottom-left-radius: 5px;padding-left: 14px;background:#1abb9c;color: #ffffff;}
 .pagination { 
   font-size: 12px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  bottom: -54px;
   .first {
   float: initial;
   padding: 0;
@@ -5439,8 +5444,8 @@ trix-toolbar .button_group {
   padding: 1px;
   font-size: 21px;
   font-family:Gilroy ExtraBold;
-  padding-left:20px;
-  padding-right:20px;
+  padding-left:11px;
+  padding-right:11px;
 }
 #btn_consulta_escuro:hover{
   transition:0.5s;
@@ -5512,13 +5517,11 @@ trix-toolbar .button_group {
 }
 
 #favorito{
-  position: absolute;
-    top: 22px;
-    left: 1333px;
-    height: 30px;
-    width: 28px;
-    background-color: #eee;
-    border-radius: 50%;
+  position: absolute; 
+  height: 30px;
+  width: 28px;
+  background-color: #eee;
+  border-radius: 50%;
 } 
 #cadastro_atendimento_codigo_tj_filiado{
   font-size: 20px;
@@ -5603,4 +5606,55 @@ trix-toolbar .button_group {
 }
 #cadastro_atendimento_tipo_processo{
   width:86.56%
+}
+.logo-layout{
+  min-width: auto;
+  max-width: 288px;
+  margin-left: -9px;
+}
+#hist_Atualizou{
+  background: #2a3f53;
+  border-radius: 24px; 
+  width: 52%;
+  color: white; 
+  text-align: center;
+  font-family: Gilroy ExtraBold;
+  margin:2px;
+}
+#hist_Excluiu{
+  background: #ff4545;
+  border-radius: 24px;
+  width: 52%;
+  color: white;
+  text-align: center;
+  font-family: Gilroy ExtraBold;
+  margin:2px;
+}
+#hist_Adicionou{
+  background: #1abb9c;
+  border-radius: 24px;
+  width: 52%;
+  color: white;
+  text-align: center;
+  font-family: Gilroy ExtraBold; 
+  margin:2px;
+} 
+.historico td{
+  padding:0px
+  
+}
+#historico .list:hover{ 
+  color:#005bb6;
+  font-family:Gilroy ExtraBold;
+}
+#acao_hist , #objt_hist{
+  color: #2a3f52;
+}
+
+.clicker:hover{
+  background:#2a3f5338 
+}
+.clicker:hover{
+  color:#172d43;
+  font-family:Gilroy ExtraBold;
 }

@@ -13,7 +13,5 @@ class CadastroAtendimento < ApplicationRecord
     accepts_nested_attributes_for :solicitante  
     accepts_nested_attributes_for :filiado
     accepts_nested_attributes_for :action_text_rich_texts 
-    validates :data_atendimento,:nome, :codigo_tj_filiado, presence: true  
-    validates :cpf,:telefone, numericality: { only_integer: true }
-    
+    validates :data_atendimento,:nome, :codigo_tj_filiado,:cpf,:telefone, presence: true   
 end

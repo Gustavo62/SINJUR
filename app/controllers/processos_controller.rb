@@ -76,9 +76,7 @@ class ProcessosController < ApplicationController
   # POST /processos.json
   def create
     @processo = Processo.new(processo_params)
-    @processo.usuario = current_admin.email
-    @processo.update_objt = current_admin.email
-
+    
     respond_to do |format|
       if @processo.save
         format.html { redirect_to @processo}
@@ -93,7 +91,7 @@ class ProcessosController < ApplicationController
   # PATCH/PUT /processos/1
   # PATCH/PUT /processos/1.json
   def update 
-    @processo.update_objt = current_admin.email
+    @historico.new
     respond_to do |format|
       if @processo.update(processo_params)
         format.html { redirect_to @processo}
@@ -128,6 +126,6 @@ class ProcessosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def processo_params
-      params.require(:processo).permit(:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois, :cadastro_atendimento_id , :usuario,:update_objt)
+      params.require(:processo).permit(:status_processo, :area_atuacao, :objeto_acao, :assunto, :detalhe, :pasta, :etiqueta, :favorito, :local_tramite_um, :local_tramite_dois, :cadastro_atendimento_id , :usuario,:update_objt,:quem_username)
     end
 end

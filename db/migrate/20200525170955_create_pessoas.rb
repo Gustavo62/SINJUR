@@ -25,6 +25,8 @@ class CreatePessoas < ActiveRecord::Migration[5.2]
       t.string :responsável
       t.string :cnpj
       t.references :cadastro_atendimento, foreign_key: true
+      t.string :usuario
+      t.string :update_objt
 
       t.timestamps
     end

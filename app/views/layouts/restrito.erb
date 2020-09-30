@@ -26,17 +26,13 @@
         <div class="col-md-3 left_col">   
           <div class="left_col scroll-view" style="font-family: Gilroy;font-size: 21px;">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title" style="width: 272px;
-    height: 89px;
-    /* margin-left: -8px; */
-    margin-top: 7px;"><span style="text-shadow: 0px 0px 2px black;font-size: 41px;"><%= image_tag 'LOGO_SINJUR.png', style:"width: 275px;
-    margin-left: -13px;"%></span></a>
+             <%= image_tag 'LOGO_SINJUR.png', class:'logo-layout'%>
             </div>
 
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile clearfix" style="border-bottom: 2px solid #2a8f80;
+            <div class="profile clearfix" style="
     width: 262px; 
     color: #ecf0f1; 
     padding: 10px;
@@ -46,9 +42,18 @@
                 <i class="fa fa-user"></i> 
               </div>
               <div class="profile_info" style="margin-bottom: 0px;margin-top: 0px;">
-                <span style="font-size: 18px;">Bem vindo,</span>
-                <h2 style="font-size:18px;"><%=current_admin.email%></h2> 
+                <span style="font-size: 18px;">Bem-vindo,</span>
+                <h2 style="font-size:18px;"><%=current_admin.username%></h2> 
               </div> 
+              <hr style="border-bottom: 1px solid #2a666a;
+    width: 276px;
+    border-top: 1px solid #2b8f80;
+    margin-top: 63px;
+    border-right: 1px solid #2b8f80;
+    border-left: 1px solid #2b8f80;
+    background-color: #2b8f80;
+    margin-left: -16px;
+    height: 3px;">
               
             </div> 
             <div class="navbar nav_title" style="border: 0;"> 
@@ -64,6 +69,7 @@
                     <ul class="nav child_menu">
                       <li><%= link_to 'Painel de controle.',estatisticas_path, method: :get %></li>
                       <li><%= link_to 'Informativos.',restrito_welcome_index_path, method: :get %></li> 
+                      <li><%= link_to 'Histórico.',historicos_path, method: :get %></li>
                     </ul>
                   </li>
                   
@@ -94,7 +100,7 @@
                   </li> 
                   <br>
                   <h3>Ferramentas</h3>
-                  <li><a><i class="fa fa-info-circle"></i> Usuario <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-info-circle"></i> Usuário <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"> 
                       <li><%= link_to 'Alterar senha.',edit_admin_registration_path, method: :get %></li>
                     </ul>
@@ -124,8 +130,8 @@
         <!-- top navigation -->
         <div class="top_nav" style="margin-right: -7px;">
           
-          <div class="nav_menu"> 
-            <h3 style="padding:10px;margin-left: 50px;font-family: Gilroy;width:50%">Home > <%=@local%>  
+          <div class="nav_menu" style="background:#ffffff;border-bottom: 1px solid #e4e4e4;"> 
+            <h3 style="padding:10px;margin-left: 50px;font-family: Gilroy;width:50%;text-shadow: 0px 0px 4px #adb9c5;color:#4a70a2;">Home > <%=@local%>  
             </h3>
             <nav class="nav navbar-nav"> 
               <ul class=" navbar-right">
@@ -142,13 +148,13 @@
         <!-- /top navigation -->
      
         <!-- page content -->
-        <div class="right_col" style="font-size:14px;min-height: 637px;height: auto;background:rgb(240, 248, 255);margin-right: -7px;"> 
+        <div class="right_col" style="font-size:14px;min-height: 637px;height: auto;margin-right: -7px;background:#ffffff;"> 
           <%= yield%>
           <div class="clearfix"></div>
         </div> 
-        <footer style="margin-right: -7px;">   
+        <footer style="margin-right: -7px;border-top: 1px solid #e4e4e4;">   
           <div class="pull-right" style=float:none> 
-            <div class="hora" style="color: #5171a6;text-shadow: 0px 0px 1px #adb9c5;font-size: large;font-family: Gilroy;">
+            <div class="hora" style="text-shadow: 0px 0px 1px #adb9c5;font-size: large;font-family: Gilroy;text-shadow: 0px 0px 4px #adb9c5;color:#4a70a2;">
                 <SCRIPT LANGUAGE="JAVASCRIPT">
                 <!--
 

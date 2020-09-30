@@ -9,6 +9,8 @@ class CreateRestritoTelaAgendaAtividades < ActiveRecord::Migration[5.2]
       t.datetime :agendamento
       t.string :usuario
       t.string :update_objt
+      t.string :usuario
+      t.string :update_objt
       
       t.timestamps
     end

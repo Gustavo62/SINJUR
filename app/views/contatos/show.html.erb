@@ -20,18 +20,18 @@
       <div class="clearfix"></div>
     </div>
     <div class="x_content" >
-      <div class=contato>
+      <div class=contato style="width: 1257px;">
 
         <h2 style="font-size: 26px;">Informações do Contato <i class="fa fa-user"></i></h2>
-          <div class="contato-form" style="width: 886px;font-size: 26px;" >  
+          <div class="contato-form" style="width: 1257px;font-size: 26px;" >  
             <h2><small style="margin-top: -26px;margin-left: 79px;">Nome: <p style="width: 80.6%;"><%= @contato.nome %>.</p></small> </h2>
             
             <h2><small style="margin-left: 73px">E-mail: <p style="width: 80.7%;"><%=@contato.email%></p></small></h2>
 
-            <h2> <small style="margin-left: 44px"> Profissão: <p style="width:35%;"><%=@contato.profissao %>.</p> Detalhe: <p style="width:32%;"><%=@contato.detalhe %>.</p></small></h2>  
+            <h2> <small style="margin-left: 44px"> Profissão: <p style="width:35%;"><%=@contato.profissao %>.</p> Detalhe: <p style="width:36%;"><%=@contato.detalhe %>.</p></small></h2>  
             <h2>  
-                <small style="margin-left: 58px;">Cidade: <p style="width:31%"><%=@contato.cidade%>.</p> Bairro: <p style="width:39.5%"><%=@contato.bairro%>.</p></small><br>
-                <small style="margin-left: 97px;">Cep: <p><%=@contato.cep %></p> Numero: <p style="width:20%"><%=@contato.numero%></p></small><br>
+                <small style="margin-left: 58px;">Cidade: <p style="width:31%"><%=@contato.cidade%>.</p> Bairro: <p style="width:42.5%"><%=@contato.bairro%>.</p></small><br>
+                <small style="margin-left: 97px;">Cep: <p><%=@contato.cep %></p> Numero: <p style="width:20%"><%=@contato.numero%>.</p></small><br>
                 <small style="margin-left: 10px;">Logradouro: <p style="width: 80.7%;"><%=@contato.logradouro %>.</p></small><br>
                 <small >Observação: <p style="width: 80.7%;"><%=@contato.observacao%>.</p></small> 
             </h2>  
@@ -39,17 +39,17 @@
           </div> 
 
       <div class="clearfix"></div>
-        <div class="telefone-form"> 
+        <div class="telefone-form" style="width: 1257px;"> 
           <h2 style="font-size: 26px;">Telefones <i class="fa fa-phone"></i></h2> 
-          <div class="telefone">
-            <div id="telefones" style="text-align: left;">
-              <h2>
+          <div class="contato-form" style="width: 1257px;">
+            <div style="text-align: left;">
+              <h2 style="text-align:center">
               <%@n_contato = 1%>
               <%@contato.telefones.each do |contats|%>
-                <small>Telefone <%=@n_contato%>:  <p><%=contats.telefone%>.</p></small>
+                <small style="padding:14px">Telefone <%=@n_contato%>:  <p style="height: 27px;"><%=contats.telefone%>.</p></small>
                 <%@a += 1%>
                 <%@n_contato += 1%>
-                <% if @a== 3 %> 
+                <% if @a== 5 %> 
                   <div class="clearfix"></div>
                   <% @a = 0 %>
                 <% end %>

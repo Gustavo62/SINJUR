@@ -14,6 +14,8 @@ class CreateAdvogados < ActiveRecord::Migration[5.2]
       t.string :telefone
       t.string :observação
       t.references :cadastro_atendimento, foreign_key: true
+      t.string :usuario
+      t.string :update_objt
 
       t.timestamps
     end
