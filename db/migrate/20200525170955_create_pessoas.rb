@@ -9,11 +9,11 @@ class CreatePessoas < ActiveRecord::Migration[5.2]
       t.string :cidade
       t.string :endereço
       t.string :cpf
-      t.integer :rg
-      t.integer :pis
-      t.integer :residencial
-      t.integer :comercial
-      t.integer :celular
+      t.string :rg
+      t.string :pis
+      t.string :residencial
+      t.string :comercial
+      t.string :celular
       t.string :nacionalidade
       t.string :estado_civil
       t.string :estado_civil

@@ -1,14 +1,14 @@
 class CreateFiliados < ActiveRecord::Migration[5.2]
   def change
     create_table :filiados do |t|
-      t.integer :cnpj
+      t.string :cnpj
       t.string :titular
-      t.integer :cei
-      t.integer :serventia 
+      t.string :cei
+      t.string :serventia 
       t.string :cep
       t.string :end_completo
-      t.integer :numero_casa
-      t.integer :telefone_fixo_casa
+      t.string :numero_casa
+      t.string :telefone_fixo_casa
       t.string :nome 
       t.string :logradouro 
       t.string :complemento
