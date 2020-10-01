@@ -16,8 +16,8 @@
     <link rel="stylesheet" type="text/css" href="/carrousel/slick/slick.css"/> 
     <link rel="stylesheet" type="text/css" href="/carrousel/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css">
-    <link href="//db.onlinewebfonts.com/c/00d5a78493aed4b11e2584ad7cceee49?family=Gilroy+ExtraBold" rel="stylesheet" type="text/css"/>
-    
+    <link href="//db.onlinewebfonts.com/c/00d5a78493aed4b11e2584ad7cceee49?family=Gilroy+ExtraBold" rel="stylesheet" type="text/css"/> 
+    <link rel="sortcut icon" href="/imagens/logo1.png" type="image/png" />
   </head>
 
   <body class="nav-md">
@@ -119,8 +119,17 @@
               </div>
               <a data-toggle="tooltip" data-placement="top" title="Settings" style="display: inline;text-align: center;width: 288px;border-top: 2px solid #1abb9c;">
                 <small style="float: right;width: 230px;">
-                <i class="fa fa-power-off" style="color: #ffffff;margin-right: 2px;margin-top: 3px;float: left;font-size: 14px;"></i>
-                  <%= button_to 'Encerrar sessão.', destroy_admin_session_path, method: :delete, style:" cursor: pointer; color: #ffffff;background-color: transparent; border: 0px;font-family:Gilroy ExtraBold;; font-size: 17px; margin-right: 78PX; padding: 0px;"%>
+                <i class="fa fa-power-off" style="color: #ffffff;margin-right: 2px;margin-top: 3px;z-index: 1;float: left;font-size: 14px;"></i>
+                <%= button_to 'Encerrar sessão.', destroy_admin_session_path, method: :delete, style:"cursor: pointer;
+    color: #ffffff;
+    background-color: transparent;
+    border: 0px;
+    font-family: Gilroy ExtraBold;
+    font-size: 17px;
+    margin-left: -177PX;
+    position: fixed;
+    margin-top: -2px;
+    width: 284px;"%>
               </small>
               </a> 
             </div>
