@@ -81,7 +81,7 @@ group :production do
   gem 'mysql2'#, '~/0.3.18'
   gem 'unicorn'
 end
-
+gem 'capistrano-unicorn-nginx', '~> 1.0.2'
 gem 'kgio' 
 group :development do
   gem 'capistrano-rails', '~> 1.4', require:false
