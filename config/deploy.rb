@@ -1,6 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1" 
-  
+set :stage, :production
 set :application, "SINJUR"
 set :repo_url, "https://github.com/Gustavo62/SINJUR"  
 # Default branch is :master
