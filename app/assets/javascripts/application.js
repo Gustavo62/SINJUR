@@ -8,8 +8,8 @@
 // compiled file. JavaScript code in this file should be added after the last require_* statement.
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//    
+// about supported directives. 
+//= require chartkick
 //= require jquery-2.2.3/dist/jquery
 //= require bootstrap/dist/js/bootstrap
 //= require fastclick/lib/fastclick 

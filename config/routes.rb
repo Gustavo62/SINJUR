@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   end  
   namespace :restrito do
     get 'welcome/index' 
+    get 'welcome/info' 
+    get 'welcome/tutoriais' 
   end
   namespace :site do
     get 'welcome/index'

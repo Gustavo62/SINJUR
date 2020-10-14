@@ -17,7 +17,8 @@
     <link rel="stylesheet" type="text/css" href="/carrousel/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css">
     <link href="//db.onlinewebfonts.com/c/00d5a78493aed4b11e2584ad7cceee49?family=Gilroy+ExtraBold" rel="stylesheet" type="text/css"/> 
-    <link rel="sortcut icon" href="/imagens/logo1.png" type="image/png" />
+    <link rel="sortcut icon" href="/imagens/logo1.png" type="image/png" /> 
+    <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>  
   </head>
 
   <body class="nav-md">
@@ -51,11 +52,12 @@
                   <br> 
                 <h3>Geral</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span id="setas" class="fa fa-chevron-down"></a>
+                  <li><a><i class="fa fa-home"></i> Menu <span id="setas" class="fa fa-chevron-down"></a>
                     <ul class="nav child_menu">
-                      <li><%= link_to 'Painel de controle.',estatisticas_path, method: :get %></li>
-                      <li><%= link_to 'Informativos.',restrito_welcome_index_path, method: :get %></li> 
+                      <li><%= link_to 'Tutorial.',restrito_welcome_tutoriais_path, method: :get %></li>
                       <li><%= link_to 'Histórico.',historicos_path, method: :get %></li>
+                      <li><%= link_to 'Informações.',restrito_welcome_info_path, method: :get %></li>  
+                      <li><%= link_to 'Painel de controle.',estatisticas_path, method: :get %></li>
                     </ul>
                   </li>
                   
