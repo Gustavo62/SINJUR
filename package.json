@@ -2,7 +2,7 @@
   "name": "exit",
   "private": true,
   "dependencies": {
-    "bootstrap": "3.3.7",
+    "bootstrap": "3.4.1",
     "bootstrap-growl-ifightcrime": "^1.1.0",
     "chart.js": "^2.9.3",
     "chartkick": "^3.2.1",
