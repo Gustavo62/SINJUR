@@ -1,0 +1,56 @@
+<%= form_with(model: historico, local: true) do |form| %>
+  <% if historico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(historico.errors.count, "error") %> prohibited this historico from being saved:</h2>
+
+      <ul>
+      <% historico.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :usuarioudt %>
+    <%= form.text_field :usuarioudt %>
+  </div>
+
+  <div class="field">
+    <%= form.label :acaoupdt %>
+    <%= form.text_field :acaoupdt %>
+  </div>
+  <div class="field">
+    <%= form.label :hrup %>
+    <%= form.datetime_select :hrup %>
+  </div>
+  <div class="field">
+    <%= form.label :hracao %>
+    <%= form.datetime_select :hracao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :usuario %>
+    <%= form.text_field :usuario %>
+  </div>
+
+  <div class="field">
+    <%= form.label :acao_desc %>
+    <%= form.text_field :acao_desc %>
+  </div>
+  <div class="field">
+    <%= form.label :acao %>
+    <%= form.text_field :acao %>
+  </div>
+  <div class="field">
+    <%= form.label :objeto %>
+    <%= form.text_field :objeto %>
+  </div>
+  <div class="field">
+    <%= form.label :quem %>
+    <%= form.text_field :quem %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %> 

@@ -1,0 +1,304 @@
+@charset "UTF-8"; 
+.simple-calendar table {
+  -webkit-border-horizontal-spacing: 0px;
+  -webkit-border-vertical-spacing: 0px;
+  background-color: azure;
+  box-sizing: border-box;
+  float: left;
+  height: auto;
+  width: 100%;
+  margin-top: -7px;
+  /* border: 4px solid #1abb9c; */
+  /* background-color: white; */
+  border-radius: 12px;
+  background: transparent;
+  /* background: linear-gradient(90deg, rgba(2,0,36,0.8295693277310925) 7%, rgba(9,9,121,0.7539390756302521) 59%, rgba(0,212,255,0.7987570028011204) 90%); */
+} 
+.simple-calendar tr {
+  border-collapse: collapse;
+  background: #196fb1;
+  color: #ffffff;
+  /* border-radius: 0px; */
+  /* border: 1px solid black; */
+} 
+.simple-calendar .content-heading {
+  border: 1px solid #22313f;
+  border-radius: 7px;
+  height: 51px;
+  width: 100%; 
+  background-color: #21fdc063;
+  background-image: linear-gradient(315deg, #ffffffb3 0%, #edecff 100%);
+  z-index: 9;
+}
+ 
+.simple-calendar tbody {
+  height: 152px;
+}
+ 
+.simple-calendar th {
+  padding: 6px;
+  border: 1px solid #253c83;
+  text-shadow: 1px 2px 3px #457baf;
+  border-collapse: collapse;
+  /* border-left: 1px solid #2a706f; */
+  /* border-right: 1px solid #2a706f; */
+  box-sizing: border-box;
+  border-radius: 9px;
+  /* z-index: 9; */
+  /* margin-bottom: 10px; */
+}
+ 
+.simple-calendar td {
+  padding: 6px;
+  color: #3f4a5c;
+  vertical-align: top;
+  width: 14%;
+  border: 1px solid #1b2870;
+  border-top-style: solid;
+  border-right-width: 1px;
+  font-size: 30px;
+  font-family: Gilroy;
+  background-color: #21fdc063;
+  background-image: linear-gradient(315deg, #ffffffb3 0%, #edecff 100%);
+}
+ 
+.simple-calendar .day {
+  height: 120px;
+  border-radius: 11px;
+} 
+.simple-calendar .today {
+  color: white;
+  background: #196fb1;
+  /* box-shadow: 0px 0px 2px #22313f; */
+  padding: -2PX;
+  border-color: #22313f;
+  border-style: dashed;
+  border-width: 2px;
+} 
+.simple-calendar .today text {
+  color: white;
+  font-size: 17px;
+} 
+.simple-calendar .prev-month {
+  background: #6283a4;
+  color: #ffffff;
+} 
+.simple-calendar .next-month {
+  background: #6283a4;
+  color: #34495c;
+} 
+.simple-calendar .calendar-heading {
+  /* text-align: center; */
+  /* background-color: #ffffff; */
+  color: #ffffff;
+  /* border-radius: 50px; */
+  /* padding: 0px; */
+  font-size: 33px;
+  /* height: 80px; */
+  /* border-right: 0px; */ 
+} 
+.simple-calendar thead {
+  border-top: 4px solid #1abb9c;
+  font-family: Gilroy ExtraBold;
+  border-top: 4px solid #34495e;
+  font-size: 20px;
+} 
+.simple-calendar .calendar-heading a {
+  text-decoration: none;
+  background-color: transparent;
+} 
+.simple-calendar .calendar-heading p {
+  display: inline;
+  margin: 10px;
+  margin-bottom: 20px;
+} 
+.simple-calendar {
+  float: left;
+  width: 100%;
+  margin-bottom: 14px;
+}
+ 
+#atividade #Alto {
+  background-color: #e6ebfd;
+  /* margin-left: 3px; */
+  padding-right: 1px;
+  margin-left: -2px;
+  margin-right: -3px;
+  padding: 0px;
+  border-radius: 8px;
+  box-shadow: 0px 6px 10px #00000052;
+  border-left: 11px solid #ff5d5d;
+  text-decoration: none;
+} 
+#atividade #Alto p { 
+  margin-right: auto;
+  text-align: left;
+  /* border: 2px solid #ea3333; */
+  padding-left: 5px;
+  border-radius: 4px;
+  text-decoration: none;
+} 
+#atividade #Alto a {
+  text-decoration: none;
+  font-size: 22px;
+  text-shadow: 0px 2px 5px #ffffff;
+  color: black;
+} 
+#atividade #Alto:hover {
+  text-decoration: underline;
+} 
+#atividade #Médio {
+  background-color: #e6ebfd;
+  /* margin-left: 3px; */
+  padding-right: 1px;
+  margin-left: -2px;
+  margin-right: -3px;
+  padding: 0px;
+  border-radius: 8px;
+  box-shadow: 0px 6px 10px #00000052;
+  border-left: 11px solid #fffc46;
+  text-decoration: none;
+} 
+#atividade #Médio p { 
+  margin-right: auto;
+  text-align: left;
+  /* border: 2px solid #ea3333; */
+  padding-left: 5px;
+  border-radius: 4px;
+  text-decoration: none;
+} 
+#atividade #Médio a {
+  text-decoration: none;
+  font-size: 22px;
+  text-shadow: 0px 2px 5px #ffffff;
+  color: black;
+  padding-right: 74%;
+}
+ 
+#atividade #Médio:hover {
+  text-decoration: underline;
+}
+ 
+#atividade #Baixo {
+  background-color: #e6ebfd;
+  /* margin-left: 3px; */
+  padding-right: 1px;
+  margin-left: -2px;
+  margin-right: -3px;
+  padding: 0px;
+  border-radius: 8px;
+  box-shadow: 0px 6px 10px #00000052;
+  border-left: 11px solid #11ff58;
+  text-decoration: none;
+}
+ 
+#atividade #Baixo p { 
+  margin-right: auto;
+  text-align: left;
+  /* border: 2px solid #ea3333; */
+  padding-left: 5px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+ 
+#atividade #Baixo a {
+  text-decoration: none;
+  font-size: 22px;
+  text-shadow: 0px 2px 5px #ffffff;
+  color: black;
+}
+ 
+#atividade #Baixo:hover {
+  text-decoration: underline;
+}
+ 
+#atividade p {
+  margin: 3px;
+  padding: 0px;
+  font-size: 19px;
+  font-family: Gilroy;
+}
+ 
+#atividade {
+  padding: 1px;
+}
+ 
+.calendario .CadastroAgenda {
+  float: right;
+} 
+.CadastroAgenda .x_panel {
+  font-family: Gilroy;
+  background-color: #f0f0f0;
+  text-align: left;
+  padding: 20px;
+  margin-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  height: 490px;
+  color: #1abb9c;
+  background: #f0f0f0;
+  border: 2px solid #dfdfdf;
+  border-radius: 6px;
+  height: 576px;
+  width: 100%;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+} 
+.CadastroAgenda .x_panel p {
+  display: inline-flex;
+  padding: 6px;
+  color: #5e7283;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  border: 1px solid black;
+  color: #7d8f9b;
+  border: 1px solid #1abb9c;
+  border-radius: 2px;
+  background: #ffffff;
+} 
+.CadastroAgenda h2 {
+  font-size: 24px;
+} 
+.calendario .CadastroAgenda .table {
+  width: 631px;
+} 
+.calendario {
+  margin-top: 30px;
+} 
+.botao_novo {
+  background: #26B99A;
+  border: 1px solid #169F85;
+  height: 25px;
+  border-radius: 3px;
+  width: 114px;
+  position: relative;
+  left: 456px;
+  bottom: 46px;
+} 
+.botao_novo:hover {
+  background: #1e8a73;
+} 
+.botao_novo a {
+  color: black;
+  padding: 7px;
+} 
+.btn_salvar {
+  margin-top: 330px;
+  margin-left: 470px;
+} 
+.label-align {
+  text-align: right;
+  width: 100px;
+} 
+h2 a {
+  margin-left: 26px;
+} 
+h2 .actions {
+  padding-left: 80%;
+}
+ 
+h2 .actions-form {
+  float: right;
+}

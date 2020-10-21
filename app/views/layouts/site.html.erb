@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SINJUR</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %> 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body> 
+  <ul>
+    <li style="display:inline-block;margin:10px"><h1>SINJUR</h1> 
+    <li style="display:inline-block;margin:10px;"><h3><%= link_to 'Entrar',admin_session_path, method: :get %></h3></li>
+  </ul> 
+  <hr>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<div style="text-align:center">
+  <div class="container body" style="text-align:center;font-size:18px">
+    <div class="main_container" style="text-align:center"> 
+
+      <!-- top navigation --> 
+      <!-- page content --> 
+      <div class="" style="text-align:center"> 
+
+        <div class="clearfix"  style="text-align:center"></div>
+
+        <div class="row" style="display: block;text-align:center"">
+          <div class="col-md-6 col-sm-6  " style="width: 100%;margin-left: auto;margin-right: auto;text-align: center;">
+            <div class="x_panel" style="text-align: center;width: 100%;font-family: Gilroy;margin-bottom: 47px;">
+              <div class="x_title">
+                <%= form_tag(historicos_path, method: :get) do %>
+                  <div class="col-md-5 col-sm-5   form-group pull-right top_search" style="WIDTH: 100%;text-align:center">
+                    <div class="input-group" > 
+                      <h2 style="width: 100%;text-align: initial;font-family: Gilroy ExtraBold;">Histórico
+                        <small style="float: right;text-align: end;margin-right: 2px;margin-top: 9px;width: 88%;font-size: 17px;">
+                          Email: <%= text_field_tag 'email_hist', nil,type:'text', placeholder:"e-mail do usuario",style:"color: #000662;width: 30%;font-size: 20px;border-radius: 2px;background: #17598b54;border: 1px solid #26b99a;padding-left: 5px;"%>
+                          Ação: <%= select_tag 'acao_hist', raw("<option>Todos</option><option>Excluiu</option><option>Atualizou</option><option>Adicionou</option>"), placeholder:"Ex: teste@teste.com", style:"padding-left: 5px;width: 13%;font-size: 20px;border-radius: 2px;background: #17598b54;border: 1px solid #26b99a;color: #000662;"%>
+                          Objeto: <%= select_tag 'objt_hist', raw("<option>Todos</option><option>Contato</option><option>Telefone</option><option>Filiado</option><option>Atividade</option><option>Pessoa</option><option>Advogado</option><option>Processo</option><option>Documento</option><option>Atendimento</option>"),  style:"color: #000662;width: 12%;font-size: 20px;border-radius: 2px;background: #17598b54;border: 1px solid #26b99a; "%>
+                          Dia: <%= text_field_tag 'dat_hist', nil, type:'date', placeholder:"Ex: teste@teste.com",  style:"width: 15%;font-size: 20px;border-radius: 2px;background: #17598b54;border: 1px solid #26b99a;padding-left: 5px;color:#000662"%>
+                          <%= submit_tag "Consultar",  id:'btn_consulta_escuro', style:"font-size: 21px;"%></h3> 
+                        </small>
+                      </h2>
+                    </div>
+                  </div>
+                <% end %>  
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content" style="min-height:716px;text-align:center">
+                <style>
+                  .menu-btn {
+                    background-color: #7e32d4;
+                    color: white;
+                    padding: 16px;
+                    font-size: 20px;
+                    font-weight: bolder;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    border: none;
+                  }
+                  .dropdown-menu {
+                    position: relative;
+                    display: inline-block;
+                  }
+                  .menu-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #017575;
+                    min-width: 160px;
+                    z-index: 1;
+                  }
+                  .links {
+                    color: rgb(255, 255, 255);
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                    font-size: 18px;
+                    font-weight: bold;
+                    border-bottom: 1px solid black;
+                  }
+                  .links:hover {
+                    background-color: rgb(8, 107, 46);
+                  }
+                  .dropdown-menu:hover .menu-btn {
+                    background-color: #3e8e41;
+                  } 
+                </style>
+
+                <script>
+                
+                </script>
+                <table class="table" id="historico"  style="width:100%;text-align:left">
+                  <thead>
+                    <tr>
+                      <th>Usuário</th>
+                      <th>E-mail</th>
+                      <th style="text-align: initial;padding-left: 42px;width: 13%;">Ação</th>
+                      <th style="text-align:center">Objeto</th> 
+                      <th style="text-align:left">Data Hora</th> 
+                      <th style="text-align:center">Acão</th> 
+                      
+                    </tr>
+                  </thead>
+
+                  <tbody class="historico" >
+                    <% @historicos.each do |historico| %>
+                      <div class="dropdown-menut_<%= historico.id %>">
+                        <tr class="list">
+                          <td style="text-align:left;width:18%"><%= historico.quem_username %></td>
+                          <td style="text-align:left;width:18%"><%= historico.quem %></td>
+                          <td>
+                            <p id="hist_<%= historico.acao %>">
+                            <%= historico.acao %>
+                            </p>
+                          </td>
+                          <td style="text-align:center;width:10%"><%= historico.objeto %></td>
+                          <td style="text-align:left;width:13%"><%= historico.hracao.strftime("%d/%m/%Y às %H:%M.") %></td>
+                          <td style="width: 1%;text-align: center;" class="td_btn"><a class="menu-btn_<%= historico.id %>"><i class="fa fa-eye" id="btn_hist"style="color:#385bc2"></i></a></td>  
+                        </tr>  
+                      </div> 
+                        <tbody class="menu-content_<%= historico.id %>" style="display: none;z-index: 1;width: max-content;"> 
+                          <tr style="border:1px solid black;">
+                            <td colspan="7"><li>Descrição do(a) <%= historico.objeto %>.</li></td> 
+                          </tr>  
+                          <tr style="border:1px solid black;">
+                            <td style="text-align:left;padding-left: 47px;" colspan="4">Descrição Inicial: <%= historico.acao_desc %>.</td> 
+                            <td style="text-align:left;width:13%"><%= historico.hracao.strftime("%d/%m/%Y às %H:%M.") %></td>
+                            <td style="text-align:left;width: 1%;"></td> 
+                          </tr> 
+                          <tr style="border:1px solid black;">
+                            <td style="text-align:left;padding-left: 47px;" colspan="4">Descrição Atual: <%= historico.acaoupdt %>.</td>  
+                            <td style="text-align:left;width:13%"><%= historico.hrup.strftime("%d/%m/%Y às %H:%M.") %></td>
+                            <td style="text-align:left;width: 1%;"></td> 
+                          </tr>
+                          <tr>
+                            <td colspan="4"><hr style="border: 0px solid #29716d;background: #c1d5d5;height: 1px;"></td> 
+                            <td colspan="2" style="font-size: 17px;text-align: center;color: #172d43;font-family: Gilroy ExtraBold;background: #ffffff38;box-shadow: 0px 0px 3px #29716e;border-radius: 18px;">Histórico Id: <%= historico.id %></td>
+                          </tr>
+                        </tbody>
+                      <script>
+                        let dropdownBtn_<%= historico.id %> = document.querySelector('.menu-btn_<%= historico.id %>');
+                        let menuContent_<%= historico.id %> = document.querySelector('.menu-content_<%= historico.id %>');
+                        dropdownBtn_<%= historico.id %>.addEventListener('click',()=>{
+                          if(menuContent_<%= historico.id %>.style.display==="none"){
+                              menuContent_<%= historico.id %>.style.display="contents";
+                          } else {
+                              menuContent_<%= historico.id %>.style.display="none";
+                          }
+                        })
+                      </script>
+                    <% end %> 
+                  </tbody>
+                </table> 
+                  <div style="float: none;display: flow-root;">
+                    <%= paginate @historicos,style:"text-align:center"%>
+                  </div>
+              </div>
+            </div>        
+          </div> 
+          <div class="clearfix"></div> 
+        </div>
+      </div> 
+    </div>
+  </div>  
+</div>

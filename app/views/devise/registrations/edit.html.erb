@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <script>
+      document.getElementById("login").playbackRate = -0.5;
+    </script>
+    <title>SINJUR</title> 
+  </head>
+
+  <body class="login">
+    <div> 
+    
+      <div class="login_wrapper">
+        <div class="animate form login_form"> 
+          <section class="login_content">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, style:"    margin-top: -79px;"}) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource%>
+              
+              <div class="field" style="margin-top:30px">  
+                <h2>E-mail</h2>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",placehold:"E-mail",style:"border: 2px solid #2d8f81;
+    border-bottom: 2px solid #2d8f81;
+    background: transparent;
+    border-radius: 13px;
+    color: white;
+    box-shadow: 0px 0px 0px;
+    font-size: 42px;
+    height: 80px;
+    width: 746px;
+    padding: 8px;
+    margin-bottom: 1px;
+    margin-top: -12px;
+    margin-left: -5px;
+    text-align: center;
+    font-family: Gilroy;" %>
+              </div>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+
+              <div class="field"> 
+                Nova senha
+                <%= f.password_field :password,placeholder:"Nova senha",autocomplete: "new-password",style:"border: 2px solid #2d8f81;
+    border-bottom: 2px solid #2d8f81;
+    background: transparent;
+    border-radius: 13px;
+    color: white;
+    box-shadow: 0px 0px 0px;
+    font-size: 42px;
+    height: 80px;
+    width: 746px;
+    margin-bottom: 1px;
+    padding: 8px;
+    margin-top: 1px;
+    margin-left: -5px;
+    text-align: center;
+    font-family: Gilroy;" %>
+                <% if @minimum_password_length %>
+                  <br />
+                  <em><%= @minimum_password_length %> caracteres no minimo</em>
+                <% end %>
+              </div>
+
+              <div class="field"> 
+                <%= f.password_field :password_confirmation, placeholder:"Confirmação da senha",autocomplete: "new-password",style:"border: 2px solid #2d8f81;
+    border-bottom: 2px solid #2d8f81;
+    background: transparent;
+    border-radius: 13px;
+    color: white;
+    box-shadow: 0px 0px 0px;
+    font-size: 42px;
+    height: 80px;
+    width: 746px;
+    margin-bottom: 1px;
+    padding: 8px;
+    margin-top: 1px;
+    margin-left: -5px;
+    text-align: center;
+    font-family: Gilroy;" %>
+              </div>
+
+              <div class="field">
+                <label>Senha atual</label> <i></i><br />
+                <%= f.password_field :current_password, placeholder:"Coloque a senha atual",autocomplete: "current-password",style:"border: 2px solid #2d8f81;
+    border-bottom: 2px solid #2d8f81;
+    background: transparent;
+    border-radius: 13px;
+    color: white;
+    box-shadow: 0px 0px 0px;
+    font-size: 42px;
+    height: 80px;
+    margin-bottom: 1px;
+    width: 746px;
+    padding: 8px;
+    margin-top: 1px;
+    margin-left: -5px;
+    text-align: center;
+    font-family: Gilroy;"%>
+              </div>
+
+              <div class="actions" style="margin-left: -56px;margin-top: 12px;"> 
+                <%= link_to 'Voltar',estatisticas_path, method: :get,class:"modal__btn",style:"width: 42%;
+      height: auto;
+      font-size: 40px;
+      font-family: Gilroy ExtraBold;text-decoration:none;" %>
+                <%= f.submit "Atualizar", class:"modal__btn modal__btn-primary",style:"width: 44%;
+    height: auto;
+    font-size: 40px;
+    font-family: Gilroy ExtraBold;"%>
+                
+              </div>
+            <% end %>  
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<div id="la" style="display:none">
+Ao acessar esse site, você, pessoa física ou jurídica, estará manifestando ampla, irrestrita e irrevogável aceitação com todos os termos, cláusulas e condições do Contrato de Licença de Uso, razão pela qual a Sinoredi-CE, recomenda que faça a leitura atenta desta página.
+
+
+POLÍTICA DE PRIVACIDADE
+
+Esse documento tem o objetivo de formalizar o compromisso com a segurança e a privacidade de informações dos usuários do site SINJUR da Sinoredi-CE.
+
+
+Quando o usuário usa nossos serviços, confia a nós informações dele. Esta Política de Privacidade destina-se a ajudar o usuário a entender este processo. Como sabemos que isso é importante, esperamos que o usuário tire algum tempo para lê-la com cuidado. 
+  
+
+INFORMAÇÕES COLETADAS
+
+Usamos as informações que coletamos para fornecer, manter, proteger, melhorar nossos produtos e serviços e desenvolver novos. Também usamos essas informações para oferecer ao usuário um conteúdo mais específico.
+
+
+SOBRE OS TERMOS
+
+Podemos modificar nossos termos de uso e política de privacidade ou quaisquer termos adicionais que sejam aplicáveis a um produto ou serviço para, por exemplo, refletir alterações da lei. Por este motivo, você deve consultar esta página regularmente.
+
+
+</div> 
+<script>
+  function Login(button) {
+    alertify.defaults.glossary.title = 'Termos de uso';
+    var pre = document.createElement('pre');
+    //custom style.
+    pre.style.maxHeight = "auto";
+    pre.style.margin = "0";
+    pre.style.padding = "24px";
+    pre.style.whiteSpace = "pre-wrap";
+    pre.style.textAlign = "justify";
+    pre.appendChild(document.createTextNode($('#la').text()));
+    //show as confirm
+    alertify.confirm(pre, function(){
+            button.form.submit() 
+        },function(){
+            alertify.error('Você recusou.');
+        }).set({labels:{ok:'Sim, aceito os termos.', cancel: 'Recusar os termos.'}, padding: false});
+    
+  return false;
+}
+</script>  

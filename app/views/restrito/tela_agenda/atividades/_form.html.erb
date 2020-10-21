@@ -1,0 +1,77 @@
+
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-6 ">
+    <div class="x_panel" style="color: aliceblue;
+    background: #f0f0f0;
+    border-left: 9px solid #1abb9c;
+    border-radius: 6px;
+    height: 576px;
+    border-bottom: 0px;
+    width: 100%;
+    border-top: 0px;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;">
+      <%= form_with(model: restrito_tela_agenda_atividade, local: true, class:"form-horizontal form-label-left") do |form| %>
+        
+        <div class="x_content" class="contato-form"> 
+            
+          <div id="atividades">
+            <div class="item form-group" style="margin-left: -2px;">
+              <%= form.label :titulo, style:"margin-left:28px"%>:
+              <div class="col-md-6 col-sm-6 ">
+                <%= form.text_field :titulo, style:"width: 362px;font-size: 20px;margin-left: 8px;", placeholder:"Informe o título da atividade",required: true%>
+              </div>
+            </div>
+            <br>
+            
+            <div class="item form-group" style="margin-left: -3px;">
+              <div class="form_atividades"> 
+                <label>Agendar:</label>
+                <%= form.datetime_field :agendamento,style:"font-size: 15px;margin-left: 13px;width: 353px;text-align: center;",required: true%>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="item form-group" style="margin-left: 21px;"> 
+              <label style="margin-left: 14px;">Tipo:</label>
+              <div class="form_atividades" style="width:130px">
+                <%= form.select :tipo, ['Atividade', 'Lembrete', 'Agendamento']%>
+              </div>  
+              <label style="margin-left: 48px;">Status:</label>
+              <div class="form_atividades">
+                <%= form.select :status,['Aberto', 'Concluido'], class:"form_atividades"  %>
+              </div>
+            </div>   
+
+            <br>
+
+            <div class="item form-group">
+              <label style="margin-left: 32px;">Nível:</label>
+              <div class="form_atividades">
+                <%= form.select :nivel, ['Alto', 'Médio', 'Baixo'], class:"form-control"  %>  
+              </div>
+            </div> 
+            <br>
+            
+            <div class="item form-group">
+              Resumo:
+              </label>
+              <div class="col-md-6 col-sm-6 ">
+                <%= form.text_area :resumo, style:"margin-left:13px;width: 355px;min-height: 181px;padding: 7px;", placeholder:"Detalhes da atividade",required: true%>
+              </div>
+            </div> 
+            <br>  
+            <br>
+          </div>
+        </div>
+      </div> 
+      <footer class="modal__footer" style="margin-left: 0px;">  
+        <%= link_to "Voltar", restrito_tela_agenda_atividades_path,class:"modal__btn",style:"font-family: Gilroy ExtraBold;float: left;"%>  
+        <%= form.submit 'Enviar' ,class:"modal__btn modal__btn-primary",style:"font-family: Gilroy ExtraBold;float: right;"%> 
+      </footer>
+    <% end %> 
+  </div>
+</div> 

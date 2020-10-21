@@ -1,0 +1,267 @@
+
+<div style="text-align: center;">      
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="width: 32.5%;height: auto;min-height: 494px;box-shadow: 0px 0px 3px #415467;">
+    <div class="x_title" style="color: #1abb9c;font-family: Gilroy ExtraBold;">
+        <h2><i class="fa fa-university" style="margin-right:10px"></i>Processos<small></small></h2> 
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content" style="padding: 27px;">
+        <table class="" style="width:100%;">
+        <caption><h2 style="color: #233980;text-shadow: 1px 2px 3px #457baf;font-size: 29px;margin-top: 0px;">Status do processo.</h2></caption>
+        <tr>
+            <th style="width:37%;">
+            <p></p>
+            </th>
+            <th>
+            <div class="col-lg-7 col-md-7 col-sm-7 ">
+                <p class=""></p>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 ">
+                <p class=""></p>
+            </div>
+            </th>
+        </tr>
+        <tr>
+            <td>
+
+            <%= pie_chart @procs.group(:status_processo).count,legend: false, width: "200px", height: "150px", colors: ["#4a6e91", "#2C7","#fa2"], library: {backgroundColor: "transparent"}%> 
+            </td>
+            <td>
+            <table class="tile_info">
+                <tr >
+                <td>
+                    <p style="font-family:Gilroy ExtraBold"><i class="fa fa-square blue" ></i>Aberto </p>
+                </td>
+                <td style="font-family:Gilroy ExtraBold">
+                    <% begin %>
+                        <%= @porcentagem_status_aberto.round(0)  %>%
+                    <% rescue %>
+                    N/D
+                    <% end %>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <p style="color: #22cc77;font-family:Gilroy ExtraBold;"><i class="fa fa-square red" style="color: #22cc77;"></i>Concluido </p>
+                </td> 
+                <td style="font-family:Gilroy ExtraBold;color: #22cc77;">
+                    <% begin %>
+                        <%= @porcentagem_status_concluido.round(0)  %>%
+                    <% rescue %>
+                        N/D
+                    <% end %>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <p style="color:#ff9900;font-family:Gilroy ExtraBold;"><i class="fa fa-square green" style="color:#ff9900"></i>Em andamento </p>
+                </td> 
+                <td style="color: #ff9900;font-family:Gilroy ExtraBold;">
+                    <% begin %>
+                        <%= @porcentagem_status_em_andamento.round(0)  %>%
+                    <% rescue %>
+                    N/D
+                    <% end %>
+                </td>
+                </tr>
+            </table>
+            </td>
+        </tr>
+        </table>
+        <div style="color: #233980;text-shadow: 1px 2px 3px #457baf;text-align: initial;"><small class="numeros_g">[ <%= @qtd_procs%> ]</small> <br><span style="font-size: 18px;color: #233980;text-shadow: 1px 2px 3px #457baf;" >Processos cadastrados no sistema.</span></div>
+        <div style="color: #233980;text-shadow: 1px 2px 3px #457baf;text-align: initial;"> <small class="numeros_g">[ <%= @favoritos%> ]</small>  <br><span style="font-size: 18px;color: #233980;text-shadow: 1px 2px 3px #457baf;">Processos com <i class="fa fa-heart"></i>.</span></div>
+    </div>
+    </div>  
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: 19px;width: 36.5%;height: 522px;box-shadow: 0px 0px 3px #415467;">
+        <div class="x_title" style="color: #1abb9c;font-family: Gilroy ExtraBold;">
+            <h2><i class="fa fa-tasks" style="margin-right:10px"></i>Atividades<small></small></h2> 
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content" style="padding: 27px;margin-top: -20px;">
+            <table class="" style="width:100%;">
+            <caption><h2 style="color: #233980;text-shadow: 1px 2px 3px #457baf;font-size: 22px;">Status das atividade.</h2></caption>
+            <tr>
+                <th style="width:37%;">
+                <p></p>
+                </th>
+                <th>
+                <div class="col-lg-7 col-md-7 col-sm-7 ">
+                    <p class=""></p>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 ">
+                    <p class=""></p>
+                </div>
+                </th>
+            </tr>
+            <tr>
+                <td>
+
+                <%= pie_chart @atividades.group(:status).count,legend:false, width: "200px", height: "120px", colors: ["#4a6e91", "#2C7"], library: {backgroundColor: "transparent"}%> 
+                </td> 
+                <td>
+                <table class="tile_info">
+                    <tr >
+                        <td>
+                            <p style="font-family:Gilroy ExtraBold"><i class="fa fa-square blue" style="color:#4a6e91"></i>Aberto </p>
+                        </td>
+                        <td style="font-family:Gilroy ExtraBold">
+                            <% begin %>
+                                <%= @porcentagem_atividades_aberto.round(0)  %>%
+                            <% rescue %>
+                            N/D
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family:Gilroy ExtraBold;color: #22cc77;"><i class="fa fa-square red" style="color:#22cc77"></i>Concluido </p>
+                        </td> 
+                        <td style="font-family:Gilroy ExtraBold;color: #22cc77;">
+                            <% begin %>
+                                <%= @porcentagem_atividades_concluido.round(0)  %>%
+                            <% rescue %>
+                                N/D
+                            <% end %>
+                        </td>
+                    </tr> 
+                </table>
+                </td>
+            </tr> 
+            </table> 
+            <table class="" style="width:100%;">
+            <caption><h2 style="color: #233980;text-shadow: 1px 2px 3px #457baf;font-size: 22px;padding-top: 27px;">Atividades abertas.</h2></caption>
+            <tr>
+                <th style="width:37%;">
+                <p></p>
+                </th>
+                <th>
+                <div class="col-lg-7 col-md-7 col-sm-7 ">
+                    <p class=""></p>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 ">
+                    <p class=""></p>
+                </div>
+                </th>
+            </tr>
+            <tr>  
+                <td> 
+                    <%= pie_chart @atividades.group(:nivel).count,legend:false, width: "200px", height: "120px", colors: ["#fe3867", "#53a1ff", "#ffe71c"], library: {backgroundColor: "transparent"}%> 
+                </td> 
+                <td>
+                <table class="tile_info">
+                    <tr >
+                        <td>
+                            <p style="font-family: Gilroy ExtraBold;color: #fe3866;"><i class="fa fa-square blue" style="color:#fe3866"></i>Alto </p>
+                        </td>
+                        <td style="font-family: Gilroy ExtraBold;color: #fe3866;">
+                            <% begin %>
+                                <%= @nivel_alto %>
+                            <% rescue %>
+                            N/D
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family: Gilroy ExtraBold;color: #ffe71c;"><i class="fa fa-square red" style="color:#ffe71c"></i>Médio </p>
+                        </td> 
+                        <td style="font-family: Gilroy ExtraBold;color: #ffe71c;">
+                            <% begin %>
+                                <%= @nivel_medio %>
+                            <% rescue %>
+                                N/D
+                            <% end %>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td>
+                            <p style="font-family: Gilroy ExtraBold;color: #53a1ff;"><i class="fa fa-square red" style="color:#53a1ff"></i>Baixo </p>
+                        </td> 
+                        <td style="font-family: Gilroy ExtraBold;color: #53a1ff;">
+                            <% begin %>
+                                <%= @nivel_baixo  %>
+                            <% rescue %>
+                                N/D
+                            <% end %>
+                        </td>
+                    </tr> 
+                </table>
+                </td>
+            </tr> 
+            </table>  
+        </div>
+    </div> 
+    <div class="x_panel tile fixed_height_320 overflow_hidden"  style="margin-left: 19px;width: 28%;min-height: 521px;box-shadow: 0px 0px 3px #415467;">
+        <div class="x_title" style="color: #1abb9c;font-family: Gilroy ExtraBold;">
+            <h2><i class="fa fa-newspaper-o" style="margin-right:10px"></i>Atendimentos<small style="font-size:21px">cadastrados.</small></h2> 
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content" style="padding: 27px;margin-top: -20px;margin-left: -30px;padding-bottom: 0px;"> 
+            <%= column_chart @atends.group_by_day_of_week(:created_at, format: "%a").count,width: "600px",height:"600px",colors: ["#1abb9c", "white"],stacked: true, discrete: false,label: "Atendimentos",min:0,max:@qtd_de_atend,library: { backgroundColor: "transparent",xAxis: { title: {text: 'Hello World'}, gridLineColor:"#ff0000", lineWidth: 1, lineColor: "#ff0000" }}%>   
+            
+        </div>
+    </div>  
+</div>
+<div class="clearfix"></div>
+<div class="row"> 
+    <div class="x_panel" STYLE="font-family: Gilroy;MARGIN-LEFT:14PX;width: 98.5%;box-shadow: 0px 0px 3px #415467;">
+        <div class="x_title" style="font-family: Gilroy ExtraBold;color: #1abb9c;">
+            <h2><i class="fa fa-tasks" style="margin-right:10px"></i>Atividade da semana<small><%= Time.now.strftime("%d/%m/%Y")%></small></h2> 
+            <div class="clearfix"></div>
+        </div> 
+            <div class="dashboard-widget-content" style="margin-top: -51px;font-size: 20px;margin-left: -30px;">
+
+                <ul class="list-unstyled timeline widget">
+                    <%= week_calendar events: @atividades do |date, atividades| %> 
+                        <% atividades.each do |atividade| %>  
+                            <% if atividade.status == "Aberto"%>  
+                                <li style="display: block;margin-left: -14px;border-bottom: 0px solid;">  
+                                    <div class="block" style="width: 100%;
+    border-left: 0px solid #eeeeee;
+    /* border-bottom: 2px solid #4a6e8f; */
+    padding-right: 1px;
+    margin-left: -6px;
+    max-height: 217px;">
+                                        <div class="block_content">
+                                            
+                                            <div style="padding-top:9px">
+                                                <div class="contato-form" style="box-shadow: 0px 0px 14px #cacaca;float: none;"> 
+                                                    <h2 class="" ><a style="float: left;font-size: 28px;color: #1b2872;margin-left: 0px;text-shadow: 0px 0px 4px #adb9c5;text-transform: capitalize;"><label style="font-family:Gilroy ExtraBold;color: #1abb9c;">Titulo: </label><%=atividade.titulo%>.</a>
+                                                    
+                                                    <div class="<%=atividade.nivel%>" style="text-align: center;width:12%;float:right;background: #1e262e;border-radius: 18px;">   
+                                                        <span style="padding: 2px;padding-left: 15px;padding-right: 15px;font-family:Gilroy ExtraBold">Nivel - <%=atividade.nivel%>. </span>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    </h2>
+                                                    <div class="byline">
+                                                        <span><%=atividade.agendamento.strftime("%d/%m/%Y as %H:%M ")%></span><span>, Tipo: <%=atividade.tipo%>. </span>
+                                                        <br>  
+                                                    </div> 
+                                                    <label style="font-family:Gilroy ExtraBold;color: #1abb9c;">Tipo:</label>
+                                                    <p style="display:inline">
+                                                        <%=atividade.tipo%>.
+                                                    </p>
+                                                    <br>
+                                                    <p style="display:block">
+                                                        <label style="font-family:Gilroy ExtraBold;color: #1abb9c;">Resumo:</label>
+                                                        <%=atividade.resumo.unpack(("a%i" % 50) * (atividade.resumo.size / 50.0).ceil).join("\n").force_encoding("UTF-8")%>.
+                                                    </p>
+                                                    <%= link_to 'Visualizar', atividade, class:"modal__btn modal__btn-primary", style:"margin-top: -27px;font-family: Gilroy ExtraBold;font-size: 16px;float: right; border-radius: 8px;"%></a>
+                                                </div> 
+                                            </div>
+                                            <br>
+                                            </p>
+                                            <a>
+                                        </div>
+                                    </div>   
+                                </li>  
+                            <% end %> 
+                        <% end %>
+                    <% end %>
+                </ul>
+            </div> 
+    </div> 
+</div>  
+<script>
+
+</script>

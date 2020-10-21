@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @tabeliao.nome %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @tabeliao.cpf %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @tabeliao.numero %>
+</p>
+
+<%= link_to 'Edit', edit_tabeliao_path(@tabeliao) %> |
+<%= link_to 'Back', tabeliaos_path %>

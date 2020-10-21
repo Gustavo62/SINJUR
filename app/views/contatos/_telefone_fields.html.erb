@@ -1,0 +1,9 @@
+<div class="nested-fields" style="display: inline-block;text-align: center;">
+    <div class="field" style="width: 400px;">
+        <div class="field">
+            <%= f.label :telefone %>
+            <%= f.text_field :telefone,maxlength:"15", autocomplete:"off", id:"telefone", placeholder:"(00) 00000-0000",style:"color: #4b5c6b;width: 50%;",required: true,onkeypress:"mask(this, mphone);", onblur:"mask(this, mphone);"%>  
+            <%= link_to_remove_association('', f,class:"fa fa-trash-o",style:"color:red")%>
+        </div>
+    </div>
+</div>        

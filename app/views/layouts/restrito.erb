@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+    <title>SINJUR</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>  
+    <%= stylesheet_link_tag 'application'%>    
+    <link rel="stylesheet" type="text/css" href="/carrousel/slick/slick.css"/> 
+    <link rel="stylesheet" type="text/css" href="/carrousel/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css">
+    <link href="//db.onlinewebfonts.com/c/00d5a78493aed4b11e2584ad7cceee49?family=Gilroy+ExtraBold" rel="stylesheet" type="text/css"/> 
+    <link rel="sortcut icon" href="/imagens/logo1.png" type="image/png" /> 
+    <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>  
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">   
+          <div class="left_col scroll-view" style="font-family: Gilroy;font-size: 21px;">
+            <div class="navbar nav_title" style="border: 0;">
+             <%= image_tag 'LOGO_SINJUR.png', class:'logo-layout'%>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+             
+            <div class="navbar nav_title" style="border: 0;"> 
+            </div> 
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+
+                  <br> 
+                <h3>Geral</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Menu <span id="setas" class="fa fa-chevron-down"></a>
+                    <ul class="nav child_menu">
+                      <li><%= link_to 'Tutorial.',restrito_welcome_tutoriais_path, method: :get %></li>
+                      <li><%= link_to 'Histórico.',historicos_path, method: :get %></li>
+                      <li><%= link_to 'Informações.',restrito_welcome_info_path, method: :get %></li>  
+                      <li><%= link_to 'Painel de controle.',estatisticas_path, method: :get %></li>
+                    </ul>
+                  </li>
+                  
+                  <li><a><i class="fa fa-calendar"></i> Agenda <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><%= link_to 'Atividades.',restrito_tela_agenda_atividades_path, method: :get %></li>
+                      <li><%= link_to 'Contatos.',contatos_path, method: :get %></li> 
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-comments"></i> Atendimentos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><%= link_to 'Listar.',cadastro_atendimentos_path, method: :get %></li>
+                      <li><%= link_to 'Novo.',new_cadastro_atendimento_path, method: :get %></li>
+                      <li><%= link_to 'Ferramentas.',ferramentas_atendimento_index_path, method: :get %></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-gavel"></i> Processos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><%= link_to 'Listar Processos.',processos_path, method: :get %></h3></li> 
+                    </ul>
+                  </li>
+                  <br>
+                  <h3>UTILIDADES</h3>
+                  <li><a><i class="fa fa-users"></i> Filiados <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><%= link_to 'Filiados.',filiados_path, method: :get %></li>
+                    </ul>
+                  </li> 
+                  <br>
+                  <h3>Ferramentas</h3>
+                  <li><a><i class="fa fa-info-circle"></i> Usuário <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu"> 
+                      <li><%= link_to 'Alterar senha.',edit_admin_registration_path, method: :get %></li>
+                    </ul>
+                  </li> 
+                </ul>
+              </div> 
+            </div> 
+            <!-- /menu footer buttons -->
+             
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav" style="margin-right: -7px;">
+          
+          <div class="nav_menu" style="float:left;background:transparent;border-bottom: 1px solid #e4e4e4;text-shadow: 0px 0px 4px #0e5895;color: #eeeeee;">  
+            <h3 style="padding:10px;font-family: Gilroy;width:50%;">Home > <%=@local%></h3>
+            <div class="hora" style="float: right;font-size: 15px;margin-top: -40px;font-family: Gilroy ExtraBold;margin-right: 10px;">
+              <SCRIPT LANGUAGE="JAVASCRIPT">
+              <!--
+
+              var now = new Date();
+              var mName = now.getMonth() +1 ;
+              var dName = now.getDay() +1;
+              var dayNr = now.getDate();
+              var yearNr=now.getYear();
+              if(dName==1) {Day = "Domingo";}
+              if(dName==2) {Day = "Segunda-feira";}
+              if(dName==3) {Day = "Terça-feira";}
+              if(dName==4) {Day = "Quarta-feira";}
+              if(dName==5) {Day = "Quinta-feira";}
+              if(dName==6) {Day = "Sexta-feira";}
+              if(dName==7) {Day = "Sábado";}
+              if(mName==1){Month = "Janeiro";}
+              if(mName==2){Month = "Fevereiro";}
+              if(mName==3){Month = "Março";}
+              if(mName==4){Month = "Abril";}
+              if(mName==5){Month = "Maio";}
+              if(mName==6){Month = "Junho";}
+              if(mName==7){Month = "Julho";}
+              if(mName==8){Month = "Agosto";}
+              if(mName==9){Month = "Setembro";}
+              if(mName==10){Month = "Outubro";}
+              if(mName==11){Month = "Novembro";}
+              if(mName==12){Month = "Dezembro";}
+              if(yearNr < 2000) {Year = 1900 + yearNr;}
+              else {Year = yearNr;}
+              var todaysDate =(" " + Day + ", " + dayNr + "/" + Month + "/" + Year);
+
+              document.write('  '+todaysDate);
+
+              //-->
+              </SCRIPT>
+
+
+              <SPAN ID="Clock" >00:00:00</SPAN> 
+
+              <SCRIPT LANGUAGE="JavaScript">
+              <!--
+              var Elem = document.getElementById("Clock");
+              function Horario(){ 
+              var Hoje = new Date(); 
+              var Horas = Hoje.getHours(); 
+              if(Horas < 10){ 
+              Horas = "0"+Horas; 
+              } 
+              var Minutos = Hoje.getMinutes(); 
+              if(Minutos < 10){ 
+              Minutos = "0"+Minutos; 
+              } 
+              var Segundos = Hoje.getSeconds(); 
+              if(Segundos < 10){ 
+              Segundos = "0"+Segundos; 
+              } 
+              Elem.innerHTML = Horas+":"+Minutos+":"+Segundos; 
+              } 
+              window.setInterval("Horario()",1000);
+              //-->
+              </SCRIPT>
+              SINOREDI-CE
+            </div> 
+            <nav class="nav navbar-nav"> 
+              <ul class=" navbar-right">
+                <li class="nav-item dropdown open" aligh="left">  
+                
+                  
+                  
+                   
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+     
+        <!-- page content -->
+        <div class="right_col" style="font-size:14px;min-height: 637px;height: auto;margin-right: -7px;"> 
+          <%= yield%>
+          <div class="clearfix"></div>
+        </div> 
+        
+        <!-- /footer content -->
+      </div>
+    </div>  
+    
+    <%= javascript_include_tag 'application' %>      
+    <%= javascript_include_tag 'notify'%>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>  
+  </body>
+</html>

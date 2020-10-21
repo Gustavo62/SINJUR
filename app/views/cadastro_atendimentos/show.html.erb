@@ -1,0 +1,176 @@
+
+<div class="x_panel" style="height: auto;
+    min-height: 850px; 
+    text-align: center;
+    width: 100%; 
+    font-family: Gilroy;">
+  <div class="x_title">
+    <h2 style="width: 100%;font-family: Gilroy ExtraBold;text-align: left;">Visualizar Atendimento 
+      <small class="actions-form" style="float: right;display: flex;" > 
+        <%= link_to 'Voltar', cadastro_atendimentos_path,class:"modal__btn", style:"margin-top: 5px;font-size: 18px;"%>
+        <div style="float: right;margin-left: 10px;">
+          <%= link_to "Editar", edit_cadastro_atendimento_path(@cadastro_atendimento),class:"modal__btn modal__btn-primary",style:"margin-right: 3px;font-size: 17px;font-family: Gilroy ExtraBold;"%>
+        </div> 
+        <%= button_to 'Excluir', @cadastro_atendimento, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'modal__btn',style:"margin-right: 17px;color: white;background: red;font-family: Gilroy ExtraBold;font-size: 17px;margin-left: 7px;"%>
+      </small>
+    </h2> 
+    <div class="clearfix"></div>
+  </div>
+  <div class="x_content">
+    <div class="contato" style="width: 1257px;"> 
+      <p style="font-size: 26px;height: 59px;margin-bottom: -17px;background: #f5fffe;border-left: 11px solid #1abb9c;width: 496px;border-radius: 5px;padding-left: 9px;font-family: Gilroy ExtraBold;"><i class="fa fa-user" style="margin-right: 8px;font-size: 23px;"></i>Informações do Atendimento.</p> 
+      <div class="contato-form" style="width: 1250px;font-size: 26px;margin-top:-3px;padding-top: 0px;" >
+        <h2 style="margin-top:20px"><small style="margin-left: 42px;"><label style="vertical-align: middle;">Nome:</label> <p style="width: 81%;"><%=@cadastro_atendimento.nome %>.</p></small></h2>
+        <h2 style="margin-top: -12px;">
+          <small style="margin-left: 23px;"> 
+            <label style="vertical-align: middle;">Catório:</label> 
+            <p style="width: 81%;">
+              <% @filiados_for_select.each do |filiados|%>
+                <% if filiados.id == @cadastro_atendimento.codigo_tj_filiado %>
+                  <%= filiados.end_completo%>
+                <% end %>
+              <% end %>
+            </p>
+          </small>
+        </h2>
+        <h2 style="margin-top: -12px;margin-left: 68px;"><small><label style="vertical-align: middle;">Cpf:</label> <p style="width: 18%;"><%=@cadastro_atendimento.cpf%></p><label style="vertical-align: middle;">Telefone:</label><p style="width: 17%;"><%=@cadastro_atendimento.telefone %></p><label style="vertical-align: middle;">Data do atendimento:</label><p style="width: 17%;"><%=@cadastro_atendimento.data_atendimento.strftime("%d/%m/%Y") %></p></small></h2>
+        <br>  
+        <h2 style="margin-top: -15px;"> <small style="margin-left: -7px;">Descrição: <%=@cadastro_atendimento.texto_livre %></small></h2>
+      </div> 
+    </div>  
+    <div class="clearfix"></div>
+    <div class="contato" style="width: 1257px;"> 
+      <p style="font-size: 26px;height: 59px;margin-bottom: -17px;background: #f5fffe;border-left: 11px solid #1abb9c;width: 496px;border-radius: 5px;padding-left: 9px;font-family: Gilroy ExtraBold;"><i class="fa fa-file" style="margin-right: 8px;font-size: 23px;"></i>Informações dos artefatos.</p> 
+      <% if @testedoc%>
+        <%@cadastro_atendimento.documentos.each do |docs| %> 
+          <div class="contato-form" style="padding-bottom: 0px;padding-left: 13px;height: 56px;padding-right: 8px;width: 1250px;font-size: 26px;margin-top:-3px;padding-top: 0px;" >
+            <h2 style="display: flex;min-width: 86%;">
+              <small style="width: 84%;margin-top: 2px;padding-left: 9px;margin-bottom: 13px;font-size: 20px;color: #32576f;border: 1px solid #1abb9c;border-radius: 2px;background: #ffffff;">
+                nome do arquivo: <%= docs.documento.filename%> 
+              </small>
+              <%= link_to 'Download', rails_blob_path(docs.documento, disposition: 'attachment'), class:"modal__btn", style:"height: 33px;margin-left: 8px;font-family:Gilroy ExtraBold"%>
+              <%= button_to 'Excluir', docs, method: :delete, :onclick => "return ConfirmDeleteDown(this)", class:"modal__btn", style:"margin-left: 8px;color: white;background: red;font-family: Gilroy ExtraBold;"%>
+            </h2>
+          </div>
+          <script>
+            function ConfirmDeleteDown(button) {
+              alertify.confirm("<div style='font-family:Gilroy;color: #39444e;font-size:17px'><p>Deseja <small style='font-family: Gilroy ExtraBold;color:red;font-size:17px'>excluir</small> o este arquivo do atendimento?</p><br><p style='color:red'>esta ação não pode ser desfeita.</p></div>", function() {
+                button.form.submit() 
+              }, function() {
+                alertify.error("Você cancelou a ação");
+              }).set('defaultFocus', 'Cancelar');
+
+              return false;
+            }
+          </script>
+        <% end %> 
+      <% else %> 
+        <div class="contato-form" style="padding-bottom: 0px;padding-left: 13px;height: 56px;padding-right: 8px;width: 1250px;font-size: 26px;margin-top:-3px;padding-top: 0px;" >
+          <h4>Não existem Advogados cadastrados neste atendimento.</h4>
+        </div>
+      <% end %>
+    </div>   
+    <div class="clearfix"></div>
+    <div class="contato" style="width: 1257px;"> 
+      <p style="font-size: 26px;height: 59px;margin-bottom: -17px;background: #f5fffe;border-left: 11px solid #1abb9c;width: 496px;border-radius: 5px;padding-left: 9px;font-family: Gilroy ExtraBold;"><i class="fa fa-briefcase" style="margin-right: 8px;font-size: 23px;"></i>Informações dos Advogados.</p> 
+      <% if @testeadv%> 
+        <% @cadastro_atendimento.advogados.each do |adovagos| %>
+          <div class="contato-form" style="width: 1250px;font-size: 26px;margin-top:-3px;" >
+            <h2><small style="margin-left:55px">Nome: <p style="width: 80%;"><%=adovagos.nome %>.</p></small></h2>
+            <h2 style="margin-top: -15px;"><small style="margin-left: 15px;">Endereço: <p style="width: 42.5%;"><%=adovagos.endereço %>.</p> Cidade: <p style="width:28%"><%=adovagos.cidade %>.</p></small></h2>
+            <h2 style="margin-top: 20px;"><small style="margin-left: 57px;">Bairro: <p style="width: 59%;"><%=adovagos.bairro %>.</p> Cep: <p style="width:15%"><%=adovagos.cep %></p></small></h2>
+            <h2 style="margin-top: -15px;"><small style="margin-left: 49px;">E-mail: <p style="width: 80%;"><%=adovagos.email %></p></small></h2>
+            <h2 style="margin-top: -15px;"><small style="margin-left: 73px;">Oab: <p style="width: 25%;"><%=adovagos.oab %>.</p> Advogado: <p style="width: 42.5%;"><%=adovagos.advogado %>.</p></small></h2>
+            <h2 style="margin-top: -15px;"><small style="margin-left: 25px;">Telefone: <p style="width: 14.8%;"><%=adovagos.telefone %></p> Observação: <p style="width:51%"><%=adovagos.observação %>.</p></small></h2> 
+          </div>
+        <% end %> 
+      <% else %>
+        <div class="contato-form" style="padding-bottom: 0px;padding-left: 13px;height: 56px;padding-right: 8px;width: 1250px;font-size: 26px;margin-top:-3px;padding-top: 0px;" > 
+          <h4>Não existem Advogados cadastrados neste atendimento.</h4>
+        </div>
+      <% end %>
+    </div> 
+    <div class="clearfix"></div> 
+    <div class="contato" style="width: 1257px;"> 
+      <p style="font-size: 26px;height: 59px;margin-bottom: -17px;background: #f5fffe;border-left: 11px solid #1abb9c;width: 496px;border-radius: 5px;padding-left: 9px;font-family: Gilroy ExtraBold;"><i class="fa fa-group" style="margin-right: 8px;font-size: 23px;"></i>Informações das Pessoas.</p> 
+      <% if @testepessoa%>
+        <% @cadastro_atendimento.pessoas.each do |pessoas| %>
+          <div class="contato-form" style="width: 1250px;font-size: 26px;margin-top:-3px;" >
+            <h2><small style="margin-left: 57px;">Nome: <p style="width: 80.7%;"><%=pessoas.nome %></p></small></h2>
+            <h2 style="margin-top: -15px;"><small style="margin-left: 96px;">Pis: <p style="width: 17.9%;"><%=pessoas.pis %></p> Nacionalidade: <p style="width: 14.5%;"><%=pessoas.nacionalidade %></p> Estado Civil: <p style="width: 18%;"><%=pessoas.estado_civil %></p></small></h2>
+            
+            <h2 style="margin-top:20px;"><small style="margin-left: 22px;">Profissão: <p style="width: 28%;"><%=pessoas.profissao %></p> Escolaridade:<p style="width: 38.4%;"><%=pessoas.escolaridade%></p></small></h2> 
+            <h2><small style="margin-left: 83px;">Cpf: <p style="width: 21%;"><%=pessoas.cpf %></p> RG: <p style="width: 21%;"><%=pessoas.rg %></p> CNPJ: <p style="width: 19%;"><%=pessoas.cnpj %></p></small></h2>
+            
+            <h2 style="margin-top:20px;"><small style="margin-left:25px">R. Social: <p style="width:32%"><%=pessoas.razao_social %></p> Nome Fantasia: <p style="width:31.8%"><%=pessoas.nome_fantasia %></p></small></h2>
+            
+            <h2 style="margin-top:20px;"><small style="margin-left:1px">I. Estadual: <p style="width: 34%;"><%=pessoas.insc_estadual %></p> I. Municipal: <p style="width: 34.3%;"><%=pessoas.insc_municipal %></p></small></h2>
+            
+            <h2 style="margin-top:20px;"><small style="margin-left:9px">Endereço: <p style="width: 62%;"><%=pessoas.endereço %></p> Cep: <p style="width:13.5%"><%=pessoas.cep %></p></small></h2>
+            <h2 style="margin-top: -15px;"><small style="margin-left:31px">Cidade: <p style="width:26%"><%=pessoas.cidade %></p> Bairro: <p style="width:48%"><%=pessoas.bairro %></p></small></h2>
+            <h2 style="margin-top: -15px;"><small style="margin-left:37px">Celular: <p style="width:16%"><%=pessoas.celular %></p> Residencial: <p style="width:16%"><%=pessoas.residencial %></p> Comercial: <p style="width:16%"><%=pessoas.comercial %></p></small></h2>
+            <h2 style="margin-top: -15px;"><small style="margin-left:43px">E-mail: <p style="width: 38%;"><%=pessoas.email %></p> Responsável: <p style="width: 29%;"><%=pessoas.responsável %></p></small></h2> 
+            
+          </div>  
+        <% end %> 
+      <% else %>
+        <div class="contato-form" style="padding-bottom: 0px;padding-left: 13px;height: 56px;padding-right: 8px;width: 1250px;font-size: 26px;margin-top:-3px;padding-top: 0px;" >
+          <h4>Não existem Pessoas cadastrados neste atendimento.</h4>
+        </div>
+      <% end %>   
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="contato" style="width: 1257px;"> 
+      <p style="font-size: 26px;height: 59px;margin-bottom: -17px;background: #f5fffe;border-left: 11px solid #1abb9c;width: 496px;border-radius: 5px;padding-left: 9px;font-family: Gilroy ExtraBold;"><i class="fa fa-gavel" style="margin-right: 8px;font-size: 23px;"></i>Informações do Processo.</p> 
+      <% if @testeproc%>
+        <% @cadastro_atendimento.processos.each do |processos| %>
+          <div class="contato-form" style="width: 1250px;font-size: 26px;margin-top:-3px;" >
+            <h2><small>A. Atuação: <p style="width:35%"><%=processos.area_atuacao %></p> O. Ação: <p style="width:35%"><%=processos.objeto_acao %></p></small></h2> 
+            <h2 style="margin-top: -15px;"><small style="margin-left: 40px;">Assunto: <p style="width:79.8%"><%=processos.assunto %></p></small></h2> 
+            <h2 style="margin-top: -15px;"><small style="margin-left: 27px;">Detalhes: <p style="width:79.8%"><%=processos.detalhe %></p></small></h2> 
+            <h2 style="margin-top: 20px;"><small>L. tramite ¹: <p style="width:34%"><%=processos.local_tramite_um %></p> L. tramite ²: <p style="width:34%"><%=processos.local_tramite_dois %></p></small></h2>
+            <h2 style="margin-top: 20px;"><small style="margin-left: 56px;">Pasta: <p style="width:35%"><%=processos.pasta %></p> Etiqueta: <p style="width:35.4%"><%=processos.etiqueta %></p></small></h2>
+            <h2 style="margin-top: -15px;"><small style="margin-left: 26px;">Favorito:
+                <% if processos.favorito == "1"%>
+                  <i class="fa fa-check-square-o" style="background: white;
+    width: 21px;
+    height: 23px;
+    color: #29b59b;
+    border-radius: 7px;"></i>
+                <% else %>
+                  <i class="fa fa-square-o" style="background: white;
+    width: 21px;
+    height: 23px;
+    color: #29b59b;
+    border-radius: 7px;"></i>
+                <% end %>
+                Status: <p style="width:25%"><%=processos.status_processo %></p> 
+              </small>
+            </h2>
+          </div>  
+        <% end %> 
+      <% else %>
+        <div class="contato-form" style="padding-bottom: 0px;padding-left: 13px;height: 56px;padding-right: 8px;width: 1250px;font-size: 26px;margin-top:-3px;padding-top: 0px;" >
+          <h4>Não existem Processos em anexo neste atendimento.</h4>
+        </div>
+      <% end %>   
+    </div>
+  </div>   
+</div>
+<div class="clearfix"></div>
+<% @filiados_for_select.each do |filiados|%>
+  <% if filiados.id == @cadastro_atendimento.codigo_tj_filiado %>
+    <script>
+    function ConfirmDelete(button) {
+      alertify.confirm("<div style='font-family:Gilroy;color: #39444e;font-size:17px'><p>Deseja <small style='font-family: Gilroy ExtraBold;color:red;font-size:17px'>excluir</small> o Atendimento de <small style='font-size: 16px;text-decoration:underline'><%= @cadastro_atendimento.nome%></small>?</p><br><p style='font-family:Gilroy ExtraBold'>Informações do cartório.</p><p>Titular: <%= filiados.titular%>.</p><p>Cartório: <%= filiados.nome%>.</p><p>Cidade: <%= filiados.cidade%>.</p><br><p style='font-family:Gilroy ExtraBold'>Informações do cliente. </p><p>Nome: <%= @cadastro_atendimento.nome%>.</p><p>CPF: <%= @cadastro_atendimento.cpf%>.</p><br><% if @testeadv%><p style='font-family:Gilroy ExtraBold'>Informaçoes <%=@adv_plural%></p><p><%if @qtd_adv > 1 %><%@nome_adv.each do |a|%> Advogado <%=@count%>: <%= a%>. <br> <%@count += 1%><% end %><% else %> Advogado 1: <%=@nome_adv%>. <% end%><%@count = 1%></p><% end %><% if @testepessoa%><br><p style='font-family:Gilroy ExtraBold'>Informaçoes <%=@pess_plural%></p><p><%if @qtd_pess > 1 %><%@nome_pess.each do |b|%> Pessoa <%=@count%>: <%=b%>.<br> <%@count += 1%><% end %><%@count = 1 %> <% else %> Pessoa 1: <%= @nome_pess%>. <% end %></p><% end %><br><p style='font-family:Gilroy ExtraBold'>Informaçoes adicionais.</p><p>Numero de artefatos: <%=@cadastro_atendimento.documentos.size%>.<br><p><%@cadastro_atendimento.processos.each do |procs|%>Etiqueta do processo <%= @count %>: <%=procs.etiqueta%>. <br> Pasta processo <%=@count%>: <%=procs.pasta%>.<br> Status processo <%=@count%>: <%=procs.status_processo%>.<%@count += 1%><br><% end %></p><p style='color:red'>esta ação não pode ser desfeita.<p></div>", function() {
+        button.form.submit() 
+      }, function() {
+        alertify.error("Você cancelou a ação");
+      }).set('defaultFocus', 'Cancelar');
+
+      return false;
+    } 
+  </script> 
+  <% end %>
+<% end %>

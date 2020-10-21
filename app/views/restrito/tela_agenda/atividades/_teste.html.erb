@@ -1,0 +1,21 @@
+<div>  
+<%= month_calendar events: @restrito_tela_agenda_atividades do |date, atividades| %>
+<%= date.strftime("%d") %>
+
+<% atividades.each do |atividade| %> 
+    <div id="atividade">
+        <%if atividade.status == "Aberto"%> 
+            <%if atividade.titulo != ""%> 
+                <div id="<%=atividade.nivel%>"> 
+                    <p style="padding: 6px;margin:2px;width:100%"><%= link_to (atividade.titulo.unpack(("a%i" % 25) * (atividade.titulo.size / 25.0).ceil).join("\n")).force_encoding("UTF-8"), atividade %></p>
+                </div> 
+            <% else %>
+                <div id="<%=atividade.nivel%>"> 
+                    <p><%= link_to "Sem Titulo", atividade %></p>
+                </div>
+            <% end %>
+        <% end %> 
+    </div> 
+<% end %>
+<% end %>
+</div>    

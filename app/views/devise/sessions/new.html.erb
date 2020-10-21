@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      document.getElementById("login").playbackRate = -0.5;
+    </script>
+    <title>SINJUR</title> 
+  </head> 
+  <body class="login">
+    <div> 
+    
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content" style="width: 844px;margin-top: 8%;"> 
+            <div class="clearfix"></div>
+            <% flash.each do |key, value|%>
+                <div class="flash-<%=key%>" style="font-size: 17px;background: #fe3300;border-radius: 7px;border: 2px solid #c41010;width: 92.5%;">
+                  <%= value %>
+                </div>
+            <% end %> 
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %> 
+              <div class="field"> 
+                <%= f.email_field :email, autofocus: true,autocomplete: true, class:"devise", placeholder:"E-mail",style:"border: 2px solid #2d8f81;border-bottom: 2px solid #2d8f81;background: transparent;border-radius: 13px;color: white;box-shadow: 0px 0px 0px;font-size: 30px;height: 92px;width: 746px;padding: 8px;margin-top: 24px;margin-left: -5px;text-align: center;font-family: Gilroy;"%>
+              </div> 
+              <div class="field"> 
+                <%= f.password_field :password,type:"password", class:"devise", placeholder:"Senha",style:"border: 2px solid #2d8f81;border-bottom: 2px solid #2d8f81;background: transparent;border-radius: 13px;color: white;box-shadow: 0px 0px 0px;font-size: 30px;height: 92px;width: 746px;padding: 8px;margin-top: 24px;margin-left: -5px;text-align: center;font-family: Gilroy;"%>
+              </div>
+              <div id="actions" class="actions" style="margin-left: -60px;"> 
+                <%= f.submit "Entrar",onclick:"return myFunction()",class:"modal__btn modal__btn-primary",style:"width: 86%;margin-top: 20px;height: auto;margin-left: -18px;font-size: 40px;font-family: Gilroy ExtraBold;"%> 
+              </div>   
+              <div id="myDIV" style="display:none">  
+                <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+                  <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+                    <header class="modal__header">
+                      <h2 class="modal__title" id="modal-1-title">
+                        <%= image_tag 'LOGO_SINJUR.png', width:'260',style:"background: #1abb9c;margin-top: 8px;width: 100%;border-radius: 5px;height: 123px;" %>   
+                      </h2> 
+                      <button class="modal__close" aria-label="Close modal" data-micromodal-close style="display:none"></button>
+                    </header>
+                    <main class="modal__content" id="modal-1-content">
+                      <div style="font-family: Gilroy;">
+                        <h2 style="font-family: Gilroy Extrabold;">Política Privacidade</h2> 
+                        <p>A sua privacidade é importante para nós. É política do SINJUR respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <a href='http://localhost:3000/admins/sign_in' style="margin: 0px;">SINJUR</a>, e outros sites que possuímos e operamos.</p>
+                        <p>Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado. </p>
+                        <p>Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis ​​para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.</p>
+                        <p>Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.</p>
+                        <p>O nosso site pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.</p>
+                        <p>Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.</p>
+                        <h3 style="font-family: Gilroy Extrabold;">Mais informações</h3>
+                        <p>Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.</p>
+                        <p>Esta política é efetiva a partir de <strong style="font-family: Gilroy Extrabold;">Agosto</strong>/<strong style="font-family: Gilroy Extrabold;">2020</strong>.</p>   
+                      </div> 
+                    </main>
+                    <footer class="modal__footer" style="text-align: initial;margin-left: 0px;">  
+                      <%= f.submit "Sim, aceito.",class:"modal__btn modal__btn-primary",style:"margin-top: 10px;height: 36px;font-family: Gilroy ExtraBold;font-size: 17px;float: right;"%>
+                      <%= link_to "Cancelar.", admin_session_path,class:"modal__btn",style:"text-decoration:none;font-family: Gilroy ExtraBold;font-size: 17px;float: left;"%>
+                    </footer>
+                  </div>
+                </div>
+              </div>  
+            <% end %>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html> 
+<script>
+  function myFunction() {
+  var x = document.getElementById("myDIV");
+  var teste = document.getElementById("actions");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+    teste.style.display = "block"
+  } else {
+    x.style.display = "block";
+    teste.style.display = "none"
+  }
+  return false;
+}
+</script> 
+ 

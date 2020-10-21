@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status processo:</strong>
+  <%= @processo.status_processo %>
+</p>
+
+<p>
+  <strong>Area atuacao:</strong>
+  <%= @processo.area_atuacao %>
+</p>
+
+<p>
+  <strong>Objeto acao:</strong>
+  <%= @processo.objeto_acao %>
+</p>
+
+<p>
+  <strong>Assunto:</strong>
+  <%= @processo.assunto %>
+</p>
+
+<p>
+  <strong>Detalhe:</strong>
+  <%= @processo.detalhe %>
+</p>
+
+<p>
+  <strong>Pasta:</strong>
+  <%= @processo.pasta %>
+</p>
+
+<p>
+  <strong>Etiqueta:</strong>
+  <%= @processo.etiqueta %>
+</p>
+
+<p>
+  <strong>Favorito:</strong>
+  <%= @processo.favorito %>
+</p>
+
+<p>
+  <strong>Local tramite um:</strong>
+  <%= @processo.local_tramite_um %>
+</p>
+
+<p>
+  <strong>Local tramite dois:</strong>
+  <%= @processo.local_tramite_dois %>
+</p>
+
+<p>
+  <strong>Cadastro atendimento:</strong>
+  <%= @processo.cadastro_atendimento %>
+</p>
+
+<%= link_to 'Edit', edit_processo_path(@processo) %> |
+<%= link_to 'Back', processos_path %>

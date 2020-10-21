@@ -1,0 +1,82 @@
+<div style="text-align:center">
+  <div class="container body" style="text-align:center;font-size:18px">
+    <div class="main_container" style="text-align:center"> 
+
+      <!-- top navigation --> 
+      <!-- page content --> 
+      <div class="" style="text-align:center"> 
+
+        <div class="clearfix"  style="text-align:center"></div>
+
+        <div class="row" style="display: block;text-align:center"">
+          <div class="col-md-6 col-sm-6  " style="width: 100%;margin-left: auto;margin-right: auto;text-align: center;">
+            <div class="x_panel" style="color: #2a3f53;
+    text-align: center;
+    width: 100%;
+    background: #ffffff;
+    font-family: Gilroy;margin-bottom: 47px;">
+              <div class="x_title">
+                <%= form_tag(assunto_atendimentos_path, method: :get) do %>
+                  <div class="col-md-5 col-sm-5   form-group pull-right top_search" style="WIDTH: 100%;text-align:center">
+                    <div class="input-group" > 
+                      <h2 style="width: 100%;text-align: initial;font-family: Gilroy ExtraBold;">Assuntos 
+                      <small class="actions-form" style="float: right;display: flex;" > 
+                        <%= link_to 'Voltar', ferramentas_atendimento_index_path,class:"modal__btn", style:"margin-top: 5px;font-size: 18px;"%>
+                      </small>
+                      </h2>
+                    </div>
+                  </div>
+                <% end %>  
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content" style="text-align:center">
+
+                <table class="table"  style="width:100%;text-align:left">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Assunto</th>
+                      <th>Descrição</th> 
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @assunto_atendimentos.each do |assunto_atendimento| %>
+                      <tr>
+                        <td><%= assunto_atendimento.id %></td>
+                        <td><%= assunto_atendimento.assunto %></td>
+                        <td><%= assunto_atendimento.descricao %></td>  
+                        <td style="width:7%;padding:2px"><%= button_to 'Editar', edit_assunto_atendimento_path(assunto_atendimento), method: :get,class:'modal__btn modal__btn-primary',style:"font-family: Gilroy ExtraBold;width:100%"%></td>
+                        <td style="width:7%;padding:2px"><%= button_to 'Excluir', assunto_atendimento, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'modal__btn',style:"color: white;background: red;font-family: Gilroy ExtraBold;width: 100%;"%></td>
+                        
+                      </tr>
+                      <script>
+                        function ConfirmDelete(button) {
+                          alertify.confirm("<p style='font-size:15px'>Deseja excluir o assunto?</p><br><p style='color:red'>esta ação não pode ser desfeita.<p>", function() {
+                            button.form.submit() 
+                          }, function() {
+                            alertify.error("Você cancelou a ação");
+                          }).set('defaultFocus', 'Cancelar');
+
+                          return false;
+                        }
+                      </script>
+                    <% end %> 
+                    
+                  </tbody>
+                  <div class="clearfix"></div>
+                </table> 
+                  <div style="float: none;display: flow-root;">
+                    <%= paginate @assunto_atendimentos,style:"text-align:center"%>
+                  </div>
+              </div>
+            </div>
+            <div>
+              
+            </div>          
+          </div>  
+          <div class="clearfix"></div> 
+        </div>
+      </div> 
+    </div>
+  </div>  
+</div>

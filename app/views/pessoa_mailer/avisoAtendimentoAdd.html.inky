@@ -1,0 +1,35 @@
+<spacer size="16"></spacer>
+ 
+<container>
+  <spacer size="24"></spacer>
+ 
+  <row>
+    <columns small="12">
+      <h1>Atendimento numero: <%=@cadastro_atendimento.id%></h1>
+      <hr />
+ 
+      <p class="lead">Usuario - <%=current_admin.username%>.</p>
+      <p style="color: #484848; line-height: 1.5;">
+        
+        <%=@cadastro_atendimento.usuario%> adicionadou um atendimento.<br>
+        Quantidade de Documentos:<%=@cadastro_atendimento.documentos.size%><br>
+        Quantidade de Pessoas:<%=@cadastro_atendimento.pessoas.size%> <br>
+        Quantidade de Advogados:<%=@cadastro_atendimento.advogados.size%><br>
+        possui processo?  
+        <% if @cadastro_atendimento.processos.size >= 1 %> 
+          sim
+          <%= @cadastro_atendimento.processos.each do |proc|%> 
+            Pasta: <%= proc.pasta%>
+          <% end %>
+        <% else %> 
+          não 
+        <% end %>
+      </p> 
+      <p style="color: #484848; line-height: 1.5;">
+        <b>Telefone:</b> (85) 3038-9500<br>
+        <b>Endereço:</b> R. Walter Bezerra de Sá, 55 - Dionísio Torres, Fortaleza - CE, 60135-225
+      </p>
+      <spacer size="16"></spacer>
+    </column>
+  </row>
+</container>

@@ -1,0 +1,137 @@
+<%= form_with(model: pessoa, local: true) do |form| %>
+  <% if pessoa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pessoa.errors.count, "error") %> prohibited this pessoa from being saved:</h2>
+
+      <ul>
+      <% pessoa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profissao %>
+    <%= form.text_field :profissao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cep %>
+    <%= form.text_field :cep %>
+  </div>
+
+  <div class="field">
+    <%= form.label :razao_social %>
+    <%= form.text_field :razao_social %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nome_fantasia %>
+    <%= form.text_field :nome_fantasia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cidade %>
+    <%= form.text_field :cidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :endereço %>
+    <%= form.text_field :endereço %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cpf %>
+    <%= form.text_field :cpf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rg %>
+    <%= form.number_field :rg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pis %>
+    <%= form.number_field :pis %>
+  </div>
+
+  <div class="field">
+    <%= form.label :residencial %>
+    <%= form.number_field :residencial %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comercial %>
+    <%= form.number_field :comercial %>
+  </div>
+
+  <div class="field">
+    <%= form.label :celular %>
+    <%= form.number_field :celular %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nacionalidade %>
+    <%= form.text_field :nacionalidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado_civil %>
+    <%= form.text_field :estado_civil %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado_civil %>
+    <%= form.text_field :estado_civil %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bairro %>
+    <%= form.text_field :bairro %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :escolaridade %>
+    <%= form.text_field :escolaridade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :insc_estadual %>
+    <%= form.text_field :insc_estadual %>
+  </div>
+
+  <div class="field">
+    <%= form.label :insc_municipal %>
+    <%= form.text_field :insc_municipal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :responsável %>
+    <%= form.text_field :responsável %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cnpj %>
+    <%= form.text_field :cnpj %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cadastro_atendimento_id %>
+    <%= form.text_field :cadastro_atendimento_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

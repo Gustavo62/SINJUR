@@ -1,0 +1,56 @@
+<div class="simple-calendar">
+  <div class="content-heading">
+    <div class="calendar-heading" style="float:left;width: 39%;margin-top: 2px;">   
+      <p><%= link_to calendar.url_for_previous_view do %>
+        <i class="fa fa-caret-left" style="font-size: 26px;color: #233980;vertical-align: middle;text-shadow: 1px 2px 3px #457baf;"></i></p>
+      <% end %> 
+      <b id="nome"><span class="calendar-title" style="color: #233980;text-shadow: 1px 2px 3px #457baf;font-family: Gilroy ExtraBold;"><%= t('date.month_names')[start_date.month] %> de <%= start_date.year %></span></b> 
+      <p><%= link_to calendar.url_for_next_view do %>
+        <i class="fa fa-caret-right" style="font-size: 26px;color: #233980;vertical-align: middle;text-shadow: 1px 2px 3px #457baf;"></i></p>
+      <% end %>  
+    </div>
+    <div class="calendar-heading">     
+
+      <div class="input-group" style="width: 61.0%;border-left: 0px solid; font-family: Gilroy;padding: 1px;float: right; margin-right: 0px;margin-top:-4px">
+        <div style="padding: 2px;text-align: center;font-size: 21px;">
+          <%= form_tag(restrito_tela_agenda_atividades_path, method: :get) do %>
+            <h3 style="float: right;color: #233980;">Tipo:
+              <%= select_tag "tipo", raw("<option>Todos</option><option>Atividade</option><option>Lembrete</option><option>Agendamento</option>"),class:"form-control",style:"border-radius: 4px;padding: 2px;margin-right: 17px;width: 151px;background: #17598b54;font-size: 20px;color: #3c6791;border:1px solid #22313f;"%> 
+              Nivel: 
+              <%= select_tag "nivel", raw("<option>Todos</option><option>Alto</option><option>Médio</option><option>Baixo</option>"), class:"form-control",style:"border-radius: 4px;padding: 2px;margin-right: 17px;width: 100px;font-size: 20px;background: #17598b54;color: #3c6791;border:1px solid #22313f;"%> 
+              Data:
+              <%= text_field_tag 'agendamento', Time.now.strftime("%d/%m/%Y"),type:"date",class:"form-control",style:"border-radius: 4px;padding: 2px;margin-right: 17px;width: 219px;text-align: end;border:1px solid #22313f;font-size: 18px;background: #17598b54;color: #3c6791;"%>
+              <button class="fa fa-search" style="color: #233980;background: transparent;border: none;font-size: 24px;cursor: pointer;text-shadow: 1px 2px 3px #457baf;"> 
+              </button>
+            </h3>
+          <% end %> 
+        </div>  
+      </div> 
+    </div>
+  </div>  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+              <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
+                <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
+              <% else %>
+                <% passed_block.call day, sorted_events.fetch(day, []) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>  

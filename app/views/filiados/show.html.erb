@@ -1,0 +1,53 @@
+<div class="x_panel" style="    height: auto;
+    min-height: 850px; 
+    text-align: center;
+    width: 100%; 
+    font-family: Gilroy;">
+  <div class="x_title">
+    <h2 style="width: 100%;
+    font-family: Gilroy ExtraBold;
+    text-align: left;">Filiado 
+      <small class="actions-form" style="float: right;display: flex;">
+        <%= link_to 'Voltar', filiados_path,class:"modal__btn", style:"margin-top: 5px;font-size: 18px;"%>
+        <div style="float: right;margin-left: 10px;">
+          <%= link_to "Editar", edit_filiado_path(@filiado),class:"modal__btn modal__btn-primary",style:"margin-right: 3px;font-size: 17px;font-family: Gilroy ExtraBold;"%>
+        </div> 
+        <%= button_to 'Excluir', @filiado, method: :delete, remote: true,onclick:'return ConfirmDelete(this)',class:'modal__btn',style:"margin-right: 17px;color: white;background: red;font-family: Gilroy ExtraBold;font-size: 17px;margin-left: 7px;"%>
+      </small>
+    </h2> 
+        <div class="clearfix"></div>
+  </div>
+  <div class="x_content">
+    <div class="contato" style="width: 1257px;">
+      <h2 style="font-size: 26px;">Informações do Filiado <i class="fa fa-user"></i></h2>
+      <div class="contato-form" style="width: 1257px;"> 
+        <h2 style="margin-left:71px"><small>Cartório: <p style="width: 82%;"><%=@filiado.nome %>.</p><small></h2>
+        <h2 style="margin-left:50px"><small>Descrição: <p style="width: 80.5%;"><%=@filiado.end_completo %>.</p><small></h2>
+        <h2 style="margin-left: 95px;"><small>Titular: <p style="width: 83.8%;"><%=@filiado.titular %>.</p><small></h2> 
+        <h2 style="font-size: 24px;margin-left: 107px;"><small>CNPJ: <p style="width:27.4%;margin-right: 8px;"><%=@filiado.cnpj %>.</p>CEI: <p style="width: 16.7%;margin-right: 8px;"><%=@filiado.cei %>.</p>Serventia: <p><%=@filiado.serventia %>.</p></small></h2>
+        
+        <br>
+        <h2 style="margin-left: 32px;"><small>Logradouro: <p style="width:79%"><%=@filiado.logradouro %>.</p></small></h2>
+        <h2 style="font-size: 24px;"><small>Complemento: <p style="width: 56.5%;"><%=@filiado.complemento %>.</p> Numero: <p style="width:11.3%"><%=@filiado.numero_casa %>.</p></small></h2> 
+        <h2 style="margin-left: 102px;"><small>Bairro: <p style="width: 40%;"><%=@filiado.bairro %>.</p> Cidade: <p style="width: 34.3%;"><%=@filiado.cidade %>.</p></small></h2> 
+        <h2 style="margin-left: 120px;"><small>Cep: <p style="width: 27.5%;margin-right: 7px;"><%=@filiado.cep %>.</p>Telefone Fixo: <p style="width: 31%;"><%=@filiado.telefone_fixo_casa %>.</p></small></h2>
+
+        <br>
+        <h2 style="font-size: 24px;margin-left: 106px;"><small>Email: <p style="width: 84.6%;"><%=@filiado.email %></p></small></h2>
+         
+      </div>
+    </div>
+  </div>
+  <br> 
+</div>
+<script>
+  function ConfirmDelete(button) {
+    alertify.confirm("<p style='font-size:15px'>Deseja excluir o Filiado <%= @filiado.nome%> ?</p><br><p style='font-size:15px'>Serventia: <%= @filiado.serventia%></p><br><p style='font-size:15px'>CNPJ: <%= @filiado.cnpj%></p><br><p style='color:red'>esta ação não pode ser desfeita.<p>", function() {
+      button.form.submit() 
+    }, function() {
+      alertify.error("Você cancelou a ação");
+    }).set('defaultFocus', 'Cancelar');
+
+    return false;
+  }
+</script>

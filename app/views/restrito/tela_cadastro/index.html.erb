@@ -1,0 +1,30 @@
+<h1>AMBIENTE DE ATENDIMENTOS >> CADASTRO</h1>   
+<hr>
+<h3>ATENDIMENTO</h3>
+
+<%= form_with(to_model: @cadastro_atendimentos, local: true) do |form| %>  
+  
+  <div class="field">
+    <%= form.label :cnpj_filiado %>
+    <%= form.text_field :cnpj_filiado %>
+  </div>
+
+  <div class="field">
+    <%= form.label :codigo_tj_filiado %>
+    <%= form.text_field :codigo_tj_filiado %>
+  </div>
+ 
+  <div class="field">
+    <%= form.label :texto_livre %>
+    <%= form.text_area :texto_livre %>
+  </div>
+<hr>
+  <%= form.fields_for :solicitantes do |solicitantes_fields|%>
+    <div class="field">
+    <%= solicitantes_fields.label :nome %>
+    <%= solicitantes_fields.text_field :nome %>
+  </div>
+<% end%>
+
+  
+<% end %>

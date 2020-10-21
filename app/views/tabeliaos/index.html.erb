@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tabeliaos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Cpf</th>
+      <th>Numero</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tabeliaos.each do |tabeliao| %>
+      <tr>
+        <td><%= tabeliao.nome %></td>
+        <td><%= tabeliao.cpf %></td>
+        <td><%= tabeliao.numero %></td>
+        <td><%= link_to 'Show', tabeliao %></td>
+        <td><%= link_to 'Edit', edit_tabeliao_path(tabeliao) %></td>
+        <td><%= link_to 'Destroy', tabeliao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tabeliao', new_tabeliao_path %>

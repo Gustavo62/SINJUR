@@ -1,0 +1,41 @@
+<div class="nested-fields" style="margin-top: 13px;">
+    <div class="field"> 
+        <div class="field" style="margin-left: 40px;">
+            <%= f.label :nome %>:
+            <%= f.text_field :nome, style:"width:86%",placeholder:"Nome do advogado Associado ao Atendimento." %>
+        </div> 
+        <div class="field" style="margin-left: -7px;">
+            <%= f.label :endereço %>:
+            <%= f.text_field :endereço, style:"width:51%", placeholder:"Ex: Rua Fernado de Oliveira." %> 
+            <%= f.label :cidade %>:
+            <%= f.text_field :cidade, style:"width:23%" ,placeholder:"Ex: Fortaleza."%> 
+        </div> 
+        <br>
+        <div class="field" style="margin-left:37px;"> 
+            <%= f.label :bairro %>:
+            <%= f.text_field :bairro, style:"width: 55.6%;margin-left: 2px;", placeholder:"Ex: Aldeota."%>
+            <%= f.label :cep %>
+            <%= f.text_field :cep, style:"width: 25%;", placeholder:"Ex: 000000-000",maxlength:"9",onkeydown:"javascript: fMasc( this, mCEP );"%>
+        </div>
+        <br>
+        <div class="field" style="margin-left: 45px;">
+            <%= f.label :email %>:
+            <%= f.text_field :email,style:"width: 86.6%;", placeholder:"exemplo@exemplo.com"%> 
+        </div>
+
+        <div class="field" style="margin-left: 54px;"> 
+            <%= f.label :oab %>:
+            <%= f.text_field :oab,style:"width: 20%;", placeholder:"Ex: Infomação OAB"%>
+
+            <%= f.label :advogado %>:
+            <%= f.text_field :advogado,style:"width: 54.7%;", placeholder:"Ex: Infomação do Advogado"%> 
+        </div> 
+        <div class="field" style="margin-left: 6px;">
+            <%= f.label :telefone %>:
+            <%= f.text_field :telefone, placeholder:"Ex: (99) 99999-9999",maxlength:"15", onkeypress:"mask(this, mphone);",style:"width: 17%;"%>
+            <%= f.label :observação %>:
+            <%= f.text_field :observação, style:"width: 53.4%;",placeholder:"Detalhes sobre advogado"%>
+        </div>  
+    <div style="text-align:right;border-bottom: 2px solid #1abb9c;"><%= link_to_remove_association('', f,class:"fa fa-trash-o",style:"color: red;font-size: 25px;margin-right: 18px;")%></div>
+    </div>
+</div>

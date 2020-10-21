@@ -1,0 +1,72 @@
+<%= form_with(model: processo, local: true) do |form| %>
+  <% if processo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(processo.errors.count, "error") %> prohibited this processo from being saved:</h2>
+
+      <ul>
+      <% processo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :status_processo %>
+    <%= form.text_field :status_processo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :area_atuacao %>
+    <%= form.text_field :area_atuacao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :objeto_acao %>
+    <%= form.text_field :objeto_acao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assunto %>
+    <%= form.text_field :assunto %>
+  </div>
+
+  <div class="field">
+    <%= form.label :detalhe %>
+    <%= form.text_field :detalhe %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pasta %>
+    <%= form.text_field :pasta %>
+  </div>
+
+  <div class="field">
+    <%= form.label :etiqueta %>
+    <%= form.text_field :etiqueta %>
+  </div>
+
+  <div class="field">
+    <%= form.label :favorito %>
+    <%= form.text_field :favorito %>
+  </div>
+
+  <div class="field">
+    <%= form.label :local_tramite_um %>
+    <%= form.text_field :local_tramite_um %>
+  </div>
+
+  <div class="field">
+    <%= form.label :local_tramite_dois %>
+    <%= form.text_field :local_tramite_dois %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cadastro_atendimento_id %>
+    <%= form.text_field :cadastro_atendimento_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

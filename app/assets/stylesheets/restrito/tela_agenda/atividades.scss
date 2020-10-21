@@ -1,0 +1,107 @@
+// Place all the styles related to the restrito/tela_agenda/Atividades controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/ 
+#index {
+    padding: 2px;
+    height: 100px;
+    text-align: center;
+}
+#index .calendario {
+text-align: left;
+width: 900px;
+}
+#index .CadastroAgenda {
+  text-align: left;
+  position: absolute;
+  top: 260px;
+  left: 1000px;
+  width: 600px;
+  height:500px;
+} 
+#atividades #Alto a {
+  background-color: #ffa583;
+  text-decoration: none;
+  border: 1px solid black;
+  color: black;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 5px;
+}#atividades #Médio a {
+  background-color: #f3ff36;
+  text-decoration: none;
+  color: black;
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#atividades #Baixo a {
+  background-color: #b6c579;
+  text-decoration: none;
+  border: 1px solid black;
+  color: black;
+  border-radius: 5px;
+  margin: 0px;
+  padding: 0px;
+}
+#atividades #Alto a:hover  {
+transition:0.5s; 
+background-color: #cc8368;
+color: black;
+}#atividades #Médio a:hover  {
+transition:0.5s; 
+background-color: #bcc509;
+color: black;
+}
+#atividades #Baixo a:hover {
+transition:0.5s; 
+background-color: #768050;
+color: black;
+} 
+#atividades p {
+  margin: 5px;
+  padding: 0px;
+}
+
+#ferramenta {
+  width: 90px;
+  margin-top:2px;
+  margin-left:5px;
+} 
+#ferramenta .options {
+  display: none;
+  height: 20px;
+} 
+#ferramenta .options p {
+  margin: 2px;
+  width: 90px;
+  display: inline;
+} 
+#ferramenta:hover .options {
+  display: inline-block;
+  position: absolute;
+  padding: 1px;
+  height: 20px;
+  cursor: pointer;
+} 
+#ferramenta p:hover {
+  background-color: transparent;
+  border-bottom: 1px solid black;
+} 
+#ferramenta a {
+  text-decoration: none;
+  background-color: transparent;
+} 
+#info p {
+  margin: 7px;
+  margin-top: -7px;
+}
+#nome { 
+  font-size: 51px;
+  margin:5px;
+  left: 30px;
+}
+.nav-md .resumo{
+  color:red;
+}

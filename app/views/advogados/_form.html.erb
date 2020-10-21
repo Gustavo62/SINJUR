@@ -1,0 +1,82 @@
+<%= form_with(model: advogado, local: true) do |form| %>
+  <% if advogado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(advogado.errors.count, "error") %> prohibited this advogado from being saved:</h2>
+
+      <ul>
+      <% advogado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :endereço %>
+    <%= form.text_field :endereço %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cidade %>
+    <%= form.text_field :cidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bairro %>
+    <%= form.text_field :bairro %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cep %>
+    <%= form.text_field :cep %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefone %>
+    <%= form.text_field :telefone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cidade %>
+    <%= form.text_field :cidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :advogado %>
+    <%= form.text_field :advogado %>
+  </div>
+
+  <div class="field">
+    <%= form.label :oab %>
+    <%= form.text_field :oab %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefone %>
+    <%= form.text_field :telefone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :observação %>
+    <%= form.text_field :observação %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cadastro_atendimento_id %>
+    <%= form.text_field :cadastro_atendimento_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

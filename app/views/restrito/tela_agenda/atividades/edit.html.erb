@@ -1,0 +1,22 @@
+<div class="calendario">
+    <%= render 'teste', style:'float: left;'%>
+    <br>   
+</div>
+<div class="modal__overlay" tabindex="-1" data-micromodal-close style="font-family:Gilroy">
+    <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header class="modal__header">
+            <h2 class="modal__title" id="modal-1-title">
+            Adicionar Atividade 
+            </h2> 
+        </header>
+        <main class="modal__content" id="modal-1-content">
+            <div id="index"> 
+                <div class="CadastroAgenda"> 
+                    <%= render 'form', restrito_tela_agenda_atividade: @restrito_tela_agenda_atividade,datacustomopen:"modal-1" %> 
+                </div> 
+            </div>  
+
+        </main> 
+        
+    </div>
+</div>  
