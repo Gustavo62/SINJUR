@@ -22,7 +22,11 @@
 //= require bootbox  
 //= require popper 
 //= require alertify     
-
+$(document).ready(function(){
+    setTimeout(function(){
+      $('#flash').fadeOut();
+    }, 10000);
+  })
 $(document).ready(function() {
     MicroModal.init();
   }); 

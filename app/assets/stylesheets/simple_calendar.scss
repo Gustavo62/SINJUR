@@ -16,7 +16,7 @@
 } 
 .simple-calendar tr {
   border-collapse: collapse;
-  background: #196fb1;
+  background: transparent;
   color: #ffffff;
   /* border-radius: 0px; */
   /* border: 1px solid black; */
@@ -37,6 +37,7 @@
  
 .simple-calendar th {
   padding: 6px;
+  background: #196fb1;
   border: 1px solid #253c83;
   text-shadow: 1px 2px 3px #457baf;
   border-collapse: collapse;

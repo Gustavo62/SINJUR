@@ -83,8 +83,17 @@
                   <li><a><i class="fa fa-info-circle"></i> Usuário <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"> 
                       <li><%= link_to 'Alterar senha.',edit_admin_registration_path, method: :get %></li>
+                      <li><%= button_to('Sair', destroy_admin_session_path, method: :delete,style:"text-align: left;width: 100%;color: rgba(255, 255, 255, 0.75);font-size: 15px;padding: 9px;background: transparent;border: none;") %> </li>
                     </ul>
-                  </li> 
+                  </li>  
+                  <div id="flash">
+                    <% flash.each do |type, msg| %> 
+                      <div class="alertify-notifier ajs-bottom ajs-left" style="background: linear-gradient(to right, red, purple);">
+                        <div class="ajs-message ajs-<%= type %> ajs-visible" style="border: none;font-family: Gilroy ExtraBold;text-shadow: 0px 0px 2px black;background: #205a87;color: #ebecfe; width: 291px;margin-bottom: 35px;margin-left: -10px;"><%= msg %></div>
+                      </div>
+                    <% end %>
+                  </div>
+                      
                 </ul>
               </div> 
             </div> 

@@ -37,7 +37,7 @@ class Restrito::TelaAgenda::AtividadesController < ApplicationController
     else
       @restrito_tela_agenda_atividades = Restrito::TelaAgenda::Atividade.page(params[:page]).per(19)
     end
-    @local = 'Agenda de Atividades'
+    @local = 'Agenda de Atividades' 
   end 
   # GET /restrito/tela_agenda/atividades/1
   # GET /restrito/tela_agenda/atividades/1.json

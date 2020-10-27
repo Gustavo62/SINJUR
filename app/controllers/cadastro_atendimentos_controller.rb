@@ -8,18 +8,7 @@ class CadastroAtendimentosController < ApplicationController
   # GET /cadastro_atendimentos
   # GET /cadastro_atendimentos.json
   
-  def index  
-    '''
-    if params[:n_atendimento] != nil
-      @cadastro_atendimentos_aux = CadastroAtendimento.where(id: params[:n_atendimento]) 
-    end
-    if params[:codigoo_tj] != nil
-      @cadastro_atendimentos_aux = CadastroAtendimento.where(codigo_tj_filiado: procura_cart )
-    end 
-    if params[:codigoo_tj] == nil && params[:n_atendimento] == nil
-      @cadastro_atendimentos = CadastroAtendimento.all 
-    end
-    '''
+  def index
     if params[:n_atendimento] or params[:codigoo_tj] or params[:intervalo_atend] or params[:cpf] or params[:intervalo_atend_cpf]
       if params[:n_atendimento] != ""
         @cadastro_atendimentos_aux = CadastroAtendimento.where(id: params[:n_atendimento]).page(params[:page]).per(22)
