@@ -50,7 +50,7 @@ gem 'administrate'
 gem 'cocoon'  
 gem 'jquery-rails'
 gem 'actiontext', github: 'kobaltz/actiontext', branch: 'archive', require: 'action_text' 
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.12"
 gem 'activestorage'
 gem 'bootstrap-datetimepicker-rails'
 gem 'jquery-ui-rails', '5.0.0'
