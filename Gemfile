@@ -53,7 +53,7 @@ gem 'actiontext', github: 'kobaltz/actiontext', branch: 'archive', require: 'act
 gem "image_processing", "~> 1.2"
 gem 'activestorage'
 gem 'bootstrap-datetimepicker-rails'
-gem 'jquery-ui-rails', '5.0.0'
+gem 'jquery-ui-rails', '6.0.1'
 gem 'rails-erd', group: :development
 # Use Redis adapter to run Action Cable in production
 #gem 'redis', '~> 4.0'
